@@ -1,0 +1,6 @@
+[
+ {"device":"Android phone (Adreno 830)","version":"V1.3-fix.1","fps_avg":84.8,"frame_ms_p50":11.1,"frame_ms_p95":16.6,"pixel_ratio":2,"viewport":[360,680],"triangles":503543,"draw_calls":35,"load_ms":172,"note":"measured from panel button; panel covered the view"},
+ {"device":"Android phone (Adreno 830)","version":"V1.3-fix.3","fps_avg":69.9,"frame_ms_p50":16.5,"frame_ms_p95":16.7,"pixel_ratio":2,"viewport":[360,680],"triangles":503543,"draw_calls":35,"load_ms":163,"note":"?perf=1, rotating full view"},
+ {"device":"Desktop RTX 4080","version":"V1.3-fix.3","fps_avg":59.7,"frame_ms_p50":16.7,"frame_ms_p95":16.8,"pixel_ratio":1,"viewport":[1290,1268],"triangles":503543,"draw_calls":35,"load_ms":99,"note":"vsync-limited 60 Hz"},
+ {"device":"Same desktop, Microsoft Basic Render Driver","version":"V1.3-fix.1","fps_avg":25.7,"frame_ms_p95":50.1,"note":"software rendering (no GPU acceleration) - environment issue, excluded"}
+]

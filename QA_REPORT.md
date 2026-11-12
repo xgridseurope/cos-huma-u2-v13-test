@@ -83,3 +83,14 @@
 5. 大脑皮层逐网格来源核对（Brainder）。
 6. 稳定的 GitHub Pages 链接需要一个新的测试仓库，本会话无法创建仓库。
 7. P27/P29 原文由照片转录，需要对照纸质书最终核对。
+
+## Real-device performance (2026-11-12)
+| Device | Version | fps avg | P95 ms | Verdict |
+|---|---|---|---|---|
+| Android, Adreno 830 (flagship) | fix.3 | 69.9 | 16.7 | PASS (≥30) |
+| Android, Adreno 830 (flagship) | fix.1 | 84.8 | 16.6 | PASS |
+| Desktop RTX 4080 | fix.3 | 59.7 (vsync) | 16.8 | PASS |
+| Desktop, software renderer | fix.1 | 25.7 | 50.1 | excluded (no GPU acceleration) |
+
+Raw data: qa/perf/real_devices_2026-11-12.json. Mid-range Android not yet measured (recommended, not blocking).
+Remaining condition for PASS: human visual sign-off of elbow motion (Left/Right, 45°/90°).
