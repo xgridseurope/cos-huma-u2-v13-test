@@ -1,0 +1,47 @@
+PASS every name has model parts · {}
+PASS pregunta: no labels/book before answering
+PASS pregunta: prediction not marked wrong
+PASS inclou: toggle required first
+PASS inclou: toggle done
+PASS funcions: stepper 4 cards, child-paced
+PASS elastics: child bends/stretches the arm (2 taps)
+PASS pensa: recall hidden before answer (zh on)
+PASS pensa: back locked
+PASS pensa: book answer after speaking
+PASS pensa: done
+PASS R1: recall hidden before answer (zh on)
+PASS R1: back locked
+PASS R1: book answer after speaking
+PASS R1: done
+PASS R2: recall hidden before answer (zh on)
+PASS R2: back locked
+PASS R2: book answer after speaking
+PASS R2: done
+PASS P1#0: no answer shown before choosing (zh on) · Què inclou el sistema muscular?
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: té dues parts: els músculs i uns cordons que els uneixen als ossos.
+PASS P1#1: no answer shown before choosing (zh on) · Què és la mímica?
+PASS P1#2: no answer shown before choosing (zh on) · Què poden fer els músculs sense trencar-se?
+PASS P1#3: no answer shown before choosing (zh on) · Com es diuen els músculs de l’aparell locomotor?
+PASS P1#4: no answer shown before choosing (zh on) · Què uneix molts músculs als ossos?
+PASS P1#5: no answer shown before choosing (zh on) · Quants músculs esquelètics tenim?
+PASS P1#6: no answer shown before choosing (zh on) · Què és la part groga?
+PASS P1: 7 choice items done
+PASS reached results
+PASS units recorded · {'U1': ['sol', 'ajuda'], 'U2': ['sol'], 'U3': ['sol'], 'U4': ['sol', 'sol'], 'U5': ['sol', 'sol'], 'U6': ['sol', 'sol', 'sol']}
+PASS choice help recorded as amb ajuda · {'U1': ['sol', 'ajuda'], 'U2': ['sol'], 'U3': ['sol'], 'U4': ['sol', 'sol'], 'U5': ['sol', 'sol'], 'U6': ['sol', 'sol', 'sol']}
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/6: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: què inclou el sist')
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/6: answer hidden before child answers · ('hidden', 'Explica-hoDigues les tres feines del sistema muscu')
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/6: answer hidden before child answers · ('hidden', 'Explica-hoQuè vol dir que els músculs són òrgans e')
+d2 step 3 tickers 1
+PASS day2 Revisió de l’endemà · 4/6: choice, no answer shown
+d2 step 4 tickers 1
+PASS day2 Revisió de l’endemà · 5/6: choice, no answer shown
+d2 step 5 tickers 1
+PASS day2 Revisió de l’endemà · 6/6: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 26. Mira el di')
+d2 step 6 tickers 1
+PASS day2 finished, one item at a time · 6
+PASS day2 stored separately (day-1 records unchanged) · 6
+PASS no JS errors · []

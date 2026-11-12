@@ -33,7 +33,7 @@ with sync_playwright() as p:
           for(const p of pts){if(p[0]<r.left||p[0]>r.right||p[1]<r.top||p[1]>r.bottom)continue;if(__curs.hitAt(p[0],p[1],tg).ok)out.push(p);if(out.length>=4)break}return out}""",key)
     def tap(key, box_sel='#Lbody [data-done]'):
         Lr=pg.locator('#L').bounding_box(); n0=pg.locator(box_sel).count()
-        for attempt in range(2):          # software rendering is slow: recompute the points once if the camera was still moving
+        for attempt in range(4):          # software rendering is slow: recompute the points if the camera was still moving
             for x,y in tap_pts(key):
                 if y>=Lr['y'] or y<32: continue
                 q0=pg.evaluate("(document.querySelector('#Lbody .q')||{}).textContent")
@@ -42,9 +42,11 @@ with sync_playwright() as p:
                     time.sleep(.3)
                     if pg.locator(box_sel).count()>n0 or pg.locator('#Lbody .fb.ok').count() or pg.evaluate("(document.querySelector('#Lbody .q')||{}).textContent")!=q0: return True
                     if pg.locator('#Lbody .fb').count(): break
-            time.sleep(1.5)
+            time.sleep(2.5)
         return False
     def current_target():
+        k=pg.evaluate("__curs.tapKey")
+        if k: return k
         q=pg.locator('#Lbody .q').last.inner_text()
         for ca,k in sorted(CA2K.items(),key=lambda x:-len(x[0])):
             if ca in q: return k
@@ -104,11 +106,19 @@ with sync_playwright() as p:
                 pg.click('#nb'); time.sleep(1.2); k+=1
                 if os.environ.get('SHOTS') and pg.locator('#Lbody #nb').count(): time.sleep(1.5); pg.screenshot(path=f'{OUT}{step:02d}-{s}-card{k}.png')
             chk(f'{s}: stepper {k} cards, child-paced', can() and k>=2); nxt(); continue
+        if pg.locator('#Lbody #bend').count():
+            k=0
+            while not can() and k<6: pg.click('#bend'); time.sleep(1.2); k+=1
+            chk(f'{s}: child bends/stretches the arm ({k} taps)', can()); nxt(); continue
+        if pg.locator('#Lbody #tgmus').count():
+            chk(f'{s}: toggle required first', not can()); pg.click('#tgmus'); time.sleep(1.2); pg.click('#tgmus'); time.sleep(.6); chk(f'{s}: toggle done', can()); nxt(); continue
         if pg.locator('#Lbody #tgm').count():
             chk(f'{s}: toggle required first', not can()); pg.click('#tgm'); time.sleep(1.2); chk(f'{s}: muscles shown', pg.evaluate("__app.find(/./,'muscle').some(m=>m.visible)") or True); pg.click('#tgm'); time.sleep(.6); nxt(); continue
         if L!='l10' and pg.locator('#Lbody #said').count() and pg.locator('#Lbody .book').count()==0 and not s.endswith('digues'):
             chk(f'{s}: recall hidden before answer (zh on)', labels()==0 and '评分要点' not in bodytext()); chk(f'{s}: back locked', pg.evaluate("document.getElementById('Lback').disabled"))
-            pg.click('#said'); time.sleep(.2); chk(f'{s}: book answer after speaking', pg.locator('#Lbody .book').count()>0); pg.click('#pY'); time.sleep(.3); nxt(); continue
+            pg.click('#said'); time.sleep(.2); chk(f'{s}: book answer after speaking', pg.locator('#Lbody .book').count()>0)
+            if pg.locator('#Lbody #pY').count(): pg.click('#pY'); time.sleep(.3)
+            chk(f'{s}: done', can()); nxt(); continue
         if L!='l10' and pg.locator('#Lbody .opts button.opt').count() and not pg.locator('#Lbody #po').count():   # choiceSeries
             i=0
             while i<16 and pg.locator('#Lbody .opts button.opt').count() and not can():

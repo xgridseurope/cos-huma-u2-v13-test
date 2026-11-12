@@ -1,0 +1,55 @@
+PASS every name has model parts · {'llarg': 10, 'curt': 48, 'anular': 6, 'pla': 18}
+PASS pregunta: no labels/book before answering
+PASS pregunta: prediction not marked wrong
+PASS gA-coneix: introduced one by one, child-paced
+PASS gA-troba#0: no labels, no highlight
+PASS gA-troba#0: tap curt
+PASS gA-troba#1: no labels, no highlight
+PASS gA-troba#1: tap llarg
+PASS gA-troba: done
+PASS gA-explica: recall hidden before answer (zh on)
+PASS gA-explica: back locked
+PASS gA-explica: book answer after speaking
+PASS gA-explica: done
+PASS gB-coneix: introduced one by one, child-paced
+PASS gB-troba#0: no labels, no highlight
+PASS gB-troba#0: tap anular
+PASS gB-troba#1: no labels, no highlight
+PASS gB-troba#1: tap pla
+PASS gB-troba: done
+PASS gB-explica: recall hidden before answer (zh on)
+PASS gB-explica: back locked
+PASS gB-explica: book answer after speaking
+PASS gB-explica: done
+PASS P1#0: no answer shown before choosing (zh on) · De quin tipus és el múscul blau?
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: fa una rodona al voltant de la boca.
+PASS P1#1: no answer shown before choosing (zh on) · De quin tipus és el múscul blau?
+PASS P1#2: no answer shown before choosing (zh on) · De quin tipus és el múscul blau?
+PASS P1#3: no answer shown before choosing (zh on) · De quin tipus és el múscul blau?
+PASS P1#4: no answer shown before choosing (zh on) · De quin tipus és el múscul blau?
+PASS P1#5: no answer shown before choosing (zh on) · De quin tipus és el múscul blau?
+PASS P1#6: no answer shown before choosing (zh on) · De quin tipus és el múscul blau?
+PASS P1: 7 choice items done
+PASS R1: recall hidden before answer (zh on)
+PASS R1: back locked
+PASS R1: book answer after speaking
+PASS R1: done
+PASS reached results
+PASS units recorded · {'T0': ['sol'], 'T1': ['sol', 'sol', 'sol'], 'T2': ['sol', 'sol', 'sol', 'sol'], 'T3': ['sol', 'sol', 'ajuda', 'sol'], 'T4': ['sol', 'sol', 'sol', 'sol']}
+PASS choice help recorded as amb ajuda · {'T0': ['sol'], 'T1': ['sol', 'sol', 'sol'], 'T2': ['sol', 'sol', 'sol', 'sol'], 'T3': ['sol', 'sol', 'ajuda', 'sol'], 'T4': ['sol', 'sol', 'sol', 'sol']}
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/6: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: quins són els quat')
+d2 step 1 tickers 2
+PASS day2 Revisió de l’endemà · 2/6: choice, no answer shown
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/6: choice, no answer shown
+d2 step 3 tickers 1
+PASS day2 Revisió de l’endemà · 4/6: choice, no answer shown
+d2 step 4 tickers 1
+PASS day2 Revisió de l’endemà · 5/6: choice, no answer shown
+d2 step 5 tickers 1
+PASS day2 Revisió de l’endemà · 6/6: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 26. Tapa els t')
+d2 step 6 tickers 1
+PASS day2 finished, one item at a time · 6
+PASS day2 stored separately (day-1 records unchanged) · 6
+PASS no JS errors · []

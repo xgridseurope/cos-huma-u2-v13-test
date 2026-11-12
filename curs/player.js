@@ -38,9 +38,11 @@ new ResizeObserver(() => { if (L.style.display !== 'none') viewOffset(true); }).
 
 // ---------------------------------------------------------------- the lesson's names (structures to locate / say / spell)
 const parts = {};
-for (const [k, n] of Object.entries(CFG.names)) parts[k] = A.find(n.re, n.g);
+const NM = { ...(CFG.targets || {}), ...CFG.names };   // targets = extra tap targets that are not names to learn (no record rows)
+for (const [k, n] of Object.entries(NM)) parts[k] = A.find(n.re, n.g);
+const PW = CFG.partWord || 'os';   // 'os' | 'múscul'
 // what is highlighted when the name is shown/asked (e.g. ONE rib for «costella»); taps accept the whole set in `parts`
-const showParts = Object.fromEntries(Object.entries(CFG.names).map(([k, n]) => [k, n.show ? A.find(n.show, n.g) : parts[k]]));
+const showParts = Object.fromEntries(Object.entries(NM).map(([k, n]) => [k, n.show ? A.find(n.show, n.g) : parts[k]]));
 // frame a set of names from a direction; pad = margin around their box
 function frame(keys, dir = [0, .1, 1], pad = 1.25, ms) {
   const ms_ = keys.flatMap(k => parts[k]); const b = A.boxOf(ms_), c = b.getCenter(new T.Vector3()), sz = b.getSize(new T.Vector3());
@@ -53,7 +55,7 @@ const labelBox = $('labels'), labelList = [];
 function label(text, src) { const el = document.createElement('div'); el.className = 'lbl'; el.textContent = text; labelBox.appendChild(el); labelList.push({ el, src }); }
 function clearLabels() { labelBox.innerHTML = ''; labelList.length = 0; }
 const centerOf = k => () => A.boxOf(showParts[k]).getCenter(new T.Vector3());
-function nameLabels(keys) { for (const k of keys) label(CFG.names[k].ca, CFG.names[k].labelAt ? () => CFG.names[k].labelAt(ctx) : centerOf(k)); }
+function nameLabels(keys) { for (const k of keys) label(NM[k].ca, NM[k].labelAt ? () => NM[k].labelAt(ctx) : centerOf(k)); }
 A.tickers.push(() => {
   if (!labelList.length) return; const r = canvas.getBoundingClientRect(), pos = [];
   for (const Lb of labelList) {
@@ -77,10 +79,13 @@ function unitStatus(arr) { if (!arr || !arr.length) return ['Vist (sense comprov
 // ---------------------------------------------------------------- UI helpers
 let showZh = false;
 const book = keys => keys.map(k => { const b = CFG.book[k];
+  if (b.src === 'dib') return `<div class="book r"><span class="pg">📘 p. ${b.p} · ${b.where} · deducció del dibuix (no és text literal)</span>${esc(b.tx)}</div>`;
   return b.src === 'lit' ? `<div class="book"><span class="pg">📘 p. ${b.p} · ${b.where}</span>${esc(b.tx)}</div>`
     : `<div class="book r"><span class="pg">📘 p. ${b.p} · ${b.where} · resposta (no és text literal)</span>${b.q ? `<i>${esc(b.q)}</i><br>` : ''}${esc(b.tx)}</div>`; }).join('');
 const ossi = t => `<div class="ossi"><span class="av">🦴</span><p>${esc(t)}</p></div>`;
 const zh = t => t ? `<div class="zh" style="display:${showZh ? '' : 'none'}">🇨🇳 ${esc(t)}</div>` : '';
+const memo = t => `<div class="note">🧠 <b>Truc per recordar</b> <span class="nb">no s’avalua</span><br>${esc(t)}</div>`;
+const curio = t => `<div class="note">💡 <b>Curiositat</b> <span class="nb">no surt al llibre · no s’avalua</span><br>${esc(t)}</div>`;
 const aid = t => `<div class="note">🧭 <b>Pista per trobar-lo</b> <span class="nb">no s’ha d’aprendre</span><br>${esc(t)}</div>`;
 let canNext = false;
 function setNext(on, labelTxt) { canNext = on; $('Lnext').disabled = !on; $('Lnext').classList.toggle('ready', on); if (labelTxt) $('Lnext').textContent = labelTxt; }
@@ -105,12 +110,13 @@ function nearSmall(x, y, targets) {
     if (w < 40 && h < 40 && x > Math.min(...xs) - 8 && x < Math.max(...xs) + 8 && y > Math.min(...ys) - 8 && y < Math.max(...ys) + 8) return true; }
   return false;
 }
-function nameOf(o) { if (!o) return 'res'; for (const k in parts) if (parts[k].includes(o)) return '«' + CFG.names[k].ca + '»'; return o.userData.g === 'bone' ? 'un altre os' : o.userData.g === 'muscle' ? 'un altre múscul' : 'una altra part'; }
+function nameOf(o) { if (!o) return 'res'; for (const k in parts) if (parts[k].includes(o)) return '«' + NM[k].ca + '»'; return o.userData.g === 'bone' ? (PW === 'os' ? 'un altre os' : 'un os') : (o.userData.g === 'muscle' || o.userData.g === 'allMuscle') ? 'un altre múscul' : 'una altra part'; }
 
 // tap a named structure without labels. Help ladder: cue → demo (highlight + name) → retry alone.
 function tapTask(el, { q, key, cue, onResult, demo }) {
   el.innerHTML = `<div class="q">${esc(q)}</div><div class="cnt">Pots girar el model amb el dit.</div>`;
   const targets = new Set(parts[key]); let wrongs = 0, d = null;
+  window.__curs && (window.__curs.tapKey = key);   // test hook only
   const down = e => { d = [e.clientX, e.clientY]; };
   const up = async e => {
     if (el.dataset.done || !d || Math.hypot(e.clientX - d[0], e.clientY - d[1]) > 8) return;
@@ -121,7 +127,7 @@ function tapTask(el, { q, key, cue, onResult, demo }) {
     }
     wrongs++; rec.wrong++;
     if (wrongs === 1) feedback(el, false, `Això és ${nameOf(h.obj)}. 💡 ${cue}`);
-    else { feedback(el, false, '👀 Mira on és…'); if (demo) await demo(); else { A.highlight(showParts[key], 0x2fd3ff); label(CFG.names[key].ca, centerOf(key)); await wait(2200); A.clearHighlights(); clearLabels(); } feedback(el, false, 'Ara toca’l tu sol/a.'); }
+    else { feedback(el, false, '👀 Mira on és…'); if (demo) await demo(); else { A.highlight(showParts[key], 0x2fd3ff); label(NM[key].ca, centerOf(key)); await wait(2200); A.clearHighlights(); clearLabels(); } feedback(el, false, 'Ara toca’l tu sol/a.'); }
   };
   canvas.addEventListener('pointerdown', down); canvas.addEventListener('pointerup', up);
   const cleanup = () => { canvas.removeEventListener('pointerdown', down); canvas.removeEventListener('pointerup', up); };
@@ -179,7 +185,7 @@ function recall(el, { q, keys, units, zhq, zkey }) {
 // say the name of the highlighted structure (no labels); check after
 function sayName(el, key, { onResult } = {}) {
   hidden(); A.highlight(showParts[key], 0x2fd3ff);
-  el.innerHTML = `<div class="q">Com es diu l’os blau? Digues-ho en veu alta.</div>${zh('题目：说出蓝色骨头的名称（说完再核对）。')}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>`;
+  el.innerHTML = `<div class="q">Com es diu ${PW === 'os' ? 'l’os blau' : 'el múscul blau'}? Digues-ho en veu alta.</div>${zh(PW === 'os' ? '题目：说出蓝色骨头的名称（说完再核对）。' : '题目：说出蓝色肌肉的名称（说完再核对）。')}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>`;
   $('said').onclick = () => { $('said').remove();
     $('chk').innerHTML = `<div class="spell">${esc(CFG.names[key].ca)}</div><div class="parent"><div class="who">👨‍👩‍👧 Ho ha dit bé? / 说对了吗？</div><div class="row">
       <button class="opt right" data-v="sol">Sí ✓ 对</button><button class="opt" data-v="ajuda">Amb ajuda 有提示</button><button class="opt" data-v="no">No ✗ 不对</button></div></div>`;
@@ -211,7 +217,7 @@ function nameGroupStages(g) {   // g = { id, keys, view, viewAlt, title, predict
       A.clearHighlights(); clearLabels(); const k = g.keys[i];
       A.highlight(showParts[k], 0x2fd3ff); nameLabels([k]);
       el.innerHTML = `<h2>${esc(g.title)} · ${i + 1}/${g.keys.length}</h2>${g.book ? book(g.book) : ''}<div class="spell">${esc(CFG.names[k].ca)}</div>${aid(CFG.names[k].aid)}${zh(CFG.names[k].zh)}
-        <button class="opt go" id="nb">${i < g.keys.length - 1 ? 'Següent os ▶' : 'Tots junts ▶'}</button>`;
+        <button class="opt go" id="nb">${i < g.keys.length - 1 ? 'Següent ' + PW + ' ▶' : 'Tots junts ▶'}</button>`;
       $('nb').onclick = () => { i++; if (i < g.keys.length) show(); else { A.clearHighlights(); clearLabels(); nameLabels(g.keys); el.innerHTML = `<h2>${esc(g.title)}</h2>${ossi('Aquí els tens tots junts. Mira’ls bé abans de continuar.')}`; setNext(true); } };
     };
     show(); setNext(false);
@@ -228,18 +234,19 @@ function nameGroupStages(g) {   // g = { id, keys, view, viewAlt, title, predict
   } });
   S.push({ id: g.id + '-troba', ph: '6 · Troba’ls (sense noms)', recall: true, render: async el => {
     hidden(); view(g.viewAlt); setNext(false);
-    await sequence(el, shuffle(g.keys), (box, k) => tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca}`, key: k, cue: CFG.names[k].aid, onResult: v => { rec.loc[k] = v; } }));
+    await sequence(el, shuffle(g.keys.filter(k => !CFG.names[k].noLoc)), (box, k) => tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca}`, key: k, cue: CFG.names[k].aid, onResult: v => { rec.loc[k] = v; } }));
     feedback(el, true, 'Molt bé! ⭐'); setNext(true);
   } });
   return S;
 }
 // all names of the lesson, random order, from yet another view (only after every name has been practised)
-function reviewStage(keys, viewName) {
+function reviewStage(keys, viewName, viewFor) {   // viewFor(k): optional view per item (e.g. muscles of the back)
   return { id: 'repas', ph: 'Repàs barrejat', recall: true, render: async el => {
     hidden(); view(viewName); setNext(false);
+    keys = keys.filter(k => !CFG.names[k].noLoc);
     const missing = keys.filter(k => !rec.loc[k]);
     if (missing.length) { el.innerHTML = `<div class="note">Encara falten: ${missing.map(k => CFG.names[k].ca).join(', ')}</div>`; return; }
-    await sequence(el, shuffle(keys), (box, k) => tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca}`, key: k, cue: CFG.names[k].aid, onResult: v => { rec.review[k] = v; } }));
+    await sequence(el, shuffle(keys), (box, k) => { if (viewFor) view(viewFor(k)); return tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca}`, key: k, cue: CFG.names[k].aid, onResult: v => { rec.review[k] = v; } }); });
     feedback(el, true, 'Repàs fet! 🎉'); setNext(true);
   } };
 }
@@ -252,7 +259,7 @@ function spellStage(keys) {
 }
 
 // ---------------------------------------------------------------- results + day 2
-const T1 = { sol: ['Tot sol/a ✔', 'ok'], ajuda: ['Amb ajuda', 'mid'], no: ['Encara no', 'bad'], ok: ['Bé ✔', 'ok'], accent: ['Cal practicar l’accent', 'mid'] };
+const T1 = { pv: ['Pendent de verificar (no s’avalua)', 'mid'], sol: ['Tot sol/a ✔', 'ok'], ajuda: ['Amb ajuda', 'mid'], no: ['Encara no', 'bad'], ok: ['Bé ✔', 'ok'], accent: ['Cal practicar l’accent', 'mid'] };
 const cell = v => { const [t, c] = T1[v] || ['Pendent', 'bad']; return `<td class="${c}">${t}</td>`; };
 function resultsHTML() {
   let h = '';
@@ -260,7 +267,7 @@ function resultsHTML() {
   if (U.length) h += `<div class="q">Comprensió</div><table class="res">${U.map(k => { const [t, c] = unitStatus(rec.units[k]); return `<tr><td>${esc(CFG.units[k])}</td><td class="${c}">${t}</td></tr>`; }).join('')}</table>`;
   const N = Object.keys(CFG.names);
   const cols = [['loc', 'Troba'], ...(CFG.hasReview ? [['review', 'Repàs']] : []), ...(CFG.hasSay ? [['say', 'Diu el nom']] : []), ['spell', 'Escriu']];
-  h += `<div class="q">Noms</div><table class="res"><tr><th></th>${cols.map(c => `<th>${c[1]}</th>`).join('')}</tr>${N.map(k => `<tr><td>${esc(CFG.names[k].ca)}</td>${cols.map(c => cell(rec[c[0]][k])).join('')}</tr>`).join('')}</table>`;
+  h += `<div class="q">Noms</div><table class="res"><tr><th></th>${cols.map(c => `<th>${c[1]}</th>`).join('')}</tr>${N.map(k => `<tr><td>${esc(CFG.names[k].ca)}</td>${cols.map(c => cell(CFG.names[k].noLoc && (c[0] === 'loc' || c[0] === 'review') ? 'pv' : rec[c[0]][k])).join('')}</tr>`).join('')}</table>`;
   return h;
 }
 function resultsStage() {
@@ -335,7 +342,7 @@ $('Lspeak').style.display = 'none';
 function showApp() { document.body.classList.add('lessonMode'); L.style.display = ''; viewOffset(true); CFG.setup(ctx); }
 
 // ---------------------------------------------------------------- context handed to lesson configs
-const ctx = { A, T, $, esc, wait, shuffle, parts, frame, view, fitDist, label, clearLabels, nameLabels, centerOf, book, ossi, zh, aid, setNext, feedback, hidden,
+const ctx = { A, T, $, esc, wait, shuffle, parts, memo, curio, frame, view, fitDist, label, clearLabels, nameLabels, centerOf, book, ossi, zh, aid, setNext, feedback, hidden,
   showParts, choiceSeries, stepper, tapTask, ladderChoice, predict, recall, sayName, spell, sequence, evid, get rec() { return rec; }, saveRec, nameGroupStages, reviewStage, spellStage, resultsStage };
 S = CFG.stages(ctx);
 

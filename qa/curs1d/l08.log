@@ -1,0 +1,72 @@
+PASS every name has model parts · {'orbicular': 4, 'masseter': 4, 'ecm': 2, 'trapezi': 6, 'deltoide': 6, 'pectoral': 6, 'abdominal': 4, 'dorsal': 2, 'gluti': 2}
+PASS g1-pregunta: no labels/book before answering
+PASS g1-pregunta: prediction not marked wrong
+PASS g1-coneix: introduced one by one, child-paced
+PASS g1-fes: labels visible in guided practice
+PASS g1-fes: guided taps done
+PASS g1-digues#0: name hidden before answer
+PASS g1-digues#0: name shown after answer
+PASS g1-digues#1: name hidden before answer
+PASS g1-digues#1: name shown after answer
+PASS g1-digues: done
+PASS g1-troba#0: no labels, no highlight
+PASS g1-troba: wrong tap → names what was tapped + location hint, no answer highlight · Això és «orbicular de les parpelles». 💡 És el múscul de la galta, damunt de la mandíbula. El notes si estrenys les dents.
+PASS g1-troba#0: tap masseter
+PASS g1-troba#1: no labels, no highlight
+PASS g1-troba#1: tap orbicular
+PASS g1-troba: done
+PASS g2-coneix: introduced one by one, child-paced
+PASS g2-fes: labels visible in guided practice
+FAIL g2-fes: guided taps done
+Traceback (most recent call last):
+  File "/home/claude/cos-huma-u2-v13-test/tools/curs_test.py", line 73, in <module>
+    chk(f'{s}: guided taps done', can()); nxt(); continue
+                                          ~~~^^
+  File "/home/claude/cos-huma-u2-v13-test/tools/curs_test.py", line 25, in nxt
+    def nxt(): pg.click('#Lnext'); time.sleep(1.3)
+               ~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 11102, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<12 lines>...
+        )
+        ^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_page.py", line 899, in click
+    return await self._main_frame._click(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 594, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#Lnext")
+    - locator resolved to <button class="" disabled id="Lnext">Continua ▶</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    - waiting for element to be visible, enabled and stable
+    - element is not enabled
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+

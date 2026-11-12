@@ -1,5 +1,7 @@
 // Lesson 2 · Els ossos del cap i del tronc (textbook p. 25). NAME lesson (8 names in four pairs) + what each part protects.
-// maxil·lar = the LOWER jaw: checked on the p. 25 photo (the label line points to the angle of the mandible).
+// maxil·lar: PENDENT DE VERIFICAR. On the p. 25 photo the label line ends on the lower jaw, below the teeth, but the drawing does not separate
+// the upper and lower jaw and «maxil·lar» on its own usually names the upper jaw. So: taught (name, say, spelling) with BOTH jaws highlighted,
+// never an independent location item (noLoc), until the family/teacher confirms.
 // Zone of omòplat and pelvis = trunk, as coloured in the p. 25 drawing.
 export default {
   id: 'l02', title: 'Els ossos del cap i del tronc 💀', subtitle: 'Lliçó 2 (llibre p. 25). Vuit noms en quatre parelles i què protegeixen. Tu manes el ritme.',
@@ -17,7 +19,7 @@ export default {
   },
   names: {
     crani: { ca: 'crani', g: 'bone', re: /(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/, aid: 'És la part de dalt i del darrere del cap.', zh: 'crani：头顶和后脑的骨头（颅骨）。' },
-    maxillar: { ca: 'maxil·lar', html: 'maxi<b>l·l</b>ar', g: 'bone', re: /^mandible$/, aid: 'És l’os de baix de la boca, el que es mou quan mastegues.', zh: 'maxil·lar：嘴巴下面、咀嚼时会动的骨头（下颌骨，按课本 P25 图的指引线）。' },
+    maxillar: { ca: 'maxil·lar', html: 'maxi<b>l·l</b>ar', g: 'bone', re: /^mandible$|maxilla$/, noLoc: true, aid: 'Són els ossos de la boca, on hi ha les dents. ⚠️ Al dibuix del llibre la línia acaba a la mandíbula (a baix); pendent de verificar: no es puntua on és.', zh: 'maxil·lar：嘴部长牙齿的骨头。⚠️ 课本 P25 图的指引线落在下颌，但图上上下颌没分开，加泰语 maxil·lar 通常指上颌——待核实，位置不计分。' },
     columna: { ca: 'columna vertebral', g: 'bone', re: /vertebra$|^atlas$|^axis$|sacrum|coccyx|intervertebral disk/, aid: 'És tota la filera d’ossos del mig de l’esquena.', zh: 'columna vertebral：背部中间一整列骨头（脊柱）。' },
     vertebra: { ca: 'vèrtebra', html: 'v<b>è</b>rtebra', g: 'bone', re: /vertebra$|^atlas$|^axis$/, show: /^third lumbar vertebra$/, aid: 'És un dels ossets que, un sobre l’altre, formen la columna.', zh: 'vèrtebra：组成脊柱的一块块小骨头（椎骨）。' },
     costella: { ca: 'costella', g: 'bone', re: / rib$/, show: /^left fifth rib$/, aid: 'Són els ossos corbats que fan com una gàbia al pit.', zh: 'costella：胸部弯弯的、像笼子一样的骨头（肋骨）。' },
@@ -80,9 +82,9 @@ export default {
     const N = ['crani', 'maxillar', 'columna', 'vertebra', 'costella', 'estern', 'omoplat', 'pelvis'], ca = k => this.names[k].ca;
     return [
       { id: 'oral1', kind: 'oral', title: 'Explica-ho', label: 'Què protegeix cada part', ca: 'Sense mirar el model: què protegeix el crani? I la columna vertebral? I la columna, les costelles i l’estern junts?', zq: '不看模型：颅骨、脊柱、以及脊柱+肋骨+胸骨分别保护什么？', key: 'El crani protegeix el cervell. La columna vertebral protegeix la medul·la espinal. La columna, les costelles i l’estern protegeixen el cor i els pulmons.', zkey: '评分要点：大脑；脊髓；心和肺。' },
-      ...c.shuffle(N).map(k => ({ id: 'loc_' + k, kind: 'loc', key: k, view: 'tot', title: 'Al model', label: 'Troba ' + ca(k) })),
+      ...c.shuffle(N.filter(k => !this.names[k].noLoc)).map(k => ({ id: 'loc_' + k, kind: 'loc', key: k, view: 'tot', title: 'Al model', label: 'Troba ' + ca(k) })),
       ...c.shuffle(N).slice(0, 3).map(k => ({ id: 'say_' + k, kind: 'say', key: k, view: 'tot', title: 'Digues el nom', label: 'Diu el nom: ' + ca(k) })),
-      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 25', ca: 'Obre el llibre a la pàgina 25. Tapa els noms i assenyala el crani, el maxil·lar, una costella, l’estern, una vèrtebra, la columna vertebral, l’omòplat i la pelvis.', zq: '打开课本第 25 页，盖住名称，指出这 8 块骨头。', key: 'Destapa els noms del dibuix i comproveu-ho junts.', zkey: '核对方法：揭开图上的名称一起对照。八个都指对 = 说对了。' },
+      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 25', ca: 'Obre el llibre a la pàgina 25. Tapa els noms i assenyala el crani, una costella, l’estern, una vèrtebra, la columna vertebral, l’omòplat i la pelvis.', zq: '打开课本第 25 页，盖住名称，指出这 8 块骨头。', key: 'Destapa els noms del dibuix i comproveu-ho junts.', zkey: '核对方法：揭开图上的名称一起对照。八个都指对 = 说对了。' },
       ...N.map(k => ({ id: 'spell_' + k, kind: 'spell', key: k, view: 'tot', title: 'Escriu el nom', label: 'Escriu ' + ca(k) })),
     ];
   },
