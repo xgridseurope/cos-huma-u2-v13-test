@@ -1,0 +1,38 @@
+PASS A-pregunta: no labels/book before answering
+PASS A-pregunta: no answer text (zh on) · []
+PASS A-pregunta: prediction not marked wrong
+PASS A-fes: done
+PASS B-pregunta: no labels/book before answering
+PASS B-pregunta: no answer text (zh on) · []
+PASS B-pregunta: prediction not marked wrong
+PASS B-fes: done
+PASS R1: hidden before answer (zh on) · []
+PASS R1: back locked
+PASS R2: hidden before answer (zh on) · []
+PASS R2: back locked
+PASS P1: no answer text (zh on) · []
+PASS P2: no answer text (zh on) · []
+PASS P3: no answer text (zh on) · []
+PASS P4: done
+PASS P5#0: no labels, no highlight
+PASS P5#0: tap biceps
+PASS P5#1: no labels, no highlight
+PASS P5#1: tap triceps
+PASS P5: done
+PASS escriu#0: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#1: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS reached results
+PASS units recorded · {'K1': ['sol'], 'K2': ['sol', 'sol', 'sol'], 'K3': ['sol'], 'K4': ['sol', 'sol'], 'K5': ['sol', 'sol']}
+PASS locations · {'biceps': 'sol', 'triceps': 'sol'}
+PASS spelling separate: accent-only ≠ failure · {'biceps': 'accent', 'triceps': 'ok'}
+PASS day2 Revisió de l’endemà · 1/8: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: explica què passa ')
+PASS day2 Revisió de l’endemà · 2/8: answer hidden before child answers · ('hidden', 'Explica-hoExplica què passa quan estirem el braç. ')
+PASS day2 Revisió de l’endemà · 3/8: answer hidden before child answers · ('hidden', 'Explica-hoQuina articulació es doblega? Com és el ')
+PASS day2 Revisió de l’endemà · 4/8: locate biceps without labels
+PASS day2 Revisió de l’endemà · 5/8: locate triceps without labels
+PASS day2 Revisió de l’endemà · 6/8: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 27. Tapa el te')
+PASS day2 Revisió de l’endemà · 7/8: word hidden before Comprova
+PASS day2 Revisió de l’endemà · 8/8: word hidden before Comprova
+PASS day2 finished, one item at a time · 8
+PASS day2 stored separately (day-1 records unchanged) · 8
+PASS no JS errors · []
