@@ -6,7 +6,7 @@ import { OrbitControls } from './vendor/OrbitControls.js';
 import { MeshoptDecoder } from './vendor/meshopt_decoder.module.js';
 import { mergeGeometries } from './vendor/BufferGeometryUtils.js';
 
-const VERSION = 'V1.3-fix.3 (2026-11-12)';
+const VERSION = 'V1.3-fix.4 (2026-11-12)';
 const $ = id => document.getElementById(id);
 // three.js sanitises node names (spaces -> "_", dots removed). V1.3 looked up "Left humerus"
 // and therefore never found any arm bone. Every lookup here uses the normalised name.
@@ -251,9 +251,10 @@ function setSide(s) { side = s; document.querySelectorAll('#sideSeg button').for
 document.querySelectorAll('#sideSeg button').forEach(b => b.onclick = () => setSide(b.dataset.s));
 function setAngle(deg) { const e = elbows[side]; deg = Math.max(e.restFlex, Math.min(140, Math.round(deg))); setElbow(side, deg); $('angle').value = deg; $('angleText').textContent = deg === e.restFlex ? `${deg}° (braç en repòs)` : deg + '°'; }
 $('angle').oninput = e => setAngle(+e.target.value);
-document.querySelectorAll('[data-a]').forEach(b => b.onclick = () => { stopSignal(); setAngle(b.dataset.a === 'rest' ? elbows[side].restFlex : +b.dataset.a); });
+const autoHide = () => { if (innerWidth <= 640) $('panel').classList.add('min'); }; // phone: show the model after a tap
+document.querySelectorAll('[data-a]').forEach(b => b.onclick = () => { stopSignal(); setAngle(b.dataset.a === 'rest' ? elbows[side].restFlex : +b.dataset.a); autoHide(); });
 function resetAll() { stopSignal(); for (const s of ['Left', 'Right']) setElbow(s, elbows[s].restFlex); setAngle(elbows[side].restFlex); }
-$('reset').onclick = resetAll;
+$('reset').onclick = () => { resetAll(); autoHide(); };
 function updateMuscleText() {
   const e = elbows[side]; if (!e) return; const a = e.angle - e.restFlex;
   $('muscleText').innerHTML = a > 5
@@ -270,7 +271,7 @@ const VIEWS = {
   elbow: () => { const e = elbows[side], lat = side === 'Left' ? 1 : -1; frameTo(e.center.clone().add(new THREE.Vector3(0, -.08, .02)), new THREE.Vector3(lat * .55, .05, .55)); },
   head: () => frameTo(new THREE.Vector3(0, 1.45, 0), new THREE.Vector3(.35, .05, 1.0)),
 };
-document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => VIEWS[b.dataset.v]());
+document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => { VIEWS[b.dataset.v](); autoHide(); });
 
 // picking
 let sel = null;
@@ -372,8 +373,8 @@ function startSignal(type) {
   const DUR = type === 'reflex' ? [700, 350, 600, 1800] : [1600, 900, 2200];
   sig = { type, legs, dur: DUR, i: 0, t: performance.now() };
 }
-$('voluntary').onclick = () => startSignal('voluntary');
-$('reflex').onclick = () => startSignal('reflex');
+$('voluntary').onclick = () => { startSignal('voluntary'); autoHide(); };
+$('reflex').onclick = () => { startSignal('reflex'); autoHide(); };
 function tickSignal(now) {
   if (!sig) return;
   const leg = sig.legs[sig.i]; if (!leg) return;

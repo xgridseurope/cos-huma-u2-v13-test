@@ -93,4 +93,10 @@
 | Desktop, software renderer | fix.1 | 25.7 | 50.1 | excluded (no GPU acceleration) |
 
 Raw data: qa/perf/real_devices_2026-11-12.json. Mid-range Android not yet measured (recommended, not blocking).
-Remaining condition for PASS: human visual sign-off of elbow motion (Left/Right, 45°/90°).
+Elbow visual sign-off: **OK** by Simon Peng on Android (Left/Right, 45°/90°/140°), 2026-11-12. Hand-to-thorax clearance at 140°: Left 72.8 mm, Right 74.5 mm (no collision).
+
+## Final verdict (2026-11-12): **PASS** — V1.3-fix.4, test repository scope
+All acceptance conditions are met: elbow kinematics (automated + human sign-off), nerve layer integration, textbook P28–29 demos, mobile interaction, real-device performance.
+PASS applies to this test build only; it is not a merge into the official COS-HUMA site.
+Known limitations (documented, not blocking): biceps/triceps are a labelled schematic; elbow-region nerve/muscle bending is an approximation; digital nerves (fingertip→palm) missing, shown as a straight schematic line; Brainder cortex provenance per mesh to confirm; textbook wording to be checked against the printed book; mid-range Android not yet measured.
+fix.4 (UX only): on phones (≤640 px) the panel auto-collapses after angle, view, reset and demo buttons so the model is visible.
