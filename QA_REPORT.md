@@ -116,4 +116,5 @@ New: a step-by-step lesson for pp. 22–29, before the free-exploration mode. St
 | Free mode (previous V1.3 tests) | unchanged; reachable from the lesson (✕) and from the start screen |
 
 Model change: muscle meshes simplified ~50 % (730k → 369k triangles) so the full musculature fits phones; bones unchanged (max deviation 0.03 mm). Heaviest lesson scene ≈ 625k triangles. `?perf=1` now measures with all muscles on.
-Open for V1.4: real-phone fps with muscles (?perf=1), child test of the lesson, textbook wording vs printed book ("Ossos plas/plans").
+Real phone, heaviest scene (all muscles + skeleton + nervous system, 872k triangles, 57 draw calls): **61.8 fps, P95 16.7 ms, load 1.6 s** on Adreno 830 → PASS (≥30).
+Open for V1.4: mid-range phone, child test of the lesson, textbook wording vs printed book ("Ossos plas/plans").
