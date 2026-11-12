@@ -6,7 +6,7 @@ import { OrbitControls } from './vendor/OrbitControls.js';
 import { MeshoptDecoder } from './vendor/meshopt_decoder.module.js';
 import { mergeGeometries } from './vendor/BufferGeometryUtils.js';
 
-const VERSION = 'V1.3-fix.1 (2026-11-11)';
+const VERSION = 'V1.3-fix.2 (2026-11-12)';
 const $ = id => document.getElementById(id);
 // three.js sanitises node names (spaces -> "_", dots removed). V1.3 looked up "Left humerus"
 // and therefore never found any arm bone. Every lookup here uses the normalised name.
@@ -415,6 +415,25 @@ const panel = $('panel'); if (innerWidth <= 640) panel.classList.add('min'); $('
 for (const s of ['Left', 'Right']) setElbow(s, elbows[s].restFlex);
 setLayer('muscle', false); VIEWS.front(); setSide('Left'); updateMuscleText(); setBoneOpacity(+$('opBone').value);
 $('ver').textContent = VERSION;
+
+// ?perf=1 : phone-friendly automatic measurement (no menu needed)
+if (new URLSearchParams(location.search).has('perf')) {
+  panel.classList.add('min'); document.querySelector('.lesson').style.display = 'none';
+  const ov = document.createElement('div');
+  ov.style.cssText = 'position:fixed;left:10px;right:10px;top:40%;z-index:9;background:#f7f5ef;border-radius:12px;padding:12px 14px;font:14px system-ui;box-shadow:0 4px 18px rgba(0,0,0,.4)';
+  ov.innerHTML = '<b>Mesurant el rendiment (10 s)…</b><br>No toquis la pantalla.';
+  document.body.appendChild(ov);
+  setTimeout(async () => {
+    const r = await measure(10);
+    const ok = r.fps_avg >= 30;
+    ov.innerHTML = `<b style="font-size:18px">${r.fps_avg} fps</b> <span style="color:${ok ? '#167a3a' : '#b3261e'}">${ok ? '✔ ≥ 30' : '✘ < 30'}</span><br>
+      P95: ${r.frame_ms_p95} ms · ${r.visible_triangles.toLocaleString()} triangles · ${r.draw_calls} draw calls<br>
+      <span style="font-size:11px;color:#5b6673">${r.gpu}</span>
+      <div style="display:flex;gap:6px;margin-top:8px"><button id="pc" style="flex:1;min-height:40px">Copia el resultat</button><button id="px" style="flex:1;min-height:40px">Tanca</button></div>`;
+    ov.querySelector('#pc').onclick = () => navigator.clipboard?.writeText(JSON.stringify(r, null, 1)).then(() => ov.querySelector('#pc').textContent = 'Copiat ✔').catch(() => {});
+    ov.querySelector('#px').onclick = () => ov.remove();
+  }, 1500);
+}
 
 // test hook
 window.__app = { THREE, scene, camera, controls, renderer, elbows, setElbow, setSide, setAngle, setLayer, setBoneOpacity, resetAll, VIEWS, pickAt, startSignal, stopSignal, measure, visibleTris, loadMs, byName, nerveByName, groups, orig, mats, paths,
