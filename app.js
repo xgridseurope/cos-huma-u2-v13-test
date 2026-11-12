@@ -6,7 +6,7 @@ import { OrbitControls } from './vendor/OrbitControls.js';
 import { MeshoptDecoder } from './vendor/meshopt_decoder.module.js';
 import { mergeGeometries } from './vendor/BufferGeometryUtils.js';
 
-const VERSION = 'V1.3-fix.2 (2026-11-12)';
+const VERSION = 'V1.3-fix.3 (2026-11-12)';
 const $ = id => document.getElementById(id);
 // three.js sanitises node names (spaces -> "_", dots removed). V1.3 looked up "Left humerus"
 // and therefore never found any arm bone. Every lookup here uses the normalised name.
@@ -403,7 +403,7 @@ async function measure(seconds = 10) {
     pixel_ratio: renderer.getPixelRatio(), viewport: [innerWidth, innerHeight], gpu: dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : 'n/a', ua: navigator.userAgent, load_ms: loadMs };
   $('perfOut').textContent = JSON.stringify(res, null, 1); return res;
 }
-$('perf').onclick = async () => { $('perfOut').textContent = 'Mesurant 10 s… no toquis la pantalla.'; await measure(10); };
+$('perf').onclick = async () => { $('perfOut').textContent = 'Mesurant 10 s… no toquis la pantalla.'; const pn = $('panel'), wasMin = pn.classList.contains('min'); pn.classList.add('min'); VIEWS.front(); await measure(10); if (!wasMin) pn.classList.remove('min'); $('perfOut').scrollIntoView({ block: 'nearest' }); };
 $('perfCopy').onclick = () => { navigator.clipboard?.writeText($('perfOut').textContent).catch(() => {}); };
 
 // ---------- loop ----------
