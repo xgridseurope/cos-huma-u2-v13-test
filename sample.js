@@ -12,12 +12,13 @@ const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', 
 const E = A.elbows.Left, REST = E.restFlex;
 
 // ---------------------------------------------------------------- textbook sentences (p. 27–28)
+// src: 'lit' = word for word (checked against the page photo); 'act' = answer to a book activity, deduced from its drawing
 const BOOK = {
-  doblegar: { p: 27, tx: 'Quan dobleguem el braç, el tríceps es relaxa. El bíceps es contreu.' },
-  estirar: { p: 27, tx: 'Quan estirem el braç, el tríceps es contreu. El bíceps es relaxa.' },
-  colze: { p: 27, tx: 'L’articulació que es doblega és el colze.' },
-  gruixut: { p: 27, tx: 'El múscul contret és més gruixut.' },
-  parella: { p: 28, tx: 'Quan fem un moviment, uns músculs es contreuen mentre que uns altres es relaxen, i així mouen els ossos.' },
+  doblegar: { p: 27, src: 'lit', where: 'text del dibuix', tx: 'Quan dobleguem el braç, el tríceps es relaxa. El bíceps es contreu.' },
+  estirar: { p: 27, src: 'lit', where: 'text del dibuix', tx: 'Quan estirem el braç, el tríceps es contreu. El bíceps es relaxa.' },
+  colze: { p: 27, src: 'act', where: 'activitat 4', q: 'Com es diu l’articulació que s’està doblegant?', tx: 'El colze.' },
+  gruixut: { p: 27, src: 'act', where: 'activitat 4', q: 'Quan és més gruixut el bíceps, quan el braç està doblegat o quan està estès? I el tríceps?', tx: 'Mirant el dibuix: el bíceps és més gruixut amb el braç doblegat, i el tríceps, amb el braç estès. El múscul que es contreu es fa més gruixut.' },
+  parella: { p: 28, src: 'lit', where: 'text', tx: 'Quan fem un moviment, uns músculs es contreuen mentre que uns altres es relaxen, i així mouen els ossos.' },
 };
 
 // ---------------------------------------------------------------- parts, camera, labels
@@ -122,7 +123,9 @@ function unitStatus(arr) { if (!arr.length) return ['vist', 'Vist (sense comprov
 
 // ---------------------------------------------------------------- UI helpers
 let showZh = false;
-const book = keys => keys.map(k => `<div class="book"><span class="pg">📘 p. ${BOOK[k].p}</span>${esc(BOOK[k].tx)}</div>`).join('');
+const book = keys => keys.map(k => { const b = BOOK[k];
+  return b.src === 'lit' ? `<div class="book"><span class="pg">📘 p. ${b.p} · ${b.where}</span>${esc(b.tx)}</div>`
+    : `<div class="book r"><span class="pg">📘 p. ${b.p} · ${b.where} · resposta (no és text literal)</span><i>${esc(b.q)}</i><br>${esc(b.tx)}</div>`; }).join('');
 const ossi = t => `<div class="ossi"><span class="av">🦴</span><p>${esc(t)}</p></div>`;
 const zh = t => `<div class="zh" style="display:${showZh ? '' : 'none'}">🇨🇳 ${esc(t)}</div>`;
 let canNext = false;
@@ -132,7 +135,7 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
 function hidden() { clearLabels(); A.clearHighlights(); neutral(); }   // recall / practice: no labels, no colours, no book
 
 // question with the help ladder: wrong 1 → specific cue; wrong 2 → watch the demo again; then help is hidden and the child retries alone
-function ladderChoice(el, { q, opts, a, cue, demoKind, units }) {
+function ladderChoice(el, { q, opts, a, cue, demoKind, helpText, units }) {
   el.innerHTML = `<div class="q">${esc(q)}</div><div class="opts"></div>`;
   let wrongs = 0; const o = el.querySelector('.opts');
   const draw = () => { o.innerHTML = ''; for (const i of shuffle(opts.map((_, i) => i))) { const b = document.createElement('button'); b.className = 'opt'; b.textContent = opts[i]; b.onclick = () => pick(i, b); o.appendChild(b); } };
@@ -141,6 +144,7 @@ function ladderChoice(el, { q, opts, a, cue, demoKind, units }) {
     if (i === a) { b.classList.add('right'); el.dataset.done = 1; evid(units, wrongs ? 'ajuda' : 'sol'); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); setNext(true); return; }
     wrongs++; rec.wrong++; b.classList.add('wrong'); b.disabled = true;
     if (wrongs === 1) feedback(el, false, '💡 Pista: ' + cue);
+    else if (helpText) { feedback(el, false, '👀 ' + helpText + ' Després torna-ho a provar.'); o.querySelectorAll('button').forEach(x => x.disabled = true); await wait(2500); draw(); }
     else { feedback(el, false, '👀 Mira-ho una altra vegada…'); o.querySelectorAll('button').forEach(x => x.disabled = true); await demo(demoKind); hidden(); A.setElbow('Left', REST); feedback(el, false, 'Ara torna-ho a provar tu sol/a.'); draw(); }
   };
   draw();
@@ -168,7 +172,7 @@ const S = [
   { id: 'intro', ph: 'Benvinguda', render(el) {
       ARM(); clearLabels();
       el.innerHTML = `<h2>Bíceps i tríceps 💪</h2>${ossi('Hola! Sóc l’Ossi. Avui descobrirem què passa dins del braç quan el dobleguem i quan l’estirem. Tu manes: passa a la pantalla següent quan estiguis a punt.')}
-        ${zh('今天学：弯曲和伸直手臂时，手臂里的肌肉在做什么。孩子自己控制节奏。')}<div class="note">ℹ️ Els colors i el gruix dels músculs són un esquema per veure qui es contreu.</div>`;
+        ${zh('今天学：弯曲和伸直手臂时，手臂里的肌肉在做什么。孩子自己控制节奏。')}<div class="note">ℹ️ Els colors del model són un esquema per veure qui es contreu. El gruix dels músculs l’observaràs al teu braç i al dibuix de la p. 27.</div>`;
       setNext(true);
     } },
   // ---- A: bending
@@ -186,8 +190,8 @@ const S = [
     } },
   { id: 'A-demo', ph: '3 · Mira', render(el) {
       showLabels(); A.setElbow('Left', REST);
-      el.innerHTML = `<h2>Mira què passa</h2><div class="live" id="lv">Toca «Mira» per veure-ho.</div><button class="opt go" id="pl">▶ Mira</button>${book(['gruixut'])}${zh('看演示：弯曲时二头肌（前面）变深红、变粗；三头肌（后面）放松。')}`;
-      $('pl').onclick = async () => { $('pl').disabled = true; $('lv').textContent = TXT.bend; $('lv').className = 'live bend'; await demo('bend'); $('lv').textContent = 'El bíceps s’ha fet més gruixut: estava contret. Pots tornar-ho a mirar.'; $('lv').className = 'live'; $('pl').disabled = false; $('pl').textContent = '↻ Torna-ho a mirar'; setNext(true); };
+      el.innerHTML = `<h2>Mira què passa</h2><div class="live" id="lv">Toca «Mira» per veure-ho.</div><button class="opt go" id="pl">▶ Mira</button>${ossi('Ara posa la mà sobre el teu bíceps i doblega el braç. Què notes? Després mira el dibuix de la p. 27.')}${book(['gruixut'])}${zh('看演示：弯曲时二头肌颜色变深（收缩）。肌肉变粗请在自己的手臂和课本 P27 图上观察。')}`;
+      $('pl').onclick = async () => { $('pl').disabled = true; $('lv').textContent = TXT.bend; $('lv').className = 'live bend'; await demo('bend'); $('lv').textContent = 'Mentre el braç es doblegava, el bíceps es contreia. Pots tornar-ho a mirar.'; $('lv').className = 'live'; $('pl').disabled = false; $('pl').textContent = '↻ Torna-ho a mirar'; setNext(true); };
       setNext(false);
     } },
   { id: 'A-fes', ph: '4 · Fes-ho tu', render(el) {
@@ -199,7 +203,7 @@ const S = [
   // ---- B: straightening
   { id: 'B-pregunta', ph: '1 · Pregunta', render(el) {
       hidden(); A.setElbow('Left', 105);
-      el.innerHTML = `<h2>I quan estirem el braç?</h2>${ossi('Doblega el teu braç, posa la mà a la part de darrere i estira’l a poc a poc.')}<div class="q">Quin múscul es contreu quan estirem el braç?</div><div class="opts" id="po"></div>${zh('预测题，不计分。')}`;
+      el.innerHTML = `<h2>I quan estirem el braç?</h2>${ossi('Doblega el teu braç. Estira’l a poc a poc amb una mà a davant del braç, i després amb la mà a darrere.')}<div class="q">Quin múscul es contreu quan estirem el braç?</div><div class="opts" id="po"></div>${zh('预测题，不计分。')}`;
       for (const [i, t] of ['El tríceps (a darrere)', 'El bíceps (a davant)', 'Cap dels dos'].entries()) { const b = document.createElement('button'); b.className = 'opt'; b.textContent = t; b.onclick = () => { rec.pred.B = i; saveRec(); el.querySelectorAll('#po button').forEach(x => x.disabled = true); b.classList.add('hint'); feedback(el, true, 'D’acord! Ara ho comprovem 👀'); setNext(true); }; $('po').appendChild(b); }
       setNext(false);
     } },
@@ -223,15 +227,15 @@ const S = [
       setNext(false);
     } },
   // ---- 5: recall with help hidden (parent checks)
-  { id: 'R1', ph: '5 · Explica-ho tu', recall: true, render(el) { recallStage(el, 'Explica-ho en veu alta: quan dobleguem el braç, què fa el bíceps i què fa el tríceps? Com es veu el múscul que es contreu?', ['doblegar', 'gruixut'], ['K1', 'K4'], '孩子不看任何提示口头解释：弯曲时二头肌收缩、三头肌放松；收缩的肌肉更粗。说完后孩子点「Ja ho he dit」，家长对照答案判断。'); } },
-  { id: 'R2', ph: '5 · Explica-ho tu', recall: true, render(el) { A.setElbow('Left', 105); recallStage(el, 'I quan estirem el braç? Per què calen dos músculs?', ['estirar', 'parella'], ['K2', 'K5'], '口头解释伸直时三头肌收缩、二头肌放松，以及两块肌肉一收一放配合。'); } },
+  { id: 'R1', ph: '5 · Explica-ho tu', recall: true, render(el) { recallStage(el, 'Explica-ho en veu alta: quan dobleguem el braç, què fa el bíceps i què fa el tríceps? Com es veu el múscul que es contreu?', ['doblegar', 'gruixut'], ['K1', 'K4'], '题目：弯曲手臂时，二头肌和三头肌各在做什么？收缩的肌肉看起来怎样？', '评分要点：二头肌收缩、三头肌放松；收缩的肌肉更粗。两点都说对 = 说对了。'); } },
+  { id: 'R2', ph: '5 · Explica-ho tu', recall: true, render(el) { A.setElbow('Left', 105); recallStage(el, 'I quan estirem el braç? Per què calen dos músculs?', ['estirar', 'parella'], ['K2', 'K5'], '题目：伸直手臂时呢？为什么需要两块肌肉？', '评分要点：三头肌收缩、二头肌放松；两块肌肉一块收缩时另一块放松，配合起来移动骨头。'); } },
   // ---- 6: practice (independent; help ladder)
   { id: 'P1', ph: '6 · Practica', recall: true, render(el) { hidden(); A.setElbow('Left', REST); ladderChoice(el, { q: 'El tríceps es contreu. Què fa el braç?', opts: ['S’estira', 'Es doblega', 'No es mou'], a: 0, cue: 'el tríceps és a la part de darrere del braç. Estira el teu braç: quina part notes dura?', demoKind: 'straighten', units: ['K2', 'K5'] }); setNext(false); } },
   { id: 'P2', ph: '6 · Practica', recall: true, render(el) { hidden(); A.setElbow('Left', REST); ladderChoice(el, { q: 'Quina articulació es doblega quan dobleguem el braç?', opts: ['El colze', 'El genoll', 'L’espatlla'], a: 0, cue: 'és al mig del braç, entre el braç i l’avantbraç.', demoKind: 'colze', units: ['K3'] }); setNext(false); } },
-  { id: 'P3', ph: '6 · Practica', recall: true, render(el) { hidden(); A.setElbow('Left', REST); ladderChoice(el, { q: 'Dobleguem el braç. Com és ara el bíceps?', opts: ['Més gruixut', 'Més prim', 'Igual'], a: 0, cue: 'toca’t el bíceps mentre dobleges el braç: es fa més petit o més gros?', demoKind: 'thick', units: ['K4'] }); setNext(false); } },
+  { id: 'P3', ph: '6 · Practica', recall: true, render(el) { hidden(); A.setElbow('Left', REST); ladderChoice(el, { q: 'Dobleguem el braç. Com és ara el bíceps?', opts: ['Més gruixut', 'Més prim', 'Igual'], a: 0, cue: 'toca’t el bíceps mentre dobleges el braç: es fa més petit o més gros?', helpText: 'Mira el dibuix de la p. 27 del llibre: compara el bíceps del braç doblegat i del braç estès.', units: ['K4'] }); setNext(false); } },
   { id: 'P4', ph: '6 · Practica', recall: true, render(el) {
       hidden();
-      el.innerHTML = `<div class="q">Mou el braç perquè es contregui el <b>tríceps</b>.</div>${zh('滑块不显示状态文字和颜色，孩子要自己判断：三头肌收缩 = 伸直手臂。')}`;
+      el.innerHTML = `<div class="q">Mou el braç perquè es contregui el <b>tríceps</b>.</div>${zh('题目：移动手臂，让三头肌收缩。这一题不显示状态文字和颜色。')}`;
       let wrongs = 0, maxV = 105, minV = 105;
       sliderUI(el, { start: 105, showState: false, onMove: async (d, v) => {
         if (el.dataset.done) return; maxV = Math.max(maxV, v); minV = Math.min(minV, v);
@@ -253,14 +257,14 @@ const S = [
 ];
 let cleanupTap = null;
 
-function recallStage(el, q, bookKeys, units, zhTxt) {
+function recallStage(el, q, bookKeys, units, zhQ, zhKey) {
   hidden();
   el.innerHTML = `<h2>Explica-ho tu</h2><div class="q">${esc(q)}</div><div class="cnt">Pensa tot el temps que vulguis. Sense mirar cap pista!</div>
-    <button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>${zh(zhTxt)}`;
+    <button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>${zh(zhQ + '（孩子说完后才显示家长核对内容）')}`;
   $('said').onclick = () => {
     $('said').remove();
     $('chk').innerHTML = `<div class="ans"><b>Resposta del llibre:</b>${book(bookKeys)}</div>
-      <div class="parent"><div class="who">👨‍👩‍👧 Per a la família / 家长判断：</div><div class="row">
+      <div class="parent"><div class="who">👨‍👩‍👧 Per a la família / 家长判断：</div>${zh(zhKey)}<div class="row">
       <button class="opt right" id="pY">Ho ha dit bé ✓ 说对了</button><button class="opt" id="pH">Amb una mica d’ajuda 有提示才说对</button><button class="opt" id="pN">Encara no ✗ 还不会</button></div></div>`;
     const done = v => { evid(units, v); el.querySelectorAll('.parent button').forEach(b => b.disabled = true); feedback(el, true, v === 'sol' ? 'Fantàstic! ⭐' : v === 'ajuda' ? 'Molt bé, ho repassarem demà.' : 'Cap problema: ho tornarem a mirar demà.'); setNext(true); };
     $('pY').onclick = () => done('sol'); $('pH').onclick = () => done('ajuda'); $('pN').onclick = () => done('no');
@@ -305,30 +309,60 @@ function copyResult(btn) {
   (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { btn.textContent = 'Copiat ✔'; }).catch(() => { const ta = document.createElement('textarea'); ta.value = t; ta.style.width = '100%'; ta.rows = 8; btn.after(ta); ta.select(); });
 }
 
-// ---------------------------------------------------------------- day-2 review (family checklist + one in-app locate check)
+// ---------------------------------------------------------------- day-2 review: one item at a time, answers only after the child has answered
 const D2 = [
-  ['oral1', 'Sense mirar el model: explica què passa quan dobleguem el braç i fes-ho amb el teu braç.', '不看模型：口头解释弯曲手臂时发生什么，并用自己的手臂演示（bíceps es contreu, tríceps es relaxa）。'],
-  ['oral2', 'Explica què passa quan estirem el braç i per què calen dos músculs.', '口头解释伸直时三头肌收缩、二头肌放松，以及两块肌肉一收一放配合。'],
-  ['oral3', 'Digues quina articulació es doblega i com és el múscul contret.', '说出弯曲的关节是 colze，收缩的肌肉更粗。'],
-  ['loc', 'Al model sense noms: toca el bíceps i el tríceps (botó de sota).', '在无标签模型上点出 bíceps 和 tríceps（用下面的按钮）。'],
-  ['book', 'Llibre p. 27: tapa el text i digues en cada dibuix quin múscul es contreu.', '课本 P27：盖住文字，说出每张图里哪块肌肉在收缩。'],
-  ['spell', 'Escriu en un paper: bíceps, tríceps (amb accent).', '在纸上写 bíceps、tríceps（注意重音）。'],
+  { id: 'oral1', kind: 'oral', ca: 'Sense mirar el model: explica què passa quan dobleguem el braç, i fes-ho amb el teu braç.', zq: '不看模型：说说弯曲手臂时发生什么，并用自己的手臂做一遍。',
+    key: 'El bíceps es contreu i el tríceps es relaxa.', zkey: '评分要点：二头肌收缩、三头肌放松，并能用手臂演示。' },
+  { id: 'oral2', kind: 'oral', ca: 'Explica què passa quan estirem el braç. Per què calen dos músculs?', zq: '说说伸直手臂时发生什么；为什么需要两块肌肉？',
+    key: 'El tríceps es contreu i el bíceps es relaxa. Quan un es contreu, l’altre es relaxa, i així mouen els ossos.', zkey: '评分要点：三头肌收缩、二头肌放松；一块收缩时另一块放松。' },
+  { id: 'oral3', kind: 'oral', ca: 'Quina articulació es doblega? Com és el múscul quan es contreu?', zq: '哪个关节在弯？肌肉收缩时是什么样子？',
+    key: 'El colze. El múscul contret és més gruixut.', zkey: '评分要点：肘关节（colze）；收缩的肌肉更粗。' },
+  { id: 'loc_biceps', kind: 'loc', key: 'biceps' },
+  { id: 'loc_triceps', kind: 'loc', key: 'triceps' },
+  { id: 'book', kind: 'oral', ca: 'Obre el llibre a la pàgina 27. Tapa el text i digues, a cada dibuix del braç, quin múscul es contreu.', zq: '打开课本第 27 页，盖住文字，说出每张手臂图里哪块肌肉在收缩。',
+    key: 'Braç doblegat: es contreu el bíceps. Braç estirat: es contreu el tríceps.', zkey: '评分要点：弯曲图 = 二头肌收缩；伸直图 = 三头肌收缩。' },
+  { id: 'spell_biceps', kind: 'spell', key: 'biceps', html: 'b<b>í</b>ceps' },
+  { id: 'spell_triceps', kind: 'spell', key: 'triceps', html: 'tr<b>í</b>ceps' },
 ];
 function day2() {
   showApp(); $('Lstart').style.display = 'none'; hidden(); A.setElbow('Left', REST); ARM();
-  const r = loadRec(); if (r) rec = r;
-  body.innerHTML = `<h2>Revisió de l’endemà 📋</h2><div class="cnt">Per fer amb la família, en aquest ordre / 按顺序和家长一起做：</div>
-    <div class="check">${D2.map(([k, ca, z]) => `<label><input type="checkbox" data-k="${k}" ${rec.day2[k] ? 'checked' : ''}><span>${esc(ca)}<br><small>${esc(z)}</small></span></label>`).join('')}</div>
-    <button class="opt go" id="dl">👆 Comprova al model (sense noms)</button><div id="dlt"></div>
-    <div class="row"><button class="opt" id="cp">📋 Copia el resultat</button></div>`;
-  body.querySelectorAll('.check input').forEach(cb => cb.onchange = () => { rec.day2[cb.dataset.k] = cb.checked; rec.day2.when = new Date().toISOString(); saveRec(); });
-  let n = 0;
-  $('dl').onclick = () => { $('dl').disabled = true; const run = key => { cleanupTap && cleanupTap(); const box = document.createElement('div'); $('dlt').innerHTML = ''; $('dlt').appendChild(box);
-      cleanupTap = tapTask(box, { q: key === 'biceps' ? '👆 Toca el bíceps.' : '👆 Toca el tríceps.', key, cue: key === 'biceps' ? 'És a la part de davant del braç.' : 'És a la part de darrere del braç.', onResult: v => { rec.day2['loc_' + key] = v; } });
-      const obs = setInterval(() => { if (box.dataset.done) { clearInterval(obs); rec.day2.when = new Date().toISOString(); saveRec(); if (++n < 2) setTimeout(() => run('triceps'), 900); else feedback($('dlt'), true, 'Fet! Marca la casella si ho ha fet sol/a.'); } }, 200); };
-    run('biceps'); };
-  $('cp').onclick = () => copyResult($('cp'));
+  const r = loadRec(); if (r) rec = r; rec.day2 = rec.day2 || {}; rec.day2.started = new Date().toISOString(); saveRec();
   $('Lnext').style.display = 'none'; $('Lback').style.display = 'none';
+  let k = 0;
+  const go = () => {
+    if (cleanupTap) { cleanupTap(); cleanupTap = null; } A.clearHighlights(); clearLabels();
+    $('Lbar').style.width = `${k / D2.length * 100}%`; $('Lch').textContent = `Revisió de l’endemà · ${Math.min(k + 1, D2.length)}/${D2.length}`;
+    if (k >= D2.length) { document.body.classList.remove('nomodel'); return finish(); }
+    const it = D2[k], next = () => { k++; saveRec(); go(); };
+    const rate = (box, labels, cb) => { box.insertAdjacentHTML('beforeend', `<div class="row" id="rt">${labels.map(([v, t], i) => `<button class="opt ${i ? '' : 'right'}" data-v="${v}">${t}</button>`).join('')}</div>`);
+      box.querySelectorAll('#rt button').forEach(b => b.onclick = () => { cb(b.dataset.v); box.querySelectorAll('#rt button').forEach(x => x.disabled = true); body.insertAdjacentHTML('beforeend', '<button class="opt go" id="nx">Continua ▶</button>'); $('nx').onclick = next; }); };
+    if (it.kind === 'oral') {
+      document.body.classList.add('nomodel');      // the model stays hidden during the spoken part
+      body.innerHTML = `<h2>${k < 3 ? 'Explica-ho' : 'El llibre'}</h2><div class="q">${esc(it.ca)}</div>${zh('题目：' + it.zq)}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>`;
+      $('said').onclick = () => { $('said').remove(); const c = $('chk');
+        c.innerHTML = `<div class="parent"><div class="who">👨‍👩‍👧 Resposta per a la família / 家长答案：</div><div class="ans">${esc(it.key)}</div>${zh(it.zkey)}</div>`;
+        rate(c.querySelector('.parent'), [['sol', 'Ho ha dit bé ✓ 说对了'], ['ajuda', 'Amb ajuda 有提示才说对'], ['no', 'Encara no ✗ 还不会']], v => { rec.day2[it.id] = v; }); };
+    } else if (it.kind === 'loc') {
+      document.body.classList.remove('nomodel'); A.setElbow('Left', REST); ARM();
+      body.innerHTML = '<h2>Al model</h2><div id="tb"></div>';
+      cleanupTap = tapTask($('tb'), { q: it.key === 'biceps' ? '👆 Toca el bíceps (sense noms).' : '👆 Toca el tríceps (sense noms).', key: it.key, cue: it.key === 'biceps' ? 'És a la part de davant del braç.' : 'És a la part de darrere del braç.', onResult: v => { rec.day2[it.id] = v; } });
+      const obs = setInterval(() => { if ($('tb') && $('tb').dataset.done) { clearInterval(obs); body.insertAdjacentHTML('beforeend', '<button class="opt go" id="nx">Continua ▶</button>'); $('nx').onclick = next; } }, 200);
+    } else {
+      document.body.classList.remove('nomodel'); A.setElbow('Left', REST); A.highlight(parts[it.key], 0x2fd3ff);
+      body.innerHTML = `<h2>Escriu el nom</h2><div class="q">Escriu en un paper el nom del múscul blau.</div>${zh('题目：在纸上写出蓝色肌肉的名称（写完再核对）。')}<button class="opt go" id="cmp">✏️ Comprova</button><div id="sp"></div>`;
+      $('cmp').onclick = () => { $('cmp').remove(); const c = $('sp'); c.innerHTML = `<div class="spell">${it.html}</div><div class="parent"><div class="who">👨‍👩‍👧 Compara amb el paper / 对照纸上：</div></div>`;
+        rate(c.querySelector('.parent'), [['ok', 'Escrit bé ✓ 全对'], ['accent', 'Només l’accent 只错重音'], ['no', 'Cal practicar ✗ 需要练']], v => { rec.day2[it.id] = v; }); };
+    }
+  };
+  const finish = () => {
+    rec.day2.finished = new Date().toISOString(); saveRec();
+    const T2 = { sol: ['Tot sol/a ✔', 'ok'], ajuda: ['Amb ajuda', 'mid'], no: ['Encara no', 'bad'], ok: ['Bé ✔', 'ok'], accent: ['Cal practicar l’accent', 'mid'] };
+    const lbl = { oral1: 'Doblegar (explicat i fet amb el braç)', oral2: 'Estirar i els dos músculs', oral3: 'El colze i el múscul contret', loc_biceps: 'Localitza el bíceps', loc_triceps: 'Localitza el tríceps', book: 'Dibuix de la p. 27', spell_biceps: 'Escriu «bíceps»', spell_triceps: 'Escriu «tríceps»' };
+    body.innerHTML = `<h2>Revisió acabada 🎉</h2><table class="res">${D2.map(it => { const [t, c] = T2[rec.day2[it.id]] || ['—', 'mid']; return `<tr><td>${lbl[it.id]}</td><td class="${c}">${t}</td></tr>`; }).join('')}</table>
+      <div class="row"><button class="opt" id="cp">📋 Copia el resultat</button></div>`;
+    $('cp').onclick = () => copyResult($('cp'));
+  };
+  go();
 }
 
 // ---------------------------------------------------------------- navigation
@@ -352,6 +386,7 @@ const confirmExit = () => true;
 $('Lspeak').style.display = 'none';
 
 function showApp() {
+  A.setBulge(0);   // no schematic thickening here: the model shows movement + colour; thickness is observed on the own arm and on p. 27
   document.body.classList.add('lessonMode'); L.style.display = ''; viewOffset(true);
   for (const k of ['allMuscle', 'brain', 'spinal', 'nerves', 'eye']) A.setLayer(k, false);
   A.setLayer('bone', true); A.setLayer('muscle', true); A.setBoneOpacity(100); A.controls.autoRotate = false; neutral();
@@ -362,7 +397,7 @@ $('Lday2').onclick = () => day2();
 // start screen
 document.body.classList.add('lessonMode'); $('Lstart').style.display = '';
 for (const k of ['allMuscle', 'brain', 'spinal', 'nerves', 'eye']) A.setLayer(k, false);
-A.setLayer('muscle', true); neutral(); ARM();
+A.setBulge(0); A.setLayer('muscle', true); neutral(); ARM();
 
 // test hook
 window.__sample = { S, get idx() { return idx; }, get rec() { return rec; }, get canNext() { return canNext; }, next() { $('Lnext').click(); }, parts, hitAt, E, REST };

@@ -1,5 +1,6 @@
 PASS intro
 PASS A-pregunta hides answer · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS A-pregunta · no answer text before answering (zh on)
 PASS next locked before answering
 PASS prediction not marked wrong
 PASS A-llibre shows book + labels · {'labels': 3, 'book': 2, 'hl': 0, 'bcol': 0}
@@ -9,17 +10,25 @@ PASS straightening from bent: triceps contracts · ('Ara el braç s’estira: el
 PASS after stop: past tense + neutral colour · ('Fa un moment has estirat el braç: el tríceps s’ha ', ['c0444f', 'c0444f'])
 PASS A-fes completes
 PASS B-pregunta hides answer · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS B-pregunta · no answer text before answering (zh on)
+PASS book labels: literal vs activity answer · Què diu el llibre
+📘 p. 27 · text del dibuixQuan estirem el braç, el tríceps es c
 PASS demo straighten colours triceps on · ['e8a3aa', 'd2202f']
 PASS B-fes completes
 PASS R1 hides book/labels/highlight · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS R1 · no answer text before answering (zh on)
 PASS R1 back locked
-PASS R1 reveals book after answer
+PASS R1 reveals book + scoring key after answer
 PASS R2 hides book/labels/highlight · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS R2 · no answer text before answering (zh on)
 PASS R2 back locked
-PASS R2 reveals book after answer
+PASS R2 reveals book + scoring key after answer
 PASS P1 hidden · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS P1 · no answer text before answering (zh on)
 PASS wrong 1 → specific cue (not the answer)
+PASS P3 · no answer text before answering (zh on)
 PASS P3 solved after demo
+PASS P4 · no answer text before answering (zh on)
 PASS P4 state text hidden · Mou la barra.
 PASS P4 wrong direction → cue
 PASS P4 completes by straightening
@@ -29,7 +38,28 @@ PASS W1 highlight, no label
 PASS understanding recorded · {'K1': ['sol'], 'K2': ['sol', 'ajuda', 'ajuda'], 'K3': ['sol'], 'K4': ['sol', 'ajuda'], 'K5': ['sol', 'ajuda']}
 PASS spelling separate (accent ≠ failure)
 PASS location recorded · {'biceps': 'sol', 'triceps': 'sol'}
-PASS day2 checklist 6 items
+PASS sample: schematic thickening off (bulge on would add volume) · (1443.2, 1502.4)
+PASS day2 oral1: model hidden · hidden
+PASS day2 oral1 · no answer text before answering (zh on)
+PASS day2 oral1: one item only
+PASS day2 oral1: key after answer
+PASS day2 oral2: model hidden · hidden
+PASS day2 oral2 · no answer text before answering (zh on)
+PASS day2 oral2: one item only
+PASS day2 oral2: key after answer
+PASS day2 oral3: model hidden · hidden
+PASS day2 oral3 · no answer text before answering (zh on)
+PASS day2 oral3: one item only
+PASS day2 oral3: key after answer
+PASS day2 locate: model visible, no labels
 PASS day2 locate biceps
-PASS day2 does not overwrite day1 location · {'oral1': True, 'when': '2026-11-12T17:19:23.408Z', 'loc_biceps': 'sol'}
+PASS day2 locate triceps
+PASS day2 book · no answer text before answering (zh on)
+PASS day2 spell bíceps: word hidden before check · Escriu el nom
+Escriu en un paper el nom del múscul blau.
+🇨🇳 
+PASS day2 spell tríceps: word hidden before check · Escriu el nom
+Escriu en un paper el nom del múscul blau.
+🇨🇳 
+PASS day2 recorded separately from day1 · {'oral1': 'sol', 'oral2': 'sol', 'oral3': 'sol', 'loc_biceps': 'sol', 'loc_triceps': 'sol', 'book': 'sol', 'spell_biceps': 'accent', 'spell_triceps': 'accent'}
 PASS no JS errors

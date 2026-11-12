@@ -11,6 +11,11 @@ with sync_playwright() as p:
     pg.on('pageerror',lambda e: errs.append(str(e)[:300])); pg.on('console',lambda m: errs.append('console:'+m.text[:200]) if m.type=='error' else None)
     pg.goto('http://127.0.0.1:8772/sample.html'); pg.wait_for_function("window.__sample",timeout=300000); time.sleep(1)
     pg.screenshot(path=OUT+'00-start.png'); pg.click('#Lbegin'); time.sleep(1.5)
+    pg.click('#Lzh'); time.sleep(.2)   # Chinese gloss ON for the whole run: it must not leak answers either
+    LEAK=['二头肌收缩、三头肌放松','三头肌收缩、二头肌放松','二头肌放松','三头肌放松','更粗','= 伸直','＝伸直','收缩 =','el bíceps es contreu','el tríceps es contreu','es relaxa','més gruixut','评分要点']
+    def leak(name):
+        t=pg.evaluate("(()=>{const c=document.querySelector('#Lbody').cloneNode(true);c.querySelectorAll('.opts,button').forEach(x=>x.remove());return c.innerText})()")
+        hits=[w for w in LEAK if w in t]; chk(name+' · no answer text before answering (zh on)', not hits, hits)
     st=lambda: pg.evaluate("__sample.S[__sample.idx].id")
     vis=lambda: pg.evaluate("({labels:document.querySelectorAll('#labels .lbl').length, book:document.querySelectorAll('#Lbody .book').length, hl:(()=>{let n=0;__app.scene.traverse(o=>{if(o.userData&&o.userData.hl)n++});return n})(), bcol:__app.scene.getObjectByProperty?0:0})")
     def nxt(): pg.click('#Lnext'); time.sleep(1.2)
@@ -30,7 +35,7 @@ with sync_playwright() as p:
     # intro
     chk('intro', st()=='intro'); nxt()
     # A-pregunta: no labels, no book, no answer marked
-    v=vis(); chk('A-pregunta hides answer', v['labels']==0 and v['book']==0 and v['hl']==0, v); pg.screenshot(path=OUT+'01-predict.png')
+    v=vis(); chk('A-pregunta hides answer', v['labels']==0 and v['book']==0 and v['hl']==0, v); leak('A-pregunta'); pg.screenshot(path=OUT+'01-predict.png')
     chk('next locked before answering', pg.evaluate("document.getElementById('Lnext').disabled"))
     opt('La part de darrere'); chk('prediction not marked wrong', pg.locator('#Lbody .opt.wrong').count()==0); nxt()
     v=vis(); chk('A-llibre shows book + labels', v['book']>=2 and v['labels']==3, v); nxt()
@@ -44,25 +49,27 @@ with sync_playwright() as p:
     for v_ in range(70,100,6): slide(v_)
     time.sleep(.3); chk('A-fes completes', pg.evaluate("__sample.canNext")); nxt()
     # B
-    v=vis(); chk('B-pregunta hides answer', v['labels']==0 and v['book']==0, v); opt('El tríceps'); nxt(); nxt()
+    v=vis(); chk('B-pregunta hides answer', v['labels']==0 and v['book']==0, v); leak('B-pregunta'); opt('El tríceps'); nxt()
+    bt=pg.locator('#Lbody').inner_text(); chk('book labels: literal vs activity answer', 'text del dibuix' in bt, bt[:80]); nxt()
     pg.click('#pl'); time.sleep(1.2); c=colors(); chk('demo straighten colours triceps on', c==['e8a3aa','d2202f'], c); time.sleep(3); nxt()
     for v_ in range(100,10,-8): slide(v_)
     time.sleep(.3); chk('B-fes completes', pg.evaluate("__sample.canNext")); nxt()
     # recall R1 R2
     for r in ['R1','R2']:
-        v=vis(); chk(f'{r} hides book/labels/highlight', v['labels']==0 and v['book']==0 and v['hl']==0, v)
+        v=vis(); chk(f'{r} hides book/labels/highlight', v['labels']==0 and v['book']==0 and v['hl']==0, v); leak(r)
         chk(f'{r} back locked', pg.evaluate("document.getElementById('Lback').disabled"))
-        pg.click('#said'); time.sleep(.3); chk(f'{r} reveals book after answer', vis()['book']>=1)
+        pg.click('#said'); time.sleep(.3); chk(f'{r} reveals book + scoring key after answer', vis()['book']>=1 and '评分要点' in pg.locator('#Lbody').inner_text())
         pg.click('#pY'); time.sleep(.4); nxt()
     pg.screenshot(path=OUT+'04-practice.png')
     # P1: one wrong to exercise the cue, then right
-    v=vis(); chk('P1 hidden', v['labels']==0 and v['book']==0, v)
+    v=vis(); chk('P1 hidden', v['labels']==0 and v['book']==0, v); leak('P1')
     opt('Es doblega'); chk('wrong 1 → specific cue (not the answer)', 'Pista' in pg.locator('#Lbody .fb').inner_text() and pg.locator('#Lbody .opt.hint').count()==0)
     opt('S’estira'); time.sleep(.3); nxt()
     opt('El colze'); nxt()
     # P3 two wrongs → demo → retry
-    opt('Més prim'); opt('Igual'); time.sleep(6.5); opt('Més gruixut'); time.sleep(.3); chk('P3 solved after demo', pg.evaluate("__sample.canNext")); nxt()
+    leak('P3'); opt('Més prim'); opt('Igual'); time.sleep(3); opt('Més gruixut'); time.sleep(.3); chk('P3 solved after demo', pg.evaluate("__sample.canNext")); nxt()
     # P4 hidden slider: first bend (wrong), then straighten
+    leak('P4')
     chk('P4 state text hidden', 'contreu' not in live(), live())
     for v_ in range(105,125,4): slide(v_)
     time.sleep(.6); chk('P4 wrong direction → cue', 'Pista' in pg.locator('#Lbody .fb').inner_text())
@@ -78,11 +85,27 @@ with sync_playwright() as p:
     chk('understanding recorded', all(len(rec['K'][k])>0 for k in rec['K']), {k:rec['K'][k] for k in rec['K']})
     chk('spelling separate (accent ≠ failure)', rec['spell']=={'biceps':'ok','triceps':'accent'} and 'Cal repassar' not in pg.locator('#Lbody').inner_text())
     chk('location recorded', rec['loc'], rec['loc'])
-    # day 2
-    pg.click('#d2'); time.sleep(1); pg.screenshot(path=OUT+'08-day2.png'); chk('day2 checklist 6 items', pg.locator('#Lbody .check input').count()==6)
-    pg.locator('#Lbody .check input').first.check(); pg.click('#dl'); time.sleep(1); ok1=tap('biceps'); time.sleep(1.4)
-    chk('day2 locate biceps', ok1)
-    rec2=pg.evaluate("__sample.rec"); chk('day2 does not overwrite day1 location', rec2['loc']==rec['loc'] and rec2['day2'].get('oral1') and rec2['day2'].get('loc_biceps'), rec2['day2'])
+    # back button locked in practice
+    # bulge switch: sample has it off; V1.4 default on
+    vol=lambda: pg.evaluate("(()=>{__sample.parts.biceps.forEach(m=>m.geometry.computeBoundingBox());const b=__app.boxOf(__sample.parts.biceps).getSize(new __app.THREE.Vector3());return b.x*b.y*b.z})()")
+    pg.evaluate("__app.setElbow('Left',100)"); v0=vol(); pg.evaluate("__app.setBulge(1)"); v1=vol(); pg.evaluate("__app.setBulge(0);__app.setElbow('Left',__sample.REST)")
+    chk('sample: schematic thickening off (bulge on would add volume)', v1>v0*1.02, (round(v0*1e6,1),round(v1*1e6,1)))
+    # day 2: one item at a time
+    pg.click('#d2'); time.sleep(1)
+    for n in range(3):
+        cv=pg.evaluate("getComputedStyle(__app.renderer.domElement).visibility"); chk(f'day2 oral{n+1}: model hidden', cv=='hidden', cv); leak(f'day2 oral{n+1}')
+        chk(f'day2 oral{n+1}: one item only', pg.locator('#Lbody .q').count()==1)
+        pg.click('#said'); time.sleep(.2); chk(f'day2 oral{n+1}: key after answer', '评分要点' in pg.locator('#Lbody').inner_text())
+        pg.locator('#rt button').first.click(); pg.click('#nx'); time.sleep(.8)
+    cv=pg.evaluate("getComputedStyle(__app.renderer.domElement).visibility"); chk('day2 locate: model visible, no labels', cv=='visible' and vis()['labels']==0)
+    time.sleep(1); chk('day2 locate biceps', tap('biceps')); pg.click('#nx'); time.sleep(1); chk('day2 locate triceps', tap('triceps')); pg.click('#nx'); time.sleep(.8)
+    leak('day2 book'); pg.click('#said'); time.sleep(.2); pg.locator('#rt button').first.click(); pg.click('#nx'); time.sleep(.8)
+    for w in ['bíceps','tríceps']:
+        t=pg.locator('#Lbody').inner_text(); chk(f'day2 spell {w}: word hidden before check', w not in t and vis()['labels']==0, t[:60])
+        pg.click('#cmp'); time.sleep(.2); pg.locator('#rt button').nth(1).click(); pg.click('#nx'); time.sleep(.8)
+    pg.screenshot(path=OUT+'08-day2-end.png')
+    rec2=pg.evaluate("__sample.rec"); d2=rec2['day2']
+    chk('day2 recorded separately from day1', rec2['loc']==rec['loc'] and d2.get('loc_biceps') and d2.get('spell_triceps')=='accent' and d2.get('oral1')=='sol', {k:d2[k] for k in d2 if k not in ('started','finished')})
     chk('no JS errors', not errs, errs)
     b.close()
 print('\n'.join(log))

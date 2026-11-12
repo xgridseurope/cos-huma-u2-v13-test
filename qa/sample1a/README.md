@@ -36,3 +36,10 @@ spelling-to-practise without failing understanding; day-2 checks stored separate
 3. In the model without names: tap bíceps and tríceps.
 4. Book p. 27: cover the text, say which muscle contracts in each drawing.
 5. On paper: bíceps, tríceps (with accent).
+
+## 1A revision 2 (2026-11-12) — previous 1A = commit 65b0645
+- Answer leaks closed: before the child answers, the Catalan and the Chinese gloss show only the question, the task and neutral notes. Scoring points for the family appear only after «Ja ho he dit» / «Comprova».
+- Textbook sources checked against the p. 27 / p. 28 photos: bending / straightening sentences = figure captions, word for word; p. 28 sentence word for word; "the elbow" and "the contracted muscle is thicker" are marked as answers to activity 4 (deduced from the drawing), not as book text.
+- Thickness: the schematic thickening is switched off in this lesson (`setBulge(0)`, V1.4 keeps it on). The model shows movement + colour by direction; thickness is checked on the child's own arm and the p. 27 drawing.
+- Day 2 is a step-by-step wizard: spoken part with the model hidden → locate without names → book p. 27 → spelling (word hidden until «Comprova»). Family answers open only after each child answer.
+- Tests: `tools/sample_test.py` 60/60 (Chinese gloss ON for the whole run, wrong answers + retries, back button, day-2 wizard); `tools/v14_regress.py` 5/5 (V1.4 slider colours and thickening unchanged).

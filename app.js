@@ -138,6 +138,8 @@ const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpV = new THRE
 // Optional external control of the biceps/triceps colours (used by the sample lesson, which colours by the
 // DIRECTION of movement). null = default V1.4 behaviour (colour by angle).
 let muscleColorOverride = null;
+let bulgeScale = 1;                       // schematic biceps/triceps thickness change; 1 = V1.4 default, 0 = off (sample lessons)
+function setBulge(v) { bulgeScale = v; for (const s of ['Left', 'Right']) setElbow(s, elbows[s].angle); }
 function setMuscleColors(bState, tState) {   // 'on' (contracting) | 'off' (relaxing) | 'neutral'
   muscleColorOverride = { b: bState, t: tState };
   const C = { on: [0xd2202f, 0x400008], off: [0xe8a3aa, 0], neutral: [COL.muscle, 0] };
@@ -184,7 +186,7 @@ function setElbow(side, flex) {
         if (isB || isT) {
           const along = e.down.clone().multiplyScalar(tmpW.copy(tmpV).sub(ctr).dot(e.down));
           const radial = tmpW.copy(tmpV).sub(ctr).sub(along);
-          tmpV.add(radial.multiplyScalar(belly * (isB ? 0.22 : -0.08) * Math.min(k, 1.3)));
+          tmpV.add(radial.multiplyScalar(belly * (isB ? 0.22 : -0.08) * Math.min(k, 1.3) * bulgeScale));
         }
         const w = smooth(-0.02, 0.03, d);
         if (w > 0) { tmpW.copy(tmpV).applyMatrix4(M); tmpV.lerp(tmpW, w); }
@@ -479,6 +481,6 @@ if (new URLSearchParams(location.search).has('perf')) {
 }
 
 // test hook
-window.__app = { setMuscleColors, clearMuscleColors, resolveHit: h => { if (h && mergedInfo.has(h.object)) { const r = mergedInfo.get(h.object); return (r.find(x => h.faceIndex >= x.start && h.faceIndex < x.end) || {}).mesh || null; } return h ? h.object : null; }, pickables, STEPS, find, highlight, clearHighlights, flyTo, flyToMeshes, boxOf, tickers, pickListeners, layerOn, norm, get side() { return side; }, set quietPick(v) { quietPick = v; }, VERSION, THREE, scene, camera, controls, renderer, elbows, setElbow, setSide, setAngle, setLayer, setBoneOpacity, resetAll, VIEWS, pickAt, startSignal, stopSignal, measure, visibleTris, loadMs, byName, nerveByName, groups, orig, mats, paths,
+window.__app = { setBulge, setMuscleColors, clearMuscleColors, resolveHit: h => { if (h && mergedInfo.has(h.object)) { const r = mergedInfo.get(h.object); return (r.find(x => h.faceIndex >= x.start && h.faceIndex < x.end) || {}).mesh || null; } return h ? h.object : null; }, pickables, STEPS, find, highlight, clearHighlights, flyTo, flyToMeshes, boxOf, tickers, pickListeners, layerOn, norm, get side() { return side; }, set quietPick(v) { quietPick = v; }, VERSION, THREE, scene, camera, controls, renderer, elbows, setElbow, setSide, setAngle, setLayer, setBoneOpacity, resetAll, VIEWS, pickAt, startSignal, stopSignal, measure, visibleTris, loadMs, byName, nerveByName, groups, orig, mats, paths,
   get signal() { return sig ? { type: sig.type, i: sig.i } : null }, set timeScale(v) { timeScale = v; } };
 window.dispatchEvent(new Event('app-ready'));
