@@ -135,6 +135,16 @@ function buildElbow(side) {
 }
 const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
 const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpV = new THREE.Vector3(), tmpW = new THREE.Vector3();
+// Optional external control of the biceps/triceps colours (used by the sample lesson, which colours by the
+// DIRECTION of movement). null = default V1.4 behaviour (colour by angle).
+let muscleColorOverride = null;
+function setMuscleColors(bState, tState) {   // 'on' (contracting) | 'off' (relaxing) | 'neutral'
+  muscleColorOverride = { b: bState, t: tState };
+  const C = { on: [0xd2202f, 0x400008], off: [0xe8a3aa, 0], neutral: [COL.muscle, 0] };
+  muscleMat.biceps.color.setHex(C[bState][0]); muscleMat.biceps.emissive.setHex(C[bState][1]);
+  muscleMat.triceps.color.setHex(C[tState][0]); muscleMat.triceps.emissive.setHex(C[tState][1]);
+}
+function clearMuscleColors() { muscleColorOverride = null; }
 function setElbow(side, flex) {
   const e = elbows[side]; flex = Math.max(e.restFlex, Math.min(140, flex)); e.angle = flex;
   const deg = flex - e.restFlex;          // rotation away from the model's rest pose
@@ -184,7 +194,7 @@ function setElbow(side, flex) {
     pos.needsUpdate = true; m.geometry.computeVertexNormals(); m.geometry.computeBoundingSphere();
   }
   // muscle state colour (textbook p27): contracted = deep red, relaxed = pale
-  if (e.muscles.length) {
+  if (e.muscles.length && !muscleColorOverride) {
     const b = muscleMat.biceps, t = muscleMat.triceps;
     b.color.setHex(deg > 5 ? 0xd2202f : COL.muscle); b.emissive.setHex(deg > 5 ? 0x400008 : 0);
     t.color.setHex(deg > 5 ? 0xe8a3aa : COL.muscle);
@@ -469,6 +479,6 @@ if (new URLSearchParams(location.search).has('perf')) {
 }
 
 // test hook
-window.__app = { resolveHit: h => { if (h && mergedInfo.has(h.object)) { const r = mergedInfo.get(h.object); return (r.find(x => h.faceIndex >= x.start && h.faceIndex < x.end) || {}).mesh || null; } return h ? h.object : null; }, pickables, STEPS, find, highlight, clearHighlights, flyTo, flyToMeshes, boxOf, tickers, pickListeners, layerOn, norm, get side() { return side; }, set quietPick(v) { quietPick = v; }, VERSION, THREE, scene, camera, controls, renderer, elbows, setElbow, setSide, setAngle, setLayer, setBoneOpacity, resetAll, VIEWS, pickAt, startSignal, stopSignal, measure, visibleTris, loadMs, byName, nerveByName, groups, orig, mats, paths,
+window.__app = { setMuscleColors, clearMuscleColors, resolveHit: h => { if (h && mergedInfo.has(h.object)) { const r = mergedInfo.get(h.object); return (r.find(x => h.faceIndex >= x.start && h.faceIndex < x.end) || {}).mesh || null; } return h ? h.object : null; }, pickables, STEPS, find, highlight, clearHighlights, flyTo, flyToMeshes, boxOf, tickers, pickListeners, layerOn, norm, get side() { return side; }, set quietPick(v) { quietPick = v; }, VERSION, THREE, scene, camera, controls, renderer, elbows, setElbow, setSide, setAngle, setLayer, setBoneOpacity, resetAll, VIEWS, pickAt, startSignal, stopSignal, measure, visibleTris, loadMs, byName, nerveByName, groups, orig, mats, paths,
   get signal() { return sig ? { type: sig.type, i: sig.i } : null }, set timeScale(v) { timeScale = v; } };
 window.dispatchEvent(new Event('app-ready'));

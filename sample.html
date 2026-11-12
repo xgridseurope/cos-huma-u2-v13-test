@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ca"><head><meta charset="utf-8"><link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Mostra · COS-HUMA · Ens movem · prova 3D (colze i sistema nerviós)</title>
+<style>
+:root{--panel:#f7f5ef;--ink:#1d2733;--muted:#5b6673}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#0f1b2a;overflow:hidden}
+#c{position:fixed;inset:0;width:100%;height:100%;touch-action:none}
+.banner{position:fixed;top:0;left:0;right:0;background:#b3261e;color:#fff;font-size:12px;padding:4px 10px;text-align:center;z-index:5}
+.panel{position:fixed;top:30px;left:10px;width:290px;max-height:calc(100% - 40px);overflow:auto;background:var(--panel);border-radius:12px;padding:10px 14px;font-size:14px;box-shadow:0 4px 18px rgba(0,0,0,.3);z-index:4}
+.panel h1{font-size:15px;margin:0 0 6px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.panel h2{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:12px 0 4px}
+label.row{display:flex;align-items:center;gap:8px;min-height:32px}label.row input{width:20px;height:20px}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px}
+input[type=range]{width:100%;height:28px}
+.seg{display:flex;gap:4px;flex-wrap:wrap}.seg button,.btn{flex:1;min-height:36px;border:1px solid #c9c4b8;background:#fff;border-radius:8px;font-size:13px;padding:4px 6px;color:var(--ink)}
+.seg button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.primary{background:#0d6e8a;color:#fff;border-color:#0d6e8a}.btn.warn{background:#c2410c;color:#fff;border-color:#c2410c}
+.note{font-size:11.5px;color:var(--muted);line-height:1.4;margin:6px 0}
+.tag{font-size:10px;background:#e7e2d4;border-radius:4px;padding:1px 4px;color:var(--muted)}
+#muscleText{font-size:13px;background:#fbeef0;border-radius:8px;padding:6px 8px;margin-top:6px}
+.lesson{position:fixed;right:10px;top:30px;width:min(340px,calc(100% - 20px));background:var(--panel);border-radius:12px;padding:10px 14px;font-size:14px;z-index:4;box-shadow:0 4px 18px rgba(0,0,0,.3)}
+.lesson ol{margin:6px 0 0;padding-left:20px}.lesson li{margin:4px 0;opacity:.55}.lesson li.on{opacity:1;font-weight:600}.lesson li.extra{border-top:1px dashed #c9c4b8;padding-top:4px}
+.card{position:fixed;right:10px;bottom:10px;width:min(300px,calc(100% - 20px));background:var(--panel);border-radius:12px;padding:8px 12px;font-size:14px;z-index:4}
+.card b{font-size:17px}.card div{color:var(--muted);font-size:12px}
+#tg{border:1px solid #c9c4b8;background:#fff;border-radius:8px;font-size:12px;padding:2px 8px;min-height:30px}
+details{margin-top:8px}pre{font-size:10.5px;white-space:pre-wrap;background:#fff;border-radius:6px;padding:6px;max-height:180px;overflow:auto}
+#load{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;z-index:6;background:#0f1b2a}
+@media (max-width:640px){.panel{width:calc(100% - 20px);max-height:55%}.panel.min>*:not(h1){display:none}.lesson{top:auto;bottom:70px;max-height:34%;overflow:auto;font-size:13px}.card{padding:6px 10px}}
+
+/* ---- guided lesson (V1.4) ---- */
+body.lessonMode .panel,body.lessonMode .lesson,body.lessonMode .card{display:none!important}
+#labels{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.lbl{position:absolute;left:0;top:0;background:rgba(255,255,255,.92);color:#1d2733;font-size:12px;font-weight:600;padding:2px 7px;border-radius:10px;border:2px solid #2fd3ff;white-space:nowrap}
+.L{position:fixed;right:10px;top:30px;bottom:10px;width:390px;background:#fffdf7;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.35);z-index:7;display:flex;flex-direction:column;font-size:15px;overflow:hidden}
+.Lhead{padding:8px 12px 6px;border-bottom:1px solid #eee6d6}
+.Lbar{height:5px;background:#eee6d6;border-radius:3px;overflow:hidden;margin-bottom:6px}.Lbar i{display:block;height:100%;background:linear-gradient(90deg,#35c46a,#2fd3ff);width:0;transition:width .4s}
+.Lrow{display:flex;align-items:center;gap:8px}.Lrow .grow{flex:1;font-size:12px;color:#5b6673;font-weight:600}
+#Ldots{display:flex;gap:4px}#Ldots span{width:9px;height:9px;border-radius:50%;background:#e2dccd}#Ldots span.past{background:#35c46a}#Ldots span.now{background:#ff9f1c;box-shadow:0 0 0 2px #ffe2b8}
+#Lstars{font-weight:700;font-size:14px}#Lstars.pop{animation:pop .5s}@keyframes pop{50%{transform:scale(1.5)}}
+.iconbtn{border:1px solid #d8d0bd;background:#fff;border-radius:8px;min-height:30px;padding:2px 8px;font-size:13px}.iconbtn.on{background:#1d2733;color:#fff}
+#Lbody{flex:1;overflow:auto;padding:10px 14px 14px}
+#Lbody h2{font-size:19px;margin:2px 0 8px}
+.ossi{display:flex;gap:8px;align-items:flex-start;background:#eef8ff;border-radius:12px;padding:8px 10px;margin:6px 0}.ossi .av{font-size:24px;line-height:1}.ossi p{margin:0;line-height:1.4}
+.book{background:#fff7e6;border-left:4px solid #ff9f1c;border-radius:8px;padding:7px 9px;margin:6px 0;line-height:1.4;font-weight:600}.book.r{font-weight:500}.book .pg{display:inline-block;font-size:11px;font-weight:700;color:#a35c00;margin-right:6px}
+.fun{background:#f4efff;border-radius:8px;padding:6px 9px;margin:6px 0;font-size:13.5px}.fun .nb{font-size:10.5px;background:#e3d8ff;border-radius:4px;padding:1px 4px;color:#5b3fb3}
+.zh{background:#f3f3f3;border-radius:8px;padding:6px 9px;margin:6px 0;font-size:13.5px;color:#444}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0;font-size:13px}.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.chips{display:flex;flex-direction:column;gap:3px;margin:6px 0}.chips span{font-size:13px;padding:3px 8px;border-radius:8px;background:#f1ece0;opacity:.6}.chips span.on{opacity:1;background:#ffe2b8;font-weight:700}
+#Ltask{margin-top:8px}.q{font-weight:700;margin:6px 0}.q .cnt,.cnt{color:#5b6673;font-weight:600;font-size:12px}
+.opts{display:flex;flex-direction:column;gap:6px}.opts.row,.row{flex-direction:row;display:flex;gap:6px;flex-wrap:wrap}
+.opt{min-height:44px;border:2px solid #d8d0bd;background:#fff;border-radius:12px;font-size:15px;padding:6px 10px;text-align:left;color:#1d2733;flex:1}
+.row .opt{text-align:center}.opt.small{flex:0;min-height:34px;font-size:13px;white-space:nowrap}.opt.go{background:#0d6e8a;color:#fff;border-color:#0d6e8a;text-align:center}
+.opt.right{background:#35c46a;border-color:#35c46a;color:#fff}.opt.wrong{background:#ffe3e3;border-color:#f2a3a3;animation:shake .35s}.opt.hint{border-color:#ff9f1c;box-shadow:0 0 0 3px #ffe2b8}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.item{font-size:18px;font-weight:700;text-align:center;background:#f4efff;border-radius:10px;padding:8px;margin:6px 0}
+.fb{margin-top:8px;padding:7px 10px;border-radius:10px;font-weight:600}.fb.ok{background:#e1f7e8;color:#16602f}.fb.no{background:#fff1e0;color:#8a4b00}
+.state{display:flex;gap:6px;margin:6px 0}.state span{flex:1;text-align:center;padding:6px;border-radius:8px;background:#f1ece0;font-weight:600;font-size:14px}.state span.on{background:#d2202f;color:#fff}
+.goals{margin:4px 0;padding-left:20px}.goals li.ok{color:#16602f;font-weight:700}.goals li.ok::after{content:' ✔'}
+.chain{margin-top:6px;font-size:14px}
+.steps{padding-left:20px;margin:8px 0}.steps li{margin:4px 0;opacity:.55}.steps li.on{opacity:1;font-weight:700}.steps li.extra{border-top:1px dashed #c9c4b8;padding-top:4px;font-size:13px}
+.flash{background:#fff;border:2px dashed #d8d0bd;border-radius:14px;padding:12px;margin:6px 0}.fq{font-weight:700;font-size:16px}.fa{margin-top:8px;color:#16602f}
+.map div{background:#f6f3ea;border-radius:10px;padding:7px 9px;margin:5px 0;font-size:14px;line-height:1.4}
+.result{text-align:center;font-size:38px;line-height:1.3;margin:10px 0}.result b{font-size:22px}.result{font-size:15px}.result:first-line{font-size:38px}
+.Lnav{display:flex;gap:6px;padding:8px 10px;border-top:1px solid #eee6d6;background:#fffdf7}
+.Lnav button{min-height:46px;border-radius:12px;border:2px solid #d8d0bd;background:#fff;font-size:15px;padding:4px 10px}
+#Lnext{flex:1;background:#c9c4b8;border-color:#c9c4b8;color:#fff;font-weight:700}#Lnext.ready{background:#ff7a00;border-color:#ff7a00;animation:glow 1.6s infinite}
+@keyframes glow{50%{box-shadow:0 0 0 5px rgba(255,122,0,.25)}}
+#Lstart{position:fixed;inset:0;z-index:8;display:flex;align-items:flex-end;justify-content:center;padding:20px;background:linear-gradient(transparent 35%,rgba(15,27,42,.92) 70%)}
+#Lstart .box{background:#fffdf7;border-radius:18px;padding:16px 18px;max-width:420px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+#Lstart h1{margin:0 0 4px;font-size:24px}#Lstart p{margin:4px 0 10px;color:#5b6673;line-height:1.4}
+#Lstart button{display:block;width:100%;min-height:50px;border-radius:14px;font-size:17px;margin:6px 0;border:2px solid #d8d0bd;background:#fff}
+#Lbegin{background:#ff7a00!important;border-color:#ff7a00!important;color:#fff;font-weight:700}
+@media (max-width:760px){.L{left:0;right:0;top:auto;bottom:0;width:auto;height:45%;border-radius:16px 16px 0 0}#Lbody h2{font-size:17px}.ossi{padding:6px 8px}.ossi .av{font-size:20px}}
+
+/* sample lesson (1A) */
+.stage{font-size:12px;color:#5b6673;font-weight:600;margin-bottom:4px}
+.live{margin:8px 0;padding:8px 10px;border-radius:10px;background:#f1ece0;font-weight:600;min-height:20px}
+.live.bend{background:#fde3e5}.live.str{background:#e3ecfd}
+.parent{margin-top:8px;padding:8px;border:2px dashed #c9c4b8;border-radius:12px;background:#fff}
+.parent .who{font-size:12px;color:#5b6673;margin-bottom:4px}
+.ans{background:#e1f7e8;border-radius:10px;padding:8px 10px;margin:6px 0}
+.spell{font-size:28px;text-align:center;letter-spacing:1px;margin:8px 0}.spell b{color:#d2202f;text-decoration:underline}
+.res td,.res th{padding:4px 6px;border-bottom:1px solid #eee;font-size:14px;text-align:left}.res{border-collapse:collapse;width:100%;margin:6px 0}
+.ok{color:#16602f;font-weight:700}.mid{color:#8a5a00;font-weight:700}.bad{color:#a32020;font-weight:700}
+.check label{display:flex;gap:8px;align-items:flex-start;margin:6px 0;font-size:14px}.check input{width:22px;height:22px;flex:0 0 22px}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head><body>
+<div class="banner">Pàgina de prova · no és la web oficial de COS-HUMA · <span id="ver"></span></div>
+<canvas id="c"></canvas><div id="load">Carregant l’esquelet i el sistema nerviós…</div>
+<div class="panel" id="panel">
+ <h1>Ens movem · P24–29 <span><button id="Lopen" class="iconbtn">📖 Lliçó</button> <button id="tg">Menú</button></span></h1>
+ <h2>Capes</h2>
+ <label class="row"><input type="checkbox" data-layer="bone" checked><span class="sw" style="background:#e9e2cf"></span>Ossos</label>
+ <label class="row"><input type="checkbox" data-layer="allMuscle"><span class="sw" style="background:#c0444f"></span>Tots els músculs <span class="tag">braç en repòs</span></label>
+ <label class="row"><input type="checkbox" data-layer="muscle"><span class="sw" style="background:#c0444f"></span>Bíceps i tríceps <span class="tag">esquema</span></label>
+ <label class="row"><input type="checkbox" data-layer="brain" checked><span class="sw" style="background:#e48aa0"></span>Cervell</label>
+ <label class="row"><input type="checkbox" data-layer="spinal" checked><span class="sw" style="background:#f2e6a0"></span>Medul·la espinal</label>
+ <label class="row"><input type="checkbox" data-layer="nerves" checked><span class="sw" style="background:#f2c230"></span>Nervis</label>
+ <label class="row"><input type="checkbox" data-layer="eye" checked><span class="sw" style="background:#9ec9e8"></span>Ulls</label>
+ <h2>Transparència dels ossos <span id="ov">100%</span></h2>
+ <input type="range" id="opBone" min="10" max="100" value="100">
+ <h2>El colze</h2>
+ <div class="seg" id="sideSeg"><button data-s="Left" class="on">Braç esquerre</button><button data-s="Right">Braç dret</button></div>
+ <label>Angle del colze: <b id="angleText">—</b><input type="range" id="angle" min="0" max="140" value="0"></label>
+ <div class="seg"><button data-a="rest">Repòs</button><button data-a="45">45°</button><button data-a="90">90°</button><button id="reset" class="btn">Reinicia</button></div>
+ <div id="muscleText"></div>
+ <p class="note">Els músculs es deformen de manera aproximada: és un esquema per veure qui es contreu i qui es relaxa, no una simulació exacta.</p>
+ <h2>Com ens movem</h2>
+ <div class="seg"><button id="voluntary" class="btn primary">Moviment voluntari</button><button id="reflex" class="btn warn">Moviment reflex</button></div>
+ <div class="seg" style="margin-top:4px"><button id="stop" class="btn">Atura</button></div>
+ <p class="note">Les línies de colors són un esquema del camí del senyal, no el recorregut exacte de cada nervi.</p>
+ <h2>Vistes</h2>
+ <div class="seg"><button data-v="front">Davant</button><button data-v="side">Costat</button><button data-v="elbow">Colze</button><button data-v="head">Cap</button></div>
+ <details><summary>Rendiment (per provar al mòbil) · o obre la pàgina amb ?perf=1</summary>
+  <div class="seg" style="margin-top:6px"><button id="perf" class="btn">Mesura 10 s</button><button id="perfCopy" class="btn">Copia</button></div><pre id="perfOut">—</pre></details>
+ <p class="note">Models: BodyParts3D (DBCLS, CC BY-SA 2.1 JP) · Z-Anatomy (CC BY-SA 4.0) · escorça cerebral: Brainder / A. Winkler (CC BY-SA 3.0). Detalls a ATTRIBUTION.txt.</p>
+</div>
+<div class="lesson"><b id="stepsTitle">Tria un moviment</b><div id="example" class="note"></div><ol id="steps"></ol><div class="note">Camí del senyal: esquema didàctic, no és el recorregut exacte d’un nervi.</div></div>
+<div class="card"><b id="cName">Toca una estructura</b><div id="cEn">—</div></div>
+<div id="labels"></div>
+<div class="L" id="L" style="display:none">
+ <div class="Lhead"><div class="Lbar"><i id="Lbar"></i></div>
+  <div class="Lrow"><div id="Ldots"></div><div class="grow" id="Lch"></div><span id="Lstars">⭐ 0</span>
+   <button class="iconbtn" id="Lspeak" title="Escolta" style="display:none">🔊</button><button class="iconbtn" id="Lzh" title="中文">中文</button><button class="iconbtn" id="Lexit" title="Explora lliurement">✕</button></div></div>
+ <div id="Lbody"></div>
+ <div class="Lnav"><button id="Lback">◀</button><button id="Lnext" disabled>Següent ▶</button></div>
+</div>
+<div id="Lstart" style="display:none"><div class="box">
+ <h1>Bíceps i tríceps 💪</h1>
+ <p>Lliçó de prova (llibre p. 27–28). Tu manes: avança quan estiguis a punt. Uns 15 minuts.</p>
+ <button id="Lbegin">▶ Comença</button><button id="Lday2">📋 Revisió de l’endemà (per a la família)</button>
+</div></div>
+<script type="module" src="./app.js?v=s1a"></script>
+<script type="module" src="./sample.js?v=s1a"></script>
+</body></html>

@@ -1,0 +1,35 @@
+PASS intro
+PASS A-pregunta hides answer · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS next locked before answering
+PASS prediction not marked wrong
+PASS A-llibre shows book + labels · {'labels': 3, 'book': 2, 'hl': 0, 'bcol': 0}
+PASS demo bend colours biceps on · ['d2202f', 'e8a3aa']
+PASS bending: text+colour · ('Ara el braç es doblega: el bíceps es con', ['d2202f', 'e8a3aa'])
+PASS straightening from bent: triceps contracts · ('Ara el braç s’estira: el tríceps es cont', ['e8a3aa', 'd2202f'])
+PASS after stop: past tense + neutral colour · ('Fa un moment has estirat el braç: el tríceps s’ha ', ['c0444f', 'c0444f'])
+PASS A-fes completes
+PASS B-pregunta hides answer · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS demo straighten colours triceps on · ['e8a3aa', 'd2202f']
+PASS B-fes completes
+PASS R1 hides book/labels/highlight · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS R1 back locked
+PASS R1 reveals book after answer
+PASS R2 hides book/labels/highlight · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS R2 back locked
+PASS R2 reveals book after answer
+PASS P1 hidden · {'labels': 0, 'book': 0, 'hl': 0, 'bcol': 0}
+PASS wrong 1 → specific cue (not the answer)
+PASS P3 solved after demo
+PASS P4 state text hidden · Mou la barra.
+PASS P4 wrong direction → cue
+PASS P4 completes by straightening
+PASS P5 tap biceps
+PASS P6 tap triceps
+PASS W1 highlight, no label
+PASS understanding recorded · {'K1': ['sol'], 'K2': ['sol', 'ajuda', 'ajuda'], 'K3': ['sol'], 'K4': ['sol', 'ajuda'], 'K5': ['sol', 'ajuda']}
+PASS spelling separate (accent ≠ failure)
+PASS location recorded · {'biceps': 'sol', 'triceps': 'sol'}
+PASS day2 checklist 6 items
+PASS day2 locate biceps
+PASS day2 does not overwrite day1 location · {'oral1': True, 'when': '2026-11-12T17:19:23.408Z', 'loc_biceps': 'sol'}
+PASS no JS errors
