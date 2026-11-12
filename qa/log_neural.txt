@@ -1,0 +1,3 @@
+voluntary 5 frames; (step,angle): [(0, 13), (2, 26), (2, 90), (None, 90)]
+reflex 4 frames; (step,angle): [(0, 13), (2, 80), (3, 80), (None, 80)]
+{'voluntary': {'points': 37, 'median_mm': 2.2, 'p90_mm': 7.6, 'max_mm': 11.4}, 'reflex': {'points': 61, 'median_mm': 2.1, 'p90_mm': 4.9, 'max_mm': 123.8}} []

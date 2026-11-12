@@ -1,0 +1,353 @@
+{
+ "build": "V1.3-fix.1 (2026-11-11)",
+ "verdict": "CONDITIONAL",
+ "verdict_original_v13": "FAIL",
+ "v13_original": {
+  "zip_sha256": "a173f704fe08eabb8aa49537d086f951f90ff57697e53b796ebe90b5a8467545",
+  "models_identical_to_claude_2026-11-10": true,
+  "load_status": "Error carregant models: Falten ossos del colze Left",
+  "root_cause": "three.js GLTFLoader sanitises node names ('Left humerus' -> 'Left_humerus'); V1.3 looks names up with spaces, so makePivot throws and nothing after it runs",
+  "other_defects": [
+   "bone opacity slider applied to all Écorché muscle layers (whole écorché shown semi-transparent)",
+   "x-axis sign flipped per side: right elbow would hyperextend",
+   "pivot from AABB averages, no penetration check",
+   "arm nerves do not follow the forearm",
+   "signal paths hard-coded points not tied to meshes; voluntary path skips the sense-organ step of p.29",
+   "Three.js from CDN (blocked offline/GPT sandbox)"
+  ]
+ },
+ "elbow": {
+  "method": "epicondyle axis + articular centroid +4 mm (grid search, see calibration_search.json)",
+  "rest_flexion_deg": 13,
+  "runs": [
+   {
+    "side": "Left",
+    "angle_requested": 0,
+    "angle_applied": 13,
+    "measured_flexion_deg": 13.1,
+    "gapMin_mm": 1.02,
+    "gapP10_mm": 4.23,
+    "insideHumerus": 0,
+    "insideTested": 127,
+    "maxPenetration_mm": 0,
+    "fingertip": [
+     0.2761,
+     0.738,
+     0.1073
+    ],
+    "humerusCenter": [
+     0.1905,
+     1.2611,
+     -0.0037
+    ]
+   },
+   {
+    "side": "Left",
+    "angle_requested": 45,
+    "angle_applied": 45,
+    "measured_flexion_deg": 45.1,
+    "gapMin_mm": 1.76,
+    "gapP10_mm": 4.69,
+    "insideHumerus": 0,
+    "insideTested": 128,
+    "maxPenetration_mm": 0,
+    "fingertip": [
+     0.2866,
+     0.8619,
+     0.2929
+    ],
+    "humerusCenter": [
+     0.1905,
+     1.2611,
+     -0.0037
+    ]
+   },
+   {
+    "side": "Left",
+    "angle_requested": 90,
+    "angle_applied": 90,
+    "measured_flexion_deg": 90.1,
+    "gapMin_mm": 1.84,
+    "gapP10_mm": 3.97,
+    "insideHumerus": 0,
+    "insideTested": 129,
+    "maxPenetration_mm": 0,
+    "fingertip": [
+     0.2705,
+     1.1563,
+     0.3895
+    ],
+    "humerusCenter": [
+     0.1905,
+     1.2611,
+     -0.0037
+    ]
+   },
+   {
+    "side": "Left",
+    "angle_requested": 120,
+    "angle_applied": 120,
+    "measured_flexion_deg": 119.6,
+    "gapMin_mm": 0.98,
+    "gapP10_mm": 3.16,
+    "insideHumerus": 0,
+    "insideTested": 130,
+    "maxPenetration_mm": 0,
+    "fingertip": [
+     0.244,
+     1.3528,
+     0.3209
+    ],
+    "humerusCenter": [
+     0.1905,
+     1.2611,
+     -0.0037
+    ]
+   },
+   {
+    "side": "Right",
+    "angle_requested": 0,
+    "angle_applied": 13,
+    "measured_flexion_deg": 13,
+    "gapMin_mm": 1.02,
+    "gapP10_mm": 3.71,
+    "insideHumerus": 0,
+    "insideTested": 129,
+    "maxPenetration_mm": 0,
+    "fingertip": [
+     -0.2762,
+     0.7379,
+     0.1075
+    ],
+    "humerusCenter": [
+     -0.1905,
+     1.2611,
+     -0.0037
+    ]
+   },
+   {
+    "side": "Right",
+    "angle_requested": 45,
+    "angle_applied": 45,
+    "measured_flexion_deg": 45,
+    "gapMin_mm": 1.93,
+    "gapP10_mm": 4.34,
+    "insideHumerus": 0,
+    "insideTested": 129,
+    "maxPenetration_mm": 0,
+    "fingertip": [
+     -0.2887,
+     0.8622,
+     0.293
+    ],
+    "humerusCenter": [
+     -0.1905,
+     1.2611,
+     -0.0037
+    ]
+   },
+   {
+    "side": "Right",
+    "angle_requested": 90,
+    "angle_applied": 90,
+    "measured_flexion_deg": 89.9,
+    "gapMin_mm": 2.35,
+    "gapP10_mm": 4.03,
+    "insideHumerus": 0,
+    "insideTested": 130,
+    "maxPenetration_mm": 0,
+    "fingertip": [
+     -0.2747,
+     1.157,
+     0.3893
+    ],
+    "humerusCenter": [
+     -0.1905,
+     1.2611,
+     -0.0037
+    ]
+   },
+   {
+    "side": "Right",
+    "angle_requested": 120,
+    "angle_applied": 120,
+    "measured_flexion_deg": 119.4,
+    "gapMin_mm": 1.93,
+    "gapP10_mm": 3.52,
+    "insideHumerus": 0,
+    "insideTested": 132,
+    "maxPenetration_mm": 0,
+    "fingertip": [
+     -0.2485,
+     1.3537,
+     0.3205
+    ],
+    "humerusCenter": [
+     -0.1905,
+     1.2611,
+     -0.0037
+    ]
+   }
+  ],
+  "reset_max_vertex_error_mm": {
+   "Left": 0,
+   "Right": 0
+  },
+  "uncalibrated_penetration_mm": {
+   "Left_90": 3.42,
+   "Left_120": 5.6,
+   "Right_90": 4.04,
+   "Right_120": 5.98
+  }
+ },
+ "neural": {
+  "voluntary_sequence": "eye -> optic nerve -> brain (decides) -> spinal cord -> brachial plexus -> musculocutaneous n. -> biceps -> elbow to 90°",
+  "reflex_sequence": "fingertip -> median n. -> spinal cord (turns back) -> musculocutaneous n. -> biceps -> elbow to 80°; then (extra, marked not in textbook) cord -> brain",
+  "path_distance_to_nerve_mesh_mm": {
+   "voluntary": {
+    "points": 37,
+    "median_mm": 2.2,
+    "p90_mm": 7.6,
+    "max_mm": 11.4
+   },
+   "reflex": {
+    "points": 61,
+    "median_mm": 2.1,
+    "p90_mm": 4.9,
+    "max_mm": 123.8
+   }
+  },
+  "note": "fingertip->palm segment has no digital-nerve mesh (max 124 mm)"
+ },
+ "mobile": {
+  "android_393x851": {
+   "wall_load_s": 0.8,
+   "app_load_ms": 329,
+   "touch_rotate_moved_m": 2.659,
+   "pinch_zoom_distance": [
+    4.601,
+    1.15
+   ],
+   "menu_open": true,
+   "nerves_hidden_by_tap": true,
+   "angle_after_tap_90": 90,
+   "angle_after_reset": 13,
+   "reflex_started": {
+    "type": "reflex",
+    "i": 1
+   },
+   "reflex_end_angle": 80,
+   "tap_pick": {
+    "xy": [
+     262,
+     347
+    ],
+    "card": "nervis | Median nerve · esquerra"
+   },
+   "perf_swiftshader": {
+    "version": "V1.3-fix.1 (2026-11-11)",
+    "when": "2026-11-11T11:13:32.469Z",
+    "seconds": 4,
+    "frames": 4,
+    "fps_avg": 0.9,
+    "frame_ms_p50": 1083.3,
+    "frame_ms_p95": 1133.3,
+    "visible_triangles": 510983,
+    "draw_calls": 54,
+    "pixel_ratio": 2,
+    "viewport": [
+     393,
+     851
+    ],
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "ua": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36",
+    "load_ms": 329
+   },
+   "errors": []
+  },
+  "tablet_800x1280": {
+   "wall_load_s": 1.7,
+   "app_load_ms": 333,
+   "touch_rotate_moved_m": 1.311,
+   "pinch_zoom_distance": [
+    3.401,
+    0.85
+   ],
+   "menu_open": false,
+   "nerves_hidden_by_tap": true,
+   "angle_after_tap_90": 90,
+   "angle_after_reset": 13,
+   "reflex_started": {
+    "type": "reflex",
+    "i": 1
+   },
+   "reflex_end_angle": 80,
+   "tap_pick": {
+    "xy": [
+     533,
+     480
+    ],
+    "card": "nervis | Median nerve · esquerra"
+   },
+   "perf_swiftshader": {
+    "version": "V1.3-fix.1 (2026-11-11)",
+    "when": "2026-11-11T11:18:40.733Z",
+    "seconds": 4,
+    "frames": 4,
+    "fps_avg": 0.7,
+    "frame_ms_p50": 1316.6,
+    "frame_ms_p95": 1333.3,
+    "visible_triangles": 510983,
+    "draw_calls": 54,
+    "pixel_ratio": 2,
+    "viewport": [
+     800,
+     1280
+    ],
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "load_ms": 333
+   },
+   "errors": []
+  },
+  "desktop_1280x860": {
+   "wall_load_s": 3.1,
+   "app_load_ms": 294,
+   "perf_swiftshader": {
+    "version": "V1.3-fix.1 (2026-11-11)",
+    "when": "2026-11-11T11:18:58.040Z",
+    "seconds": 4,
+    "frames": 5,
+    "fps_avg": 1.2,
+    "frame_ms_p50": 866.5,
+    "frame_ms_p95": 933.4,
+    "visible_triangles": 503543,
+    "draw_calls": 35,
+    "pixel_ratio": 1,
+    "viewport": [
+     1280,
+     860
+    ],
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "load_ms": 294
+   },
+   "errors": []
+  }
+ },
+ "performance_reproducible": {
+  "draw_calls_before": "719-757 (first build) ",
+  "draw_calls_after": 35,
+  "visible_triangles_before": 694296,
+  "visible_triangles_after": 503543,
+  "note": "Headless SwiftShader (CPU) fps is not representative of phones; real-phone fps NOT measured. Use the in-page 'Mesura 10 s' button on the phone."
+ },
+ "open": [
+  "real Android fps",
+  "teacher/anatomy sign-off of elbow motion",
+  "muscle bulge is schematic",
+  "cortex provenance mesh-by-mesh",
+  "stable GitHub Pages URL needs a new repo",
+  "textbook pp.28-29 wording cross-check against the printed book (transcribed from photos)"
+ ]
+}

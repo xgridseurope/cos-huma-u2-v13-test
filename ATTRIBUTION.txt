@@ -1,0 +1,24 @@
+COS-HUMA · Medi U2 "Ens movem" · V1.3-fix test build (NOT the official site)
+
+3D models
+- models/ecorche.glb(.js): unchanged copy of the model embedded in xgridseurope/cos-huma-ecorche (main 1ca4bc5),
+  sha256 cc43a8b4…b98e. Sources: BodyParts3D (© DBCLS, CC BY-SA 2.1 JP) and Z-Anatomy (CC BY-SA 4.0).
+  Only the skeleton and the biceps/triceps brachii meshes are shown.
+- models/nervous.glb(.js): sha256 aef617f7…9441. Adapted from JMK712/human-anatomy-online @322ba39
+  public/models/nervous.glb (sha256 838f8ab3…bd24), exported from Z-Anatomy "Nervous system & Sense organs"
+  (CC BY-SA 4.0, derived from BodyParts3D CC BY-SA 2.1 JP).
+  Cerebral cortex patches: "Brain for Blender", Anderson M. Winkler (brainder.org), CC BY-SA 3.0 Unported
+  (provenance inferred from Destrieux atlas naming; mesh-by-mesh confirmation still open).
+  Removed: "White matter of telencephalon" (licence not stated) and inner/middle ear (Univ. of Dundee, CC BY-NC-SA 4.0).
+  Changes: 233 of 583 structures kept, simplified with meshoptimizer, world transforms baked, "warp" morph target
+  registering the layer into the Écorché frame (inverse-distance interpolation of 122 matched bones).
+  This adaptation is distributed under CC BY-SA 4.0.
+
+Code
+- app.js / index.html: Claude (Anthropic) for Simon Peng, 2026-11-11, building on GPT "V1.3 Complete" (concept,
+  layer set, Catalan UI strings, ghost overlay idea). Licence of the code: to be decided by the project owner.
+- vendor/: three.js r169 (MIT, see vendor/THREE-LICENSE.txt), meshopt decoder (MIT).
+
+Text
+- Step texts are the wording of the Medi U2 textbook, pp. 27 and 29, quoted for private study use.
+  Step 4 of the reflex demo is an extra explanation and is marked as not being in the textbook.

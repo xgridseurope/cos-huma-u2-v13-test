@@ -1,0 +1,231 @@
+{
+ "runs": [
+  {
+   "side": "Left",
+   "angle_requested": 0,
+   "angle_applied": 13,
+   "restFlex": 13,
+   "gapMin_mm": 1.02,
+   "gapP10_mm": 4.23,
+   "nearCount": 253,
+   "insideHumerus": 0,
+   "insideTested": 127,
+   "maxPenetration_mm": 0,
+   "humerusCenter": [
+    0.1905,
+    1.2611,
+    -0.0037
+   ],
+   "fingertip": [
+    0.2761,
+    0.738,
+    0.1073
+   ],
+   "distalHumerusCenter": [
+    0.2102,
+    1.1252,
+    -0.0107
+   ],
+   "measured_flexion_deg": 13.1
+  },
+  {
+   "side": "Left",
+   "angle_requested": 45,
+   "angle_applied": 45,
+   "restFlex": 13,
+   "gapMin_mm": 1.76,
+   "gapP10_mm": 4.69,
+   "nearCount": 255,
+   "insideHumerus": 0,
+   "insideTested": 128,
+   "maxPenetration_mm": 0,
+   "humerusCenter": [
+    0.1905,
+    1.2611,
+    -0.0037
+   ],
+   "fingertip": [
+    0.2866,
+    0.8619,
+    0.2929
+   ],
+   "distalHumerusCenter": [
+    0.2102,
+    1.1252,
+    -0.0107
+   ],
+   "measured_flexion_deg": 45.1
+  },
+  {
+   "side": "Left",
+   "angle_requested": 90,
+   "angle_applied": 90,
+   "restFlex": 13,
+   "gapMin_mm": 1.84,
+   "gapP10_mm": 3.97,
+   "nearCount": 258,
+   "insideHumerus": 0,
+   "insideTested": 129,
+   "maxPenetration_mm": 0,
+   "humerusCenter": [
+    0.1905,
+    1.2611,
+    -0.0037
+   ],
+   "fingertip": [
+    0.2705,
+    1.1563,
+    0.3895
+   ],
+   "distalHumerusCenter": [
+    0.2102,
+    1.1252,
+    -0.0107
+   ],
+   "measured_flexion_deg": 90.1
+  },
+  {
+   "side": "Left",
+   "angle_requested": 120,
+   "angle_applied": 120,
+   "restFlex": 13,
+   "gapMin_mm": 0.98,
+   "gapP10_mm": 3.16,
+   "nearCount": 260,
+   "insideHumerus": 0,
+   "insideTested": 130,
+   "maxPenetration_mm": 0,
+   "humerusCenter": [
+    0.1905,
+    1.2611,
+    -0.0037
+   ],
+   "fingertip": [
+    0.244,
+    1.3528,
+    0.3209
+   ],
+   "distalHumerusCenter": [
+    0.2102,
+    1.1252,
+    -0.0107
+   ],
+   "measured_flexion_deg": 119.6
+  },
+  {
+   "side": "Right",
+   "angle_requested": 0,
+   "angle_applied": 13,
+   "restFlex": 13,
+   "gapMin_mm": 1.02,
+   "gapP10_mm": 3.71,
+   "nearCount": 257,
+   "insideHumerus": 0,
+   "insideTested": 129,
+   "maxPenetration_mm": 0,
+   "humerusCenter": [
+    -0.1905,
+    1.2611,
+    -0.0037
+   ],
+   "fingertip": [
+    -0.2762,
+    0.7379,
+    0.1075
+   ],
+   "distalHumerusCenter": [
+    -0.2106,
+    1.1252,
+    -0.0108
+   ],
+   "measured_flexion_deg": 13
+  },
+  {
+   "side": "Right",
+   "angle_requested": 45,
+   "angle_applied": 45,
+   "restFlex": 13,
+   "gapMin_mm": 1.93,
+   "gapP10_mm": 4.34,
+   "nearCount": 257,
+   "insideHumerus": 0,
+   "insideTested": 129,
+   "maxPenetration_mm": 0,
+   "humerusCenter": [
+    -0.1905,
+    1.2611,
+    -0.0037
+   ],
+   "fingertip": [
+    -0.2887,
+    0.8622,
+    0.293
+   ],
+   "distalHumerusCenter": [
+    -0.2106,
+    1.1252,
+    -0.0108
+   ],
+   "measured_flexion_deg": 45
+  },
+  {
+   "side": "Right",
+   "angle_requested": 90,
+   "angle_applied": 90,
+   "restFlex": 13,
+   "gapMin_mm": 2.35,
+   "gapP10_mm": 4.03,
+   "nearCount": 260,
+   "insideHumerus": 0,
+   "insideTested": 130,
+   "maxPenetration_mm": 0,
+   "humerusCenter": [
+    -0.1905,
+    1.2611,
+    -0.0037
+   ],
+   "fingertip": [
+    -0.2747,
+    1.157,
+    0.3893
+   ],
+   "distalHumerusCenter": [
+    -0.2106,
+    1.1252,
+    -0.0108
+   ],
+   "measured_flexion_deg": 89.9
+  },
+  {
+   "side": "Right",
+   "angle_requested": 120,
+   "angle_applied": 120,
+   "restFlex": 13,
+   "gapMin_mm": 1.93,
+   "gapP10_mm": 3.52,
+   "nearCount": 264,
+   "insideHumerus": 0,
+   "insideTested": 132,
+   "maxPenetration_mm": 0,
+   "humerusCenter": [
+    -0.1905,
+    1.2611,
+    -0.0037
+   ],
+   "fingertip": [
+    -0.2485,
+    1.3537,
+    0.3205
+   ],
+   "distalHumerusCenter": [
+    -0.2106,
+    1.1252,
+    -0.0108
+   ],
+   "measured_flexion_deg": 119.4
+  }
+ ],
+ "reset_maxdiff_mm_Left": 0,
+ "reset_maxdiff_mm_Right": 0,
+ "errors": []
+}

@@ -1,0 +1,9 @@
+android_393x851 {'wall_load_s': 0.8, 'app_load_ms': 329, 'touch_rotate_moved_m': 2.659, 'pinch_zoom_distance': [4.601, 1.15], 'menu_open': True, 'nerves_hidden_by_tap': True, 'angle_after_tap_90': 90, 'angle_after_reset': 13, 'reflex_started': {'type': 'reflex', 'i': 1}, 'reflex_end_angle': 80, 'tap_pick': {'xy': [262, 347], 'card': 'nervis | Median nerve · esquerra'}, 'errors': []}
+  layout overlaps {'overlap_panel_lesson': False, 'overlap_lesson_card': False, 'overlap_panel_card': False, 'panel_collapsed': True}
+  perf 0.9 1083.3 1133.3 510983 54 ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0
+tablet_800x1280 {'wall_load_s': 1.7, 'app_load_ms': 333, 'touch_rotate_moved_m': 1.311, 'pinch_zoom_distance': [3.401, 0.85], 'menu_open': False, 'nerves_hidden_by_tap': True, 'angle_after_tap_90': 90, 'angle_after_reset': 13, 'reflex_started': {'type': 'reflex', 'i': 1}, 'reflex_end_angle': 80, 'tap_pick': {'xy': [533, 480], 'card': 'nervis | Median nerve · esquerra'}, 'errors': []}
+  layout overlaps {'overlap_panel_lesson': False, 'overlap_lesson_card': False, 'overlap_panel_card': False, 'panel_collapsed': False}
+  perf 0.7 1316.6 1333.3 510983 54 ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0
+desktop_1280x860 {'wall_load_s': 3.1, 'app_load_ms': 294, 'errors': []}
+  layout overlaps {'overlap_panel_lesson': False, 'overlap_lesson_card': False, 'overlap_panel_card': False, 'panel_collapsed': False}
+  perf 1.2 866.5 933.4 503543 35 ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0

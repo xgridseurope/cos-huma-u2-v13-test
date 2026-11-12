@@ -1,0 +1,203 @@
+{
+ "android_393x851": {
+  "wall_load_s": 0.8,
+  "app_load_ms": 329,
+  "layout": {
+   "vw": 393,
+   "vh": 851,
+   "panel": {
+    "x": 10,
+    "y": 30,
+    "w": 373,
+    "h": 56,
+    "vis": true
+   },
+   "lesson": {
+    "x": 43,
+    "y": 700.8125,
+    "w": 340,
+    "h": 80.1875,
+    "vis": true
+   },
+   "card": {
+    "x": 83,
+    "y": 794,
+    "w": 300,
+    "h": 47,
+    "vis": true
+   },
+   "overlap_panel_lesson": false,
+   "overlap_lesson_card": false,
+   "overlap_panel_card": false,
+   "panel_collapsed": true
+  },
+  "touch_rotate_moved_m": 2.659,
+  "pinch_zoom_distance": [
+   4.601,
+   1.15
+  ],
+  "menu_open": true,
+  "nerves_hidden_by_tap": true,
+  "angle_after_tap_90": 90,
+  "angle_after_reset": 13,
+  "reflex_started": {
+   "type": "reflex",
+   "i": 1
+  },
+  "reflex_end_angle": 80,
+  "tap_pick": {
+   "xy": [
+    262,
+    347
+   ],
+   "card": "nervis | Median nerve · esquerra"
+  },
+  "perf_swiftshader": {
+   "version": "V1.3-fix.1 (2026-11-11)",
+   "when": "2026-11-11T11:13:32.469Z",
+   "seconds": 4,
+   "frames": 4,
+   "fps_avg": 0.9,
+   "frame_ms_p50": 1083.3,
+   "frame_ms_p95": 1133.3,
+   "visible_triangles": 510983,
+   "draw_calls": 54,
+   "pixel_ratio": 2,
+   "viewport": [
+    393,
+    851
+   ],
+   "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "ua": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36",
+   "load_ms": 329
+  },
+  "errors": []
+ },
+ "tablet_800x1280": {
+  "wall_load_s": 1.7,
+  "app_load_ms": 333,
+  "layout": {
+   "vw": 800,
+   "vh": 1280,
+   "panel": {
+    "x": 10,
+    "y": 30,
+    "w": 290,
+    "h": 920.9375,
+    "vis": true
+   },
+   "lesson": {
+    "x": 450,
+    "y": 30,
+    "w": 340,
+    "h": 81.1875,
+    "vis": true
+   },
+   "card": {
+    "x": 490,
+    "y": 1219,
+    "w": 300,
+    "h": 51,
+    "vis": true
+   },
+   "overlap_panel_lesson": false,
+   "overlap_lesson_card": false,
+   "overlap_panel_card": false,
+   "panel_collapsed": false
+  },
+  "touch_rotate_moved_m": 1.311,
+  "pinch_zoom_distance": [
+   3.401,
+   0.85
+  ],
+  "menu_open": false,
+  "nerves_hidden_by_tap": true,
+  "angle_after_tap_90": 90,
+  "angle_after_reset": 13,
+  "reflex_started": {
+   "type": "reflex",
+   "i": 1
+  },
+  "reflex_end_angle": 80,
+  "tap_pick": {
+   "xy": [
+    533,
+    480
+   ],
+   "card": "nervis | Median nerve · esquerra"
+  },
+  "perf_swiftshader": {
+   "version": "V1.3-fix.1 (2026-11-11)",
+   "when": "2026-11-11T11:18:40.733Z",
+   "seconds": 4,
+   "frames": 4,
+   "fps_avg": 0.7,
+   "frame_ms_p50": 1316.6,
+   "frame_ms_p95": 1333.3,
+   "visible_triangles": 510983,
+   "draw_calls": 54,
+   "pixel_ratio": 2,
+   "viewport": [
+    800,
+    1280
+   ],
+   "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+   "load_ms": 333
+  },
+  "errors": []
+ },
+ "desktop_1280x860": {
+  "wall_load_s": 3.1,
+  "app_load_ms": 294,
+  "layout": {
+   "vw": 1280,
+   "vh": 860,
+   "panel": {
+    "x": 10,
+    "y": 30,
+    "w": 290,
+    "h": 820,
+    "vis": true
+   },
+   "lesson": {
+    "x": 930,
+    "y": 30,
+    "w": 340,
+    "h": 81.1875,
+    "vis": true
+   },
+   "card": {
+    "x": 970,
+    "y": 799,
+    "w": 300,
+    "h": 51,
+    "vis": true
+   },
+   "overlap_panel_lesson": false,
+   "overlap_lesson_card": false,
+   "overlap_panel_card": false,
+   "panel_collapsed": false
+  },
+  "perf_swiftshader": {
+   "version": "V1.3-fix.1 (2026-11-11)",
+   "when": "2026-11-11T11:18:58.040Z",
+   "seconds": 4,
+   "frames": 5,
+   "fps_avg": 1.2,
+   "frame_ms_p50": 866.5,
+   "frame_ms_p95": 933.4,
+   "visible_triangles": 503543,
+   "draw_calls": 35,
+   "pixel_ratio": 1,
+   "viewport": [
+    1280,
+    860
+   ],
+   "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+   "load_ms": 294
+  },
+  "errors": []
+ }
+}

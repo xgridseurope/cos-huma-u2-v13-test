@@ -1,0 +1,114 @@
+{
+ "voluntary": [
+  {
+   "t": 9.8,
+   "signal": {
+    "type": "voluntary",
+    "i": 0
+   },
+   "angle": 13,
+   "stepText": [
+    "Un òrgan dels sentits capta un estímul i envia la informació al cervell."
+   ]
+  },
+  {
+   "t": 21.0,
+   "signal": {
+    "type": "voluntary",
+    "i": 0
+   },
+   "angle": 13,
+   "stepText": [
+    "El cervell envia ordres a través dels nervis als músculs. Els músculs fan els moviments."
+   ]
+  },
+  {
+   "t": 32.5,
+   "signal": {
+    "type": "voluntary",
+    "i": 2
+   },
+   "angle": 26,
+   "stepText": [
+    "El cervell envia ordres a través dels nervis als músculs. Els músculs fan els moviments."
+   ]
+  },
+  {
+   "t": 43.9,
+   "signal": {
+    "type": "voluntary",
+    "i": 2
+   },
+   "angle": 90,
+   "stepText": [
+    "El cervell envia ordres a través dels nervis als músculs. Els músculs fan els moviments."
+   ]
+  },
+  {
+   "t": 55.1,
+   "signal": null,
+   "angle": 90,
+   "stepText": [
+    "El cervell envia ordres a través dels nervis als músculs. Els músculs fan els moviments."
+   ]
+  }
+ ],
+ "reflex": [
+  {
+   "t": 8.3,
+   "signal": {
+    "type": "reflex",
+    "i": 0
+   },
+   "angle": 13,
+   "stepText": [
+    "La medul·la espinal rep la informació."
+   ]
+  },
+  {
+   "t": 19.0,
+   "signal": {
+    "type": "reflex",
+    "i": 2
+   },
+   "angle": 80,
+   "stepText": [
+    "Explicació addicional (no surt al llibre): Després, la informació també arriba al cervell i notem que la tassa crema."
+   ]
+  },
+  {
+   "t": 30.0,
+   "signal": {
+    "type": "reflex",
+    "i": 3
+   },
+   "angle": 80,
+   "stepText": [
+    "Explicació addicional (no surt al llibre): Després, la informació també arriba al cervell i notem que la tassa crema."
+   ]
+  },
+  {
+   "t": 40.8,
+   "signal": null,
+   "angle": 80,
+   "stepText": [
+    "Explicació addicional (no surt al llibre): Després, la informació també arriba al cervell i notem que la tassa crema."
+   ]
+  }
+ ],
+ "errors": [],
+ "path_check": {
+  "voluntary": {
+   "points": 37,
+   "median_mm": 2.2,
+   "p90_mm": 7.6,
+   "max_mm": 11.4
+  },
+  "reflex": {
+   "points": 61,
+   "median_mm": 2.1,
+   "p90_mm": 4.9,
+   "max_mm": 123.8
+  }
+ }
+}

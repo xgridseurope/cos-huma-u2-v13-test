@@ -1,0 +1,27 @@
+{
+ "status_original": "Error carregant models: Falten ossos del colze Left",
+ "three_runtime_names": [
+  "Left_humerus",
+  "Left_radius",
+  "Left_ulna",
+  "Right_humerus",
+  "Right_radius",
+  "Right_ulna",
+  "Humeral_head_of_left_flexor_carpi_ulnaris",
+  "Humeral_head_of_right_flexor_carpi_ulnaris",
+  "Left_extensor_carpi_ulnaris",
+  "Left_extensor_carpi_ulnaris_(2)",
+  "Right_extensor_carpi_ulnaris",
+  "Right_extensor_carpi_ulnaris_(2)",
+  "Ulnar_head_of_left_flexor_carpi_ulnaris",
+  "Ulnar_head_of_left_pronator_teres",
+  "Ulnar_head_of_right_flexor_carpi_ulnaris",
+  "Ulnar_head_of_right_pronator_teres"
+ ],
+ "button_status": {
+  "voluntary": "Error carregant models: Falten ossos del colze Left",
+  "reflex": "Error carregant models: Falten ossos del colze Left",
+  "qa": "Cal carregar el model abans de fer QA",
+  "inspect": "Model encara no carregat"
+ }
+}

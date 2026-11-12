@@ -1,0 +1,7 @@
+{
+ "schema": "cos-huma-elbow-calibration/1",
+ "created": "2026-11-11",
+ "method": "Axis = medial->lateral epicondyle of the distal humerus; centre = centroid of the lowest 15 mm of the humerus, then offset. Offset chosen by grid search (dy, dz in -6..+6 mm) minimising forearm-into-humerus penetration at 45/90/120 deg while keeping the joint gap close to the rest value. Evidence: qa/calibration_search.json",
+ "Left":  { "center_offset_mm": [0, 4, 0], "axis_tilt_deg": [0, 0, 0] },
+ "Right": { "center_offset_mm": [0, 4, 0], "axis_tilt_deg": [0, 0, 0] }
+}
