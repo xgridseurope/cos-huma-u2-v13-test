@@ -1,7 +1,7 @@
 COS-HUMA · Medi U2 "Ens movem" · V1.3-fix test build (NOT the official site)
 
 3D models
-- models/ecorche.glb(.js): unchanged copy of the model embedded in xgridseurope/cos-huma-ecorche (main 1ca4bc5),
+- models/ecorche.glb(.js): copy of the model embedded in xgridseurope/cos-huma-ecorche (main 1ca4bc5); MODIFIED in V1.4: muscle meshes simplified (meshoptimizer), bones unchanged,
   sha256 cc43a8b4…b98e. Sources: BodyParts3D (© DBCLS, CC BY-SA 2.1 JP) and Z-Anatomy (CC BY-SA 4.0).
   Only the skeleton and the biceps/triceps brachii meshes are shown.
 - models/nervous.glb(.js): sha256 aef617f7…9441. Adapted from JMK712/human-anatomy-online @322ba39

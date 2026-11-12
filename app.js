@@ -6,7 +6,7 @@ import { OrbitControls } from './vendor/OrbitControls.js';
 import { MeshoptDecoder } from './vendor/meshopt_decoder.module.js';
 import { mergeGeometries } from './vendor/BufferGeometryUtils.js';
 
-const VERSION = 'V1.3-fix.4 (2026-11-12)';
+const VERSION = 'V1.4 (2026-11-12)';
 const $ = id => document.getElementById(id);
 // three.js sanitises node names (spaces -> "_", dots removed). V1.3 looked up "Left humerus"
 // and therefore never found any arm bone. Every lookup here uses the normalised name.
@@ -36,15 +36,15 @@ async function loadModel(base) {
   return loader.parseAsync(u.buffer, '');
 }
 
-const COL = { bone: 0xe9e2cf, brain: 0xe48aa0, spinal: 0xf2e6a0, nerves: 0xf2c230, eye: 0x9ec9e8, muscle: 0xc0444f };
-const CA = { bone: 'os', brain: 'cervell', spinal: 'medul·la espinal', nerves: 'nervis', eye: 'ull · òrgan dels sentits', muscle: 'múscul' };
+const COL = { bone: 0xe9e2cf, brain: 0xe48aa0, spinal: 0xf2e6a0, nerves: 0xf2c230, eye: 0x9ec9e8, muscle: 0xc0444f, allMuscle: 0xc0444f };
+const CA = { bone: 'os', brain: 'cervell', spinal: 'medul·la espinal', nerves: 'nervis', eye: 'ull · òrgan dels sentits', muscle: 'múscul', allMuscle: 'múscul' };
 const mats = {};
 for (const k in COL) mats[k] = new THREE.MeshStandardMaterial({ color: COL[k], roughness: .6, metalness: 0, transparent: true, side: THREE.DoubleSide });
 mats.bone.opacity = 1;
 const muscleMat = { biceps: mats.muscle.clone(), triceps: mats.muscle.clone(), brachialis: mats.muscle.clone() };
 const hiMat = new THREE.MeshStandardMaterial({ color: 0x2fd3ff, emissive: 0x1aa6d6, emissiveIntensity: .8, side: THREE.DoubleSide });
 
-const groups = { bone: [], brain: [], spinal: [], nerves: [], eye: [], muscle: [] };
+const groups = { bone: [], brain: [], spinal: [], nerves: [], eye: [], muscle: [], allMuscle: [] };
 const pickables = [];
 let boneRoot, nerveRoot;
 const byName = {};             // normalised name -> mesh (bones + arm muscles)
@@ -61,7 +61,7 @@ boneRoot.traverse(o => {
   const n = norm(o.name), layer = o.userData.layer;
   if (layer === 'skeleton') { o.material = mats.bone; o.userData.g = 'bone'; groups.bone.push(o); pickables.push(o); byName[n] = o; o.renderOrder = 2; }
   else if (ARM_MUSCLE.test(n)) { const k = n.includes('biceps') ? 'biceps' : n.includes('triceps') ? 'triceps' : 'brachialis'; o.material = muscleMat[k]; o.userData.g = 'muscle'; o.userData.muscle = k; groups.muscle.push(o); pickables.push(o); byName[n] = o; o.renderOrder = 3; }
-  else o.visible = false;   // other muscles are not part of this test
+  else { o.material = mats.allMuscle; o.userData.g = 'allMuscle'; groups.allMuscle.push(o); pickables.push(o); o.renderOrder = 3; }   // full musculature (static, shown with the arm at rest)
 });
 
 // Nerve layer: bake the "warp" morph (local registration into the Écorché frame, see ATTRIBUTION)
@@ -223,7 +223,7 @@ function mergeLayer(key, list, mat) {
   pickables.push(merged);
 }
 mergeLayer('bone', groups.bone, mats.bone);
-for (const k of ['brain', 'spinal', 'nerves', 'eye']) mergeLayer(k, groups[k], mats[k]);
+for (const k of ['brain', 'spinal', 'nerves', 'eye', 'allMuscle']) mergeLayer(k, groups[k], mats[k]);
 // each forearm+hand moves as one rigid block, so it can be one draw call too (transform = elbow matrix)
 for (const s of ['Left', 'Right']) {
   const e = elbows[s], geos = [], ranges = []; let tri = 0;
@@ -241,15 +241,46 @@ for (const s of ['Left', 'Right']) {
 }
 const hiOverlay = hiMat.clone(); hiOverlay.polygonOffset = true; hiOverlay.polygonOffsetFactor = -2; hiOverlay.polygonOffsetUnits = -2;
 
+// ---------- helpers for the guided lesson (lesson.js) ----------
+const tickers = [], pickListeners = []; let quietPick = false;
+const allParts = () => [...(orig.bone || []), ...(orig.allMuscle || []), ...groups.muscle, ...(orig.brain || []), ...(orig.spinal || []), ...(orig.nerves || []), ...(orig.eye || [])];
+function find(re, g) { const r = typeof re === 'string' ? new RegExp(re) : re; return allParts().filter(m => (!g || m.userData.g === g) && r.test(norm(m.name))); }
+const hlList = [];
+function highlight(meshes, color = 0x2fd3ff) {
+  const mat = hiOverlay.clone(); mat.color.setHex(color); mat.emissive.setHex(color); mat.emissiveIntensity = .35;
+  for (const m of meshes) { if (m.userData.hl) { m.material = mat; continue; } m.userData.hl = { mat: m.material, vis: m.visible, ro: m.renderOrder }; m.material = mat; m.visible = true; m.renderOrder = 6; hlList.push(m); }
+}
+function clearHighlights() { for (const m of hlList) { const h = m.userData.hl; m.material = h.mat; m.visible = h.vis; m.renderOrder = h.ro; delete m.userData.hl; } hlList.length = 0; if (sel) select(null); }
+function boxOf(meshes) { const b = new THREE.Box3(); for (const m of meshes) { m.updateMatrixWorld(true); if (!m.geometry.boundingBox) m.geometry.computeBoundingBox(); b.union(m.geometry.boundingBox.clone().applyMatrix4(m.matrixWorld)); } return b; }
+let fly = null;
+function flyTo(target, offset, ms = 900) {
+  const t0 = controls.target.clone(), p0 = camera.position.clone(), t1 = target.clone(), p1 = target.clone().add(offset), start = performance.now();
+  if (fly) tickers.splice(tickers.indexOf(fly), 1);
+  fly = now => { const u = Math.min(1, (now - start) / ms), k = u * u * (3 - 2 * u); controls.target.lerpVectors(t0, t1, k); camera.position.lerpVectors(p0, p1, k); if (u >= 1) { tickers.splice(tickers.indexOf(fly), 1); fly = null; } };
+  tickers.push(fly);
+}
+function flyToMeshes(meshes, dir = new THREE.Vector3(0, .1, 1), pad = 2.2, ms) {
+  const b = boxOf(meshes), c = b.getCenter(new THREE.Vector3()), r = Math.max(.06, b.getSize(new THREE.Vector3()).length() / 2);
+  const dist = r * pad / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * (camera.aspect < 1 ? 1 / Math.max(.45, camera.aspect) * .8 : 1);
+  flyTo(c, dir.clone().normalize().multiplyScalar(Math.min(dist, 6)), ms);
+}
+
 // ---------- UI wiring ----------
 let side = 'Left';
-function setLayer(k, on) { groups[k].forEach(o => o.visible = on); const cb = document.querySelector(`[data-layer=${k}]`); if (cb) cb.checked = on; if (k === 'muscle') { for (const s of ['Left', 'Right']) setElbow(s, elbows[s].angle); } }
+function setLayer(k, on) {
+  groups[k].forEach(o => o.visible = on); const cb = document.querySelector(`[data-layer=${k}]`); if (cb) cb.checked = on;
+  if (k === 'allMuscle') { const mc = document.querySelector('[data-layer=muscle]'); groups.muscle.forEach(o => o.visible = on || !!(mc && mc.checked)); }
+  if (k === 'muscle' || k === 'allMuscle') { for (const s of ['Left', 'Right']) setElbow(s, elbows[s].angle); }
+}
+const layerOn = k => groups[k].some(o => o.visible);
 document.querySelectorAll('[data-layer]').forEach(cb => cb.onchange = () => setLayer(cb.dataset.layer, cb.checked));
 function setBoneOpacity(v) { mats.bone.opacity = v / 100; mats.bone.transparent = v < 100; mats.bone.depthWrite = v >= 100; $('ov').textContent = v + '%'; }
 $('opBone').oninput = e => setBoneOpacity(+e.target.value);
 function setSide(s) { side = s; document.querySelectorAll('#sideSeg button').forEach(b => b.classList.toggle('on', b.dataset.s === s)); $('angle').min = elbows[s].restFlex; setAngle(elbows[s].angle); }
 document.querySelectorAll('#sideSeg button').forEach(b => b.onclick = () => setSide(b.dataset.s));
-function setAngle(deg) { const e = elbows[side]; deg = Math.max(e.restFlex, Math.min(140, Math.round(deg))); setElbow(side, deg); $('angle').value = deg; $('angleText').textContent = deg === e.restFlex ? `${deg}° (braç en repòs)` : deg + '°'; }
+function setAngle(deg) { const e = elbows[side]; deg = Math.max(e.restFlex, Math.min(140, Math.round(deg)));
+  // the full musculature is static: when the arm bends, keep only biceps/triceps (which do bend)
+  if (deg > e.restFlex + 2 && layerOn('allMuscle')) { setLayer('allMuscle', false); setLayer('muscle', true); } setElbow(side, deg); $('angle').value = deg; $('angleText').textContent = deg === e.restFlex ? `${deg}° (braç en repòs)` : deg + '°'; }
 $('angle').oninput = e => setAngle(+e.target.value);
 const autoHide = () => { if (innerWidth <= 640) $('panel').classList.add('min'); }; // phone: show the model after a tap
 document.querySelectorAll('[data-a]').forEach(b => b.onclick = () => { stopSignal(); setAngle(b.dataset.a === 'rest' ? elbows[side].restFlex : +b.dataset.a); autoHide(); });
@@ -276,10 +307,10 @@ document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => { VIEWS[b.d
 // picking
 let sel = null;
 function select(o) {
-  if (sel) { sel.material = sel.userData.g === 'muscle' ? muscleMat[sel.userData.muscle] : mats[sel.userData.g]; if (sel.userData.mergedInto) sel.visible = false; }
+  if (sel && !sel.userData.hl) { sel.material = sel.userData.g === 'muscle' ? muscleMat[sel.userData.muscle] : mats[sel.userData.g]; if (sel.userData.mergedInto) sel.visible = false; }
   sel = o;
   if (!o) { $('cName').textContent = 'Toca una estructura'; $('cEn').textContent = '—'; return; }
-  if (o.userData.mergedInto) { o.visible = true; o.material = hiOverlay; } else o.material = hiMat;
+  if (o.userData.hl) { /* keep the lesson highlight */ } else if (o.userData.mergedInto) { o.visible = true; o.material = hiOverlay; } else o.material = hiMat;
   const m = o.name.match(/^(.*?)(l|r)?(\d{3})$/); const pretty = (m && o.userData.g !== 'bone' && o.userData.g !== 'muscle') ? m[1].replace(/_/g, ' ').trim() + (m[2] ? (m[2] === 'l' ? ' · esquerra' : ' · dreta') : '') : o.name.replace(/_/g, ' ');
   $('cName').textContent = CA[o.userData.g]; $('cEn').textContent = pretty;
 }
@@ -292,7 +323,7 @@ function pickAt(x, y) {
   const hit = ray.intersectObjects(vis, false)[0];
   let obj = hit ? hit.object : null;
   if (obj && mergedInfo.has(obj)) { const f = hit.faceIndex, r = mergedInfo.get(obj); obj = (r.find(x => f >= x.start && f < x.end) || {}).mesh || null; }
-  select(obj); return obj ? { name: obj.name, group: obj.userData.g } : null;
+  if (!quietPick) select(obj); pickListeners.forEach(f => f(obj)); return obj ? { name: obj.name, group: obj.userData.g } : null;
 }
 
 // ---------- neural signal demos (textbook p. 29 wording; paths are schematic) ----------
@@ -401,7 +432,7 @@ async function measure(seconds = 10) {
   const ft = frameTimes.slice().sort((a, b) => a - b), n = ft.length; const gl = renderer.getContext(); const dbg = gl.getExtension('WEBGL_debug_renderer_info');
   const res = { version: VERSION, when: new Date().toISOString(), seconds, frames: n, fps_avg: +(n / ((performance.now() - startT) / 1000)).toFixed(1),
     frame_ms_p50: +ft[Math.floor(n * .5)].toFixed(1), frame_ms_p95: +ft[Math.floor(n * .95)].toFixed(1), visible_triangles: visibleTris(), draw_calls: renderer.info.render.calls,
-    pixel_ratio: renderer.getPixelRatio(), viewport: [innerWidth, innerHeight], gpu: dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : 'n/a', ua: navigator.userAgent, load_ms: loadMs };
+    pixel_ratio: renderer.getPixelRatio(), viewport: [innerWidth, innerHeight], gpu: dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : 'n/a', ua: navigator.userAgent, load_ms: loadMs, muscles_on: layerOn('allMuscle') };
   $('perfOut').textContent = JSON.stringify(res, null, 1); return res;
 }
 $('perf').onclick = async () => { $('perfOut').textContent = 'Mesurant 10 s… no toquis la pantalla.'; const pn = $('panel'), wasMin = pn.classList.contains('min'); pn.classList.add('min'); VIEWS.front(); await measure(10); if (!wasMin) pn.classList.remove('min'); $('perfOut').scrollIntoView({ block: 'nearest' }); };
@@ -410,16 +441,17 @@ $('perfCopy').onclick = () => { navigator.clipboard?.writeText($('perfOut').text
 // ---------- loop ----------
 function resize() { const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
 addEventListener('resize', resize); resize();
-renderer.setAnimationLoop(now => { frameTimes.push(now - last); last = now; if (frameTimes.length > 4000) frameTimes.shift(); controls.update(); tickSignal(now); renderer.render(scene, camera); });
+renderer.setAnimationLoop(now => { frameTimes.push(now - last); last = now; if (frameTimes.length > 4000) frameTimes.shift(); for (const f of tickers.slice()) f(now); controls.update(); tickSignal(now); renderer.render(scene, camera); });
 $('load').remove();
 const panel = $('panel'); if (innerWidth <= 640) panel.classList.add('min'); $('tg').onclick = () => panel.classList.toggle('min');
 for (const s of ['Left', 'Right']) setElbow(s, elbows[s].restFlex);
-setLayer('muscle', false); VIEWS.front(); setSide('Left'); updateMuscleText(); setBoneOpacity(+$('opBone').value);
+setLayer('muscle', false); setLayer('allMuscle', false); VIEWS.front(); setSide('Left'); updateMuscleText(); setBoneOpacity(+$('opBone').value);
 $('ver').textContent = VERSION;
 
 // ?perf=1 : phone-friendly automatic measurement (no menu needed)
 if (new URLSearchParams(location.search).has('perf')) {
   panel.classList.add('min'); document.querySelector('.lesson').style.display = 'none';
+  setLayer('allMuscle', true);   // heaviest scene of the lesson (full musculature + skeleton + nervous system)
   const ov = document.createElement('div');
   ov.style.cssText = 'position:fixed;left:10px;right:10px;top:40%;z-index:9;background:#f7f5ef;border-radius:12px;padding:12px 14px;font:14px system-ui;box-shadow:0 4px 18px rgba(0,0,0,.4)';
   ov.innerHTML = '<b>Mesurant el rendiment (10 s)…</b><br>No toquis la pantalla.';
@@ -437,5 +469,6 @@ if (new URLSearchParams(location.search).has('perf')) {
 }
 
 // test hook
-window.__app = { THREE, scene, camera, controls, renderer, elbows, setElbow, setSide, setAngle, setLayer, setBoneOpacity, resetAll, VIEWS, pickAt, startSignal, stopSignal, measure, visibleTris, loadMs, byName, nerveByName, groups, orig, mats, paths,
+window.__app = { resolveHit: h => { if (h && mergedInfo.has(h.object)) { const r = mergedInfo.get(h.object); return (r.find(x => h.faceIndex >= x.start && h.faceIndex < x.end) || {}).mesh || null; } return h ? h.object : null; }, pickables, STEPS, find, highlight, clearHighlights, flyTo, flyToMeshes, boxOf, tickers, pickListeners, layerOn, norm, get side() { return side; }, set quietPick(v) { quietPick = v; }, VERSION, THREE, scene, camera, controls, renderer, elbows, setElbow, setSide, setAngle, setLayer, setBoneOpacity, resetAll, VIEWS, pickAt, startSignal, stopSignal, measure, visibleTris, loadMs, byName, nerveByName, groups, orig, mats, paths,
   get signal() { return sig ? { type: sig.type, i: sig.i } : null }, set timeScale(v) { timeScale = v; } };
+window.dispatchEvent(new Event('app-ready'));

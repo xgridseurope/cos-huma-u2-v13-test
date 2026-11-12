@@ -21,7 +21,7 @@ enable Pages from `main / root`. The `.glb.js` copies can be deleted there to ha
 | index.html | UI (Catalan), layout for phone / tablet / desktop |
 | app.js | scene, elbow kinematics, soft-tissue bend, neural demos, perf probe, test hook `window.__app` |
 | config/elbow-calibration.json | per-side elbow centre offset (+4 mm up), found by penetration search |
-| models/ecorche.glb | Écorché B model, byte-identical to the one in cos-huma-ecorche main 1ca4bc5 |
+| models/ecorche.glb | Écorché B model from cos-huma-ecorche main 1ca4bc5. **V1.4:** muscle meshes simplified to ~50 % triangles (meshoptimizer, `tools/simplify_muscles.mjs`, ratio 0.4, error 0.002) for phone performance; bones unchanged (max vertex deviation 0.03 mm, checked with `tools/cmp_bones.mjs`). Original kept in git history (commit before V1.4). |
 | models/nervous-light.glb | the registered nerve layer of 2026-11-10, re-simplified to 249k triangles (same source, same registration) |
 | ATTRIBUTION.txt | sources and licences |
 | qa/ | screenshots, metrics JSON, logs (see QA_REPORT.md) |

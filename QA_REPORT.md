@@ -101,3 +101,19 @@ All acceptance conditions are met: elbow kinematics (automated + human sign-off)
 PASS applies to this test build only; it is not a merge into the official COS-HUMA site.
 Known limitations (documented, not blocking): biceps/triceps are a labelled schematic; elbow-region nerve/muscle bending is an approximation; digital nerves (fingertip→palm) missing, shown as a straight schematic line; Brainder cortex provenance per mesh to confirm; textbook wording to be checked against the printed book; mid-range Android not yet measured.
 fix.4 (UX only): on phones (≤640 px) the panel auto-collapses after angle, view, reset and demo buttons so the model is visible.
+
+---
+## V1.4 · Guided lesson mode (2026-11-12)
+
+New: a step-by-step lesson for pp. 22–29, before the free-exploration mode. Structure: Ossi (mascot) explains one idea → the textbook sentence (📘, verbatim) → 3D demonstration → the child does something → at the end a summary map, 8 "explain it yourself" cards and a 10-question final challenge. Full content map: `qa/LESSON_COVERAGE.md`.
+
+| Check | Result |
+|---|---|
+| Automated run of all 30 steps, phone 393×851 (touch) | 30/30 completed, 0 JS errors, all 3D taps accepted (`qa/lesson/run-mobile.log`) |
+| Same on desktop 1366×860 (mouse) | 30/30, 0 errors (`qa/lesson/run-desktop.log`) |
+| Textbook coverage pp. 24–29 | all concepts, functions, classifications and processes; 21 bone + 15 muscle labels |
+| Non-book content | always tagged ("Curiositat · no surt al llibre", "Explicació addicional") |
+| Free mode (previous V1.3 tests) | unchanged; reachable from the lesson (✕) and from the start screen |
+
+Model change: muscle meshes simplified ~50 % (730k → 369k triangles) so the full musculature fits phones; bones unchanged (max deviation 0.03 mm). Heaviest lesson scene ≈ 625k triangles. `?perf=1` now measures with all muscles on.
+Open for V1.4: real-phone fps with muscles (?perf=1), child test of the lesson, textbook wording vs printed book ("Ossos plas/plans").
