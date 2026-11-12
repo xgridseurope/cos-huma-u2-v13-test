@@ -1,0 +1,25 @@
+PASS every name has model parts · {'femur': 1, 'rotula': 1, 'tibia': 1, 'perone': 1, 'tars': 7, 'metatars': 5, 'falangesPeu': 14}
+PASS g1-pregunta: no labels/book before answering
+PASS g1-pregunta: prediction not marked wrong
+PASS g1-coneix: introduced one by one, child-paced
+PASS g1-fes: labels visible in guided practice
+PASS g1-fes: guided taps done
+PASS g1-digues#0: name hidden before answer
+PASS g1-digues#0: name shown after answer
+PASS g1-digues#1: name hidden before answer
+PASS g1-digues#1: name shown after answer
+PASS g1-digues: done
+PASS g1-troba#0: no labels, no highlight
+PASS g1-troba: wrong tap → names what was tapped + location hint, no answer highlight · Això és «fèmur». 💡 És l’os petit i rodó del davant del genoll.
+PASS g1-troba#0: tap rotula
+PASS g1-troba#1: no labels, no highlight
+PASS g1-troba#1: tap femur
+PASS g1-troba: done
+PASS g2-coneix: introduced one by one, child-paced
+PASS g2-fes: labels visible in guided practice
+PASS g2-fes: guided taps done
+PASS g2-digues#0: name hidden before answer
+PASS g2-digues#0: name shown after answer
+PASS g2-digues#1: name hidden before answer
+PASS g2-digues#1: name shown after answer
+PASS g2-digues: done

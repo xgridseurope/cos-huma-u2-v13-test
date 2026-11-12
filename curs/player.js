@@ -39,6 +39,8 @@ new ResizeObserver(() => { if (L.style.display !== 'none') viewOffset(true); }).
 // ---------------------------------------------------------------- the lesson's names (structures to locate / say / spell)
 const parts = {};
 for (const [k, n] of Object.entries(CFG.names)) parts[k] = A.find(n.re, n.g);
+// what is highlighted when the name is shown/asked (e.g. ONE rib for «costella»); taps accept the whole set in `parts`
+const showParts = Object.fromEntries(Object.entries(CFG.names).map(([k, n]) => [k, n.show ? A.find(n.show, n.g) : parts[k]]));
 // frame a set of names from a direction; pad = margin around their box
 function frame(keys, dir = [0, .1, 1], pad = 1.25, ms) {
   const ms_ = keys.flatMap(k => parts[k]); const b = A.boxOf(ms_), c = b.getCenter(new T.Vector3()), sz = b.getSize(new T.Vector3());
@@ -50,7 +52,7 @@ const view = name => CFG.views[name](ctx);
 const labelBox = $('labels'), labelList = [];
 function label(text, src) { const el = document.createElement('div'); el.className = 'lbl'; el.textContent = text; labelBox.appendChild(el); labelList.push({ el, src }); }
 function clearLabels() { labelBox.innerHTML = ''; labelList.length = 0; }
-const centerOf = k => () => A.boxOf(parts[k]).getCenter(new T.Vector3());
+const centerOf = k => () => A.boxOf(showParts[k]).getCenter(new T.Vector3());
 function nameLabels(keys) { for (const k of keys) label(CFG.names[k].ca, CFG.names[k].labelAt ? () => CFG.names[k].labelAt(ctx) : centerOf(k)); }
 A.tickers.push(() => {
   if (!labelList.length) return; const r = canvas.getBoundingClientRect(), pos = [];
@@ -119,26 +121,42 @@ function tapTask(el, { q, key, cue, onResult, demo }) {
     }
     wrongs++; rec.wrong++;
     if (wrongs === 1) feedback(el, false, `Això és ${nameOf(h.obj)}. 💡 ${cue}`);
-    else { feedback(el, false, '👀 Mira on és…'); if (demo) await demo(); else { A.highlight([...targets], 0x2fd3ff); label(CFG.names[key].ca, centerOf(key)); await wait(2200); A.clearHighlights(); clearLabels(); } feedback(el, false, 'Ara toca’l tu sol/a.'); }
+    else { feedback(el, false, '👀 Mira on és…'); if (demo) await demo(); else { A.highlight(showParts[key], 0x2fd3ff); label(CFG.names[key].ca, centerOf(key)); await wait(2200); A.clearHighlights(); clearLabels(); } feedback(el, false, 'Ara toca’l tu sol/a.'); }
   };
   canvas.addEventListener('pointerdown', down); canvas.addEventListener('pointerup', up);
   const cleanup = () => { canvas.removeEventListener('pointerdown', down); canvas.removeEventListener('pointerup', up); };
   return cleanup;
 }
 // multiple choice with the same help ladder
-function ladderChoice(el, { q, opts, a, cue, demo, helpText, units }) {
+function ladderChoice(el, { q, opts, a, cue, demo, helpText, units = [], subject, onResult, series }) {
   el.innerHTML = `<div class="q">${esc(q)}</div><div class="opts"></div>`;
-  let wrongs = 0; const o = el.querySelector('.opts');
-  const draw = () => { o.innerHTML = ''; for (const i of shuffle(opts.map((_, i) => i))) { const b = document.createElement('button'); b.className = 'opt'; b.textContent = opts[i]; b.onclick = () => pick(i, b); o.appendChild(b); } };
+  let wrongs = 0; const o = el.querySelector('.opts'); window.__curs && (window.__curs.answer = opts[a]);   // test hook only (not in the page)
+  const draw = () => { if (subject) { hidden(); subject(); } o.innerHTML = ''; for (const i of shuffle(opts.map((_, i) => i))) { const b = document.createElement('button'); b.className = 'opt'; b.textContent = opts[i]; b.onclick = () => pick(i, b); o.appendChild(b); } };
   const pick = async (i, b) => {
     if (el.dataset.done) return;
-    if (i === a) { b.classList.add('right'); el.dataset.done = 1; evid(units, wrongs ? 'ajuda' : 'sol'); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); setNext(true); return; }
+    if (i === a) { b.classList.add('right'); el.dataset.done = 1; const v = wrongs ? 'ajuda' : 'sol'; if (onResult) onResult(v); else evid(units, v); saveRec(); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); if (!onResult && !series) setNext(true); el.dispatchEvent(new Event('done')); return; }
     wrongs++; rec.wrong++; b.classList.add('wrong'); b.disabled = true;
     if (wrongs === 1) feedback(el, false, '💡 Pista: ' + cue);
     else if (helpText) { feedback(el, false, '👀 ' + helpText + ' Després torna-ho a provar.'); o.querySelectorAll('button').forEach(x => x.disabled = true); await wait(2500); draw(); }
     else { feedback(el, false, '👀 Mira-ho una altra vegada…'); o.querySelectorAll('button').forEach(x => x.disabled = true); await demo(); hidden(); feedback(el, false, 'Ara torna-ho a provar tu sol/a.'); draw(); }
   };
   draw();
+}
+// several classification / choice questions in a row (each with its own subject highlight and help ladder)
+function choiceSeries(id, ph, items, { view: v, intro } = {}) {
+  return { id, ph, recall: true, render: async el => {
+    hidden(); if (v) view(v); setNext(false);
+    await sequence(el, items, (box, it) => { ladderChoice(box, { ...it, series: true, q: (intro ? intro + ' ' : '') + it.q }); });
+    hidden(); feedback(el, true, 'Fet! ⭐'); setNext(true);
+  } };
+}
+// teaching stepper: the child advances one card at a time; each card runs its own 3D scene
+function stepper(el, steps, { title, after } = {}) {
+  let i = 0;
+  const show = () => { const st = steps[i]; hidden(); st.scene && st.scene();
+    el.innerHTML = `${title ? `<h2>${esc(title)} · ${i + 1}/${steps.length}</h2>` : ''}${st.html}<button class="opt go" id="nb">${i < steps.length - 1 ? 'Següent ▶' : 'Fet ✔'}</button>`;
+    $('nb').onclick = () => { i++; if (i < steps.length) show(); else { $('nb').remove(); after && after(); setNext(true); } }; };
+  show(); setNext(false);
 }
 // prediction: not scored, never marked right/wrong
 function predict(el, { q, opts, say, zhq, id }) {
@@ -160,7 +178,7 @@ function recall(el, { q, keys, units, zhq, zkey }) {
 }
 // say the name of the highlighted structure (no labels); check after
 function sayName(el, key, { onResult } = {}) {
-  hidden(); A.highlight(parts[key], 0x2fd3ff);
+  hidden(); A.highlight(showParts[key], 0x2fd3ff);
   el.innerHTML = `<div class="q">Com es diu l’os blau? Digues-ho en veu alta.</div>${zh('题目：说出蓝色骨头的名称（说完再核对）。')}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>`;
   $('said').onclick = () => { $('said').remove();
     $('chk').innerHTML = `<div class="spell">${esc(CFG.names[key].ca)}</div><div class="parent"><div class="who">👨‍👩‍👧 Ho ha dit bé? / 说对了吗？</div><div class="row">
@@ -169,7 +187,7 @@ function sayName(el, key, { onResult } = {}) {
 }
 // write on paper; the correct spelling appears only after «Comprova»
 function spell(el, key, { onResult } = {}) {
-  hidden(); A.highlight(parts[key], 0x2fd3ff);
+  hidden(); A.highlight(showParts[key], 0x2fd3ff);
   el.innerHTML = `<div class="q">Escriu en un paper el nom de la part blava. Quan acabis, toca «Comprova».</div>${zh('题目：在纸上写出蓝色部位的名称，写完再核对。只错重音记为「拼写需练」。')}<button class="opt go" id="cmp">✏️ Comprova</button><div id="sp"></div>`;
   $('cmp').onclick = () => { $('cmp').remove();
     $('sp').innerHTML = `<div class="spell">${CFG.names[key].html || esc(CFG.names[key].ca)}</div><div class="parent"><div class="who">👨‍👩‍👧 Compara amb el paper / 对照纸上：</div><div class="row">
@@ -191,7 +209,7 @@ function nameGroupStages(g) {   // g = { id, keys, view, viewAlt, title, predict
     hidden(); view(g.view); let i = 0;
     const show = () => {
       A.clearHighlights(); clearLabels(); const k = g.keys[i];
-      A.highlight(parts[k], 0x2fd3ff); nameLabels([k]);
+      A.highlight(showParts[k], 0x2fd3ff); nameLabels([k]);
       el.innerHTML = `<h2>${esc(g.title)} · ${i + 1}/${g.keys.length}</h2>${g.book ? book(g.book) : ''}<div class="spell">${esc(CFG.names[k].ca)}</div>${aid(CFG.names[k].aid)}${zh(CFG.names[k].zh)}
         <button class="opt go" id="nb">${i < g.keys.length - 1 ? 'Següent os ▶' : 'Tots junts ▶'}</button>`;
       $('nb').onclick = () => { i++; if (i < g.keys.length) show(); else { A.clearHighlights(); clearLabels(); nameLabels(g.keys); el.innerHTML = `<h2>${esc(g.title)}</h2>${ossi('Aquí els tens tots junts. Mira’ls bé abans de continuar.')}`; setNext(true); } };
@@ -287,6 +305,7 @@ function day2() {
       if (it.kind === 'loc') cleanupTap = tapTask(box, { q: `👆 Toca: ${CFG.names[it.key].ca} (sense noms)`, key: it.key, cue: CFG.names[it.key].aid, onResult: v => { rec.day2[it.id] = v; } });
       else if (it.kind === 'say') sayName(box, it.key, { onResult: v => { rec.day2[it.id] = v; } });
       else if (it.kind === 'spell') spell(box, it.key, { onResult: v => { rec.day2[it.id] = v; } });
+      else if (it.kind === 'choice') ladderChoice(box, { ...it, onResult: v => { rec.day2[it.id] = v; } });
     }
   };
   const finish = () => {
@@ -317,7 +336,7 @@ function showApp() { document.body.classList.add('lessonMode'); L.style.display 
 
 // ---------------------------------------------------------------- context handed to lesson configs
 const ctx = { A, T, $, esc, wait, shuffle, parts, frame, view, fitDist, label, clearLabels, nameLabels, centerOf, book, ossi, zh, aid, setNext, feedback, hidden,
-  tapTask, ladderChoice, predict, recall, sayName, spell, sequence, evid, get rec() { return rec; }, saveRec, nameGroupStages, reviewStage, spellStage, resultsStage };
+  showParts, choiceSeries, stepper, tapTask, ladderChoice, predict, recall, sayName, spell, sequence, evid, get rec() { return rec; }, saveRec, nameGroupStages, reviewStage, spellStage, resultsStage };
 S = CFG.stages(ctx);
 
 $('Ltitle').textContent = CFG.title; $('Lsub').textContent = CFG.subtitle;
@@ -325,4 +344,4 @@ $('Lbegin').onclick = () => { $('Lstart').style.display = 'none'; showApp(); rec
 $('Lday2').onclick = () => day2();
 document.body.classList.add('lessonMode'); $('Lstart').style.display = ''; CFG.setup(ctx);
 
-window.__curs = { CFG, get S() { return S; }, get idx() { return idx; }, get rec() { return rec; }, get canNext() { return canNext; }, next() { $('Lnext').click(); }, parts, hitAt, ctx };
+window.__curs = { answer: null, CFG, get S() { return S; }, get idx() { return idx; }, get rec() { return rec; }, get canNext() { return canNext; }, next() { $('Lnext').click(); }, parts, hitAt, ctx };
