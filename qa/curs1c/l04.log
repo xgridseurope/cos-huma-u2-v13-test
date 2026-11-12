@@ -23,3 +23,114 @@ PASS g2-digues#0: name shown after answer
 PASS g2-digues#1: name hidden before answer
 PASS g2-digues#1: name shown after answer
 PASS g2-digues: done
+PASS g2-troba#0: no labels, no highlight
+PASS g2-troba#0: tap tibia
+PASS g2-troba#1: no labels, no highlight
+PASS g2-troba#1: tap perone
+PASS g2-troba: done
+PASS g3-pregunta: no labels/book before answering
+PASS g3-pregunta: prediction not marked wrong
+PASS g3-coneix: introduced one by one, child-paced
+PASS g3-fes: labels visible in guided practice
+PASS g3-fes: guided taps done
+PASS g3-digues#0: name hidden before answer
+PASS g3-digues#0: name shown after answer
+PASS g3-digues#1: name hidden before answer
+PASS g3-digues#1: name shown after answer
+PASS g3-digues#2: name hidden before answer
+PASS g3-digues#2: name shown after answer
+PASS g3-digues: done
+PASS g3-troba#0: no labels, no highlight
+PASS g3-troba#0: tap metatars
+PASS g3-troba#1: no labels, no highlight
+PASS g3-troba#1: tap falangesPeu
+PASS g3-troba#2: no labels, no highlight
+PASS g3-troba#2: tap tars
+PASS g3-troba: done
+PASS repas#0: no labels, no highlight
+PASS repas#0: tap tibia
+PASS repas#1: no labels, no highlight
+PASS repas#1: tap rotula
+PASS repas#2: no labels, no highlight
+PASS repas#2: tap falangesPeu
+PASS repas#3: no labels, no highlight
+PASS repas#3: tap femur
+PASS repas#4: no labels, no highlight
+PASS repas#4: tap tars
+PASS repas#5: no labels, no highlight
+PASS repas#5: tap metatars
+PASS repas#6: no labels, no highlight
+PASS repas#6: tap perone
+PASS repas: done
+PASS P1#0: no answer shown before choosing (zh on) · Com és el fèmur?
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: és l’os de la cuixa, d’una extremitat.
+PASS P1#1: no answer shown before choosing (zh on) · On tenim molts ossos petits, les falanges?
+PASS P1: 2 choice items done
+PASS A2#0: no answer shown before choosing (zh on) · A quina zona hi ha: falanges?
+PASS A2#1: no answer shown before choosing (zh on) · A quina zona hi ha: pelvis?
+PASS A2#2: no answer shown before choosing (zh on) · A quina zona hi ha: crani?
+PASS A2#3: no answer shown before choosing (zh on) · A quina zona hi ha: omòplat?
+PASS A2#4: no answer shown before choosing (zh on) · A quina zona hi ha: peroné?
+PASS A2#5: no answer shown before choosing (zh on) · A quina zona hi ha: maxil·lar?
+PASS A2#6: no answer shown before choosing (zh on) · A quina zona hi ha: estern?
+PASS A2#7: no answer shown before choosing (zh on) · A quina zona hi ha: húmer?
+PASS A2#8: no answer shown before choosing (zh on) · A quina zona hi ha: tars?
+PASS A2#9: no answer shown before choosing (zh on) · A quina zona hi ha: ròtula?
+PASS A2#10: no answer shown before choosing (zh on) · A quina zona hi ha: carp?
+PASS A2: 11 choice items done
+PASS escriu#0: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#1: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#2: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#3: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#4: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#5: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#6: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS reached results
+PASS every name located (groups) · {'rotula': 'ajuda', 'femur': 'sol', 'tibia': 'sol', 'perone': 'sol', 'metatars': 'sol', 'falangesPeu': 'sol', 'tars': 'sol'}
+PASS every name in mixed review · {'tibia': 'sol', 'rotula': 'sol', 'falangesPeu': 'sol', 'femur': 'sol', 'tars': 'sol', 'metatars': 'sol', 'perone': 'sol'}
+PASS every name said · {'femur': 'sol', 'rotula': 'sol', 'perone': 'sol', 'tibia': 'sol', 'falangesPeu': 'sol', 'tars': 'sol', 'metatars': 'sol'}
+PASS units recorded · {'U1': ['ajuda'], 'U2': ['sol'], 'A2': ['sol', 'sol', 'sol', 'sol', 'sol', 'sol', 'sol', 'sol', 'sol', 'sol', 'sol']}
+PASS wrong first tap recorded as "amb ajuda" · {'rotula': 'ajuda', 'femur': 'sol', 'tibia': 'sol', 'perone': 'sol', 'metatars': 'sol', 'falangesPeu': 'sol', 'tars': 'sol'}
+PASS spelling separate: accent-only ≠ failure · {'femur': 'accent', 'rotula': 'ok', 'tibia': 'ok', 'perone': 'ok', 'tars': 'ok', 'metatars': 'ok', 'falangesPeu': 'ok'}
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/19: locate metatars without labels
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/19: locate femur without labels
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/19: locate rotula without labels
+d2 step 3 tickers 1
+PASS day2 Revisió de l’endemà · 4/19: locate tibia without labels
+d2 step 4 tickers 1
+PASS day2 Revisió de l’endemà · 5/19: locate tars without labels
+d2 step 5 tickers 1
+PASS day2 Revisió de l’endemà · 6/19: locate perone without labels
+d2 step 6 tickers 1
+PASS day2 Revisió de l’endemà · 7/19: locate falangesPeu without labels
+d2 step 7 tickers 1
+PASS day2 Revisió de l’endemà · 8/19: answer hidden before child answers · ('visible', 'Digues el nomCom es diu l’os blau? Digues-ho en ve')
+d2 step 8 tickers 1
+PASS day2 Revisió de l’endemà · 9/19: answer hidden before child answers · ('visible', 'Digues el nomCom es diu l’os blau? Digues-ho en ve')
+d2 step 9 tickers 1
+PASS day2 Revisió de l’endemà · 10/19: answer hidden before child answers · ('visible', 'Digues el nomCom es diu l’os blau? Digues-ho en ve')
+d2 step 10 tickers 1
+PASS day2 Revisió de l’endemà · 11/19: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: on tenim molts oss')
+d2 step 11 tickers 1
+PASS day2 Revisió de l’endemà · 12/19: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 25. Tapa els n')
+d2 step 12 tickers 2
+PASS day2 Revisió de l’endemà · 13/19: word hidden before Comprova
+d2 step 13 tickers 1
+PASS day2 Revisió de l’endemà · 14/19: word hidden before Comprova
+d2 step 14 tickers 1
+PASS day2 Revisió de l’endemà · 15/19: word hidden before Comprova
+d2 step 15 tickers 1
+PASS day2 Revisió de l’endemà · 16/19: word hidden before Comprova
+d2 step 16 tickers 1
+PASS day2 Revisió de l’endemà · 17/19: word hidden before Comprova
+d2 step 17 tickers 1
+PASS day2 Revisió de l’endemà · 18/19: word hidden before Comprova
+d2 step 18 tickers 1
+PASS day2 Revisió de l’endemà · 19/19: word hidden before Comprova
+d2 step 19 tickers 1
+PASS day2 finished, one item at a time · 19
+PASS day2 stored separately (day-1 records unchanged) · 19
+PASS no JS errors · []
