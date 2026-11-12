@@ -1,6 +1,6 @@
 # Sample lesson 1A · Bíceps i tríceps (textbook pp. 27–28)
 
-Page: `sample.html` (+ `sample.js`). V1.4 is unchanged at `index.html` (git tag `v1.4`).
+Page: `sample.html` (+ `sample.js`). V1.4 is unchanged at `index.html` (last V1.4 commit c2bd30a; a git tag could not be pushed through the proxy).
 `app.js` gained one optional function (`setMuscleColors`), used only by the sample; V1.4 behaviour is unchanged when it is not called.
 
 ## Flow (child controls the pace, no countdown)
