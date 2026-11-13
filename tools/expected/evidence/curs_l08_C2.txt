@@ -1,0 +1,178 @@
+PASS every name has model parts · {'orbicular': 4, 'masseter': 4, 'ecm': 2, 'trapezi': 6, 'deltoide': 6, 'pectoral': 6, 'abdominal': 2, 'dorsal': 2, 'gluti': 2}
+PASS g1-pregunta: no labels/book before answering
+PASS g1-pregunta: prediction not marked wrong
+PASS g1-coneix: introduced one by one, child-paced
+PASS g1-fes: labels visible in guided practice
+PASS g1-fes: guided taps done
+PASS g1-digues#0: name hidden before answer
+PASS g1-digues#0: name shown after answer
+PASS g1-digues#0: no parent step (self-check)
+PASS g1-digues#1: name hidden before answer
+PASS g1-digues#1: name shown after answer
+PASS g1-digues#1: no parent step (self-check)
+PASS g1-digues: done
+PASS g1-troba#0: no labels, no highlight
+PASS g1-troba: wrong tap → names what was tapped + location hint, no answer highlight · Això és «orbicular de les parpelles». 💡 És el múscul de la galta, damunt de la mandíbula. El notes si estrenys les dents.
+PASS g1-troba#0: tap masseter
+PASS g1-troba#1: no labels, no highlight
+PASS g1-troba#1: tap orbicular
+PASS g1-troba: done
+PASS g2-coneix: introduced one by one, child-paced
+PASS g2-fes: labels visible in guided practice
+PASS g2-fes: guided taps done
+PASS g2-digues#0: name hidden before answer
+PASS g2-digues#0: name shown after answer
+PASS g2-digues#0: no parent step (self-check)
+PASS g2-digues#1: name hidden before answer
+PASS g2-digues#1: name shown after answer
+PASS g2-digues#1: no parent step (self-check)
+PASS g2-digues#2: name hidden before answer
+PASS g2-digues#2: name shown after answer
+PASS g2-digues#2: no parent step (self-check)
+PASS g2-digues: done
+PASS g2-troba#0: no labels, no highlight
+PASS g2-troba#0: tap ecm
+PASS g2-troba#1: no labels, no highlight
+PASS g2-troba#1: tap trapezi
+PASS g2-troba#2: no labels, no highlight
+PASS g2-troba#2: tap deltoide
+PASS g2-troba: done
+PASS g3-pregunta: no labels/book before answering
+PASS g3-pregunta: prediction not marked wrong
+PASS g3-coneix: introduced one by one, child-paced
+PASS g3-fes: labels visible in guided practice
+PASS g3-fes: guided taps done
+PASS g3-digues#0: name hidden before answer
+PASS g3-digues#0: name shown after answer
+PASS g3-digues#0: no parent step (self-check)
+PASS g3-digues#1: name hidden before answer
+PASS g3-digues#1: name shown after answer
+PASS g3-digues#1: no parent step (self-check)
+PASS g3-digues: done
+PASS g3-troba#0: no labels, no highlight
+PASS g3-troba#0: tap abdominal
+PASS g3-troba#1: no labels, no highlight
+PASS g3-troba#1: tap pectoral
+PASS g3-troba: done
+PASS g4-coneix: introduced one by one, child-paced
+PASS g4-fes: labels visible in guided practice
+PASS g4-fes: guided taps done
+PASS g4-digues#0: name hidden before answer
+PASS g4-digues#0: name shown after answer
+PASS g4-digues#0: no parent step (self-check)
+PASS g4-digues#1: name hidden before answer
+PASS g4-digues#1: name shown after answer
+PASS g4-digues#1: no parent step (self-check)
+PASS g4-digues: done
+PASS g4-troba#0: no labels, no highlight
+PASS g4-troba#0: tap dorsal
+PASS g4-troba#1: no labels, no highlight
+PASS g4-troba#1: tap gluti
+PASS g4-troba: done
+PASS repas#0: no labels, no highlight
+PASS repas#0: tap abdominal
+PASS repas#1: no labels, no highlight
+PASS repas#1: tap masseter
+PASS repas#2: no labels, no highlight
+PASS repas#2: tap ecm
+PASS repas#3: no labels, no highlight
+PASS repas#3: tap dorsal
+PASS repas#4: no labels, no highlight
+PASS repas#4: tap deltoide
+PASS repas#5: no labels, no highlight
+PASS repas#5: tap trapezi
+PASS repas#6: no labels, no highlight
+PASS repas#6: tap pectoral
+PASS repas#7: no labels, no highlight
+PASS repas#7: tap orbicular
+PASS repas#8: no labels, no highlight
+PASS repas#8: tap gluti
+PASS repas: done
+PASS R1: recall hidden before answer (zh on)
+PASS R1: back locked
+PASS R1: book answer after speaking
+PASS R1: self-check, no parent step
+PASS R1: done
+PASS P1#0: no answer shown before choosing (zh on) · Quins tipus de músculs hi ha al cap?
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: pensa en l’orbicular de les parpelles: té forma d’anell.
+PASS P1#1: no answer shown before choosing (zh on) · Per a què fem servir els músculs del cap?
+PASS P1#2: no answer shown before choosing (zh on) · Com són els músculs del tronc?
+PASS P1#3: no answer shown before choosing (zh on) · Què NO fan els músculs del tronc, segons el llibre?
+PASS P1: 4 choice items done
+PASS escriu#0: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#1: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#2: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#3: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#4: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#5: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#6: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#7: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#8: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS reached results
+PASS every name located (groups) — except noLoc [] · {'masseter': 'ajuda', 'orbicular': 'sol', 'ecm': 'sol', 'trapezi': 'sol', 'deltoide': 'sol', 'abdominal': 'sol', 'pectoral': 'sol', 'dorsal': 'sol', 'gluti': 's
+PASS every name in mixed review · {'abdominal': 'sol', 'masseter': 'sol', 'ecm': 'sol', 'dorsal': 'sol', 'deltoide': 'sol', 'trapezi': 'sol', 'pectoral': 'sol', 'orbicular': 'sol', 'gluti': 'sol
+PASS every name said (self-checked, recorded as auto-*) · {'masseter': 'auto-ok', 'orbicular': 'auto-ok', 'deltoide': 'auto-ok', 'trapezi': 'auto-ok', 'ecm': 'auto-ok', 'pectoral': 'auto-ok', 'abdominal': 'auto-ok', 'g
+PASS units recorded (question or self-check) · {'U1': ['ajuda', 'sol'], 'U2': ['sol', 'sol']}
+PASS wrong first tap recorded as "amb ajuda" · {'masseter': 'ajuda', 'orbicular': 'sol', 'ecm': 'sol', 'trapezi': 'sol', 'deltoide': 'sol', 'abdominal': 'sol', 'pectoral': 'sol', 'dorsal': 'sol', 'gluti': 's
+INFO units with no in-app question (self-check only): []
+PASS self-check never recorded as an independent right answer
+PASS record carries content version · P24-29·fase1·2026-11-13b
+PASS spelling separate: accent-only ≠ failure · {'orbicular': 'auto-accent', 'masseter': 'auto-ok', 'ecm': 'auto-ok', 'trapezi': 'auto-ok', 'deltoide': 'auto-ok', 'pectoral': 'auto-ok', 'abdominal': 'auto-ok'
+PASS results do not claim mastery
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/8: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: per a què fem serv')
+PASS day2 Revisió de l’endemà · 1/8: child checks herself (no parent step)
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/8: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 27. Tapa els n')
+PASS day2 Revisió de l’endemà · 2/8: child checks herself (no parent step)
+d2 step 2 tickers 2
+PASS day2 Revisió de l’endemà · 3/8: locate orbicular without labels
+d2 step 3 tickers 2
+PASS day2 Revisió de l’endemà · 4/8: locate masseter without labels
+d2 step 4 tickers 2
+PASS day2 Revisió de l’endemà · 5/8: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+PASS day2 Revisió de l’endemà · 5/8: child checks herself (no parent step)
+d2 step 5 tickers 2
+PASS day2 Revisió de l’endemà · 6/8: word hidden before Comprova
+d2 step 6 tickers 2
+PASS day2 Revisió de l’endemà · 7/8: word hidden before Comprova
+d2 step 7 tickers 2
+PASS day2 Revisió de l’endemà · 8/8: locate deltoide without labels
+d2 step 8 tickers 1
+PASS day2: default round has at most 8 items (8 of 23) · 8
+PASS day2 Revisió de l’endemà · 9/23: locate gluti without labels
+d2 step 9 tickers 2
+PASS day2 Revisió de l’endemà · 10/23: locate ecm without labels
+d2 step 10 tickers 2
+PASS day2 Revisió de l’endemà · 11/23: locate pectoral without labels
+d2 step 11 tickers 2
+PASS day2 Revisió de l’endemà · 12/23: locate trapezi without labels
+d2 step 12 tickers 2
+PASS day2 Revisió de l’endemà · 13/23: locate abdominal without labels
+d2 step 13 tickers 2
+PASS day2 Revisió de l’endemà · 14/23: locate dorsal without labels
+d2 step 14 tickers 2
+PASS day2 Revisió de l’endemà · 15/23: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+PASS day2 Revisió de l’endemà · 15/23: child checks herself (no parent step)
+d2 step 15 tickers 2
+PASS day2 Revisió de l’endemà · 16/23: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+PASS day2 Revisió de l’endemà · 16/23: child checks herself (no parent step)
+d2 step 16 tickers 2
+PASS day2 Revisió de l’endemà · 17/23: word hidden before Comprova
+d2 step 17 tickers 2
+PASS day2 Revisió de l’endemà · 18/23: word hidden before Comprova
+d2 step 18 tickers 2
+PASS day2 Revisió de l’endemà · 19/23: word hidden before Comprova
+d2 step 19 tickers 2
+PASS day2 Revisió de l’endemà · 20/23: word hidden before Comprova
+d2 step 20 tickers 2
+PASS day2 Revisió de l’endemà · 21/23: word hidden before Comprova
+d2 step 21 tickers 2
+PASS day2 Revisió de l’endemà · 22/23: word hidden before Comprova
+d2 step 22 tickers 2
+PASS day2 Revisió de l’endemà · 23/23: word hidden before Comprova
+d2 step 23 tickers 1
+PASS day2 finished, one item at a time (default + optional extra) · (23, 23)
+PASS review round stored with date and kind; day-1 records unchanged · (23, {'kind': 'dia', 'n': 1, 'date': '2026-11-13T18:39:01.708Z', 'items': {'oral1': 'auto-ok', 'book': 'auto-ok', 'loc_orbicular': 'sol', 'loc_masseter': 'sol',
+PASS no JS errors · []
+152 PASS · 0 FAIL

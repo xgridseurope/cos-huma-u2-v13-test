@@ -11,6 +11,8 @@ CASES = [  # lesson, name key, mesh to tap, expected outcome, camera direction
  ('l02', 'maxillar', 'Left maxilla', 'neutral', [1, .05, .4]),
  ('l08', 'abdominal', 'Left rectus abdominis', 'right', [0, .05, 1]),
  ('l08', 'abdominal', 'Left external oblique', 'neutral', [.6, .05, 1]),
+ # C2 (11-13): the visible surface is another named part (brain) with a nerve < 2 cm behind it → wrong for «nervis»
+ ('l11', 'nervis', '@cervell', 'wrong', 'cos'),
 ]
 log = []
 def chk(n, c, i=''): log.append(('PASS ' if c else 'FAIL ') + n + ('' if c or i == '' else ' · ' + str(i)[:200])); print(log[-1], flush=True)
@@ -22,6 +24,23 @@ with sync_playwright() as p:
         pg.goto(f'http://127.0.0.1:8772/curs.html?l={L}'); pg.wait_for_function('window.__curs', timeout=300000); time.sleep(1)
         pg.click('#Lbegin'); time.sleep(1)
         for (l, key, mesh, want, d) in [c for c in CASES if c[0] == L]:
+            if mesh.startswith('@'):   # sibling-part case: lesson view, point where the first surface is that part and a target lies within 2 cm behind
+                sib = mesh[1:]
+                pg.evaluate("""([key,v])=>{const c=__curs.ctx; c.hidden(); c.view(v); const el=document.querySelector('#Lbody'); el.removeAttribute('data-done'); el.innerHTML='';
+                  window.__res=null; window.__cl&&window.__cl(); window.__cl=c.tapTask(el,{q:'probe',key,cue:'cue',onResult:v=>{window.__res=v}});}""", [key, d])
+                time.sleep(4)
+                pts = pg.evaluate("""([key,sib])=>{const A=__app,T=A.THREE,r=A.renderer.domElement.getBoundingClientRect(),S=new Set(__curs.parts[sib]),G=new Set(__curs.parts[key]),rc=new T.Raycaster(),nd=new T.Vector2();
+                  const b=A.boxOf(__curs.parts[sib]);let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+                  for(const cx of [b.min.x,b.max.x])for(const cy of [b.min.y,b.max.y])for(const cz of [b.min.z,b.max.z]){const v=new T.Vector3(cx,cy,cz).project(A.camera);const sx=(v.x+1)/2*r.width+r.left,sy=(1-v.y)/2*r.height+r.top;x0=Math.min(x0,sx);x1=Math.max(x1,sx);y0=Math.min(y0,sy);y1=Math.max(y1,sy)}
+                  for(let i=0;i<=24;i++)for(let j=0;j<=24;j++){const x=x0+(x1-x0)*i/24,y=y0+(y1-y0)*j/24;nd.set((x-r.left)/r.width*2-1,-(y-r.top)/r.height*2+1);rc.setFromCamera(nd,A.camera);
+                    const hs=rc.intersectObjects(A.pickables.filter(o=>o.visible),false);if(!hs.length||!S.has(A.resolveHit(hs[0])))continue;
+                    if(hs.some(h=>h.distance<=hs[0].distance+.02&&G.has(A.resolveHit(h))))return [[x,y]]}return []}""", [key, sib])
+                if not pts: chk(f'{L}.{key}: tap «{sib}» (target < 2 cm behind) → {want}', False, 'no such point in this view'); continue
+                pg.touchscreen.tap(pts[0][0], pts[0][1]); time.sleep(1.2)
+                fb = pg.evaluate("(document.querySelector('#Lbody .fb')||{}).className||''"); txt = pg.evaluate("(document.querySelector('#Lbody .fb')||{}).textContent||''")
+                got = 'right' if pg.evaluate('window.__res') else ('neutral' if 'info' in fb else ('wrong' if 'no' in fb else 'none'))
+                pg.screenshot(path=f'{OUT}{L}-{key}-{sib}.png')
+                chk(f'{L}.{key}: tap «{sib}» (target < 2 cm behind) → {want}', got == want and sib in txt, f'got {got} · {txt}'); continue
             pg.evaluate("""([key,mesh,d])=>{const c=__curs.ctx,A=c.A,T=c.T; c.hidden(); const el=document.querySelector('#Lbody'); el.removeAttribute('data-done'); el.innerHTML='';
               const m=A.find(new RegExp('^'+mesh.toLowerCase()+'$')); window.__pm=m; const bx=A.boxOf(m),ctr=bx.getCenter(new T.Vector3()),sz=bx.getSize(new T.Vector3());
               A.flyTo(ctr,new T.Vector3(...d).normalize().multiplyScalar(c.fitDist(Math.max(sz.y,.08)*1.4,Math.max(sz.x,sz.z,.08)*1.4)),1);
@@ -38,7 +57,8 @@ with sync_playwright() as p:
             pg.screenshot(path=f'{OUT}{L}-{key}-{mesh.replace(" ", "_")}.png')
             extra = (want != 'wrong' or 'disk' not in mesh.lower() or 'disc' in txt)
             chk(f'{L}.{key}: tap «{mesh}» → {want}', got == want and extra, f'got {got} · {txt}')
-        rec = pg.evaluate('__curs.rec'); chk(f'{L}: neutral taps counted apart, not as wrong', all(v >= 1 for v in (rec.get('neutral') or {}).values()) and bool(rec.get('neutral')), rec.get('neutral'))
+        rec = pg.evaluate('__curs.rec')
+        if any(c[0] == L and c[3] == 'neutral' for c in CASES): chk(f'{L}: neutral taps counted apart, not as wrong', all(v >= 1 for v in (rec.get('neutral') or {}).values()) and bool(rec.get('neutral')), rec.get('neutral'))
         chk(f'{L}: no JS errors', not errs, errs)
     b.close()
 fails = [l for l in log if l.startswith('FAIL')]

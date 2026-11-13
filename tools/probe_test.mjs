@@ -53,6 +53,15 @@ async function run(dir, quiet) {
     chk(`${id}: no Chinese paraphrase labelled 课本原句`, !src.includes('课本原句'));
     chk(`${id}: no unverified «teacher says» claim`, !/teacher (uses|says)|老师(这么)?说|la mestra diu/.test(src)); }
   // 4. F08 wording
+  // 6. every textbook name (register.json, textbook side) keeps a writing exercise (user 11-13: 39 names still covered)
+  const REG = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/textbook/register.json'), 'utf8'));
+  const spellKeys = {}; for (const [lid, m] of Object.entries(L)) { const src = fs.readFileSync(path.join(dir, lid + '.js'), 'utf8'); const ks = new Set();
+    for (const a of src.matchAll(/spellStage\((\[[^\]]*\]|\w+)\)/g)) { let arr = a[1];
+      if (!arr.startsWith('[')) { const d = src.slice(0, a.index).match(new RegExp('\\b' + arr + ' = (\\[[^\\]]*\\])', 'g')); arr = d ? d[d.length - 1].replace(/^\w+ = /, '') : '[]'; }
+      for (const k of arr.matchAll(/'(\w+)'/g)) ks.add(k[1]); }
+    spellKeys[lid] = ks; }
+  const tbNames = REG.names; chk('register: 39 textbook names', tbNames.length === 39, tbNames.length);
+  for (const n of tbNames) chk(`writing exercise for «${n.name}» (${n.segment})`, n.lesson_slots.some(sl => { const [lid, k] = sl.split('.'); return spellKeys[lid] && spellKeys[lid].has(k); }), n.lesson_slots);
   chk('l06: no «No es trenca mai»', !fs.readFileSync(path.join(dir, 'l06.js'), 'utf8').includes('No es trenca mai'));
   const fails = log.filter(l => l.startsWith('FAIL'));
   if (!quiet) { log.forEach(l => console.log(l)); console.log(`\n${log.length - fails.length} PASS · ${fails.length} FAIL`); }
@@ -65,6 +74,7 @@ if (process.argv.includes('--selftest')) {
     ['l08.js', null, null, 'F16 abdominal scores external oblique', s => s.replace(/(abdominal: \{[^}]*?re: )\/[^/]*\//, '$1/rectus abdominis|external oblique/')],
     ['l02.js', null, null, 'D1 maxil·lar scores the upper jaw', s => s.replace(/(maxillar: \{[^}]*?re: )\/[^/]*\//, '$1/^mandible$|maxilla$/')],
     ['l05.js', null, null, 'F15 rearranged sentence labelled lit', s => s.replace(/(immobils: \{[^}]*?tx: ')[^']*/, "$1Articulacions immòbils: com les del crani, els ossos estan tan units que semblen només un.")],
+    ['l09.js', null, null, 'R16 a name loses its writing exercise', s => s.replace('c.spellStage(N)', "c.spellStage(N.filter(k => k !== 'besso'))")],
     ['l06.js', null, null, 'F08 «No es trenca mai» back', s => s.replace('Es pot encongir i estirar sense trencar-se.', 'No es trenca mai!')],
   ];
   if (await run(path.join(ROOT, 'curs'), true)) { console.log('SELFTEST ABORT: the clean tree already fails'); process.exit(1); }

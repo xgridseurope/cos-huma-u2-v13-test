@@ -1,0 +1,14 @@
+PASS l02.vertebra: tap «Third lumbar vertebra» → right
+PASS l02.vertebra: tap «Intervertebral disk of third lumbar vertebra» → wrong
+PASS l02.maxillar: tap «Mandible» → right
+PASS l02.maxillar: tap «Left maxilla» → neutral
+PASS l02: neutral taps counted apart, not as wrong
+PASS l02: no JS errors
+PASS l08.abdominal: tap «Left rectus abdominis» → right
+PASS l08.abdominal: tap «Left external oblique» → neutral
+PASS l08: neutral taps counted apart, not as wrong
+PASS l08: no JS errors
+PASS l11.nervis: tap «cervell» (target < 2 cm behind) → wrong
+PASS l11: no JS errors
+
+12 PASS · 0 FAIL

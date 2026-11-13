@@ -1,0 +1,16 @@
+# curs_test.py regression, 393x851 touch emulation, software rendering (SwiftShader), Chinese gloss on. 2026-11-13.
+# After the C2 picking fix (final player.js): the 8 lessons with tap scoring.
+l11 exit=0 secs=699 pass=92 fail=0
+l02 exit=0 secs=914 pass=144 fail=0
+l03 exit=0 secs=449 pass=99 fail=0
+l04 exit=0 secs=442 pass=132 fail=0
+l07 exit=0 secs=800 pass=57 fail=0
+l08 exit=0 secs=2528 pass=152 fail=0
+l09 exit=0 secs=1657 pass=114 fail=0
+l10 exit=0 secs=375 pass=47 fail=0
+# Before the C2 fix: lessons with no tap scoring (the fix only changes hitAt, called only by tapTask; l01 also re-run through b_scenarios after the fix, 24/0).
+l01 exit=0 secs=331 pass=56 fail=0
+l05 exit=0 secs=258 pass=44 fail=0
+l06 exit=0 secs=829 pass=51 fail=0
+l12 exit=0 secs=625 pass=48 fail=0
+# Superseded pre-fix run of l11 (found the defect): l11 exit=1 pass=90 fail=2 (g1-troba wrong tap on the brain scored as nervis)

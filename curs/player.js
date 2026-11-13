@@ -120,6 +120,9 @@ function hitAt(x, y, targets) {
   // a part listed in CFG.partHints (e.g. an intervertebral disc) is a wrong answer in its own right: never let the
   // depth tolerance or the small-target box turn a tap on it into a hit on the neighbouring target (F03)
   if ((CFG.partHints || []).some(h => h.re.test(A.norm(obj.name)))) return { obj, ok: false, hard: true };
+  // the visible surface is ANOTHER named structure of this lesson (e.g. the brain while looking for the nerves): that is a
+  // wrong answer. The 2 cm depth allowance and the small-target box are only for unnamed overlapping meshes (fix 11-13, C2)
+  if (!targets.has(obj) && Object.values(parts).some(ps => ps.includes(obj))) return { obj, ok: false, hard: true };
   for (const h of hits) { if (h.distance > first.distance + .02) break; if (targets.has(A.resolveHit(h))) return { obj: A.resolveHit(h), ok: true }; }
   return { obj, ok: false };
 }

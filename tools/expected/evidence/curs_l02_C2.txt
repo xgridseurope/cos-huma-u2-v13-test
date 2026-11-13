@@ -1,0 +1,168 @@
+PASS every name has model parts · {'crani': 8, 'maxillar': 1, 'columna': 47, 'vertebra': 24, 'costella': 24, 'estern': 3, 'omoplat': 2, 'pelvis': 2}
+PASS g1-pregunta: no labels/book before answering
+PASS g1-pregunta: prediction not marked wrong
+PASS g1-coneix: introduced one by one, child-paced
+PASS g1-fes: labels visible in guided practice
+PASS g1-fes: guided taps done
+PASS g1-digues#0: name hidden before answer
+PASS g1-digues#0: name shown after answer
+PASS g1-digues#0: no parent step (self-check)
+PASS g1-digues#1: name hidden before answer
+PASS g1-digues#1: name shown after answer
+PASS g1-digues#1: no parent step (self-check)
+PASS g1-digues: done
+PASS g1-troba#0: no labels, no highlight
+PASS g1-troba: wrong tap → names what was tapped + location hint, no answer highlight · Això és «maxil·lar». 💡 És la part de dalt i del darrere del cap.
+PASS g1-troba#0: tap crani
+PASS g1-troba#1: no labels, no highlight
+PASS g1-troba#1: tap maxillar
+PASS g1-troba: done
+PASS g1-maxil: stepper 2 cards, child-paced
+PASS g2-coneix: introduced one by one, child-paced
+PASS g2-fes: labels visible in guided practice
+PASS g2-fes: guided taps done
+PASS g2-digues#0: name hidden before answer
+PASS g2-digues#0: name shown after answer
+PASS g2-digues#0: no parent step (self-check)
+PASS g2-digues#1: name hidden before answer
+PASS g2-digues#1: name shown after answer
+PASS g2-digues#1: no parent step (self-check)
+PASS g2-digues: done
+PASS g2-troba#0: no labels, no highlight
+PASS g2-troba#0: tap vertebra
+PASS g2-troba#1: no labels, no highlight
+PASS g2-troba#1: tap columna
+PASS g2-troba: done
+PASS g3-pregunta: no labels/book before answering
+PASS g3-pregunta: prediction not marked wrong
+PASS g3-coneix: introduced one by one, child-paced
+PASS g3-fes: labels visible in guided practice
+PASS g3-fes: guided taps done
+PASS g3-digues#0: name hidden before answer
+PASS g3-digues#0: name shown after answer
+PASS g3-digues#0: no parent step (self-check)
+PASS g3-digues#1: name hidden before answer
+PASS g3-digues#1: name shown after answer
+PASS g3-digues#1: no parent step (self-check)
+PASS g3-digues: done
+PASS g3-troba#0: no labels, no highlight
+PASS g3-troba#0: tap estern
+PASS g3-troba#1: no labels, no highlight
+PASS g3-troba#1: tap costella
+PASS g3-troba: done
+PASS g4-coneix: introduced one by one, child-paced
+PASS g4-fes: labels visible in guided practice
+PASS g4-fes: guided taps done
+PASS g4-digues#0: name hidden before answer
+PASS g4-digues#0: name shown after answer
+PASS g4-digues#0: no parent step (self-check)
+PASS g4-digues#1: name hidden before answer
+PASS g4-digues#1: name shown after answer
+PASS g4-digues#1: no parent step (self-check)
+PASS g4-digues: done
+PASS g4-troba#0: no labels, no highlight
+PASS g4-troba#0: tap omoplat
+PASS g4-troba#1: no labels, no highlight
+PASS g4-troba#1: tap pelvis
+PASS g4-troba: done
+PASS repas#0: no labels, no highlight
+PASS repas#0: tap maxillar
+PASS repas#1: no labels, no highlight
+PASS repas#1: tap costella
+PASS repas#2: no labels, no highlight
+PASS repas#2: tap columna
+PASS repas#3: no labels, no highlight
+PASS repas#3: tap crani
+PASS repas#4: no labels, no highlight
+PASS repas#4: tap estern
+PASS repas#5: no labels, no highlight
+PASS repas#5: tap pelvis
+PASS repas#6: no labels, no highlight
+PASS repas#6: tap vertebra
+PASS repas#7: no labels, no highlight
+PASS repas#7: tap omoplat
+PASS repas: done
+PASS R1: recall hidden before answer (zh on)
+PASS R1: back locked
+PASS R1: book answer after speaking
+PASS R1: self-check, no parent step
+PASS R1: done
+PASS P1#0: no answer shown before choosing (zh on) · Què hi ha al cap, a més dels ossos del crani?
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: el crani és només una part del cap; a la cara també hi ha ossos.
+PASS P1#1: no answer shown before choosing (zh on) · Com són els ossos del crani?
+PASS P1#2: no answer shown before choosing (zh on) · De què està formada la columna vertebral?
+PASS P1#3: no answer shown before choosing (zh on) · A quins ossos s’uneixen les costelles?
+PASS P1#4: no answer shown before choosing (zh on) · Què protegeixen la columna, les costelles i l’estern?
+PASS P1: 5 choice items done
+PASS escriu#0: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#1: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#2: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#3: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#4: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#5: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#6: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#7: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS reached results
+PASS every name located (groups) — except noLoc [] · {'crani': 'ajuda', 'maxillar': 'sol', 'vertebra': 'sol', 'columna': 'sol', 'estern': 'sol', 'costella': 'sol', 'omoplat': 'sol', 'pelvis': 'sol'}
+PASS every name in mixed review · {'maxillar': 'sol', 'costella': 'sol', 'columna': 'sol', 'crani': 'sol', 'estern': 'sol', 'pelvis': 'sol', 'vertebra': 'sol', 'omoplat': 'sol'}
+PASS every name said (self-checked, recorded as auto-*) · {'maxillar': 'auto-ok', 'crani': 'auto-ok', 'columna': 'auto-ok', 'vertebra': 'auto-ok', 'costella': 'auto-ok', 'estern': 'auto-ok', 'omoplat': 'auto-ok', 'pelv
+PASS units recorded (question or self-check) · {'U1': ['ajuda'], 'U2': ['sol'], 'U3': ['sol'], 'U4': ['sol'], 'U5': ['sol']}
+PASS wrong first tap recorded as "amb ajuda" · {'crani': 'ajuda', 'maxillar': 'sol', 'vertebra': 'sol', 'columna': 'sol', 'estern': 'sol', 'costella': 'sol', 'omoplat': 'sol', 'pelvis': 'sol'}
+INFO units with no in-app question (self-check only): []
+PASS self-check never recorded as an independent right answer
+PASS record carries content version · P24-29·fase1·2026-11-13b
+PASS spelling separate: accent-only ≠ failure · {'crani': 'auto-accent', 'maxillar': 'auto-ok', 'columna': 'auto-ok', 'vertebra': 'auto-ok', 'costella': 'auto-ok', 'estern': 'auto-ok', 'omoplat': 'auto-ok', '
+PASS results do not claim mastery
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/8: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: què protegeix el c')
+PASS day2 Revisió de l’endemà · 1/8: child checks herself (no parent step)
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/8: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 25. Tapa els n')
+PASS day2 Revisió de l’endemà · 2/8: child checks herself (no parent step)
+d2 step 2 tickers 2
+PASS day2 Revisió de l’endemà · 3/8: locate crani without labels
+d2 step 3 tickers 2
+PASS day2 Revisió de l’endemà · 4/8: word hidden before Comprova
+d2 step 4 tickers 2
+PASS day2 Revisió de l’endemà · 5/8: locate omoplat without labels
+d2 step 5 tickers 2
+PASS day2 Revisió de l’endemà · 6/8: locate costella without labels
+d2 step 6 tickers 2
+PASS day2 Revisió de l’endemà · 7/8: locate pelvis without labels
+d2 step 7 tickers 2
+PASS day2 Revisió de l’endemà · 8/8: locate maxillar without labels
+d2 step 8 tickers 1
+PASS day2: default round has at most 8 items (8 of 21) · 8
+PASS day2 Revisió de l’endemà · 9/21: locate vertebra without labels
+d2 step 9 tickers 2
+PASS day2 Revisió de l’endemà · 10/21: locate estern without labels
+d2 step 10 tickers 2
+PASS day2 Revisió de l’endemà · 11/21: locate columna without labels
+d2 step 11 tickers 2
+PASS day2 Revisió de l’endemà · 12/21: answer hidden before child answers · ('visible', 'Digues el nomCom es diu l’os blau? Digues-ho en ve')
+PASS day2 Revisió de l’endemà · 12/21: child checks herself (no parent step)
+d2 step 12 tickers 2
+PASS day2 Revisió de l’endemà · 13/21: answer hidden before child answers · ('visible', 'Digues el nomCom es diu l’os blau? Digues-ho en ve')
+PASS day2 Revisió de l’endemà · 13/21: child checks herself (no parent step)
+d2 step 13 tickers 2
+PASS day2 Revisió de l’endemà · 14/21: answer hidden before child answers · ('visible', 'Digues el nomCom es diu l’os blau? Digues-ho en ve')
+PASS day2 Revisió de l’endemà · 14/21: child checks herself (no parent step)
+d2 step 14 tickers 2
+PASS day2 Revisió de l’endemà · 15/21: word hidden before Comprova
+d2 step 15 tickers 2
+PASS day2 Revisió de l’endemà · 16/21: word hidden before Comprova
+d2 step 16 tickers 2
+PASS day2 Revisió de l’endemà · 17/21: word hidden before Comprova
+d2 step 17 tickers 2
+PASS day2 Revisió de l’endemà · 18/21: word hidden before Comprova
+d2 step 18 tickers 2
+PASS day2 Revisió de l’endemà · 19/21: word hidden before Comprova
+d2 step 19 tickers 2
+PASS day2 Revisió de l’endemà · 20/21: word hidden before Comprova
+d2 step 20 tickers 2
+PASS day2 Revisió de l’endemà · 21/21: word hidden before Comprova
+d2 step 21 tickers 1
+PASS day2 finished, one item at a time (default + optional extra) · (21, 21)
+PASS review round stored with date and kind; day-1 records unchanged · (21, {'kind': 'dia', 'n': 1, 'date': '2026-11-13T17:34:40.173Z', 'items': {'oral1': 'auto-ok', 'book': 'auto-ok', 'loc_crani': 'sol', 'spell_crani': 'auto-ok', 
+PASS no JS errors · []
+144 PASS · 0 FAIL

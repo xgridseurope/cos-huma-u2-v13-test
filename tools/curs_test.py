@@ -100,8 +100,11 @@ with sync_playwright() as p:
                     Lr=pg.locator('#L').bounding_box(); pts=[pt for pt in tap_pts(other) if 32<pt[1]<Lr['y']]
                     pg.touchscreen.tap(*pts[0]); time.sleep(.5)
                     fb=pg.locator('#Lbody .fb').last.inner_text() if pg.locator('#Lbody .fb').count() else ''
+                    if 'Això és' not in fb: pg.screenshot(path=f'{OUT}FAIL-{s}-wrongtap.png'); print('diag', json.dumps({'pt': pts[0], 'other': other, 'hit': pg.evaluate("([x,y])=>{const h=__curs.hitAt(x,y,new Set());return h.obj&&h.obj.name}", pts[0]), 'overlay': pg.evaluate("(([x,y])=>{const e=document.elementFromPoint(x,y);return e&&(e.id||e.className||e.tagName)})", pts[0])}), flush=True)
                     chk(f'{s}: wrong tap → names what was tapped + location hint, no answer highlight', 'Això és' in fb and labels()==0, fb); wrong_done=(k,)
-                ok=tap(k); chk(f'{s}#{i}: tap {k}', ok); time.sleep(1)
+                ok=tap(k)
+                if not ok: pg.screenshot(path=f'{OUT}FAIL-{s}-{i}-tap.png')
+                chk(f'{s}#{i}: tap {k}', ok); time.sleep(1)
             chk(f'{s}: done', can()); nxt(); continue
         if s=='escriu':
             for i in range(len(NAMES)):

@@ -1,0 +1,53 @@
+PASS every name has model parts · {}
+PASS pregunta: no labels/book before answering
+PASS pregunta: prediction not marked wrong
+PASS mobils: stepper 4 cards, child-paced
+PASS R1: recall hidden before answer (zh on)
+PASS R1: back locked
+PASS R1: book answer after speaking
+PASS R1: self-check, no parent step
+PASS R1: done
+PASS R2: recall hidden before answer (zh on)
+PASS R2: back locked
+PASS R2: book answer after speaking
+PASS R2: self-check, no parent step
+PASS R2: done
+PASS P1#0: no answer shown before choosing (zh on) · L’articulació entre aquests ossos marcats és…
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: doblega el teu genoll: es mou?
+PASS P1#1: no answer shown before choosing (zh on) · Les articulacions entre aquests ossos marcats són…
+PASS P1#2: no answer shown before choosing (zh on) · L’articulació entre aquests ossos marcats és…
+PASS P1#3: no answer shown before choosing (zh on) · Les articulacions entre aquests ossos marcats són…
+PASS P1: 4 choice items done
+PASS P2#0: no answer shown before choosing (zh on) · Com s’uneixen entre si els ossos de l’esquelet?
+PASS P2#1: no answer shown before choosing (zh on) · Què uneix els ossos a les articulacions mòbils?
+PASS P2#2: no answer shown before choosing (zh on) · Quina d’aquestes articulacions és immòbil?
+PASS P2#3: no answer shown before choosing (zh on) · Quan girem el cap, què es mou?
+PASS P2: 4 choice items done
+PASS reached results
+PASS units recorded (question or self-check) · {'U1': ['sol'], 'U2': ['sol', 'sol'], 'U3': ['ajuda', 'sol', 'sol', 'sol'], 'U4': ['sol']}
+PASS choice help recorded as amb ajuda · {'U1': ['sol'], 'U2': ['sol', 'sol'], 'U3': ['ajuda', 'sol', 'sol', 'sol'], 'U4': ['sol']}
+INFO units with no in-app question (self-check only): []
+PASS self-check never recorded as an independent right answer
+PASS record carries content version · P24-29·fase1·2026-11-13b
+PASS results do not claim mastery
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/6: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: com s’uneixen entr')
+PASS day2 Revisió de l’endemà · 1/6: child checks herself (no parent step)
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/6: answer hidden before child answers · ('hidden', 'Explica-hoDigues tres articulacions mòbils i una d')
+PASS day2 Revisió de l’endemà · 2/6: child checks herself (no parent step)
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/6: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 24 i busca l’a')
+PASS day2 Revisió de l’endemà · 3/6: child checks herself (no parent step)
+d2 step 3 tickers 2
+PASS day2 Revisió de l’endemà · 4/6: choice, no answer shown
+d2 step 4 tickers 2
+PASS day2 Revisió de l’endemà · 5/6: choice, no answer shown
+d2 step 5 tickers 1
+PASS day2 Revisió de l’endemà · 6/6: choice, no answer shown
+d2 step 6 tickers 1
+PASS day2: default round has at most 8 items (6 of 6) · 6
+PASS day2 finished, one item at a time (default + optional extra) · (6, 6)
+PASS review round stored with date and kind; day-1 records unchanged · (6, {'kind': 'dia', 'n': 1, 'date': '2026-11-13T14:28:52.141Z', 'items': {'oral1': 'auto-ok', 'oral2': 'auto-ok', 'book': 'auto-ok', 'mob_genoll': 'sol', 'mob_c
+PASS no JS errors · []
+44 PASS · 0 FAIL

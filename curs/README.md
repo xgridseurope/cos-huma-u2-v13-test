@@ -28,6 +28,9 @@ are history: where they conflict with this section, this section wins. Each rule
    rule below (both jaws / pending verification / teacher quote).
 8. **abdominal** (2026-11-13 · D2, evidence P27-15/P27-16). Scored = rectus abdominis; external oblique neutral with explanation.
 9. **Intervertebral discs** (F03). Not vertebrae, not short bones: a tap on a disc is wrong and named «un disc … (no és un os)».
+   Same family (2026-11-13, found in the gate-C regression): when the visible surface under the finger is **another named
+   part of the lesson** (e.g. the brain while looking for the nerves), the tap is wrong. The 2 cm depth allowance and the
+   small-target box only apply to unnamed overlapping meshes. Probe: `tools/geo_probe.py` case `l11.nervis / @cervell`.
 10. **P25 Observa** (D4, F14). All six bones appear; omòplat, maxil·lar and falanges are observed and discussed, never scored.
 11. **View buttons** (F09). 🎯 reset · 🔄 turn round · ＋/－ zoom · A+ text size, 44 px. Page zoom stays off (it fights the 3D gestures).
 12. **Tests** (F04). `tools/probe_test.mjs` (scoring + literal labels vs `tools/expected/answer_key.json` and `tools/textbook`,

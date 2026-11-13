@@ -1,0 +1,134 @@
+PASS every name has model parts · {'biceps': 4, 'triceps': 6, 'quadriceps': 8, 'bicepsFem': 4, 'tibial': 2, 'besso': 4}
+PASS g1-pregunta: no labels/book before answering
+PASS g1-pregunta: prediction not marked wrong
+PASS g1-coneix: introduced one by one, child-paced
+PASS g1-fes: labels visible in guided practice
+PASS g1-fes: guided taps done
+PASS g1-digues#0: name hidden before answer
+PASS g1-digues#0: name shown after answer
+PASS g1-digues#0: no parent step (self-check)
+PASS g1-digues#1: name hidden before answer
+PASS g1-digues#1: name shown after answer
+PASS g1-digues#1: no parent step (self-check)
+PASS g1-digues: done
+PASS g1-troba#0: no labels, no highlight
+PASS g1-troba: wrong tap → names what was tapped + location hint, no answer highlight · Això és un altre múscul. 💡 És el múscul de davant del braç, entre l’espatlla i el colze.
+PASS g1-troba#0: tap biceps
+PASS g1-troba#1: no labels, no highlight
+PASS g1-troba#1: tap triceps
+PASS g1-troba: done
+PASS g2-coneix: introduced one by one, child-paced
+PASS g2-fes: labels visible in guided practice
+PASS g2-fes: guided taps done
+PASS g2-digues#0: name hidden before answer
+PASS g2-digues#0: name shown after answer
+PASS g2-digues#0: no parent step (self-check)
+PASS g2-digues#1: name hidden before answer
+PASS g2-digues#1: name shown after answer
+PASS g2-digues#1: no parent step (self-check)
+PASS g2-digues: done
+PASS g2-troba#0: no labels, no highlight
+PASS g2-troba#0: tap quadriceps
+PASS g2-troba#1: no labels, no highlight
+PASS g2-troba#1: tap bicepsFem
+PASS g2-troba: done
+PASS g3-coneix: introduced one by one, child-paced
+PASS g3-fes: labels visible in guided practice
+PASS g3-fes: guided taps done
+PASS g3-digues#0: name hidden before answer
+PASS g3-digues#0: name shown after answer
+PASS g3-digues#0: no parent step (self-check)
+PASS g3-digues#1: name hidden before answer
+PASS g3-digues#1: name shown after answer
+PASS g3-digues#1: no parent step (self-check)
+PASS g3-digues: done
+PASS g3-troba#0: no labels, no highlight
+PASS g3-troba#0: tap tibial
+PASS g3-troba#1: no labels, no highlight
+PASS g3-troba#1: tap besso
+PASS g3-troba: done
+PASS repas#0: no labels, no highlight
+PASS repas#0: tap triceps
+PASS repas#1: no labels, no highlight
+PASS repas#1: tap bicepsFem
+PASS repas#2: no labels, no highlight
+PASS repas#2: tap besso
+PASS repas#3: no labels, no highlight
+PASS repas#3: tap quadriceps
+PASS repas#4: no labels, no highlight
+PASS repas#4: tap tibial
+PASS repas#5: no labels, no highlight
+PASS repas#5: tap biceps
+PASS repas: done
+PASS R1: recall hidden before answer (zh on)
+PASS R1: back locked
+PASS R1: book answer after speaking
+PASS R1: self-check, no parent step
+PASS R1: done
+PASS R2: recall hidden before answer (zh on)
+PASS R2: back locked
+PASS R2: book answer after speaking
+PASS R2: self-check, no parent step
+PASS R2: done
+PASS escriu#0: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#1: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#2: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#3: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#4: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#5: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS reached results
+PASS every name located (groups) — except noLoc [] · {'biceps': 'ajuda', 'triceps': 'sol', 'quadriceps': 'sol', 'bicepsFem': 'sol', 'tibial': 'sol', 'besso': 'sol'}
+PASS every name in mixed review · {'triceps': 'sol', 'bicepsFem': 'sol', 'besso': 'sol', 'quadriceps': 'sol', 'tibial': 'sol', 'biceps': 'sol'}
+PASS every name said (self-checked, recorded as auto-*) · {'triceps': 'auto-ok', 'biceps': 'auto-ok', 'quadriceps': 'auto-ok', 'bicepsFem': 'auto-ok', 'besso': 'auto-ok', 'tibial': 'auto-ok'}
+PASS units recorded (question or self-check) · {'U1': [], 'A3': []}
+PASS wrong first tap recorded as "amb ajuda" · {'biceps': 'ajuda', 'triceps': 'sol', 'quadriceps': 'sol', 'bicepsFem': 'sol', 'tibial': 'sol', 'besso': 'sol'}
+INFO units with no in-app question (self-check only): ['U1', 'A3']
+PASS self-check never recorded as an independent right answer
+PASS record carries content version · P24-29·fase1·2026-11-13b
+PASS spelling separate: accent-only ≠ failure · {'biceps': 'auto-accent', 'triceps': 'auto-ok', 'quadriceps': 'auto-ok', 'bicepsFem': 'auto-ok', 'tibial': 'auto-ok', 'besso': 'auto-ok'}
+PASS results do not claim mastery
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/8: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: com són molts músc')
+PASS day2 Revisió de l’endemà · 1/8: child checks herself (no parent step)
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/8: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 27. Tapa els n')
+PASS day2 Revisió de l’endemà · 2/8: child checks herself (no parent step)
+d2 step 2 tickers 2
+PASS day2 Revisió de l’endemà · 3/8: locate biceps without labels
+d2 step 3 tickers 2
+PASS day2 Revisió de l’endemà · 4/8: word hidden before Comprova
+d2 step 4 tickers 2
+PASS day2 Revisió de l’endemà · 5/8: locate quadriceps without labels
+d2 step 5 tickers 2
+PASS day2 Revisió de l’endemà · 6/8: locate besso without labels
+d2 step 6 tickers 2
+PASS day2 Revisió de l’endemà · 7/8: locate bicepsFem without labels
+d2 step 7 tickers 2
+PASS day2 Revisió de l’endemà · 8/8: locate tibial without labels
+d2 step 8 tickers 1
+PASS day2: default round has at most 8 items (8 of 17) · 8
+PASS day2 Revisió de l’endemà · 9/17: locate triceps without labels
+d2 step 9 tickers 2
+PASS day2 Revisió de l’endemà · 10/17: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+PASS day2 Revisió de l’endemà · 10/17: child checks herself (no parent step)
+d2 step 10 tickers 2
+PASS day2 Revisió de l’endemà · 11/17: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+PASS day2 Revisió de l’endemà · 11/17: child checks herself (no parent step)
+d2 step 11 tickers 2
+PASS day2 Revisió de l’endemà · 12/17: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+PASS day2 Revisió de l’endemà · 12/17: child checks herself (no parent step)
+d2 step 12 tickers 2
+PASS day2 Revisió de l’endemà · 13/17: word hidden before Comprova
+d2 step 13 tickers 2
+PASS day2 Revisió de l’endemà · 14/17: word hidden before Comprova
+d2 step 14 tickers 2
+PASS day2 Revisió de l’endemà · 15/17: word hidden before Comprova
+d2 step 15 tickers 2
+PASS day2 Revisió de l’endemà · 16/17: word hidden before Comprova
+d2 step 16 tickers 2
+PASS day2 Revisió de l’endemà · 17/17: word hidden before Comprova
+d2 step 17 tickers 1
+PASS day2 finished, one item at a time (default + optional extra) · (17, 17)
+PASS review round stored with date and kind; day-1 records unchanged · (17, {'kind': 'dia', 'n': 1, 'date': '2026-11-13T19:09:26.319Z', 'items': {'oral1': 'auto-ok', 'book': 'auto-ok', 'loc_biceps': 'sol', 'spell_biceps': 'auto-ok'
+PASS no JS errors · []
+114 PASS · 0 FAIL

@@ -1,0 +1,3 @@
+# Counter-example: geo_probe with the C2 sibling-part picking rule disabled (if (false && ...)). Expected: FAIL.
+FAIL l11.nervis: tap «cervell» (target < 2 cm behind) → wrong · got right · Molt bé! ⭐
+PASS l11: no JS errors
