@@ -1,0 +1,51 @@
+PASS every name has model parts · {'orbicular': 4, 'masseter': 4, 'ecm': 2, 'trapezi': 6, 'deltoide': 6, 'pectoral': 6, 'abdominal': 4, 'dorsal': 2, 'gluti': 2}
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/23: locate pectoral without labels
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/23: locate deltoide without labels
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/23: locate orbicular without labels
+d2 step 3 tickers 1
+PASS day2 Revisió de l’endemà · 4/23: locate masseter without labels
+d2 step 4 tickers 1
+PASS day2 Revisió de l’endemà · 5/23: locate gluti without labels
+d2 step 5 tickers 1
+PASS day2 Revisió de l’endemà · 6/23: locate trapezi without labels
+d2 step 6 tickers 1
+PASS day2 Revisió de l’endemà · 7/23: locate dorsal without labels
+d2 step 7 tickers 1
+PASS day2 Revisió de l’endemà · 8/23: locate abdominal without labels
+d2 step 8 tickers 1
+PASS day2 Revisió de l’endemà · 9/23: locate ecm without labels
+d2 step 9 tickers 1
+PASS day2 Revisió de l’endemà · 10/23: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+d2 step 10 tickers 1
+PASS day2 Revisió de l’endemà · 11/23: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+d2 step 11 tickers 1
+PASS day2 Revisió de l’endemà · 12/23: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+d2 step 12 tickers 1
+PASS day2 Revisió de l’endemà · 13/23: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: per a què fem serv')
+d2 step 13 tickers 1
+PASS day2 Revisió de l’endemà · 14/23: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 27. Tapa els n')
+d2 step 14 tickers 2
+PASS day2 Revisió de l’endemà · 15/23: word hidden before Comprova
+d2 step 15 tickers 1
+PASS day2 Revisió de l’endemà · 16/23: word hidden before Comprova
+d2 step 16 tickers 1
+PASS day2 Revisió de l’endemà · 17/23: word hidden before Comprova
+d2 step 17 tickers 1
+PASS day2 Revisió de l’endemà · 18/23: word hidden before Comprova
+d2 step 18 tickers 1
+PASS day2 Revisió de l’endemà · 19/23: word hidden before Comprova
+d2 step 19 tickers 1
+PASS day2 Revisió de l’endemà · 20/23: word hidden before Comprova
+d2 step 20 tickers 1
+PASS day2 Revisió de l’endemà · 21/23: word hidden before Comprova
+d2 step 21 tickers 1
+PASS day2 Revisió de l’endemà · 22/23: word hidden before Comprova
+d2 step 22 tickers 1
+PASS day2 Revisió de l’endemà · 23/23: word hidden before Comprova
+d2 step 23 tickers 1
+PASS day2 finished, one item at a time · 23
+PASS day2 stored separately (day-1 records unchanged) · 23
+PASS no JS errors · []

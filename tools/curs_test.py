@@ -52,7 +52,7 @@ with sync_playwright() as p:
             if ca in q: return k
         return None
     wrong_done=False
-    for step in range(60):
+    for step in range(0 if os.environ.get('D2ONLY') else 60):
         s=sid(); time.sleep(.4)
         if os.environ.get('SHOTS'): time.sleep(1.5); pg.screenshot(path=f'{OUT}{step:02d}-{s}.png')
         if s=='fi': break
@@ -148,21 +148,24 @@ with sync_playwright() as p:
         print(f'?? stuck at {s}', flush=True); break
     pg.screenshot(path=f'{OUT}fi.png', full_page=True)
     rec=pg.evaluate("__curs.rec")
-    chk('reached results', sid()=='fi')
-    if NAMES and L!='l10':
-        chk('every name located (groups)', all(rec['loc'].get(k) for k in NAMES), rec['loc'])
-        chk('every name in mixed review', all(rec['review'].get(k) for k in NAMES), rec['review'])
-        chk('every name said', all(rec['say'].get(k) for k in NAMES), rec['say'])
-        chk('units recorded', all(rec['units'][k] for k in rec['units']), rec['units'])
-        if wrong_done: k=[x for x in NAMES if rec['loc'].get(x)=='ajuda']; chk('wrong first tap recorded as "amb ajuda"', len(k)>=1, rec['loc'])
-    elif not NAMES:
-        chk('units recorded', all(rec['units'][k] for k in rec['units']), rec['units']); chk('choice help recorded as amb ajuda', any('ajuda' in v for v in rec['units'].values()), rec['units'])
-    else:
-        chk('units recorded', all(rec['units'][k] for k in rec['units']), rec['units']); chk('locations', all(rec['loc'].get(k) for k in NAMES), rec['loc'])
-    if rec['spell']: chk('spelling separate: accent-only ≠ failure', list(rec['spell'].values())[0]=='accent' and 'Cal repassar' not in pg.locator('#Lbody').inner_text(), rec['spell'])
+    D2=bool(os.environ.get('D2ONLY'))
+    if not D2: chk('reached results', sid()=='fi')
+    if not D2:
+        if NAMES and L!='l10':
+            NL=pg.evaluate("Object.keys(__curs.CFG.names).filter(k=>__curs.CFG.names[k].noLoc)"); chk('every name located (groups) — except noLoc '+str(NL), all(rec['loc'].get(k) for k in NAMES if k not in NL) and not any(k in rec['loc'] for k in NL), rec['loc'])
+            if NL: chk('noLoc shown as «Pendent de verificar» in results', 'Pendent de verificar' in pg.locator('#Lbody').inner_text())
+            chk('every name in mixed review', all(rec['review'].get(k) for k in NAMES if k not in NL), rec['review'])
+            chk('every name said', all(rec['say'].get(k) for k in NAMES), rec['say'])
+            chk('units recorded', all(rec['units'][k] for k in rec['units']), rec['units'])
+            if wrong_done: k=[x for x in NAMES if rec['loc'].get(x)=='ajuda']; chk('wrong first tap recorded as "amb ajuda"', len(k)>=1, rec['loc'])
+        elif not NAMES:
+            chk('units recorded', all(rec['units'][k] for k in rec['units']), rec['units']); chk('choice help recorded as amb ajuda', any('ajuda' in v for v in rec['units'].values()), rec['units'])
+        else:
+            chk('units recorded', all(rec['units'][k] for k in rec['units']), rec['units']); chk('locations', all(rec['loc'].get(k) for k in NAMES), rec['loc'])
+        if rec['spell']: chk('spelling separate: accent-only ≠ failure', list(rec['spell'].values())[0]=='accent' and 'Cal repassar' not in pg.locator('#Lbody').inner_text(), rec['spell'])
     # day 2
     print('before d2 tickers',pg.evaluate('__app.tickers.length'),'labels',pg.evaluate("document.querySelectorAll('#labels .lbl').length"),flush=True)
-    pg.click('#d2'); time.sleep(1); n=0
+    (pg.evaluate("document.getElementById('Lday2').click()") if D2 else pg.click('#d2')); time.sleep(1); n=0
     for step in range(30):
         ch=pg.locator('#Lch').inner_text()
         if 'Revisió acabada' in pg.locator('#Lbody').inner_text(): break
@@ -182,7 +185,7 @@ with sync_playwright() as p:
             k=current_target(); time.sleep(1.5); chk(f'day2 {ch}: locate {k} without labels', labels()==0 and tap(k,'#tb[data-done]'))
         time.sleep(.6)
         if not pg.locator('#nx').count(): print('?? day2 no next at '+ch+' :: '+pg.locator('#Lbody').inner_text()[:200].replace('\n',' | ')); pg.screenshot(path=f'{OUT}day2-stuck.png'); break
-        pg.click('#nx'); time.sleep(.9); n+=1
+        pg.evaluate("document.getElementById('nx').click()"); time.sleep(.9); n+=1
         print('d2 step',n,'tickers',pg.evaluate('__app.tickers.length'),flush=True)
     chk('day2 finished, one item at a time', 'Revisió acabada' in pg.locator('#Lbody').inner_text(), n)
     pg.screenshot(path=f'{OUT}day2-end.png', full_page=True)

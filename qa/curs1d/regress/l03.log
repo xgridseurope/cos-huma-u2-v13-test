@@ -1,0 +1,102 @@
+PASS every name has model parts · {'humer': 1, 'cubit': 1, 'radi': 1, 'carp': 7, 'metacarp': 5, 'falanges': 14}
+PASS g1-pregunta: no labels/book before answering
+PASS g1-pregunta: prediction not marked wrong
+PASS g1-coneix: introduced one by one, child-paced
+PASS g1-fes: labels visible in guided practice
+PASS g1-fes: guided taps done
+PASS g1-digues#0: name hidden before answer
+PASS g1-digues#0: name shown after answer
+PASS g1-digues#1: name hidden before answer
+PASS g1-digues#1: name shown after answer
+PASS g1-digues#2: name hidden before answer
+PASS g1-digues#2: name shown after answer
+PASS g1-digues: done
+PASS g1-troba#0: no labels, no highlight
+PASS g1-troba: wrong tap → names what was tapped + location hint, no answer highlight · Això és «húmer». 💡 És l’altre os entre el colze i el canell, al costat del dit gros.
+PASS g1-troba#0: tap radi
+PASS g1-troba#1: no labels, no highlight
+PASS g1-troba#1: tap humer
+PASS g1-troba#2: no labels, no highlight
+PASS g1-troba#2: tap cubit
+PASS g1-troba: done
+PASS g2-pregunta: no labels/book before answering
+PASS g2-pregunta: prediction not marked wrong
+PASS g2-coneix: introduced one by one, child-paced
+PASS g2-fes: labels visible in guided practice
+PASS g2-fes: guided taps done
+PASS g2-digues#0: name hidden before answer
+PASS g2-digues#0: name shown after answer
+PASS g2-digues#1: name hidden before answer
+PASS g2-digues#1: name shown after answer
+PASS g2-digues#2: name hidden before answer
+PASS g2-digues#2: name shown after answer
+PASS g2-digues: done
+PASS g2-troba#0: no labels, no highlight
+PASS g2-troba#0: tap metacarp
+PASS g2-troba#1: no labels, no highlight
+PASS g2-troba#1: tap falanges
+PASS g2-troba#2: no labels, no highlight
+PASS g2-troba#2: tap carp
+PASS g2-troba: done
+PASS repas#0: no labels, no highlight
+PASS repas#0: tap metacarp
+PASS repas#1: no labels, no highlight
+PASS repas#1: tap falanges
+PASS repas#2: no labels, no highlight
+PASS repas#2: tap radi
+PASS repas#3: no labels, no highlight
+PASS repas#3: tap humer
+PASS repas#4: no labels, no highlight
+PASS repas#4: tap carp
+PASS repas#5: no labels, no highlight
+PASS repas#5: tap cubit
+PASS repas: done
+PASS escriu#0: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#1: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#2: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#3: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#4: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#5: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS reached results
+PASS every name located (groups) · {'radi': 'ajuda', 'humer': 'sol', 'cubit': 'sol', 'metacarp': 'sol', 'falanges': 'sol', 'carp': 'sol'}
+PASS every name in mixed review · {'metacarp': 'sol', 'falanges': 'sol', 'radi': 'sol', 'humer': 'sol', 'carp': 'sol', 'cubit': 'sol'}
+PASS every name said · {'cubit': 'sol', 'humer': 'sol', 'radi': 'sol', 'falanges': 'sol', 'carp': 'sol', 'metacarp': 'sol'}
+PASS units recorded · {}
+PASS wrong first tap recorded as "amb ajuda" · {'radi': 'ajuda', 'humer': 'sol', 'cubit': 'sol', 'metacarp': 'sol', 'falanges': 'sol', 'carp': 'sol'}
+PASS spelling separate: accent-only ≠ failure · {'humer': 'accent', 'cubit': 'ok', 'radi': 'ok', 'carp': 'ok', 'metacarp': 'ok', 'falanges': 'ok'}
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/16: locate falanges without labels
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/16: locate carp without labels
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/16: locate humer without labels
+d2 step 3 tickers 1
+PASS day2 Revisió de l’endemà · 4/16: locate cubit without labels
+d2 step 4 tickers 1
+PASS day2 Revisió de l’endemà · 5/16: locate radi without labels
+d2 step 5 tickers 1
+PASS day2 Revisió de l’endemà · 6/16: locate metacarp without labels
+d2 step 6 tickers 1
+PASS day2 Revisió de l’endemà · 7/16: answer hidden before child answers · ('visible', 'Digues el nomCom es diu l’os blau? Digues-ho en ve')
+d2 step 7 tickers 1
+PASS day2 Revisió de l’endemà · 8/16: answer hidden before child answers · ('visible', 'Digues el nomCom es diu l’os blau? Digues-ho en ve')
+d2 step 8 tickers 1
+PASS day2 Revisió de l’endemà · 9/16: answer hidden before child answers · ('visible', 'Digues el nomCom es diu l’os blau? Digues-ho en ve')
+d2 step 9 tickers 1
+PASS day2 Revisió de l’endemà · 10/16: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 25. Tapa els n')
+d2 step 10 tickers 2
+PASS day2 Revisió de l’endemà · 11/16: word hidden before Comprova
+d2 step 11 tickers 1
+PASS day2 Revisió de l’endemà · 12/16: word hidden before Comprova
+d2 step 12 tickers 1
+PASS day2 Revisió de l’endemà · 13/16: word hidden before Comprova
+d2 step 13 tickers 1
+PASS day2 Revisió de l’endemà · 14/16: word hidden before Comprova
+d2 step 14 tickers 1
+PASS day2 Revisió de l’endemà · 15/16: word hidden before Comprova
+d2 step 15 tickers 1
+PASS day2 Revisió de l’endemà · 16/16: word hidden before Comprova
+d2 step 16 tickers 1
+PASS day2 finished, one item at a time · 16
+PASS day2 stored separately (day-1 records unchanged) · 16
+PASS no JS errors · []

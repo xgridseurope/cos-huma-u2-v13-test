@@ -2,7 +2,7 @@
 // Bíceps and tríceps: only name and place here; how they work as a pair is lesson 10 (not repeated).
 // Activity 3 of p. 27 («Explica quines característiques…») has no answer in the book: answer built from the p. 26 text, marked as such.
 const M = 'allMuscle';
-const face = (k, front) => c => { const b = c.A.boxOf(c.showParts[k]), m = b.getCenter(new c.T.Vector3()); m.z = front ? b.max.z : b.min.z; return m; };   // label on the front / back face
+const face = (k, front) => c => { const b = c.A.boxOf(c.showParts[k]), m = b.getCenter(new c.T.Vector3()); m.z = b.min.z + (b.max.z - b.min.z) * (front ? .7 : .3); return m; };   // label towards the front / back face
 const fs = (c, keys, dir, pad) => {
   const ms = keys.flatMap(k => c.showParts[k]), b = c.A.boxOf(ms), m = b.getCenter(new c.T.Vector3()), sz = b.getSize(new c.T.Vector3());
   const s = Math.sign(m.x) || 1;

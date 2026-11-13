@@ -36,6 +36,11 @@ Group size (3), text length, location hints, number of day-2 items for name less
 - l05: the model has no ligaments (the child is told so and sent to the p. 24 drawing). The knee and elbow are shown by highlighting the bones around them.
 - l04 hand↔foot comparison is a memory aid, tagged «no s’avalua».
 
+## Muscle batch — tests (qa/curs1d, phone 393×851, touch, Chinese gloss ON)
+New: l06 40/40 · l07 48/48 · l08 118/118 (lesson) + 27/27 (day 2, separate run: the first run hit the time limit at day-2 item 11 with no failure) · l09 97/97.
+Regression after the player changes: l01 38/38 · l02 99/99 (new run; maxil·lar not in any location item, results show «Pendent de verificar»; its day 2 — 20 items — passed in the first run, whose only 2 failures were the old test expectation that maxil·lar is located) · l03 85/85 · l04 116/116 · l05 35/35 · l10 39/39.
+Not re-run: V1.4 30-step suite and the 1A sample (app.js, sample.* untouched).
+
 ## Muscle batch — textbook coverage (p. 26–27, checked against the page photos)
 | Book content | Where |
 |---|---|

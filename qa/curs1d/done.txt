@@ -3,3 +3,14 @@ l06 exit 0
 l07 exit 0
 l09 exit 124
 l08 exit 1
+--- run2
+l09 exit 0
+l04 exit 0
+l08 exit 124
+l03 exit 0
+l10 exit 0
+l02 exit 0
+l01 exit 0
+l02b exit 1
+l05 exit 0
+l08-day2 exit 0

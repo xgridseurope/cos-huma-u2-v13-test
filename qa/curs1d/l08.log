@@ -17,56 +17,114 @@ PASS g1-troba#1: tap orbicular
 PASS g1-troba: done
 PASS g2-coneix: introduced one by one, child-paced
 PASS g2-fes: labels visible in guided practice
-FAIL g2-fes: guided taps done
-Traceback (most recent call last):
-  File "/home/claude/cos-huma-u2-v13-test/tools/curs_test.py", line 73, in <module>
-    chk(f'{s}: guided taps done', can()); nxt(); continue
-                                          ~~~^^
-  File "/home/claude/cos-huma-u2-v13-test/tools/curs_test.py", line 25, in nxt
-    def nxt(): pg.click('#Lnext'); time.sleep(1.3)
-               ~~~~~~~~^^^^^^^^^^
-  File "/usr/local/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 11102, in click
-    self._sync(
-    ~~~~~~~~~~^
-        self._impl_obj.click(
-        ^^^^^^^^^^^^^^^^^^^^^
-    ...<12 lines>...
-        )
-        ^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
-    return task.result()
-           ~~~~~~~~~~~^^
-  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_page.py", line 899, in click
-    return await self._main_frame._click(**locals_to_params(locals()))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 594, in _click
-    await self._channel.send("click", self._timeout, locals_to_params(locals()))
-  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 76, in send
-    return await self._connection.wrap_api_call(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<3 lines>...
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
-    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
-playwright._impl._errors.TimeoutError: Page.click: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator("#Lnext")
-    - locator resolved to <button class="" disabled id="Lnext">Continua ▶</button>
-  - attempting click action
-    2 × waiting for element to be visible, enabled and stable
-      - element is not enabled
-    - retrying click action
-    - waiting 20ms
-    2 × waiting for element to be visible, enabled and stable
-      - element is not enabled
-    - retrying click action
-      - waiting 100ms
-    - waiting for element to be visible, enabled and stable
-    - element is not enabled
-  - retrying click action
-    - waiting 500ms
-    - waiting for element to be visible, enabled and stable
-
+PASS g2-fes: guided taps done
+PASS g2-digues#0: name hidden before answer
+PASS g2-digues#0: name shown after answer
+PASS g2-digues#1: name hidden before answer
+PASS g2-digues#1: name shown after answer
+PASS g2-digues#2: name hidden before answer
+PASS g2-digues#2: name shown after answer
+PASS g2-digues: done
+PASS g2-troba#0: no labels, no highlight
+PASS g2-troba#0: tap deltoide
+PASS g2-troba#1: no labels, no highlight
+PASS g2-troba#1: tap ecm
+PASS g2-troba#2: no labels, no highlight
+PASS g2-troba#2: tap trapezi
+PASS g2-troba: done
+PASS g3-pregunta: no labels/book before answering
+PASS g3-pregunta: prediction not marked wrong
+PASS g3-coneix: introduced one by one, child-paced
+PASS g3-fes: labels visible in guided practice
+PASS g3-fes: guided taps done
+PASS g3-digues#0: name hidden before answer
+PASS g3-digues#0: name shown after answer
+PASS g3-digues#1: name hidden before answer
+PASS g3-digues#1: name shown after answer
+PASS g3-digues: done
+PASS g3-troba#0: no labels, no highlight
+PASS g3-troba#0: tap abdominal
+PASS g3-troba#1: no labels, no highlight
+PASS g3-troba#1: tap pectoral
+PASS g3-troba: done
+PASS g4-coneix: introduced one by one, child-paced
+PASS g4-fes: labels visible in guided practice
+PASS g4-fes: guided taps done
+PASS g4-digues#0: name hidden before answer
+PASS g4-digues#0: name shown after answer
+PASS g4-digues#1: name hidden before answer
+PASS g4-digues#1: name shown after answer
+PASS g4-digues: done
+PASS g4-troba#0: no labels, no highlight
+PASS g4-troba#0: tap gluti
+PASS g4-troba#1: no labels, no highlight
+PASS g4-troba#1: tap dorsal
+PASS g4-troba: done
+PASS repas#0: no labels, no highlight
+PASS repas#0: tap gluti
+PASS repas#1: no labels, no highlight
+PASS repas#1: tap orbicular
+PASS repas#2: no labels, no highlight
+PASS repas#2: tap abdominal
+PASS repas#3: no labels, no highlight
+PASS repas#3: tap ecm
+PASS repas#4: no labels, no highlight
+PASS repas#4: tap dorsal
+PASS repas#5: no labels, no highlight
+PASS repas#5: tap pectoral
+PASS repas#6: no labels, no highlight
+PASS repas#6: tap deltoide
+PASS repas#7: no labels, no highlight
+PASS repas#7: tap trapezi
+PASS repas#8: no labels, no highlight
+PASS repas#8: tap masseter
+PASS repas: done
+PASS R1: recall hidden before answer (zh on)
+PASS R1: back locked
+PASS R1: book answer after speaking
+PASS R1: done
+PASS P1#0: no answer shown before choosing (zh on) · Quins tipus de músculs hi ha al cap?
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: pensa en l’orbicular de les parpelles: té forma d’anell.
+PASS P1#1: no answer shown before choosing (zh on) · Per a què fem servir els músculs del cap?
+PASS P1#2: no answer shown before choosing (zh on) · Com són els músculs del tronc?
+PASS P1#3: no answer shown before choosing (zh on) · Què NO fan els músculs del tronc, segons el llibre?
+PASS P1: 4 choice items done
+PASS escriu#0: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#1: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#2: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#3: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#4: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#5: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#6: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#7: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#8: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS reached results
+PASS every name located (groups) · {'masseter': 'ajuda', 'orbicular': 'sol', 'deltoide': 'sol', 'ecm': 'sol', 'trapezi': 'sol', 'abdominal': 'sol', 'pectoral': 'sol', 'gluti': 'sol', 'dorsal': 's
+PASS every name in mixed review · {'gluti': 'sol', 'orbicular': 'sol', 'abdominal': 'sol', 'ecm': 'sol', 'dorsal': 'sol', 'pectoral': 'sol', 'deltoide': 'sol', 'trapezi': 'sol', 'masseter': 'sol
+PASS every name said · {'orbicular': 'sol', 'masseter': 'sol', 'trapezi': 'sol', 'ecm': 'sol', 'deltoide': 'sol', 'abdominal': 'sol', 'pectoral': 'sol', 'dorsal': 'sol', 'gluti': 'sol
+PASS units recorded · {'U1': ['sol', 'ajuda', 'sol'], 'U2': ['sol', 'sol', 'sol']}
+PASS wrong first tap recorded as "amb ajuda" · {'masseter': 'ajuda', 'orbicular': 'sol', 'deltoide': 'sol', 'ecm': 'sol', 'trapezi': 'sol', 'abdominal': 'sol', 'pectoral': 'sol', 'gluti': 'sol', 'dorsal': 's
+PASS spelling separate: accent-only ≠ failure · {'orbicular': 'accent', 'masseter': 'ok', 'ecm': 'ok', 'trapezi': 'ok', 'deltoide': 'ok', 'pectoral': 'ok', 'abdominal': 'ok', 'dorsal': 'ok', 'gluti': 'ok'}
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/23: locate trapezi without labels
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/23: locate ecm without labels
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/23: locate deltoide without labels
+d2 step 3 tickers 1
+PASS day2 Revisió de l’endemà · 4/23: locate orbicular without labels
+d2 step 4 tickers 1
+PASS day2 Revisió de l’endemà · 5/23: locate pectoral without labels
+d2 step 5 tickers 1
+PASS day2 Revisió de l’endemà · 6/23: locate abdominal without labels
+d2 step 6 tickers 1
+PASS day2 Revisió de l’endemà · 7/23: locate gluti without labels
+d2 step 7 tickers 1
+PASS day2 Revisió de l’endemà · 8/23: locate masseter without labels
+d2 step 8 tickers 1
+PASS day2 Revisió de l’endemà · 9/23: locate dorsal without labels
+d2 step 9 tickers 1
+PASS day2 Revisió de l’endemà · 10/23: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+d2 step 10 tickers 1
+PASS day2 Revisió de l’endemà · 11/23: answer hidden before child answers · ('visible', 'Digues el nomCom es diu el múscul blau? Digues-ho ')
+d2 step 11 tickers 1
