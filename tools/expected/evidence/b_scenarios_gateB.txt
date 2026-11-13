@@ -1,0 +1,26 @@
+PASS N1: no «Per a la família» / 家长判断 / 家长答案 / «per a la família» buttons anywhere
+PASS start: «Comença», no resume/new-round/review buttons on a fresh device
+PASS record v3 carries content version and current step
+PASS after reload: «Continua on ho has deixat» + «Comença de nou»
+PASS resume returns to the same step with the same record
+PASS «Més tard» visible on a practice step (g1-digues)
+PASS skip recorded with time; skipped names marked «salt», never «sol»
+PASS «Comença de nou» archives the previous record, starts a fresh one
+PASS reached l01 practice P1
+PASS «Torna a mirar» visible on a practice step
+PASS look again → previous teaching step, recorded as a revisit
+PASS first answer after looking again is recorded «amb ajuda», not «sol»
+PASS old-version record: notice shown, no resume offered
+PASS old-version record archived unchanged; new record has the current version
+PASS finished lesson: «Revisió curta» and «Revisió de la setmana» offered as suggestions
+PASS week review labelled as such; every item has «Ara no (salta)»
+PASS skipped review item stored as «salt» in a dated «setmana» round
+PASS default round size = min(8, 6)
+PASS 5 view buttons, each ≥ 44 px
+PASS 🔄 turns the model round (view from behind) without gestures
+PASS A+ enlarges the text
+PASS time hints: «estona» at ~12 min, then «descansar» at ~15 min (scaled), one at a time, no lock
+PASS a hint closes with «D’acord»
+PASS no JS errors
+
+24 PASS · 0 FAIL

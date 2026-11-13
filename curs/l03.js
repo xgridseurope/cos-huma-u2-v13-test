@@ -55,7 +55,7 @@ export default {
       ...c.shuffle(N).map(k => ({ id: 'loc_' + k, kind: 'loc', key: k, view: 'tot', title: 'Al model', label: 'Troba ' + ca(k) })),
       ...c.shuffle(N).slice(0, 3).map(k => ({ id: 'say_' + k, kind: 'say', key: k, view: 'tot', title: 'Digues el nom', label: 'Diu el nom: ' + ca(k) })),
       { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 25', ca: 'Obre el llibre a la pàgina 25. Tapa els noms i assenyala l’húmer, el cúbit, el radi, el carp, el metacarp i les falanges.', zq: '打开课本第 25 页，盖住名称，指出这 6 块骨头。',
-        key: 'Destapa els noms del dibuix i comproveu-ho junts.', zkey: '核对方法：揭开图上的名称，一起对照。六个都指对 = 说对了。' },
+        key: 'Destapa els noms del dibuix i comprova-ho tu mateix/a.', zkey: '核对方法：揭开图上的名称自己对照。六个都指对 = 说对了。' },
       ...N.map(k => ({ id: 'spell_' + k, kind: 'spell', key: k, view: 'tot', title: 'Escriu el nom', label: 'Escriu ' + ca(k) })),
     ];
   },

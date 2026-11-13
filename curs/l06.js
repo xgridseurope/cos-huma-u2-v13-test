@@ -88,8 +88,8 @@ export default {
         } },
       { id: 'pensa', ph: '4 · Pensa (no s’avalua)', recall: true, render(el) {
           c.hidden(); c.view('cos');
-          el.innerHTML = `<h2>Pensa</h2><div class="q">${c.esc('Creieu que es pot comparar el funcionament d’un múscul amb el d’una goma elàstica o una molla? Per què?')}</div>${c.ossi('Pensa-ho i comenta-ho amb la família. No hi ha nota!')}
-            <button class="opt go" id="said">🗣️ Ja ho hem comentat</button><div id="chk"></div>${c.zh('课本 P26 思考题：肌肉的工作方式能和橡皮筋或弹簧相比吗？为什么？（课本没有标准答案，不计分）')}`;
+          el.innerHTML = `<h2>Pensa</h2><div class="q">${c.esc('Creieu que es pot comparar el funcionament d’un múscul amb el d’una goma elàstica o una molla? Per què?')}</div>${c.ossi('Pensa-ho. Si vols, en pots parlar amb algú. No hi ha nota!')}
+            <button class="opt go" id="said">🗣️ Ja ho he pensat</button><div id="chk"></div>${c.zh('课本 P26 思考题：肌肉的工作方式能和橡皮筋或弹簧相比吗？为什么？（课本没有标准答案，不计分）')}`;
           $('said').onclick = () => { $('said').remove(); $('chk').innerHTML = c.book(['pensa']); c.setNext(true); };
           c.setNext(false);
         } },

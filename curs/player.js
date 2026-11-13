@@ -6,6 +6,11 @@
 //    child retries alone. Anything solved after a cue or a demo is recorded as "amb ajuda" (with help), never "sol";
 //  • three separate records: understanding (units), location (names), spelling (names); feedback shown AFTER an answer
 //    never changes how that answer is recorded.
+//  • (phase-1 gate B, 2026-11-13, rules R2 R8–R16) the child learns on her own: no step needs a parent. Explanations,
+//    said names and paper spelling are SELF-checked and recorded as «auto-*», never as an independent right answer;
+//    the child may skip («Més tard») or go back to look again («Torna a mirar»); skipped ≠ right ≠ mastered; skipped
+//    and helped items go first in the light review rounds (next day, about a week later, 8 items by default).
+//    Records carry the content version, resume after a reload, and a new round archives the old record.
 
 const whenReady = new Promise(r => window.__app ? r() : addEventListener('app-ready', r, { once: true }));
 await whenReady;
@@ -15,7 +20,10 @@ const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', 
 const wait = ms => new Promise(r => setTimeout(r, ms));
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-const lessonId = new URLSearchParams(location.search).get('l') || 'l10';
+const QS = new URLSearchParams(location.search);
+const lessonId = QS.get('l') || 'l10';
+// content version of the phase-1 lessons (F12). Bump when lesson content or scoring changes; the handoff maps it to a commit.
+export const CONTENT = 'P24-29·fase1·2026-11-13b';
 const CFG = (await import(`./${lessonId}.js?v=1b`)).default;
 
 // ---------------------------------------------------------------- camera framing for the area not covered by the card
@@ -50,7 +58,7 @@ function frame(keys, dir = [0, .1, 1], pad = 1.25, ms) {
   const ms_ = keys.flatMap(k => parts[k]); const b = A.boxOf(ms_), c = b.getCenter(new T.Vector3()), sz = b.getSize(new T.Vector3());
   A.flyTo(c, new T.Vector3(...dir).normalize().multiplyScalar(fitDist(sz.y / 2 * pad, Math.max(sz.x, sz.z) / 2 * pad)), ms);
 }
-const view = name => CFG.views[name](ctx);
+const view = name => { lastView = name; return CFG.views[name](ctx); };
 
 // ---------------------------------------------------------------- labels
 const labelBox = $('labels'), labelList = [];
@@ -70,13 +78,19 @@ A.tickers.push(() => {
 });
 
 // ---------------------------------------------------------------- records
-const KEY = 'cosHumaCurs_' + CFG.id;
+const KEY = 'cosHumaCurs_' + CFG.id, AKEY = KEY + '_arxiu';
 const loadRec = () => { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } };
-const freshRec = () => ({ v: 2, lesson: CFG.id, started: new Date().toISOString(), units: Object.fromEntries(Object.keys(CFG.units || {}).map(k => [k, []])), loc: {}, review: {}, say: {}, spell: {}, pred: {}, wrong: 0, stageTimes: {}, day2: {} });
+const freshRec = () => ({ v: 3, lesson: CFG.id, content: CONTENT, app: A.VERSION, started: new Date().toISOString(), idx: 0,
+  units: Object.fromEntries(Object.keys(CFG.units || {}).map(k => [k, []])), self: {}, loc: {}, review: {}, say: {}, spell: {}, pred: {}, obs: {}, neutral: {},
+  skip: {}, revisit: {}, wrong: 0, stageTimes: {}, reviews: [] });
 let rec = freshRec();
 const saveRec = () => { try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch (e) { /* storage may be blocked */ } };
+// a new round never deletes: the previous record goes to the archive with its content version (F02, F12)
+function archive(old) { if (!old) return; try { const a = JSON.parse(localStorage.getItem(AKEY) || '[]'); a.push({ archived: new Date().toISOString(), ...old }); localStorage.setItem(AKEY, JSON.stringify(a)); } catch (e) { } }
+const sameContent = r => r && r.v === 3 && r.content === CONTENT;
+const helpedNow = () => !!(S[idx] && rec.revisit && rec.revisit[S[idx].id]);   // after «Torna a mirar» a right answer counts as «amb ajuda»
 function evid(units, v) { for (const u of units) (rec.units[u] = rec.units[u] || []).push(v); saveRec(); }
-function unitStatus(arr) { if (!arr || !arr.length) return ['Vist (sense comprovar)', 'mid']; if (arr.includes('no')) return ['Cal repassar', 'bad']; if (arr.includes('ajuda')) return ['Amb ajuda', 'mid']; return ['Tot sol/a ✔', 'ok']; }
+function unitStatus(arr) { if (!arr || !arr.length) return ['Vist (sense pregunta)', 'mid']; if (arr.includes('no')) return ['Cal repassar', 'bad']; if (arr.includes('ajuda')) return ['Amb ajuda', 'mid']; return ['Tot sol/a ✔', 'ok']; }
 
 // ---------------------------------------------------------------- UI helpers
 let showZh = false;
@@ -136,7 +150,7 @@ function tapTask(el, { q, key, cue, onResult, demo }) {
       A.highlight([h.obj], 0xffd23f); setTimeout(() => A.clearHighlights(), 1400); feedback(el, 'info', 'ℹ️ ' + NM[key].neutralMsg); return;
     }
     if (h.ok || (!h.hard && nearSmall(e.clientX, e.clientY, targets))) {
-      el.dataset.done = 1; const v = wrongs ? 'ajuda' : 'sol'; onResult && onResult(v); saveRec();
+      el.dataset.done = 1; const v = wrongs || helpedNow() ? 'ajuda' : 'sol'; onResult && onResult(v); saveRec();
       A.highlight([...targets], 0x35c46a); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); setTimeout(() => A.clearHighlights(), 900); cleanup(); el.dispatchEvent(new Event('done')); return;
     }
     wrongs++; rec.wrong++;
@@ -154,7 +168,7 @@ function ladderChoice(el, { q, opts, a, cue, demo, helpText, units = [], subject
   const draw = () => { if (subject) { hidden(); subject(); } o.innerHTML = ''; for (const i of shuffle(opts.map((_, i) => i))) { const b = document.createElement('button'); b.className = 'opt'; b.textContent = opts[i]; b.onclick = () => pick(i, b); o.appendChild(b); } };
   const pick = async (i, b) => {
     if (el.dataset.done) return;
-    if (i === a) { b.classList.add('right'); el.dataset.done = 1; const v = wrongs ? 'ajuda' : 'sol'; if (onResult) onResult(v); else evid(units, v); saveRec(); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); if (!onResult && !series) setNext(true); el.dispatchEvent(new Event('done')); return; }
+    if (i === a) { b.classList.add('right'); el.dataset.done = 1; const v = wrongs || helpedNow() ? 'ajuda' : 'sol'; if (onResult) onResult(v); else evid(units, v); saveRec(); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); if (!onResult && !series) setNext(true); el.dispatchEvent(new Event('done')); return; }
     wrongs++; rec.wrong++; b.classList.add('wrong'); b.disabled = true;
     if (wrongs === 1) feedback(el, false, '💡 Pista: ' + cue);
     else if (helpText) { feedback(el, false, '👀 ' + helpText + ' Després torna-ho a provar.'); o.querySelectorAll('button').forEach(x => x.disabled = true); await wait(2500); draw(); }
@@ -184,16 +198,17 @@ function predict(el, { q, opts, say, zhq, id }) {
   for (const [i, t] of opts.entries()) { const b = document.createElement('button'); b.className = 'opt'; b.textContent = t; b.onclick = () => { rec.pred[id] = i; saveRec(); el.querySelectorAll('#po button').forEach(x => x.disabled = true); b.classList.add('hint'); feedback(el, true, 'D’acord! Ara ho comprovem 👀'); setNext(true); }; $('po').appendChild(b); }
   setNext(false);
 }
-// spoken answer, then the family checks (scoring points only after the child has spoken)
+// spoken explanation, then the child compares it with the book herself (N1, R11, R15): recorded as self-assessment only
+const selfRow = (opts) => `<div class="self"><div class="who">🪞 Compara-ho tu mateix/a / 自己对照：</div><div class="row">${opts.map(([v, t], i) => `<button class="opt ${i ? '' : 'right'}" data-v="${v}">${t}</button>`).join('')}</div></div>`;
+const SELF_SAY = [['auto-ok', 'Ho he dit tot ✓ 都说到了'], ['auto-part', 'M’he deixat alguna cosa 漏了一点'], ['auto-no', 'Encara no ho sé 还不会']];
 function recall(el, { q, keys, units, zhq, zkey }) {
   hidden();
   el.innerHTML = `<h2>Explica-ho tu</h2><div class="q">${esc(q)}</div><div class="cnt">Pensa tot el temps que vulguis. Sense mirar cap pista!</div>
-    <button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>${zh('题目：' + zhq + '（孩子说完后才显示家长核对内容）')}`;
+    <button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>${zh('题目：' + zhq + '（说完后自己对照课本答案）')}`;
   $('said').onclick = () => { $('said').remove();
-    $('chk').innerHTML = `<div class="ans"><b>Resposta del llibre:</b>${book(keys)}</div><div class="parent"><div class="who">👨‍👩‍👧 Per a la família / 家长判断：</div>${zh(zkey)}<div class="row">
-      <button class="opt right" id="pY">Ho ha dit bé ✓ 说对了</button><button class="opt" id="pH">Amb una mica d’ajuda 有提示才说对</button><button class="opt" id="pN">Encara no ✗ 还不会</button></div></div>`;
-    const done = v => { evid(units, v); el.querySelectorAll('.parent button').forEach(b => b.disabled = true); feedback(el, true, v === 'sol' ? 'Fantàstic! ⭐' : 'D’acord, ho repassarem demà.'); setNext(true); };
-    $('pY').onclick = () => done('sol'); $('pH').onclick = () => done('ajuda'); $('pN').onclick = () => done('no'); };
+    $('chk').innerHTML = `<div class="ans"><b>Què diu el llibre:</b>${book(keys)}</div>${zh(zkey)}${selfRow(SELF_SAY)}`;
+    el.querySelectorAll('.self button').forEach(b => b.onclick = () => { for (const u of units) (rec.self[u] = rec.self[u] || []).push(b.dataset.v); saveRec();
+      el.querySelectorAll('.self button').forEach(x => x.disabled = true); feedback(el, true, b.dataset.v === 'auto-ok' ? 'Molt bé! ⭐' : 'D’acord: ho tornarem a mirar a la revisió.'); setNext(true); }); };
   setNext(false);
 }
 // say the name of the highlighted structure (no labels); check after
@@ -202,18 +217,16 @@ function sayName(el, key, { onResult } = {}) {
   hidden(); const nl = CFG.names[key].noLoc; if (!nl) A.highlight(showParts[key], 0x2fd3ff);
   el.innerHTML = nl ? `<div class="q">${esc(CFG.names[key].sayQ)} Digues-ho en veu alta.</div>${PV(key)}${zh('题目：按课本图说出名称（模型上对应区域待核实）。')}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>` : `<div class="q">Com es diu ${PW === 'os' ? 'l’os blau' : PW === 'múscul' ? 'el múscul blau' : 'la part blava'}? Digues-ho en veu alta.</div>${zh(PW === 'os' ? '题目：说出蓝色骨头的名称（说完再核对）。' : PW === 'múscul' ? '题目：说出蓝色肌肉的名称（说完再核对）。' : '题目：说出蓝色部位的名称（说完再核对）。')}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>`;
   $('said').onclick = () => { $('said').remove();
-    $('chk').innerHTML = `<div class="spell">${esc(CFG.names[key].ca)}</div><div class="parent"><div class="who">👨‍👩‍👧 Ho ha dit bé? / 说对了吗？</div><div class="row">
-      <button class="opt right" data-v="sol">Sí ✓ 对</button><button class="opt" data-v="ajuda">Amb ajuda 有提示</button><button class="opt" data-v="no">No ✗ 不对</button></div></div>`;
-    el.querySelectorAll('.parent button').forEach(b => b.onclick = () => { onResult(b.dataset.v); saveRec(); el.querySelectorAll('.parent button').forEach(x => x.disabled = true); el.dispatchEvent(new Event('done')); }); };
+    $('chk').innerHTML = `<div class="spell">${esc(CFG.names[key].ca)}</div>${selfRow([['auto-ok', 'L’he dit bé ✓ 说对了'], ['auto-part', 'S’hi assemblava 差一点'], ['auto-no', 'No ho sabia 不知道']])}`;
+    el.querySelectorAll('.self button').forEach(b => b.onclick = () => { onResult(b.dataset.v); saveRec(); el.querySelectorAll('.self button').forEach(x => x.disabled = true); el.dispatchEvent(new Event('done')); }); };
 }
 // write on paper; the correct spelling appears only after «Comprova»
 function spell(el, key, { onResult } = {}) {
   hidden(); const nl = CFG.names[key].noLoc; if (!nl) A.highlight(showParts[key], 0x2fd3ff);
   el.innerHTML = `<div class="q">${nl ? esc(CFG.names[key].sayQ).replace('Com es diu', 'Escriu en un paper el nom de') : 'Escriu en un paper el nom de la part blava.'} Quan acabis, toca «Comprova».</div>${zh('题目：在纸上写出蓝色部位的名称，写完再核对。只错重音记为「拼写需练」。')}<button class="opt go" id="cmp">✏️ Comprova</button><div id="sp"></div>`;
   $('cmp').onclick = () => { $('cmp').remove();
-    $('sp').innerHTML = `<div class="spell">${CFG.names[key].html || esc(CFG.names[key].ca)}</div><div class="parent"><div class="who">👨‍👩‍👧 Compara amb el paper / 对照纸上：</div><div class="row">
-      <button class="opt right" data-v="ok">Escrit bé ✓ 全对</button><button class="opt" data-v="accent">Només l’accent 只错重音</button><button class="opt" data-v="no">Cal practicar ✗ 需要练</button></div></div>`;
-    el.querySelectorAll('.parent button').forEach(b => b.onclick = () => { onResult(b.dataset.v); saveRec(); el.querySelectorAll('.parent button').forEach(x => x.disabled = true); el.dispatchEvent(new Event('done')); }); };
+    $('sp').innerHTML = `<div class="spell">${CFG.names[key].html || esc(CFG.names[key].ca)}</div><div class="cnt">Mira lletra per lletra el teu paper i la pantalla (també els accents i la l·l).</div>${selfRow([['auto-ok', 'És igual ✓ 一样'], ['auto-accent', 'Només l’accent o la l·l 只错重音'], ['auto-no', 'És diferent: el copio bé 不一样，抄一遍']])}`;
+    el.querySelectorAll('.self button').forEach(b => b.onclick = () => { onResult(b.dataset.v); saveRec(); el.querySelectorAll('.self button').forEach(x => x.disabled = true); el.dispatchEvent(new Event('done')); }); };
 }
 // run a list of sub-tasks one after another inside one stage
 async function sequence(el, items, run) {
@@ -242,12 +255,12 @@ function nameGroupStages(g) {   // g = { id, keys, view, viewAlt, title, predict
     await sequence(el, shuffle(LK), (box, k) => tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca} (pots mirar els noms)`, key: k, cue: CFG.names[k].aid }));   // with labels: practice only, not recorded
     feedback(el, true, 'Molt bé! Ara, sense noms…'); setNext(true);
   } });
-  S.push({ id: g.id + '-digues', ph: '5 · Digues el nom', recall: true, render: async el => {
+  S.push({ id: g.id + '-digues', ph: '5 · Digues el nom', recall: true, keys: g.keys, recKey: 'say', render: async el => {
     hidden(); view(g.view); setNext(false);
     await sequence(el, shuffle(g.keys), (box, k) => { sayName(box, k, { onResult: v => { rec.say[k] = v; } }); });
     hidden(); feedback(el, true, 'Fet! Ara els buscarem des d’un altre costat.'); setNext(true);
   } });
-  S.push({ id: g.id + '-troba', ph: '6 · Troba’ls (sense noms)', recall: true, render: async el => {
+  S.push({ id: g.id + '-troba', ph: '6 · Troba’ls (sense noms)', recall: true, keys: g.keys.filter(k => !CFG.names[k].noLoc), recKey: 'loc', render: async el => {
     hidden(); view(g.viewAlt); setNext(false);
     await sequence(el, shuffle(g.keys.filter(k => !CFG.names[k].noLoc)), (box, k) => tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca}`, key: k, cue: CFG.names[k].aid, onResult: v => { rec.loc[k] = v; } }));
     feedback(el, true, 'Molt bé! ⭐'); setNext(true);
@@ -256,17 +269,17 @@ function nameGroupStages(g) {   // g = { id, keys, view, viewAlt, title, predict
 }
 // all names of the lesson, random order, from yet another view (only after every name has been practised)
 function reviewStage(keys, viewName, viewFor) {   // viewFor(k): optional view per item (e.g. muscles of the back)
-  return { id: 'repas', ph: 'Repàs barrejat', recall: true, render: async el => {
+  return { id: 'repas', ph: 'Repàs barrejat', recall: true, keys: keys.filter(k => !CFG.names[k].noLoc), recKey: 'review', render: async el => {
     hidden(); view(viewName); setNext(false);
     keys = keys.filter(k => !CFG.names[k].noLoc);
-    const missing = keys.filter(k => !rec.loc[k]);
+    const missing = keys.filter(k => !rec.loc[k]);   // 'salt' (skipped) is allowed: the review is a second chance
     if (missing.length) { el.innerHTML = `<div class="note">Encara falten: ${missing.map(k => CFG.names[k].ca).join(', ')}</div>`; return; }
     await sequence(el, shuffle(keys), (box, k) => { if (viewFor) view(viewFor(k)); return tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca}`, key: k, cue: CFG.names[k].aid, onResult: v => { rec.review[k] = v; } }); });
     feedback(el, true, 'Repàs fet! 🎉'); setNext(true);
   } };
 }
 function spellStage(keys) {
-  return { id: 'escriu', ph: 'Escriu', recall: true, render: async el => {
+  return { id: 'escriu', ph: 'Escriu', recall: true, keys, recKey: 'spell', render: async el => {
     hidden(); setNext(false);
     await sequence(el, keys, (box, k) => { spell(box, k, { onResult: v => { rec.spell[k] = v; } }); });
     hidden(); feedback(el, true, 'Fet! ✏️'); setNext(true);
@@ -274,12 +287,16 @@ function spellStage(keys) {
 }
 
 // ---------------------------------------------------------------- results + day 2
-const T1 = { pv: ['Pendent de verificar (no s’avalua)', 'mid'], sol: ['Tot sol/a ✔', 'ok'], ajuda: ['Amb ajuda', 'mid'], no: ['Encara no', 'bad'], ok: ['Bé ✔', 'ok'], accent: ['Cal practicar l’accent', 'mid'] };
-const cell = v => { const [t, c] = T1[v] || ['Pendent', 'bad']; return `<td class="${c}">${t}</td>`; };
+// «Tot sol/a» = answered right without any help in the app; it is ONE answer, not mastery (R9). auto-* = the child's own check.
+const T1 = { pv: ['Pendent de verificar (no s’avalua)', 'mid'], sol: ['Sol/a, sense ajuda', 'ok'], ajuda: ['Amb ajuda', 'mid'], no: ['Encara no', 'bad'], ok: ['Bé ✔', 'ok'], accent: ['Cal practicar l’accent', 'mid'],
+  'auto-ok': ['Bé (ho diu ell/a)', 'ok'], 'auto-part': ['Una part (ho diu ell/a)', 'mid'], 'auto-no': ['Encara no (ho diu ell/a)', 'bad'], 'auto-accent': ['Accent / l·l (ho diu ell/a)', 'mid'], salt: ['Saltat · per repassar', 'mid'] };
+const cell = v => { const [t, c] = T1[v] || ['Encara no fet', 'bad']; return `<td class="${c}">${t}</td>`; };
 function resultsHTML() {
   let h = '';
   const U = Object.keys(CFG.units || {});
-  if (U.length) h += `<div class="q">Comprensió</div><table class="res">${U.map(k => { const [t, c] = unitStatus(rec.units[k]); return `<tr><td>${esc(CFG.units[k])}</td><td class="${c}">${t}</td></tr>`; }).join('')}</table>`;
+  const selfOf = k => { const a = rec.self[k] || []; return a.length ? (T1[a[a.length - 1]] || [''])[0] : '—'; };
+  if (U.length) h += `<div class="q">Comprensió</div><table class="res"><tr><th></th><th>Preguntes</th><th>Explicació</th></tr>${U.map(k => { const [t, c] = unitStatus(rec.units[k]); return `<tr><td>${esc(CFG.units[k])}</td><td class="${c}">${t}</td><td>${selfOf(k)}</td></tr>`; }).join('')}</table>`;
+  const sk = Object.keys(rec.skip || {}); if (sk.length) h += `<div class="note">⏭ Has deixat per més tard: ${sk.map(id => esc((S.find(x => x.id === id) || { ph: id }).ph)).join(', ')}. Sortiran a la revisió.</div>`;
   const N = Object.keys(CFG.names);
   const cols = [['loc', 'Troba'], ...(CFG.hasReview ? [['review', 'Repàs']] : []), ...(CFG.hasSay ? [['say', 'Diu el nom']] : []), ['spell', 'Escriu']];
   h += `<div class="q">Noms</div><table class="res"><tr><th></th>${cols.map(c => `<th>${c[1]}</th>`).join('')}</tr>${N.map(k => `<tr><td>${esc(CFG.names[k].ca)}</td>${cols.map(c => cell(CFG.names[k].noLoc && (c[0] === 'loc' || c[0] === 'review') ? 'pv' : rec[c[0]][k])).join('')}</tr>`).join('')}</table>`;
@@ -289,52 +306,63 @@ function resultsStage() {
   return { id: 'fi', ph: 'Resultat', recall: true, render: el => {
     rec.finished = new Date().toISOString(); saveRec(); hidden(); if (CFG.neutralPose) CFG.neutralPose(ctx);
     const mins = Math.round((new Date(rec.finished) - new Date(rec.started)) / 60000);
-    el.innerHTML = `<h2>Molt bé! 🎉</h2>${ossi('Demà farem una revisió curta per veure si ho recordes.')}${resultsHTML()}
-      <div class="cnt">Temps: ${mins} min · respostes equivocades: ${rec.wrong}</div>
-      <div class="row"><button class="opt" id="cp">📋 Copia el resultat</button><button class="opt go" id="d2">📋 Revisió de demà</button></div>${zh('理解、定位、拼写分开记录。点「Copia el resultat」复制结果发给我。')}`;
+    el.innerHTML = `<h2>Lliçó acabada 🎉</h2>${ossi('Demà, si vols, fem una revisió curta. I d’aquí a una setmana, una altra.')}${resultsHTML()}
+      <div class="cnt">Temps: ${mins} min · respostes equivocades: ${rec.wrong} · versió ${esc(CONTENT)}</div>
+      <div class="row"><button class="opt" id="cp">📋 Copia el resultat</button><button class="opt go" id="d2">📋 Revisió</button></div>${zh('理解、定位、拼写分开记录；「ho diu ell/a」= 孩子自己对照的结果，不等于独立答对；一次答对不代表已掌握。')}`;
     $('cp').onclick = () => copyResult($('cp')); $('d2').onclick = () => day2();
     setNext(false, 'Final ✔');
   } };
 }
 function copyResult(btn) {
-  const t = JSON.stringify({ lesson: CFG.id, title: CFG.title, version: A.VERSION, ...rec }, null, 1);
+  const t = JSON.stringify({ lesson: CFG.id, title: CFG.title, version: A.VERSION, content: CONTENT, ...rec }, null, 1);
   (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { btn.textContent = 'Copiat ✔'; }).catch(() => { const ta = document.createElement('textarea'); ta.value = t; ta.style.width = '100%'; ta.rows = 8; btn.after(ta); ta.select(); });
 }
-// day 2: one item at a time; family answers only after the child has answered
-function day2() {
+// light review rounds (R14): «next day» and «about a week later» are suggestions, never locks. Each round is stored with its
+// date (F11). By default at most 8 items, weak ones first (skipped, helped, not yet, self-rated «not yet»); the rest are
+// optional extra practice (F05, R12). Every item can be skipped. The child checks oral answers herself (N1).
+const DEFAULT_ITEMS = 8;
+const weakScore = it => { const k = it.key; if (!k) return 1; const vals = [rec.loc[k], rec.review[k], rec.say[k], rec.spell[k]];
+  return vals.some(v => v === 'no' || v === 'salt' || v === 'auto-no' || v === undefined) ? 0 : vals.some(v => v === 'ajuda' || v === 'auto-part' || v === 'auto-accent') ? .5 : 1; };
+function day2(kind) {
   showApp(); $('Lstart').style.display = 'none'; hidden(); if (CFG.neutralPose) CFG.neutralPose(ctx);
-  const r = loadRec(); if (r) rec = r; rec.day2 = rec.day2 || {}; rec.day2.started = new Date().toISOString(); saveRec();
-  $('Lnext').style.display = 'none'; $('Lback').style.display = 'none';
-  const items = CFG.day2(ctx); let k = 0;
+  const r = loadRec(); if (r && sameContent(r)) rec = r;
+  rec.reviews = rec.reviews || []; const n = rec.reviews.filter(x => x.kind === kind).length;
+  const round = { kind: kind || 'dia', n: rec.reviews.length + 1, date: new Date().toISOString(), items: {}, extra: false }; rec.reviews.push(round); saveRec();
+  $('Lnext').style.display = 'none'; $('Lback').style.display = 'none'; navExtras(false);
+  const all = CFG.day2(ctx).map((it, i) => ({ it, i, w: weakScore(it) })).sort((a, b) => a.w - b.w || a.i - b.i).map(x => x.it);
+  let items = all.slice(0, DEFAULT_ITEMS); const rest = all.slice(DEFAULT_ITEMS); let k = 0;
   const go = () => {
     if (cleanupTap) { cleanupTap(); cleanupTap = null; } A.clearHighlights(); clearLabels();
-    $('Lbar').style.width = `${k / items.length * 100}%`; $('Lch').textContent = `Revisió de l’endemà · ${Math.min(k + 1, items.length)}/${items.length}`;
+    $('Lbar').style.width = `${k / items.length * 100}%`; $('Lch').textContent = `Revisió ${round.kind === 'setmana' ? 'de la setmana' : 'de l’endemà'} · ${Math.min(k + 1, items.length)}/${items.length}`;
     if (k >= items.length) { document.body.classList.remove('nomodel'); return finish(); }
     const it = items[k], next = () => { k++; saveRec(); go(); };
-    const nextBtn = () => { body.insertAdjacentHTML('beforeend', '<button class="opt go" id="nx">Continua ▶</button>'); $('nx').onclick = next; };
-    const rate = (box, labels) => { box.insertAdjacentHTML('beforeend', `<div class="row" id="rt">${labels.map(([v, t], i) => `<button class="opt ${i ? '' : 'right'}" data-v="${v}">${t}</button>`).join('')}</div>`);
-      box.querySelectorAll('#rt button').forEach(b => b.onclick = () => { rec.day2[it.id] = b.dataset.v; box.querySelectorAll('#rt button').forEach(x => x.disabled = true); nextBtn(); }); };
+    const put = v => { round.items[it.id] = v; (rec.day2 = rec.day2 || {})[it.id] = v; };
+    const nextBtn = () => { if ($('nx')) return; $('sk') && $('sk').remove(); body.insertAdjacentHTML('beforeend', '<button class="opt go" id="nx">Continua ▶</button>'); $('nx').onclick = next; };
+    const skipBtn = () => { body.insertAdjacentHTML('beforeend', '<button class="opt" id="sk">⏭ Ara no (salta)</button>'); $('sk').onclick = () => { put('salt'); saveRec(); next(); }; };
     if (it.kind === 'oral') {
       document.body.classList.toggle('nomodel', !it.withModel);
       body.innerHTML = `<h2>${esc(it.title || 'Explica-ho')}</h2><div class="q">${esc(it.ca)}</div>${zh('题目：' + it.zq)}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>`;
       $('said').onclick = () => { $('said').remove(); const c = $('chk');
-        c.innerHTML = `<div class="parent"><div class="who">👨‍👩‍👧 Resposta per a la família / 家长答案：</div><div class="ans">${esc(it.key)}</div>${zh(it.zkey)}</div>`;
-        rate(c.querySelector('.parent'), [['sol', 'Ho ha dit bé ✓ 说对了'], ['ajuda', 'Amb ajuda 有提示才说对'], ['no', 'Encara no ✗ 还不会']]); };
+        c.innerHTML = `<div class="ans"><b>Compara-ho amb això:</b> ${esc(it.key)}</div>${zh(it.zkey)}${selfRow(SELF_SAY)}`;
+        c.querySelectorAll('.self button').forEach(b => b.onclick = () => { put(b.dataset.v); c.querySelectorAll('.self button').forEach(x => x.disabled = true); nextBtn(); }); };
     } else {
       document.body.classList.remove('nomodel'); if (it.view) view(it.view);
       body.innerHTML = `<h2>${esc(it.title || '')}</h2><div id="tb"></div>`; const box = $('tb');
       box.addEventListener('done', nextBtn, { once: true });
-      if (it.kind === 'loc') cleanupTap = tapTask(box, { q: `👆 Toca: ${CFG.names[it.key].ca} (sense noms)`, key: it.key, cue: CFG.names[it.key].aid, onResult: v => { rec.day2[it.id] = v; } });
-      else if (it.kind === 'say') sayName(box, it.key, { onResult: v => { rec.day2[it.id] = v; } });
-      else if (it.kind === 'spell') spell(box, it.key, { onResult: v => { rec.day2[it.id] = v; } });
-      else if (it.kind === 'choice') ladderChoice(box, { ...it, onResult: v => { rec.day2[it.id] = v; } });
-      else if (it.kind === 'custom') it.run(box, v => { rec.day2[it.id] = v; saveRec(); });
+      if (it.kind === 'loc') cleanupTap = tapTask(box, { q: `👆 Toca: ${CFG.names[it.key].ca} (sense noms)`, key: it.key, cue: CFG.names[it.key].aid, onResult: put });
+      else if (it.kind === 'say') sayName(box, it.key, { onResult: put });
+      else if (it.kind === 'spell') spell(box, it.key, { onResult: put });
+      else if (it.kind === 'choice') ladderChoice(box, { ...it, onResult: put });
+      else if (it.kind === 'custom') it.run(box, v => { put(v); saveRec(); });
     }
+    skipBtn();
   };
   const finish = () => {
-    rec.day2.finished = new Date().toISOString(); saveRec();
-    body.innerHTML = `<h2>Revisió acabada 🎉</h2><table class="res">${items.map(it => `<tr><td>${esc(it.label)}</td>${cell(rec.day2[it.id])}</tr>`).join('')}</table><div class="row"><button class="opt" id="cp">📋 Copia el resultat</button></div>`;
+    round.finished = new Date().toISOString(); saveRec();
+    body.innerHTML = `<h2>Revisió acabada 🎉</h2><table class="res">${items.map(it => `<tr><td>${esc(it.label)}</td>${cell(round.items[it.id])}</tr>`).join('')}</table>
+      ${rest.length ? `<button class="opt" id="more">➕ Més pràctica (opcional, ${rest.length})</button>` : ''}<div class="row"><button class="opt" id="cp">📋 Copia el resultat</button></div>${zh('复习默认最多 8 题，薄弱项优先；其余为可选练习。')}`;
     $('cp').onclick = () => copyResult($('cp'));
+    if (rest.length) $('more').onclick = () => { round.extra = true; items = items.concat(rest.splice(0)); go(); };
   };
   go();
 }
@@ -343,28 +371,77 @@ function day2() {
 let idx = 0, cleanupTap = null, S = [];
 function render() {
   A.clearHighlights(); if (cleanupTap) { cleanupTap(); cleanupTap = null; }
-  const s = S[idx]; rec.stageTimes[s.id] = rec.stageTimes[s.id] || new Date().toISOString(); saveRec();
+  const s = S[idx]; rec.idx = idx; rec.stageTimes[s.id] = rec.stageTimes[s.id] || new Date().toISOString(); saveRec();
   $('Lbar').style.width = `${(idx + 1) / S.length * 100}%`; $('Lch').textContent = s.ph; $('Ldots').innerHTML = ''; $('Lstars').textContent = '';
   body.innerHTML = '<div id="st"></div>'; const el = $('st');
   s.render(el, ctx);
   $('Lback').disabled = idx === 0 || !!s.recall;     // no going back to the answers once recall/practice starts
-  body.scrollTop = 0;
+  navExtras(true); body.scrollTop = 0;
+}
+// «Més tard»: the child may leave any step for later (F01, R10). Recorded as skipped; never counted as right.
+// «Torna a mirar»: from a practice step, back to the closest teaching step; the answers given there afterwards count as
+// «amb ajuda» (F10). Results and day-2 review list the skipped steps first.
+const lookBackTo = () => { for (let j = idx - 1; j >= 0; j--) if (!S[j].recall) return j; return -1; };
+function navExtras(on) {
+  const s = S[idx], last = s && s.id === 'fi';
+  $('Lskip').style.display = on && !last ? '' : 'none';
+  $('Llook').style.display = on && !last && s && s.recall && lookBackTo() >= 0 ? '' : 'none';
+}
+setInterval(() => { if ($('Lskip').style.display !== 'none') $('Lskip').classList.toggle('dim', canNext); }, 400);
+$('Lskip').onclick = () => { const s = S[idx]; if (!s || s.id === 'fi') return;
+  if (!canNext) { rec.skip[s.id] = new Date().toISOString(); if (s.recKey) for (const k of s.keys || []) rec[s.recKey][k] = rec[s.recKey][k] || 'salt'; }
+  saveRec(); if (idx < S.length - 1) { idx++; setNext(false, 'Continua ▶'); render(); } };
+$('Llook').onclick = () => { const j = lookBackTo(); if (j < 0) return; rec.revisit[S[idx].id] = (rec.revisit[S[idx].id] || 0) + 1; saveRec(); idx = j; setNext(false, 'Continua ▶'); render(); };
+// gentle time hints (R13): suggestions only, never a countdown and never a lock
+const TMUL = +(QS.get('tmul') || 1); let tHint = [];
+function timeHints() { tHint.forEach(clearTimeout); tHint = [
+  setTimeout(() => toast('⏱️ Ja portes una estona. Si vols, pots parar: tot queda guardat i després continues on ho has deixat.'), 12 * 60000 / TMUL),
+  setTimeout(() => toast('🌿 És un bon moment per descansar una mica. Quan vulguis, continua.'), 15 * 60000 / TMUL)]; }
+function toast(t) { document.querySelectorAll('.toast').forEach(x => x.remove()); const d = document.createElement('div'); d.className = 'toast'; d.innerHTML = `${esc(t)} <button class="opt" id="tok">D’acord</button>`; document.body.appendChild(d); d.querySelector('button').onclick = () => d.remove(); setTimeout(() => d.remove(), 25000); }   // over the model, never over the answer buttons; fades after 25 s
+// view buttons for children who do not use two-finger gestures (F09); 44 px targets; text size switch
+let lastView = null;
+function viewBtns() {
+  if ($('Vbox')) return; const d = document.createElement('div'); d.id = 'Vbox';
+  d.innerHTML = `<button id="Vrst" title="Torna a la vista">🎯</button><button id="Vturn" title="Gira i mira per darrere">🔄</button><button id="Vin" title="Apropa">＋</button><button id="Vout" title="Allunya">－</button><button id="Vtxt" title="Lletra més gran">A+</button>`;
+  document.body.appendChild(d);
+  const tgt = () => A.controls.target, cam = A.camera;
+  const move = f => { const v = cam.position.clone().sub(tgt()); A.flyTo(tgt().clone(), v.multiplyScalar(f), 450); };
+  $('Vrst').onclick = () => { if (lastView) view(lastView); };
+  $('Vturn').onclick = () => { const v = cam.position.clone().sub(tgt()); v.applyAxisAngle(new T.Vector3(0, 1, 0), Math.PI); A.flyTo(tgt().clone(), v, 700); };
+  $('Vin').onclick = () => move(.75); $('Vout').onclick = () => move(1.33);
+  $('Vtxt').onclick = () => { document.body.classList.toggle('bigtext'); try { localStorage.setItem('cosHumaBigText', document.body.classList.contains('bigtext') ? '1' : ''); } catch (e) { } };
+  try { if (localStorage.getItem('cosHumaBigText')) document.body.classList.add('bigtext'); } catch (e) { }
 }
 $('Lnext').onclick = () => { if (!canNext) return; if (idx < S.length - 1) { idx++; setNext(false, 'Continua ▶'); render(); } };
 $('Lback').onclick = () => { if (idx > 0 && !S[idx].recall) { idx--; render(); } };
 $('Lzh').onclick = () => { showZh = !showZh; $('Lzh').classList.toggle('on', showZh); body.querySelectorAll('.zh').forEach(z => z.style.display = showZh ? '' : 'none'); };
 $('Lexit').onclick = () => { location.href = './index.html'; };
 $('Lspeak').style.display = 'none';
-function showApp() { document.body.classList.add('lessonMode'); L.style.display = ''; viewOffset(true); CFG.setup(ctx); }
+function showApp() { document.body.classList.add('lessonMode'); L.style.display = ''; viewOffset(true); CFG.setup(ctx); viewBtns(); timeHints(); }
 
 // ---------------------------------------------------------------- context handed to lesson configs
 const ctx = { A, T, $, esc, wait, shuffle, parts, memo, curio, frame, view, fitDist, label, clearLabels, nameLabels, centerOf, book, ossi, zh, aid, setNext, feedback, hidden,
-  showParts, choiceSeries, stepper, tapTask, ladderChoice, predict, recall, sayName, spell, sequence, evid, get rec() { return rec; }, saveRec, nameGroupStages, reviewStage, spellStage, resultsStage };
+  showParts, CONTENT, choiceSeries, stepper, tapTask, ladderChoice, predict, recall, sayName, spell, sequence, evid, get rec() { return rec; }, saveRec, nameGroupStages, reviewStage, spellStage, resultsStage };
 S = CFG.stages(ctx);
 
 $('Ltitle').textContent = CFG.title; $('Lsub').textContent = CFG.subtitle;
-$('Lbegin').onclick = () => { $('Lstart').style.display = 'none'; showApp(); rec = freshRec(); idx = 0; setNext(false, 'Continua ▶'); render(); };
-$('Lday2').onclick = () => day2();
+// start page (F02): continue where you stopped, or start a new round (the old record is archived, never overwritten)
+const saved = loadRec();
+const begin = (resume) => { $('Lstart').style.display = 'none'; showApp();
+  if (resume) { rec = saved; idx = Math.min(saved.idx || 0, S.length - 1); } else { archive(saved); rec = freshRec(); idx = 0; }
+  saveRec(); setNext(false, 'Continua ▶'); render(); };
+const days = iso => Math.floor((Date.now() - new Date(iso)) / 864e5);
+if (saved && sameContent(saved) && !saved.finished && (saved.idx || 0) > 0) {
+  $('Lbegin').textContent = `▶ Continua on ho has deixat (${(S[saved.idx] || {}).ph || ''})`; $('Lbegin').onclick = () => begin(true);
+  $('Lnew').style.display = ''; $('Lnew').onclick = () => begin(false);
+} else { $('Lbegin').onclick = () => begin(false); if (saved && saved.finished) $('Lbegin').textContent = '▶ Torna a fer la lliçó'; }
+if (saved && !sameContent(saved)) $('Lold').style.display = '';
+const fin = saved && sameContent(saved) && saved.finished;
+$('Lday2').style.display = fin ? '' : 'none'; $('Lweek').style.display = fin ? '' : 'none';
+if (fin) { const d = days(saved.finished);
+  $('Lday2').textContent = `📋 Revisió curta${d >= 1 ? ' (suggerida: ja toca)' : ' (suggerida: demà)'}`;
+  $('Lweek').textContent = `📋 Revisió de la setmana${d >= 6 ? ' (suggerida: ja toca)' : ' (suggerida: d’aquí a uns dies)'}`; }
+$('Lday2').onclick = () => day2('dia'); $('Lweek').onclick = () => day2('setmana');
 document.body.classList.add('lessonMode'); $('Lstart').style.display = ''; CFG.setup(ctx);
 
-window.__curs = { answer: null, CFG, get S() { return S; }, get idx() { return idx; }, get rec() { return rec; }, get canNext() { return canNext; }, next() { $('Lnext').click(); }, parts, hitAt, ctx };
+window.__curs = { answer: null, CFG, CONTENT, day2, get S() { return S; }, get idx() { return idx; }, get rec() { return rec; }, get canNext() { return canNext; }, next() { $('Lnext').click(); }, parts, hitAt, ctx };

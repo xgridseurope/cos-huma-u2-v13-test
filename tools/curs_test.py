@@ -85,7 +85,8 @@ with sync_playwright() as p:
                 t=pg.locator('#Lbody').inner_text(); k=None
                 chk(f'{s}#{i}: name hidden before answer', labels()==0 and not any((' '+ca+'\n') in ('\n'+t+'\n') or t.strip().endswith(ca) for ca in NAMES.values()) and pg.locator('#Lbody .spell').count()==0)
                 pg.click('#said'); time.sleep(.2); chk(f'{s}#{i}: name shown after answer', pg.locator('#Lbody .spell').count()==1)
-                pg.locator('#Lbody .parent button[data-v="sol"]').click(); time.sleep(1)
+                chk(f'{s}#{i}: no parent step (self-check)', pg.locator('#Lbody .parent').count()==0 and pg.locator('#Lbody .self button').count()==3)
+                pg.locator('#Lbody .self button[data-v="auto-ok"]').click(); time.sleep(1)
             chk(f'{s}: done', can()); nxt(); continue
         if s.endswith('troba') or s=='repas' or s=='P5':
             time.sleep(1.2); pg.screenshot(path=f'{OUT}{s}.png')
@@ -105,9 +106,15 @@ with sync_playwright() as p:
         if s=='escriu':
             for i in range(len(NAMES)):
                 t=pg.locator('#Lbody').inner_text(); chk(f'escriu#{i}: word hidden before Comprova', not any(ca in t for ca in NAMES.values()) and labels()==0, t[:60])
-                pg.click('#cmp'); time.sleep(.2); v='accent' if i==0 else 'ok'
-                pg.locator(f'#Lbody .parent button[data-v="{v}"]').click(); time.sleep(1)
+                pg.click('#cmp'); time.sleep(.2); v='auto-accent' if i==0 else 'auto-ok'
+                pg.locator(f'#Lbody .self button[data-v="{v}"]').click(); time.sleep(1)
             nxt(); continue
+        if pg.locator('#Lbody #ob').count():            # l01 «Observa»: unscored observation (F14)
+            k=0
+            while pg.locator('#Lbody #ob').count() and k<4:
+                chk(f'{s}#{k}: observation not marked right/wrong', pg.locator('#Lbody .opt.right,#Lbody .opt.wrong').count()==0)
+                pg.locator('#Lbody #ob button').first.click(); time.sleep(.5); pg.click('#nb'); time.sleep(1.5); k+=1
+            chk(f'{s}: three Observa items, child-paced', can() and k==3, k); nxt(); continue
         if pg.locator('#Lbody #pool').count():          # ordering task (l11/l12)
             t=bodytext(); chk(f'{s}: steps shown shuffled, no order revealed', pg.locator('#Lbody #ord li').count()==0 and '评分要点' not in t)
             do_order(True); chk(f'{s}: order completed', can()); nxt(); continue
@@ -128,7 +135,11 @@ with sync_playwright() as p:
         if L!='l10' and pg.locator('#Lbody #said').count() and pg.locator('#Lbody .book').count()==0 and not s.endswith('digues'):
             chk(f'{s}: recall hidden before answer (zh on)', labels()==0 and '评分要点' not in bodytext()); chk(f'{s}: back locked', pg.evaluate("document.getElementById('Lback').disabled"))
             pg.click('#said'); time.sleep(.2); chk(f'{s}: book answer after speaking', pg.locator('#Lbody .book').count()>0)
-            if pg.locator('#Lbody #pY').count(): pg.click('#pY'); time.sleep(.3)
+            if pg.locator('#Lbody .self').count()==0:      # unscored reflection (e.g. l06 «Pensa»): nothing to grade
+                chk(f'{s}: unscored reflection, no grading, no parent step', 'no s’avalua' in pg.locator('#Lch').inner_text() and pg.locator('#Lbody .parent').count()==0)
+            else:
+                chk(f'{s}: self-check, no parent step', pg.locator('#Lbody .parent').count()==0 and pg.locator('#Lbody .self button').count()==3)
+                pg.locator('#Lbody .self button[data-v="auto-ok"]').click(); time.sleep(.3)
             chk(f'{s}: done', can()); nxt(); continue
         if L!='l10' and pg.locator('#Lbody .opts button.opt').count() and not pg.locator('#Lbody #po').count():   # choiceSeries
             i=0
@@ -150,7 +161,7 @@ with sync_playwright() as p:
             if s in ('R1','R2'):
                 t=bodytext(); chk(f'{s}: hidden before answer (zh on)', labels()==0 and pg.locator('#Lbody .book').count()==0 and not [w for w in LEAK10 if w in t], [w for w in LEAK10 if w in t])
                 chk(f'{s}: back locked', pg.evaluate("document.getElementById('Lback').disabled"))
-                pg.click('#said'); time.sleep(.2); pg.click('#pY'); time.sleep(.3); nxt(); continue
+                pg.click('#said'); time.sleep(.2); pg.locator('#Lbody .self button[data-v="auto-ok"]').click(); time.sleep(.3); nxt(); continue
             if s in ('P1','P2','P3'):
                 t=bodytext(); chk(f'{s}: no answer text (zh on)', not [w for w in LEAK10 if w in t], [w for w in LEAK10 if w in t])
                 pg.locator('#Lbody button.opt',has_text={'P1':'S’estira','P2':'El colze','P3':'Més gruixut'}[s]).first.click(); time.sleep(.3); nxt(); continue
@@ -166,26 +177,34 @@ with sync_playwright() as p:
             NL=pg.evaluate("Object.keys(__curs.CFG.names).filter(k=>__curs.CFG.names[k].noLoc)"); chk('every name located (groups) — except noLoc '+str(NL), all(rec['loc'].get(k) for k in NAMES if k not in NL) and not any(k in rec['loc'] for k in NL), rec['loc'])
             if NL: chk('noLoc shown as «Pendent de verificar» in results', 'Pendent de verificar' in pg.locator('#Lbody').inner_text())
             chk('every name in mixed review', all(rec['review'].get(k) for k in NAMES if k not in NL), rec['review'])
-            chk('every name said', all(rec['say'].get(k) for k in NAMES), rec['say'])
-            chk('units recorded', all(rec['units'][k] for k in rec['units']), rec['units'])
+            chk('every name said (self-checked, recorded as auto-*)', all(str(rec['say'].get(k,'')).startswith('auto-') for k in NAMES), rec['say'])
+            chk('units recorded (question or self-check)', all(rec['units'][k] or rec['self'].get(k) for k in rec['units']), rec['units'])
             if wrong_done: k=[x for x in NAMES if rec['loc'].get(x)=='ajuda']; chk('wrong first tap recorded as "amb ajuda"', len(k)>=1, rec['loc'])
         elif not NAMES:
-            chk('units recorded', all(rec['units'][k] for k in rec['units']), rec['units']); chk('choice help recorded as amb ajuda', any('ajuda' in v for v in rec['units'].values()), rec['units'])
+            chk('units recorded (question or self-check)', all(rec['units'][k] or rec['self'].get(k) for k in rec['units']), rec['units']); chk('choice help recorded as amb ajuda', any('ajuda' in v for v in rec['units'].values()), rec['units'])
         else:
-            chk('units recorded', all(rec['units'][k] for k in rec['units']), rec['units']); chk('locations', all(rec['loc'].get(k) for k in NAMES), rec['loc'])
-        if rec['spell']: chk('spelling separate: accent-only ≠ failure', list(rec['spell'].values())[0]=='accent' and 'Cal repassar' not in pg.locator('#Lbody').inner_text(), rec['spell'])
+            chk('units recorded (question or self-check)', all(rec['units'][k] or rec['self'].get(k) for k in rec['units']), rec['units']); chk('locations', all(rec['loc'].get(k) for k in NAMES), rec['loc'])
+        print('INFO units with no in-app question (self-check only):', [k for k in rec['units'] if not rec['units'][k]], flush=True)
+        chk('self-check never recorded as an independent right answer', not any(v=='sol' for v in rec['say'].values()) and not any(v=='sol' for a in rec['self'].values() for v in a))
+        chk('record carries content version', rec.get('v')==3 and bool(rec.get('content')), rec.get('content'))
+        if rec['spell']: chk('spelling separate: accent-only ≠ failure', list(rec['spell'].values())[0]=='auto-accent' and 'Cal repassar' not in pg.locator('#Lbody').inner_text(), rec['spell'])
+        chk('results do not claim mastery', not any(w in pg.locator('#Lbody').inner_text() for w in ['Ho domines','Dominat','已经掌握','Ho saps tot']))
     # day 2
     print('before d2 tickers',pg.evaluate('__app.tickers.length'),'labels',pg.evaluate("document.querySelectorAll('#labels .lbl').length"),flush=True)
     (pg.evaluate("document.getElementById('Lday2').click()") if D2 else pg.click('#d2')); time.sleep(1); n=0
-    for step in range(30):
+    total=pg.evaluate("__curs.CFG.day2(__curs.ctx).length"); first=None
+    for step in range(40):
         ch=pg.locator('#Lch').inner_text()
-        if 'Revisió acabada' in pg.locator('#Lbody').inner_text(): break
+        if 'Revisió acabada' in pg.locator('#Lbody').inner_text():
+            if first is None: first=n; chk(f'day2: default round has at most 8 items ({n} of {total})', n==min(8,total), n)
+            if pg.locator('#more').count(): pg.click('#more'); time.sleep(.8); continue
+            break
         if pg.locator('#said').count():
             vis_=pg.evaluate("getComputedStyle(__app.renderer.domElement).visibility"); t=bodytext()
             chk(f'day2 {ch}: answer hidden before child answers', not ('评分要点' in t or '核对方法' in t) and (L not in ('l10','l11','l12') or vis_=='hidden'), (vis_,t[:50]))
             pg.click('#said'); time.sleep(.2)
-            if pg.locator('#rt button').count(): pg.locator('#rt button').first.click()
-            else: pg.locator('#Lbody .parent button[data-v="sol"]').click()
+            chk(f'day2 {ch}: child checks herself (no parent step)', pg.locator('#Lbody .parent').count()==0 and pg.locator('#Lbody .self button').count()==3)
+            pg.locator('#Lbody .self button').first.click()
         elif pg.locator('#Lbody #pool').count():
             chk(f'day2 {ch}: order task, nothing pre-ordered', pg.locator('#Lbody #ord li').count()==0); do_order(False)
         elif pg.locator('#Lbody .opts button.opt').count():
@@ -193,16 +212,17 @@ with sync_playwright() as p:
             pick(ans,True); time.sleep(.5)
         elif pg.locator('#cmp').count():
             t=pg.locator('#Lbody').inner_text(); chk(f'day2 {ch}: word hidden before Comprova', not any(ca in t for ca in NAMES.values()))
-            pg.click('#cmp'); time.sleep(.2); pg.locator('#Lbody .parent button[data-v="ok"]').click()
+            pg.click('#cmp'); time.sleep(.2); pg.locator('#Lbody .self button[data-v="auto-ok"]').click()
         else:
             k=current_target(); time.sleep(1.5); chk(f'day2 {ch}: locate {k} without labels', labels()==0 and tap(k,'#tb[data-done]'))
         time.sleep(.6)
         if not pg.locator('#nx').count(): chk('day2 stuck at '+ch, False, pg.locator('#Lbody').inner_text()[:200].replace('\n',' | ')); pg.screenshot(path=f'{OUT}day2-stuck.png'); break
         pg.evaluate("document.getElementById('nx').click()"); time.sleep(.9); n+=1
         print('d2 step',n,'tickers',pg.evaluate('__app.tickers.length'),flush=True)
-    chk('day2 finished, one item at a time', 'Revisió acabada' in pg.locator('#Lbody').inner_text(), n)
+    chk('day2 finished, one item at a time (default + optional extra)', 'Revisió acabada' in pg.locator('#Lbody').inner_text() and n==total, (n,total))
     pg.screenshot(path=f'{OUT}day2-end.png', full_page=True)
-    rec2=pg.evaluate("__curs.rec"); chk('day2 stored separately (day-1 records unchanged)', rec2['loc']==rec['loc'] and len([k for k in rec2['day2'] if k not in ('started','finished')])==n, n)
+    rec2=pg.evaluate("__curs.rec"); rv=rec2.get('reviews') or []
+    chk('review round stored with date and kind; day-1 records unchanged', rec2['loc']==rec['loc'] and len(rv)>=1 and rv[-1].get('date') and rv[-1].get('kind') and len(rv[-1]['items'])==n, (n, rv[-1] if rv else None))
     chk('no JS errors', not errs, errs)
     b.close()
 fails=[l for l in log if l.startswith('FAIL')]

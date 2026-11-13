@@ -83,7 +83,7 @@ export default {
       ...c.shuffle(N).map(k => ({ id: 'loc_' + k, kind: 'loc', key: k, view: vw(k), title: 'Al model', label: 'Troba ' + ca(k) })),
       ...c.shuffle(N).slice(0, 3).map(k => ({ id: 'say_' + k, kind: 'say', key: k, view: vw(k), title: 'Digues el nom', label: 'Diu el nom: ' + ca(k) })),
       { id: 'oral1', kind: 'oral', title: 'Explica-ho', label: 'Cap i tronc', ca: 'Sense mirar el model: per a què fem servir els músculs del cap? I els del tronc?', zq: '不看模型：头部肌肉和躯干肌肉各有什么用？', key: 'Cap: parlar, mastegar i gesticular. Tronc: mantenen dreta la columna i la flexionen, protegeixen l’abdomen i ajuden a respirar.', zkey: '评分要点：头部——说话、咀嚼、表情；躯干——脊柱直立和弯曲、保护腹部、呼吸。' },
-      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 27', ca: 'Obre el llibre a la pàgina 27. Tapa els noms i assenyala els nou músculs del cap i del tronc.', zq: '打开课本第 27 页，盖住名称，指出头部和躯干的 9 块肌肉。', key: 'Destapa els noms del dibuix i comproveu-ho junts.', zkey: '核对方法：揭开图上的名称一起对照。九个都指对 = 说对了。' },
+      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 27', ca: 'Obre el llibre a la pàgina 27. Tapa els noms i assenyala els nou músculs del cap i del tronc.', zq: '打开课本第 27 页，盖住名称，指出头部和躯干的 9 块肌肉。', key: 'Destapa els noms del dibuix i comprova-ho tu mateix/a.', zkey: '核对方法：揭开图上的名称自己对照。九个都指对 = 说对了。' },
       ...N.map(k => ({ id: 'spell_' + k, kind: 'spell', key: k, view: vw(k), title: 'Escriu el nom', label: 'Escriu ' + ca(k) })),
     ];
   },

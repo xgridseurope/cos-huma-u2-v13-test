@@ -80,7 +80,7 @@ export default {
       ...c.shuffle(N).map(k => ({ id: 'loc_' + k, kind: 'loc', key: k, view: 'tot', title: 'Al model', label: 'Troba ' + ca(k) })),
       ...c.shuffle(N).slice(0, 3).map(k => ({ id: 'say_' + k, kind: 'say', key: k, view: 'tot', title: 'Digues el nom', label: 'Diu el nom: ' + ca(k) })),
       { id: 'oral1', kind: 'oral', title: 'Explica-ho', label: 'On hi ha falanges', ca: 'Sense mirar el model: on tenim molts ossos petits, les falanges?', zq: '不看模型：哪里有很多小骨头（falanges）？', key: 'A les mans i als peus.', zkey: '评分要点：手和脚。' },
-      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 25', ca: 'Obre el llibre a la pàgina 25. Tapa els noms i assenyala el fèmur, la ròtula, la tíbia, el peroné, el tars, el metatars i les falanges del peu.', zq: '打开课本第 25 页，盖住名称，指出腿和脚的 7 块骨头。', key: 'Destapa els noms del dibuix i comproveu-ho junts.', zkey: '核对方法：揭开图上的名称一起对照。七个都指对 = 说对了。' },
+      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 25', ca: 'Obre el llibre a la pàgina 25. Tapa els noms i assenyala el fèmur, la ròtula, la tíbia, el peroné, el tars, el metatars i les falanges del peu.', zq: '打开课本第 25 页，盖住名称，指出腿和脚的 7 块骨头。', key: 'Destapa els noms del dibuix i comprova-ho tu mateix/a.', zkey: '核对方法：揭开图上的名称自己对照。七个都指对 = 说对了。' },
       ...N.map(k => ({ id: 'spell_' + k, kind: 'spell', key: k, view: 'tot', title: 'Escriu el nom', label: 'Escriu ' + ca(k) })),
     ];
   },

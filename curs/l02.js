@@ -95,7 +95,7 @@ export default {
       { id: 'oral1', kind: 'oral', title: 'Explica-ho', label: 'Què protegeix cada part', ca: 'Sense mirar el model: què protegeix el crani? I la columna vertebral? I la columna, les costelles i l’estern junts?', zq: '不看模型：颅骨、脊柱、以及脊柱+肋骨+胸骨分别保护什么？', key: 'El crani protegeix el cervell. La columna vertebral protegeix la medul·la espinal. La columna, les costelles i l’estern protegeixen el cor i els pulmons.', zkey: '评分要点：大脑；脊髓；心和肺。' },
       ...c.shuffle(N).map(k => ({ id: 'loc_' + k, kind: 'loc', key: k, view: 'tot', title: 'Al model', label: 'Troba ' + ca(k) })),
       ...c.shuffle(N).slice(0, 3).map(k => ({ id: 'say_' + k, kind: 'say', key: k, view: 'tot', title: 'Digues el nom', label: 'Diu el nom: ' + ca(k) })),
-      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 25', ca: 'Obre el llibre a la pàgina 25. Tapa els noms i assenyala el crani, el maxil·lar, una costella, l’estern, una vèrtebra, la columna vertebral, l’omòplat i la pelvis.', zq: '打开课本第 25 页，盖住名称，指出这 8 块骨头。', key: 'Destapa els noms del dibuix i comproveu-ho junts.', zkey: '核对方法：揭开图上的名称一起对照。八个都指对 = 说对了。' },
+      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 25', ca: 'Obre el llibre a la pàgina 25. Tapa els noms i assenyala el crani, el maxil·lar, una costella, l’estern, una vèrtebra, la columna vertebral, l’omòplat i la pelvis.', zq: '打开课本第 25 页，盖住名称，指出这 8 块骨头。', key: 'Destapa els noms del dibuix i comprova-ho tu mateix/a.', zkey: '核对方法：揭开图上的名称自己对照。八个都指对 = 说对了。' },
       ...N.map(k => ({ id: 'spell_' + k, kind: 'spell', key: k, view: 'tot', title: 'Escriu el nom', label: 'Escriu ' + ca(k) })),
     ];
   },

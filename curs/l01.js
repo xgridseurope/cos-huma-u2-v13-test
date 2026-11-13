@@ -88,6 +88,11 @@ export default {
         { q: 'Com són els ossos?', opts: ['Rígids i resistents', 'Tous com la gelatina', 'Transparents'], a: 0, cue: 'toca’t el genoll o el canell: com és l’os?', helpText: 'Llibre p. 24, apartat «Els ossos».', units: ['U6'] },
         { q: 'Quants ossos té el nostre esquelet?', opts: ['Més de 200', 'Uns 20', 'Més de 2.000'], a: 0, cue: 'són molts, però no milers.', helpText: 'Llibre p. 25, primera frase de «L’esquelet».', units: ['U8'] },
         { q: 'En quantes zones es distribueixen els ossos?', opts: ['En tres zones', 'En dues zones', 'En deu zones'], a: 0, cue: 'cap, tronc i…', helpText: 'Llibre p. 25: «…distribuïts pel cos en tres zones».', units: ['U8'] },
+        // R11 (2026-11-13): explanations are self-checked, so each explained unit also gets one short question with no help on screen
+        { q: 'Quan corres o saltes, qui hi participa?', opts: ['Els ossos de l’esquelet', 'Només la pell', 'Només els ulls'], a: 0, cue: 'pensa en el que es mou a dins de les cames.', helpText: 'Llibre p. 24: «Aquest sistema intervé en el moviment del cos…».', units: ['U3'] },
+        { q: 'Què fa l’esquelet amb el pes del cos?', opts: ['El suporta', 'El fa desaparèixer', 'No hi té res a veure'], a: 0, cue: 'sense ossos, et podries aguantar dret/a?', helpText: 'Llibre p. 24: «…dona forma i suporta el pes del cos…».', units: ['U4'] },
+        { q: 'De què protegeix l’esquelet els òrgans interns?', opts: ['Dels cops', 'Del fred', 'De la son'], a: 0, cue: 'pensa en el crani i el cervell quan caus.', helpText: 'Llibre p. 24: «…protegeix dels cops els òrgans interns».', units: ['U5'] },
+        { q: 'Per què diem que els ossos són òrgans vius?', opts: ['Perquè creixen i necessiten nutrients', 'Perquè són durs', 'Perquè es mouen sols'], a: 0, cue: 'pensa en com has crescut des de petit/a.', helpText: 'Llibre p. 24, apartat «Els ossos».', units: ['U7'] },
       ]),
       c.choiceSeries('P2', '6 · De quin tipus és?', [
         { q: 'De quin tipus és l’os blau?', opts: ['llarg', 'curt', 'pla'], a: 0, subject: () => { c.view('cos'); show(c, RE.radi); }, cue: 'és un os del braç (una extremitat).', demo: async () => { typeColors(); await c.wait(2200); }, units: ['U9'] },
@@ -111,7 +116,7 @@ export default {
           for (const o of ['llarg', 'curt', 'pla', 'No ho sé']) { const b = document.createElement('button'); b.className = 'opt'; b.textContent = o;
             b.onclick = () => { const r = c.rec; (r.obs = r.obs || {})[it.k] = o; c.saveRec(); el.querySelectorAll('#ob button').forEach(x => x.disabled = true); b.classList.add('hint');
               el.insertAdjacentHTML('beforeend', `<div class="note">👀 ${it.look} El llibre no en dona la resposta: en pots parlar a classe.</div><button class="opt go" id="nb">${i < 2 ? 'Següent ▶' : 'Fet ✔'}</button>`);
-              c.$('nb').onclick = () => { i++; if (i < 3) draw(); else { c.$('nb').remove(); c.hidden(); c.setNext(true); } }; };
+              c.$('nb').onclick = () => { i++; if (i < 3) draw(); else { c.hidden(); el.innerHTML = `<h2>Observa · fet</h2>${c.ossi('Molt bé! Ja has mirat els sis ossos de l’«Observa». Dels tres últims, el llibre no en dona la resposta.')}`; c.setNext(true); } }; };
             c.$('ob').appendChild(b); } };
         draw(); } },
       c.resultsStage(),

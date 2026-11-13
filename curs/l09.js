@@ -70,7 +70,7 @@ export default {
       ...c.shuffle(N).map(k => ({ id: 'loc_' + k, kind: 'loc', key: k, view: vw(k), title: 'Al model', label: 'Troba ' + ca(k) })),
       ...c.shuffle(N).slice(0, 3).map(k => ({ id: 'say_' + k, kind: 'say', key: k, view: vw(k), title: 'Digues el nom', label: 'Diu el nom: ' + ca(k) })),
       { id: 'oral1', kind: 'oral', title: 'Explica-ho', label: 'Extremitats', ca: 'Sense mirar el model: com són molts músculs de les extremitats i què mouen?', zq: '不看模型：四肢的很多肌肉是什么样的，让什么动？', key: 'Molts són llargs. Mouen els braços, les cames, les mans i els peus.', zkey: '评分要点：很多是长肌；手臂、腿、手、脚。' },
-      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 27', ca: 'Obre el llibre a la pàgina 27. Tapa els noms i assenyala els sis músculs dels braços i de les cames.', zq: '打开课本第 27 页，盖住名称，指出四肢的 6 块肌肉。', key: 'Destapa els noms del dibuix i comproveu-ho junts.', zkey: '核对方法：揭开图上的名称一起对照。六个都指对 = 说对了。' },
+      { id: 'book', kind: 'oral', title: 'El llibre', label: 'Dibuix de la p. 27', ca: 'Obre el llibre a la pàgina 27. Tapa els noms i assenyala els sis músculs dels braços i de les cames.', zq: '打开课本第 27 页，盖住名称，指出四肢的 6 块肌肉。', key: 'Destapa els noms del dibuix i comprova-ho tu mateix/a.', zkey: '核对方法：揭开图上的名称自己对照。六个都指对 = 说对了。' },
       ...N.map(k => ({ id: 'spell_' + k, kind: 'spell', key: k, view: vw(k), title: 'Escriu el nom', label: 'Escriu ' + ca(k) })),
     ];
   },
