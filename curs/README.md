@@ -10,7 +10,7 @@ The 1A sample (`sample.html`) stays as it is for Emily's trial.
 | # | Lesson | Book | Type | Names to learn |
 |---|---|---|---|---|
 | l01 | El sistema esquelètic | p. 24–25 | principle | — |
-| l02 | Ossos del cap i del tronc | p. 25 | names (4 pairs) | crani, maxil·lar*, columna vertebral, vèrtebra, costella, estern, omòplat, pelvis |
+| l02 | Ossos del cap i del tronc | p. 25 | names (4 pairs) | crani, maxil·lar\*, columna vertebral, vèrtebra, costella, estern, omòplat, pelvis |
 | l03 | Ossos del braç i de la mà | p. 25 | names (2 groups) | húmer, cúbit, radi, carp, metacarp, falanges |
 | l04 | Ossos de la cama i del peu | p. 25 | names (3 groups) + activity 2 | fèmur, ròtula, tíbia, peroné, tars, metatars, falanges |
 | l05 | Les articulacions | p. 24 | principle | — |
@@ -21,7 +21,7 @@ The 1A sample (`sample.html`) stays as it is for Emily's trial.
 | l10 | Bíceps i tríceps | p. 27 (activity 4) | principle | — |
 | l11 | Com ens movem: el sistema nerviós | p. 28 (+ activity 5, p. 29) | principle + names (1 group) | cervell, medul·la espinal, nervis |
 | l12 | Moviments voluntaris i reflexos | p. 29 | principle | — |
-\* maxil·lar: the model area that matches the book name is pending verification — no 3D highlight or label is shown as its answer; the name is learned, said (from the book drawing) and spelled; location not scored.
+\* maxil·lar (resolved 2026-11-13): the school teacher says «maxil·lar de dalt / maxil·lar de baix», so both jaws are the answer; a tap on either counts and location is scored again (l02 continuous run 125/125, qa/curs1f).
 
 ## Shared (player.js) — written once
 | Piece | What it guarantees |
@@ -106,3 +106,14 @@ Not added: no claim that all involuntary movements are controlled by the spinal 
 | l02 (regression) | 120/121 continuous run; the 1 failure is the old test expectation «≥ 2 labels in guided practice» (now only crani has a label, because maxil·lar is no longer labelled) | after the run, two more l02 changes were checked with a targeted script, not a full re-run: a wrong tap on the jaw now says «un os de la boca» (it said «maxil·lar»), and the pending-verification banner wording |
 Earlier results kept as they were: l08 lesson 118/118 + day 2 27/27 in two separate parts (the first run hit the time limit at day-2 item 11 with no failure). Not re-run this time: l01, l03–l10 (the player changes only act on `noLoc`, `tol`, day-2 `custom` items and partWord ≠ os/múscul, which those lessons do not use), the V1.4 30-step suite and the 1A sample.
 Not verified: real phone, Catalan proofreading, Emily's trial.
+
+## Proposal — l13–l19 (textbook pp. 30–37 + final review; not built yet)
+| # | Lesson | Book |
+|---|---|---|
+| l13 | La salut de l’aparell locomotor (exercici, dieta, sol, postura) | p. 30 |
+| l14 | Les lesions (fractura, esquinç, contractura) + postures correctes | p. 31 |
+| l15 | Taller científic: observar i interpretar una radiografia | p. 32 |
+| l16 | Taller tecnològic: taula d’estiraments | p. 33 |
+| l17 | Racons: lectura (esport femení) + oratòria / escriptura | p. 34–35 |
+| l18 | Comprova el que has après | p. 36–37 |
+| l19 | Repàs final de la unitat (incl. items a parent marked «mastered, skip») | pp. 22–37 |
