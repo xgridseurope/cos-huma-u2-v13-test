@@ -1,6 +1,7 @@
 // Lesson 2 · Els ossos del cap i del tronc (textbook p. 25). NAME lesson (8 names in four pairs) + what each part protects.
 // maxil·lar: PENDENT DE VERIFICAR. On the p. 25 photo the label line ends on the lower jaw, below the teeth, but the drawing does not separate
-// the upper and lower jaw and «maxil·lar» on its own usually names the upper jaw. So: taught (name, say, spelling) with BOTH jaws highlighted,
+// the upper and lower jaw and «maxil·lar» on its own usually names the upper jaw. So: taught (name, say, spelling) from the BOOK drawing; no model
+// highlight or 3D label is presented as its answer;
 // never an independent location item (noLoc), until the family/teacher confirms.
 // Zone of omòplat and pelvis = trunk, as coloured in the p. 25 drawing.
 export default {
@@ -19,7 +20,7 @@ export default {
   },
   names: {
     crani: { ca: 'crani', g: 'bone', re: /(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/, aid: 'És la part de dalt i del darrere del cap.', zh: 'crani：头顶和后脑的骨头（颅骨）。' },
-    maxillar: { ca: 'maxil·lar', html: 'maxi<b>l·l</b>ar', g: 'bone', re: /^mandible$|maxilla$/, noLoc: true, aid: 'Són els ossos de la boca, on hi ha les dents. ⚠️ Al dibuix del llibre la línia acaba a la mandíbula (a baix); pendent de verificar: no es puntua on és.', zh: 'maxil·lar：嘴部长牙齿的骨头。⚠️ 课本 P25 图的指引线落在下颌，但图上上下颌没分开，加泰语 maxil·lar 通常指上颌——待核实，位置不计分。' },
+    maxillar: { ca: 'maxil·lar', html: 'maxi<b>l·l</b>ar', g: 'bone', re: /^mandible$|maxilla$/, noLoc: true, pvName: 'un os de la boca', aid: 'Al dibuix del llibre, el nom maxil·lar assenyala la zona de la boca.', pvNote: 'Encara no sabem si al model correspon a l’os de dalt o al de baix de la boca. Mira el nom al dibuix del llibre (p. 25). Aquest nom s’aprèn i s’escriu, però on és no es puntua.', sayQ: 'Mira el dibuix del llibre (p. 25) tapant els noms: com es diu l’os assenyalat a la boca?', zh: 'maxil·lar：课本 P25 图上指向嘴部的骨头名称。⚠️ 模型上对应上颌还是下颌待核实，不在模型上高亮，位置不计分；名称照常学习和书写。' },
     columna: { ca: 'columna vertebral', g: 'bone', re: /vertebra$|^atlas$|^axis$|sacrum|coccyx|intervertebral disk/, aid: 'És tota la filera d’ossos del mig de l’esquena.', zh: 'columna vertebral：背部中间一整列骨头（脊柱）。' },
     vertebra: { ca: 'vèrtebra', html: 'v<b>è</b>rtebra', g: 'bone', re: /vertebra$|^atlas$|^axis$/, show: /^third lumbar vertebra$/, aid: 'És un dels ossets que, un sobre l’altre, formen la columna.', zh: 'vèrtebra：组成脊柱的一块块小骨头（椎骨）。' },
     costella: { ca: 'costella', g: 'bone', re: / rib$/, show: /^left fifth rib$/, aid: 'Són els ossos corbats que fan com una gàbia al pit.', zh: 'costella：胸部弯弯的、像笼子一样的骨头（肋骨）。' },
@@ -68,7 +69,7 @@ export default {
       c.reviewStage(N, 'tot'),
       { id: 'R1', ph: '5 · Explica-ho tu', recall: true, render(el) { c.view('tot'); c.recall(el, { q: 'Explica-ho en veu alta: què protegeix el crani? I la columna vertebral? I què protegeixen junts la columna, les costelles i l’estern?', keys: ['cap', 'tronc'], units: ['U2', 'U3', 'U4'], zhq: '颅骨保护什么？脊柱保护什么？脊柱、肋骨和胸骨一起保护什么？', zkey: '评分要点：颅骨—大脑；脊柱—脊髓；脊柱+肋骨+胸骨—心和肺。' }); } },
       c.choiceSeries('P1', '6 · Practica', [
-        { q: 'Què hi ha al cap, a més dels ossos del crani?', opts: ['Els ossos de la cara', 'Les vèrtebres', 'Les costelles'], a: 0, cue: 'pensa en el maxil·lar: on és?', helpText: 'Llibre p. 25, requadre «Cap».', units: ['U1'] },
+        { q: 'Què hi ha al cap, a més dels ossos del crani?', opts: ['Els ossos de la cara', 'Les vèrtebres', 'Les costelles'], a: 0, cue: 'el crani és només una part del cap; a la cara també hi ha ossos.', helpText: 'Llibre p. 25, requadre «Cap».', units: ['U1'] },
         { q: 'Com són els ossos del crani?', opts: ['Plans', 'Llargs', 'Curts'], a: 0, cue: 'són com plaques que fan un casc.', helpText: 'Llibre p. 25, requadre «Cap».', units: ['U2'] },
         { q: 'De què està formada la columna vertebral?', opts: ['De vèrtebres', 'De costelles', 'De falanges'], a: 0, cue: 'el nom s’hi assembla: columna verte…', helpText: 'Llibre p. 25, requadre «Tronc».', units: ['U3'] },
         { q: 'A quins ossos s’uneixen les costelles?', opts: ['A la columna vertebral i a l’estern', 'Al crani', 'A la pelvis'], a: 0, cue: 'segueix una costella amb el dit: per davant i per darrere.', demo: async () => { c.view('troncCostat'); A.highlight(c.parts.costella, 0x2fd3ff); A.highlight(c.parts.estern, 0x35c46a); A.highlight(c.parts.columna, 0x35c46a); await c.wait(2500); }, units: ['U5'] },

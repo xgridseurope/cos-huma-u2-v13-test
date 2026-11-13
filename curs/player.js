@@ -110,7 +110,7 @@ function nearSmall(x, y, targets) {
     if (w < 40 && h < 40 && x > Math.min(...xs) - 8 && x < Math.max(...xs) + 8 && y > Math.min(...ys) - 8 && y < Math.max(...ys) + 8) return true; }
   return false;
 }
-function nameOf(o) { if (!o) return 'res'; for (const k in parts) if (parts[k].includes(o)) return '«' + NM[k].ca + '»'; return o.userData.g === 'bone' ? (PW === 'os' ? 'un altre os' : 'un os') : (o.userData.g === 'muscle' || o.userData.g === 'allMuscle') ? 'un altre múscul' : 'una altra part'; }
+function nameOf(o) { if (!o) return 'res'; for (const k in parts) if (parts[k].includes(o)) return NM[k].noLoc ? (NM[k].pvName || 'una altra part') : '«' + NM[k].ca + '»'; return o.userData.g === 'bone' ? (PW === 'os' ? 'un altre os' : 'un os') : (o.userData.g === 'muscle' || o.userData.g === 'allMuscle') ? 'un altre múscul' : 'una altra part'; }
 
 // tap a named structure without labels. Help ladder: cue → demo (highlight + name) → retry alone.
 function tapTask(el, { q, key, cue, onResult, demo }) {
@@ -120,7 +120,9 @@ function tapTask(el, { q, key, cue, onResult, demo }) {
   const down = e => { d = [e.clientX, e.clientY]; };
   const up = async e => {
     if (el.dataset.done || !d || Math.hypot(e.clientX - d[0], e.clientY - d[1]) > 8) return;
-    const h = hitAt(e.clientX, e.clientY, targets);
+    let h = hitAt(e.clientX, e.clientY, targets);
+    const tol = NM[key].tol;   // thin structures (nerves): a tap within tol px of the target also counts
+    if (!h.ok && tol && !h.obj) for (const rr of [tol / 2, tol]) for (let j = 0; j < 8 && !h.ok; j++) { const t = hitAt(e.clientX + rr * Math.cos(j * Math.PI / 4), e.clientY + rr * Math.sin(j * Math.PI / 4), targets); if (t.ok) h = t; }
     if (h.ok || nearSmall(e.clientX, e.clientY, targets)) {
       el.dataset.done = 1; const v = wrongs ? 'ajuda' : 'sol'; onResult && onResult(v); saveRec();
       A.highlight([...targets], 0x35c46a); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); setTimeout(() => A.clearHighlights(), 900); cleanup(); el.dispatchEvent(new Event('done')); return;
@@ -183,9 +185,10 @@ function recall(el, { q, keys, units, zhq, zkey }) {
   setNext(false);
 }
 // say the name of the highlighted structure (no labels); check after
+const PV = k => `<div class="note pv">⚠️ <b>La zona del model que correspon a aquest nom del llibre està pendent de verificar.</b> ${esc(CFG.names[k].pvNote || '')}${showZh ? '<br>🇨🇳 教材名称对应区域待核实。' : ''}</div>`;   // noLoc names
 function sayName(el, key, { onResult } = {}) {
-  hidden(); A.highlight(showParts[key], 0x2fd3ff);
-  el.innerHTML = `<div class="q">Com es diu ${PW === 'os' ? 'l’os blau' : 'el múscul blau'}? Digues-ho en veu alta.</div>${zh(PW === 'os' ? '题目：说出蓝色骨头的名称（说完再核对）。' : '题目：说出蓝色肌肉的名称（说完再核对）。')}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>`;
+  hidden(); const nl = CFG.names[key].noLoc; if (!nl) A.highlight(showParts[key], 0x2fd3ff);
+  el.innerHTML = nl ? `<div class="q">${esc(CFG.names[key].sayQ)} Digues-ho en veu alta.</div>${PV(key)}${zh('题目：按课本图说出名称（模型上对应区域待核实）。')}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>` : `<div class="q">Com es diu ${PW === 'os' ? 'l’os blau' : PW === 'múscul' ? 'el múscul blau' : 'la part blava'}? Digues-ho en veu alta.</div>${zh(PW === 'os' ? '题目：说出蓝色骨头的名称（说完再核对）。' : PW === 'múscul' ? '题目：说出蓝色肌肉的名称（说完再核对）。' : '题目：说出蓝色部位的名称（说完再核对）。')}<button class="opt go" id="said">🗣️ Ja ho he dit</button><div id="chk"></div>`;
   $('said').onclick = () => { $('said').remove();
     $('chk').innerHTML = `<div class="spell">${esc(CFG.names[key].ca)}</div><div class="parent"><div class="who">👨‍👩‍👧 Ho ha dit bé? / 说对了吗？</div><div class="row">
       <button class="opt right" data-v="sol">Sí ✓ 对</button><button class="opt" data-v="ajuda">Amb ajuda 有提示</button><button class="opt" data-v="no">No ✗ 不对</button></div></div>`;
@@ -193,8 +196,8 @@ function sayName(el, key, { onResult } = {}) {
 }
 // write on paper; the correct spelling appears only after «Comprova»
 function spell(el, key, { onResult } = {}) {
-  hidden(); A.highlight(showParts[key], 0x2fd3ff);
-  el.innerHTML = `<div class="q">Escriu en un paper el nom de la part blava. Quan acabis, toca «Comprova».</div>${zh('题目：在纸上写出蓝色部位的名称，写完再核对。只错重音记为「拼写需练」。')}<button class="opt go" id="cmp">✏️ Comprova</button><div id="sp"></div>`;
+  hidden(); const nl = CFG.names[key].noLoc; if (!nl) A.highlight(showParts[key], 0x2fd3ff);
+  el.innerHTML = `<div class="q">${nl ? esc(CFG.names[key].sayQ).replace('Com es diu', 'Escriu en un paper el nom de') : 'Escriu en un paper el nom de la part blava.'} Quan acabis, toca «Comprova».</div>${zh('题目：在纸上写出蓝色部位的名称，写完再核对。只错重音记为「拼写需练」。')}<button class="opt go" id="cmp">✏️ Comprova</button><div id="sp"></div>`;
   $('cmp').onclick = () => { $('cmp').remove();
     $('sp').innerHTML = `<div class="spell">${CFG.names[key].html || esc(CFG.names[key].ca)}</div><div class="parent"><div class="who">👨‍👩‍👧 Compara amb el paper / 对照纸上：</div><div class="row">
       <button class="opt right" data-v="ok">Escrit bé ✓ 全对</button><button class="opt" data-v="accent">Només l’accent 只错重音</button><button class="opt" data-v="no">Cal practicar ✗ 需要练</button></div></div>`;
@@ -214,17 +217,17 @@ function nameGroupStages(g) {   // g = { id, keys, view, viewAlt, title, predict
   S.push({ id: g.id + '-coneix', ph: '2–3 · Coneix-los', render: el => {
     hidden(); view(g.view); let i = 0;
     const show = () => {
-      A.clearHighlights(); clearLabels(); const k = g.keys[i];
-      A.highlight(showParts[k], 0x2fd3ff); nameLabels([k]);
-      el.innerHTML = `<h2>${esc(g.title)} · ${i + 1}/${g.keys.length}</h2>${g.book ? book(g.book) : ''}<div class="spell">${esc(CFG.names[k].ca)}</div>${aid(CFG.names[k].aid)}${zh(CFG.names[k].zh)}
+      A.clearHighlights(); clearLabels(); const k = g.keys[i], nl = CFG.names[k].noLoc;
+      if (!nl) { A.highlight(showParts[k], 0x2fd3ff); nameLabels([k]); }
+      el.innerHTML = `<h2>${esc(g.title)} · ${i + 1}/${g.keys.length}</h2>${g.book ? book(g.book) : ''}<div class="spell">${esc(CFG.names[k].ca)}</div>${nl ? PV(k) : ''}${aid(CFG.names[k].aid)}${zh(CFG.names[k].zh)}
         <button class="opt go" id="nb">${i < g.keys.length - 1 ? 'Següent ' + PW + ' ▶' : 'Tots junts ▶'}</button>`;
-      $('nb').onclick = () => { i++; if (i < g.keys.length) show(); else { A.clearHighlights(); clearLabels(); nameLabels(g.keys); el.innerHTML = `<h2>${esc(g.title)}</h2>${ossi('Aquí els tens tots junts. Mira’ls bé abans de continuar.')}`; setNext(true); } };
+      $('nb').onclick = () => { i++; if (i < g.keys.length) show(); else { A.clearHighlights(); clearLabels(); nameLabels(g.keys.filter(k => !CFG.names[k].noLoc)); el.innerHTML = `<h2>${esc(g.title)}</h2>${ossi('Aquí els tens tots junts. Mira’ls bé abans de continuar.')}`; setNext(true); } };
     };
     show(); setNext(false);
   } });
   S.push({ id: g.id + '-fes', ph: '4 · Fes-ho tu (amb noms)', render: async el => {
-    clearLabels(); A.clearHighlights(); view(g.view); nameLabels(g.keys); setNext(false);
-    await sequence(el, shuffle(g.keys), (box, k) => tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca} (pots mirar els noms)`, key: k, cue: CFG.names[k].aid }));   // with labels: practice only, not recorded
+    clearLabels(); A.clearHighlights(); view(g.view); const LK = g.keys.filter(k => !CFG.names[k].noLoc); nameLabels(LK); setNext(false);
+    await sequence(el, shuffle(LK), (box, k) => tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca} (pots mirar els noms)`, key: k, cue: CFG.names[k].aid }));   // with labels: practice only, not recorded
     feedback(el, true, 'Molt bé! Ara, sense noms…'); setNext(true);
   } });
   S.push({ id: g.id + '-digues', ph: '5 · Digues el nom', recall: true, render: async el => {
@@ -313,6 +316,7 @@ function day2() {
       else if (it.kind === 'say') sayName(box, it.key, { onResult: v => { rec.day2[it.id] = v; } });
       else if (it.kind === 'spell') spell(box, it.key, { onResult: v => { rec.day2[it.id] = v; } });
       else if (it.kind === 'choice') ladderChoice(box, { ...it, onResult: v => { rec.day2[it.id] = v; } });
+      else if (it.kind === 'custom') it.run(box, v => { rec.day2[it.id] = v; saveRec(); });
     }
   };
   const finish = () => {

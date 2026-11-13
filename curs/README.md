@@ -1,10 +1,27 @@
-# Lesson player (1B + skeleton batch) — `curs.html?l=<lesson>`
+# Lesson player — 12 small lessons, `curs.html?l=<lesson>`
 
 Each small lesson is one config file in this folder; `player.js` runs it. Lessons so far:
 `l10` Bíceps i tríceps (principle lesson, ported from the 1A sample) · `l03` Els ossos del braç i de la mà (name lesson).
 Muscle batch: `l06` El sistema muscular (p. 26–27, principle) · `l07` La forma dels músculs (p. 26, 4 types) · `l08` Músculs del cap i del tronc (p. 27, 9 names in 4 groups) · `l09` Músculs de les extremitats (p. 27, 6 names in 3 pairs; bíceps/tríceps only name + place, the pair mechanism stays in l10).
 Skeleton batch: `l01` El sistema esquelètic (p. 24–25, principle) · `l02` Ossos del cap i del tronc (p. 25, 8 names in 4 pairs) · `l04` Ossos de la cama i del peu (p. 25, 7 names in 3 groups + activity 2) · `l05` Les articulacions (p. 24, principle).
 The 1A sample (`sample.html`) stays as it is for Emily's trial.
+
+## Catalogue (textbook pages 24–29; pp. 22–23 are only the unit opener)
+| # | Lesson | Book | Type | Names to learn |
+|---|---|---|---|---|
+| l01 | El sistema esquelètic | p. 24–25 | principle | — |
+| l02 | Ossos del cap i del tronc | p. 25 | names (4 pairs) | crani, maxil·lar*, columna vertebral, vèrtebra, costella, estern, omòplat, pelvis |
+| l03 | Ossos del braç i de la mà | p. 25 | names (2 groups) | húmer, cúbit, radi, carp, metacarp, falanges |
+| l04 | Ossos de la cama i del peu | p. 25 | names (3 groups) + activity 2 | fèmur, ròtula, tíbia, peroné, tars, metatars, falanges |
+| l05 | Les articulacions | p. 24 | principle | — |
+| l06 | El sistema muscular | p. 26–27 | principle | — |
+| l07 | La forma dels músculs | p. 26 | principle (4 types) | — |
+| l08 | Músculs del cap i del tronc | p. 27 | names (4 groups) | orbicular de les parpelles, masseter, esternoclidomastoidal, trapezi, deltoide, pectoral, abdominal, dorsal, gluti |
+| l09 | Músculs de les extremitats | p. 27 | names (3 pairs) | bíceps, tríceps, quàdriceps, bíceps femoral, tibial, bessó |
+| l10 | Bíceps i tríceps | p. 27 (activity 4) | principle | — |
+| l11 | Com ens movem: el sistema nerviós | p. 28 (+ activity 5, p. 29) | principle + names (1 group) | cervell, medul·la espinal, nervis |
+| l12 | Moviments voluntaris i reflexos | p. 29 | principle | — |
+\* maxil·lar: the model area that matches the book name is pending verification — no 3D highlight or label is shown as its answer; the name is learned, said (from the book drawing) and spelled; location not scored.
 
 ## Shared (player.js) — written once
 | Piece | What it guarantees |
@@ -60,3 +77,32 @@ Not re-run: V1.4 30-step suite and the 1A sample (app.js, sample.* untouched).
 - The book drawing colours deltoide, trapezi, esternoclidomastoidal and gluti as tronc: said once in l08, never asked as a zone question.
 - Small structures (orbicular, hand muscles) are hard to tap on a phone; the player accepts a tap inside their on-screen box.
 - l02 maxil·lar: pending verification (label line ends on the lower jaw, the drawing does not separate the jaws, and «maxil·lar» alone usually means the upper jaw). Both jaws highlighted; never an independent location item; results show «Pendent de verificar».
+
+## Nervous-system batch (l11, l12) — textbook coverage (p. 28–29, checked against the page photos)
+| Book content | Where | Source type |
+|---|---|---|
+| p. 28 opening text (we perceive, react; falling-rock example) and «La funció de relació…» | l11 | textbook sentence |
+| p. 28 scheme Òrgans dels sentits → Sistema nerviós → Aparell locomotor | l11 (order task) | textbook sentence + scheme |
+| p. 28 «El sistema nerviós està format per…», Cervell / Nervis / Medul·la espinal paragraphs, labels of the drawing | l11 (names group + «Què fa cada part») | textbook sentence |
+| p. 28 L’aparell locomotor (ossos + músculs; uns es contreuen, uns altres es relaxen) | l11 | textbook sentence |
+| p. 29 activity 5 (order the 5 sentences) | l11 (A5) + day 2 | activity reference answer |
+| p. 29 moviments voluntaris: definition + 3 steps of the drawings | l12 | textbook sentence; the traffic-light example = textbook drawing |
+| p. 29 moviments reflexos: definition («en molts… no intervé el cervell, sinó la medul·la espinal») + 3 steps | l12 | textbook sentence; the hot-cup example = textbook drawing |
+Not added: no claim that all involuntary movements are controlled by the spinal cord; the V1.4 extra step «then the brain notices the burn» is not used.
+
+## Nervous-system batch — model notes and limits
+- The signal paths reuse the V1.4 `paths()` and are labelled on every step as a teaching schematic, not the real course of a nerve.
+- The model cannot walk: in the voluntary example the order to the muscles is shown by bending the arm (said on screen). The stimulus objects (traffic light, cup) are simple schematic shapes.
+- In l11 the bones and muscles are hidden while the child taps the brain, spinal cord and nerves (bones would block the taps); they are shown semi-transparent while their protective role is explained.
+- Nerves are thin: a tap within 14 px of a nerve counts **only** when the tap hits nothing else (tapping the brain is still «cervell»).
+- Shared helpers for l11/l12 live in `curs/relacio.js` (signal demo + ordering task); older lessons do not load it.
+- Player changes this batch: `noLoc` names no longer highlighted/labelled as an answer (book-based say/spell prompts); `tol` for thin targets; day-2 `custom` items; say-the-name wording for `partWord` other than os/múscul.
+
+## Nervous-system batch — tests (qa/curs1e, phone 393×851, touch, Chinese gloss ON)
+| Lesson | Result | How |
+|---|---|---|
+| l11 | 80/80 | one continuous full run (lesson + day 2), after two fixes found by earlier runs: signal crash (negative animation time) and nerve tap tolerance accepting a tap on the brain |
+| l12 | 40/40 | one continuous full run (lesson + day 2); afterwards one Ossi sentence on card 2 of the reflex steps was reworded (text only, not re-run) |
+| l02 (regression) | 120/121 continuous run; the 1 failure is the old test expectation «≥ 2 labels in guided practice» (now only crani has a label, because maxil·lar is no longer labelled) | after the run, two more l02 changes were checked with a targeted script, not a full re-run: a wrong tap on the jaw now says «un os de la boca» (it said «maxil·lar»), and the pending-verification banner wording |
+Earlier results kept as they were: l08 lesson 118/118 + day 2 27/27 in two separate parts (the first run hit the time limit at day-2 item 11 with no failure). Not re-run this time: l01, l03–l10 (the player changes only act on `noLoc`, `tol`, day-2 `custom` items and partWord ≠ os/múscul, which those lessons do not use), the V1.4 30-step suite and the 1A sample.
+Not verified: real phone, Catalan proofreading, Emily's trial.

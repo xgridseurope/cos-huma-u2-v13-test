@@ -18,6 +18,14 @@ with sync_playwright() as p:
     cnt=pg.evaluate("Object.fromEntries(Object.entries(__curs.parts).map(([k,v])=>[k,v.length]))"); chk('every name has model parts', all(cnt.values()), cnt)
     hlcount=lambda: pg.evaluate("(()=>{let n=0;__app.scene.traverse(o=>{if(o.userData&&o.userData.hl)n++});return n})()")
     choice_wrong_done=[False]
+    order_wrong_done=[False]
+    def do_order(allow_wrong):
+        items=pg.evaluate("__curs.order")
+        if allow_wrong and not order_wrong_done[0]:
+            pg.evaluate("(t)=>{const b=[...document.querySelectorAll('#Lbody #pool button')].find(x=>x.textContent!==t);b.click()}", items[0]); time.sleep(.4)
+            fb=pg.locator('#Lbody .fb').last.inner_text(); chk('order: wrong first pick → specific cue, order not revealed', 'Pista' in fb and pg.locator('#Lbody #ord li').count()==0, fb); order_wrong_done[0]=True
+        for it in items:
+            pg.evaluate("(t)=>{const b=[...document.querySelectorAll('#Lbody #pool button')].find(x=>x.textContent===t);b.click()}", it); time.sleep(.35)
     def pick(ans,right): pg.evaluate("([a,r])=>{const b=[...document.querySelectorAll('#Lbody .opts button.opt')].filter(x=>!x.disabled&&((x.textContent===a)===r));b[0].click()}",[ans,right])
     sid=lambda: pg.evaluate("__curs.S[__curs.idx].id")
     labels=lambda: pg.evaluate("document.querySelectorAll('#labels .lbl').length")
@@ -67,7 +75,7 @@ with sync_playwright() as p:
                 pg.click('#nb'); time.sleep(.6)
             chk(f'{s}: introduced one by one, child-paced', can()); nxt(); continue
         if s.endswith('-fes') and L!='l10':
-            chk(f'{s}: labels visible in guided practice', labels()>=2)
+            chk(f'{s}: labels visible in guided practice', labels()>=1)
             for _ in range(pg.evaluate('document.querySelectorAll("#labels .lbl").length')):
                 k=current_target(); ok=tap(k); time.sleep(.9)
             chk(f'{s}: guided taps done', can()); nxt(); continue
@@ -100,6 +108,9 @@ with sync_playwright() as p:
                 pg.click('#cmp'); time.sleep(.2); v='accent' if i==0 else 'ok'
                 pg.locator(f'#Lbody .parent button[data-v="{v}"]').click(); time.sleep(1)
             nxt(); continue
+        if pg.locator('#Lbody #pool').count():          # ordering task (l11/l12)
+            t=bodytext(); chk(f'{s}: steps shown shuffled, no order revealed', pg.locator('#Lbody #ord li').count()==0 and '评分要点' not in t)
+            do_order(True); chk(f'{s}: order completed', can()); nxt(); continue
         if pg.locator('#Lbody #nb').count():          # teaching stepper (child-paced)
             k=0
             while pg.locator('#Lbody #nb').count() and k<8:
@@ -171,10 +182,12 @@ with sync_playwright() as p:
         if 'Revisió acabada' in pg.locator('#Lbody').inner_text(): break
         if pg.locator('#said').count():
             vis_=pg.evaluate("getComputedStyle(__app.renderer.domElement).visibility"); t=bodytext()
-            chk(f'day2 {ch}: answer hidden before child answers', not ('评分要点' in t or '核对方法' in t) and (L!='l10' or vis_=='hidden'), (vis_,t[:50]))
+            chk(f'day2 {ch}: answer hidden before child answers', not ('评分要点' in t or '核对方法' in t) and (L not in ('l10','l11','l12') or vis_=='hidden'), (vis_,t[:50]))
             pg.click('#said'); time.sleep(.2)
             if pg.locator('#rt button').count(): pg.locator('#rt button').first.click()
             else: pg.locator('#Lbody .parent button[data-v="sol"]').click()
+        elif pg.locator('#Lbody #pool').count():
+            chk(f'day2 {ch}: order task, nothing pre-ordered', pg.locator('#Lbody #ord li').count()==0); do_order(False)
         elif pg.locator('#Lbody .opts button.opt').count():
             ans=pg.evaluate("__curs.answer"); chk(f'day2 {ch}: choice, no answer shown', pg.locator('#Lbody .opt.right').count()==0 and labels()==0)
             pick(ans,True); time.sleep(.5)
