@@ -1,0 +1,1069 @@
+{
+ "l01": {
+  "title": "El sistema esquelètic 🦴",
+  "book": [
+   {
+    "key": "aparell",
+    "p": 24,
+    "src": "lit",
+    "where": "text",
+    "tx": "L’aparell locomotor permet el moviment del nostre cos. Està format pel sistema esquelètic i el sistema muscular.",
+    "line": 19
+   },
+   {
+    "key": "sistema",
+    "p": 24,
+    "src": "lit",
+    "where": "text",
+    "tx": "El sistema esquelètic el formen els ossos, que componen l’esquelet. Aquest sistema intervé en el moviment del cos, dona forma i suporta el pes del cos, protegeix dels cops els òrgans interns…",
+    "line": 20
+   },
+   {
+    "key": "ossos",
+    "p": 24,
+    "src": "lit",
+    "where": "text",
+    "tx": "Els ossos són òrgans rígids i resistents. Tots els ossos del cos formen l’esquelet. Tot i el seu aspecte rígid, els ossos són òrgans vius que creixen i necessiten nutrients.",
+    "line": 21
+   },
+   {
+    "key": "vius",
+    "p": 25,
+    "src": "act",
+    "where": "activitat 1",
+    "q": "Explica per què diem que els ossos són òrgans vius.",
+    "tx": "Perquè creixen i necessiten nutrients (p. 24).",
+    "line": 22
+   },
+   {
+    "key": "dos_cents",
+    "p": 25,
+    "src": "lit",
+    "where": "text",
+    "tx": "El nostre esquelet està format per més de 200 ossos distribuïts pel cos en tres zones.",
+    "line": 23
+   },
+   {
+    "key": "tipus",
+    "p": 24,
+    "src": "lit",
+    "where": "text",
+    "tx": "Tenim tres tipus d’ossos.",
+    "line": 24
+   },
+   {
+    "key": "llargs",
+    "p": 24,
+    "src": "lit",
+    "where": "text del dibuix",
+    "tx": "Ossos llargs, com els de les extremitats.",
+    "line": 25
+   },
+   {
+    "key": "curts",
+    "p": 24,
+    "src": "lit",
+    "where": "text del dibuix",
+    "tx": "Ossos curts, com les vèrtebres que formen la columna vertebral.",
+    "line": 26
+   },
+   {
+    "key": "plans",
+    "p": 24,
+    "src": "lit",
+    "where": "text del dibuix",
+    "tx": "Ossos plans, com els que formen el crani.",
+    "line": 27
+   },
+   {
+    "key": "tipusAct",
+    "p": 25,
+    "src": "act",
+    "where": "activitat «Observa»",
+    "q": "De quin tipus són els ossos següents? (radi, tíbia, vèrtebra…)",
+    "tx": "Radi i tíbia: llargs (són de les extremitats). Vèrtebra: curt. (Omòplat, maxil·lar i falanges no s’avaluen: el llibre no en dona la resposta.)",
+    "line": 28
+   }
+  ],
+  "names": [],
+  "units": {
+   "U1": "L’aparell locomotor = sistema esquelètic + sistema muscular",
+   "U2": "El sistema esquelètic el formen els ossos, que componen l’esquelet",
+   "U3": "Intervé en el moviment del cos",
+   "U4": "Dona forma i suporta el pes del cos",
+   "U5": "Protegeix dels cops els òrgans interns",
+   "U6": "Els ossos són òrgans rígids i resistents",
+   "U7": "Els ossos són òrgans vius: creixen i necessiten nutrients",
+   "U8": "Més de 200 ossos, en tres zones",
+   "U9": "Tres tipus: llargs, curts i plans"
+  }
+ },
+ "l02": {
+  "title": "Els ossos del cap i del tronc 💀",
+  "book": [
+   {
+    "key": "cap",
+    "p": 25,
+    "src": "lit",
+    "where": "text",
+    "tx": "Cap. Hi tenim els ossos del crani i els de la cara. Els ossos del crani són plans i tenen la funció de protegir el cervell.",
+    "line": 14
+   },
+   {
+    "key": "tronc",
+    "p": 25,
+    "src": "lit",
+    "where": "text",
+    "tx": "Tronc. Hi tenim la columna vertebral, que està formada per les vèrtebres i protegeix la medul·la espinal. La columna vertebral, les costelles i l’estern protegeixen el cor i els pulmons.",
+    "line": 15
+   },
+   {
+    "key": "unio",
+    "p": 25,
+    "src": "act",
+    "where": "activitat «Observa»",
+    "q": "A quins ossos s’uneixen les costelles?",
+    "tx": "Mirant el dibuix: a la columna vertebral (a les vèrtebres) i a l’estern.",
+    "line": 16
+   },
+   {
+    "key": "dibuix",
+    "p": 25,
+    "src": "lit",
+    "where": "noms del dibuix",
+    "tx": "crani · maxil·lar · costella · estern · vèrtebra · columna vertebral · pelvis · omòplat",
+    "line": 16
+   }
+  ],
+  "names": [
+   {
+    "key": "crani",
+    "ca": "crani",
+    "zh": "crani：头顶和后脑的骨头（颅骨）。",
+    "re": "/(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/",
+    "aid": "És la part de dalt i del darrere del cap.",
+    "line": 20
+   },
+   {
+    "key": "maxillar",
+    "ca": "maxil·lar",
+    "zh": "maxil·lar：嘴部长牙齿的骨头，分上面的和下面的（学校老师的说法：maxil·lar de dalt / de baix），点上颌或下颌都算对。",
+    "re": "/^mandible$|maxilla$/",
+    "aid": "És l’os de la boca, on hi ha les dents: hi ha el maxil·lar de dalt i el maxil·lar de baix.",
+    "line": 21
+   },
+   {
+    "key": "columna",
+    "ca": "columna vertebral",
+    "zh": "columna vertebral：背部中间一整列骨头（脊柱）。",
+    "re": "/vertebra$|^atlas$|^axis$|sacrum|coccyx|intervertebral disk/",
+    "aid": "És tota la filera d’ossos del mig de l’esquena.",
+    "line": 22
+   },
+   {
+    "key": "vertebra",
+    "ca": "vèrtebra",
+    "zh": "vèrtebra：组成脊柱的一块块小骨头（椎骨）。",
+    "re": "/vertebra$|^atlas$|^axis$/",
+    "aid": "És un dels ossets que, un sobre l’altre, formen la columna.",
+    "line": 23
+   },
+   {
+    "key": "costella",
+    "ca": "costella",
+    "zh": "costella：胸部弯弯的、像笼子一样的骨头（肋骨）。",
+    "re": "/ rib$/",
+    "aid": "Són els ossos corbats que fan com una gàbia al pit.",
+    "line": 24
+   },
+   {
+    "key": "estern",
+    "ca": "estern",
+    "zh": "estern：胸前正中间的扁骨（胸骨）。",
+    "re": "/body of sternum|manubrium|xiphoid/",
+    "aid": "És l’os pla del mig del pit, al davant.",
+    "line": 25
+   },
+   {
+    "key": "omoplat",
+    "ca": "omòplat",
+    "zh": "omòplat：背上、肩膀下面的扁骨（肩胛骨）。",
+    "re": "/scapula$/",
+    "aid": "És l’os pla de l’esquena, a sota de l’espatlla.",
+    "line": 26
+   },
+   {
+    "key": "pelvis",
+    "ca": "pelvis",
+    "zh": "pelvis：肚子下面、连接双腿的宽骨（骨盆）。",
+    "re": "/hip bone$/",
+    "aid": "És l’os ample de sota la panxa, on comencen les cames.",
+    "line": 27
+   }
+  ],
+  "units": {
+   "U1": "Al cap hi ha els ossos del crani i els de la cara",
+   "U2": "Els ossos del crani són plans i protegeixen el cervell",
+   "U3": "La columna vertebral està formada per les vèrtebres i protegeix la medul·la espinal",
+   "U4": "La columna, les costelles i l’estern protegeixen el cor i els pulmons",
+   "U5": "Les costelles s’uneixen a la columna vertebral (vèrtebres) i a l’estern"
+  }
+ },
+ "l03": {
+  "title": "Els ossos del braç i de la mà 🦴",
+  "book": [
+   {
+    "key": "extremitats",
+    "p": 25,
+    "src": "lit",
+    "where": "text",
+    "tx": "Extremitats. Hi tenim ossos llargs, com l’húmer i el fèmur. A les mans i als peus tenim molts ossos petits, les falanges.",
+    "line": 9
+   },
+   {
+    "key": "dibuix",
+    "p": 25,
+    "src": "lit",
+    "where": "noms del dibuix",
+    "tx": "húmer · cúbit · radi · carp · metacarp · falanges",
+    "line": 10
+   }
+  ],
+  "names": [
+   {
+    "key": "humer",
+    "ca": "húmer",
+    "zh": "húmer：肩膀到肘之间的长骨（肱骨）。",
+    "re": "/^left humerus$/",
+    "aid": "És l’os llarg entre l’espatlla i el colze.",
+    "line": 13
+   },
+   {
+    "key": "cubit",
+    "ca": "cúbit",
+    "zh": "cúbit：前臂两根骨头之一，靠小指一侧（尺骨）。",
+    "re": "/^left ulna$/",
+    "aid": "És un dels dos ossos entre el colze i el canell, al costat del dit petit.",
+    "line": 14
+   },
+   {
+    "key": "radi",
+    "ca": "radi",
+    "zh": "radi：前臂另一根骨头，靠大拇指一侧（桡骨）。",
+    "re": "/^left radius$/",
+    "aid": "És l’altre os entre el colze i el canell, al costat del dit gros.",
+    "line": 15
+   },
+   {
+    "key": "carp",
+    "ca": "carp",
+    "zh": "carp：手腕处的一群小骨头（腕骨）。",
+    "re": "/^left (scaphoid|lunate|triquetr\\w*|pisiform|trapezium|trapezoid|capitate|hamate)$/",
+    "aid": "Són els ossets petits del canell.",
+    "line": 16
+   },
+   {
+    "key": "metacarp",
+    "ca": "metacarp",
+    "zh": "metacarp：手掌里的骨头（掌骨）。",
+    "re": "/^left .*metacarpal/",
+    "aid": "Són els ossos del palmell de la mà.",
+    "line": 17
+   },
+   {
+    "key": "falanges",
+    "ca": "falanges",
+    "zh": "falanges：手指里的骨头（指骨）。",
+    "re": "/phalanx of left (thumb|.*finger)/",
+    "aid": "Són els ossos dels dits.",
+    "line": 18
+   }
+  ],
+  "units": {}
+ },
+ "l04": {
+  "title": "Els ossos de la cama i del peu 🦵",
+  "book": [
+   {
+    "key": "extremitats",
+    "p": 25,
+    "src": "lit",
+    "where": "text",
+    "tx": "Extremitats. Hi tenim ossos llargs, com l’húmer i el fèmur. A les mans i als peus tenim molts ossos petits, les falanges.",
+    "line": 14
+   },
+   {
+    "key": "dibuix",
+    "p": 25,
+    "src": "lit",
+    "where": "noms del dibuix",
+    "tx": "fèmur · ròtula · tíbia · peroné · tars · metatars · falanges",
+    "line": 15
+   },
+   {
+    "key": "zones",
+    "p": 25,
+    "src": "act",
+    "where": "activitat 2",
+    "q": "Classifica els ossos següents: falanges, pelvis, crani, omòplat, peroné, maxil·lar, estern, húmer, tars, ròtula, carp.",
+    "tx": "Resposta segons els colors dels noms del dibuix: blau = cap, taronja = tronc, verd = extremitats.",
+    "line": 16
+   }
+  ],
+  "names": [
+   {
+    "key": "femur",
+    "ca": "fèmur",
+    "zh": "fèmur：大腿里的长骨（股骨）。",
+    "re": "/^left femur$/",
+    "aid": "És l’os llarg de la cuixa, entre el maluc i el genoll.",
+    "line": 19
+   },
+   {
+    "key": "rotula",
+    "ca": "ròtula",
+    "zh": "ròtula：膝盖前面圆圆的小骨（髌骨）。",
+    "re": "/^left patella$/",
+    "aid": "És l’os petit i rodó del davant del genoll.",
+    "line": 20
+   },
+   {
+    "key": "tibia",
+    "ca": "tíbia",
+    "zh": "tíbia：小腿内侧较粗的骨头（胫骨）。",
+    "re": "/^left tibia$/",
+    "aid": "És l’os gros de la cama, entre el genoll i el turmell, a la banda de dins.",
+    "line": 21
+   },
+   {
+    "key": "perone",
+    "ca": "peroné",
+    "zh": "peroné：小腿外侧较细的骨头（腓骨）。",
+    "re": "/^left fibula$/",
+    "aid": "És l’os prim de la cama, al costat de la tíbia, a la banda de fora.",
+    "line": 22
+   },
+   {
+    "key": "tars",
+    "ca": "tars",
+    "zh": "tars：脚踝和脚跟的骨头（跗骨）。",
+    "re": "/^left (talus|calcaneus|cuboid bone|(medial|intermediate|lateral) cuneiform bone)$|^navicular bone of left foot$/",
+    "aid": "Són els ossos del turmell i del taló.",
+    "line": 23
+   },
+   {
+    "key": "metatars",
+    "ca": "metatars",
+    "zh": "metatars：脚掌中间的骨头（跖骨）。",
+    "re": "/^left .*metatarsal/",
+    "aid": "Són els ossos llargs del mig del peu.",
+    "line": 24
+   },
+   {
+    "key": "falangesPeu",
+    "ca": "falanges",
+    "zh": "falanges：脚趾里的骨头（趾骨）。",
+    "re": "/phalanx of left .*toe/",
+    "aid": "Són els ossos dels dits del peu.",
+    "line": 25
+   }
+  ],
+  "units": {
+   "U1": "A les extremitats hi ha ossos llargs, com l’húmer i el fèmur",
+   "U2": "A les mans i als peus hi ha molts ossos petits, les falanges",
+   "A2": "Activitat 2: classificar ossos per zones (cap, tronc, extremitats)"
+  }
+ },
+ "l05": {
+  "title": "Les articulacions 🦴🔗",
+  "book": [
+   {
+    "key": "def",
+    "p": 24,
+    "src": "lit",
+    "where": "text",
+    "tx": "Els ossos de l’esquelet s’uneixen entre si mitjançant les articulacions.",
+    "line": 21
+   },
+   {
+    "key": "immobils",
+    "p": 24,
+    "src": "lit",
+    "where": "text",
+    "tx": "Articulacions immòbils: com les del crani, els ossos estan tan units que semblen només un.",
+    "line": 22
+   },
+   {
+    "key": "mobils",
+    "p": 24,
+    "src": "lit",
+    "where": "text",
+    "tx": "Articulacions mòbils: els ossos es poden moure, com passa al colze, al coll o al genoll.",
+    "line": 23
+   },
+   {
+    "key": "lligaments",
+    "p": 24,
+    "src": "lit",
+    "where": "text",
+    "tx": "En les articulacions mòbils, els ossos estan units mitjançant els lligaments.",
+    "line": 24
+   }
+  ],
+  "names": [],
+  "units": {
+   "U1": "Els ossos s’uneixen entre si mitjançant les articulacions",
+   "U2": "Articulacions immòbils: com les del crani, els ossos estan tan units que semblen només un",
+   "U3": "Articulacions mòbils: els ossos es poden moure (colze, coll, genoll)",
+   "U4": "En les articulacions mòbils, els ossos estan units mitjançant els lligaments"
+  }
+ },
+ "l06": {
+  "title": "El sistema muscular 💪",
+  "book": [
+   {
+    "key": "inclou",
+    "p": 26,
+    "src": "lit",
+    "where": "text",
+    "tx": "El sistema muscular inclou els músculs i els tendons del cos.",
+    "line": 24
+   },
+   {
+    "key": "funcions",
+    "p": 26,
+    "src": "lit",
+    "where": "text",
+    "tx": "Aquest sistema produeix els moviments necessaris per fer les funcions vitals, manté la posició i permet la mímica, que és el conjunt de gestos corporals que serveixen per expressar els sentiments.",
+    "line": 25
+   },
+   {
+    "key": "elastics",
+    "p": 26,
+    "src": "lit",
+    "where": "text",
+    "tx": "Els músculs són òrgans elàstics que es poden encongir i estirar sense trencar-se.",
+    "line": 26
+   },
+   {
+    "key": "figura",
+    "p": 26,
+    "src": "lit",
+    "where": "noms del dibuix",
+    "tx": "múscul relaxat · múscul contret",
+    "line": 27
+   },
+   {
+    "key": "esqueletics",
+    "p": 26,
+    "src": "lit",
+    "where": "text",
+    "tx": "Els músculs que formen part de l’aparell locomotor reben el nom de músculs esquelètics.",
+    "line": 28
+   },
+   {
+    "key": "tendons",
+    "p": 26,
+    "src": "lit",
+    "where": "text",
+    "tx": "Molts músculs s’uneixen als ossos mitjançant els tendons, cordons de teixit molt resistent.",
+    "line": 29
+   },
+   {
+    "key": "sis_cents",
+    "p": 27,
+    "src": "lit",
+    "where": "text",
+    "tx": "La musculatura està formada per més de 600 músculs esquelètics que es distribueixen en tres zones del cos.",
+    "line": 30
+   },
+   {
+    "key": "pensa",
+    "p": 26,
+    "src": "act",
+    "where": "CientíficaMENT · Pensa",
+    "q": "Creieu que es pot comparar el funcionament d’un múscul amb el d’una goma elàstica o una molla? Per què?",
+    "tx": "El llibre no dona la resposta: és per pensar i comentar. Una idea per comentar (deducció del text): com una goma, el múscul es pot encongir i estirar sense trencar-se.",
+    "line": 31
+   }
+  ],
+  "names": [],
+  "units": {
+   "U1": "El sistema muscular inclou els músculs i els tendons",
+   "U2": "Produeix moviments per a les funcions vitals, manté la posició i permet la mímica",
+   "U3": "La mímica: els gestos corporals que serveixen per expressar els sentiments",
+   "U4": "Els músculs són òrgans elàstics: es poden encongir i estirar sense trencar-se",
+   "U5": "Els músculs de l’aparell locomotor són els músculs esquelètics (més de 600)",
+   "U6": "Molts músculs s’uneixen als ossos amb els tendons, cordons de teixit molt resistent"
+  }
+ },
+ "l07": {
+  "title": "La forma dels músculs 🔍",
+  "book": [
+   {
+    "key": "quatre",
+    "p": 26,
+    "src": "lit",
+    "where": "text",
+    "tx": "Hi ha quatre tipus principals de músculs esquelètics.",
+    "line": 28
+   },
+   {
+    "key": "llargs",
+    "p": 26,
+    "src": "lit",
+    "where": "text del dibuix",
+    "tx": "Músculs llargs, amb els extrems més fins i la part del mig més ampla.",
+    "line": 29
+   },
+   {
+    "key": "curts",
+    "p": 26,
+    "src": "lit",
+    "where": "text del dibuix",
+    "tx": "Músculs curts, com els de les mans o els peus.",
+    "line": 30
+   },
+   {
+    "key": "anulars",
+    "p": 26,
+    "src": "lit",
+    "where": "text del dibuix",
+    "tx": "Músculs anulars, és a dir, amb forma d’anell. Envolten obertures com els ulls o la boca.",
+    "line": 31
+   },
+   {
+    "key": "plans",
+    "p": 26,
+    "src": "lit",
+    "where": "text del dibuix",
+    "tx": "Músculs plans, amb forma de làmina. Com els que es troben al tronc.",
+    "line": 32
+   },
+   {
+    "key": "troncP27",
+    "p": 27,
+    "src": "lit",
+    "where": "text",
+    "tx": "Tronc. Té músculs grans i plans.",
+    "line": 33
+   },
+   {
+    "key": "dibLlarg",
+    "p": 26,
+    "src": "dib",
+    "where": "dibuix del nen",
+    "tx": "La línia del múscul llarg acaba al braç.",
+    "line": 34
+   }
+  ],
+  "names": [],
+  "units": {
+   "T0": "Hi ha quatre tipus principals de músculs esquelètics",
+   "T1": "Llargs: extrems més fins i la part del mig més ampla (com al braç del dibuix)",
+   "T2": "Curts: com els de les mans o els peus",
+   "T3": "Anulars: amb forma d’anell; envolten obertures com els ulls o la boca",
+   "T4": "Plans: amb forma de làmina; com els del tronc"
+  }
+ },
+ "l08": {
+  "title": "Els músculs del cap i del tronc 🙂",
+  "book": [
+   {
+    "key": "musculatura",
+    "p": 27,
+    "src": "lit",
+    "where": "text",
+    "tx": "La musculatura està formada per més de 600 músculs esquelètics que es distribueixen en tres zones del cos.",
+    "line": 15
+   },
+   {
+    "key": "cap",
+    "p": 27,
+    "src": "lit",
+    "where": "text",
+    "tx": "Cap. Hi ha músculs plans i anulars. Els utilitzem per parlar, mastegar i gesticular.",
+    "line": 16
+   },
+   {
+    "key": "tronc",
+    "p": 27,
+    "src": "lit",
+    "where": "text",
+    "tx": "Tronc. Té músculs grans i plans. Mantenen dreta la columna vertebral i la flexionen, protegeixen els òrgans de l’abdomen i ens ajuden a respirar.",
+    "line": 17
+   },
+   {
+    "key": "dibuix",
+    "p": 27,
+    "src": "lit",
+    "where": "noms del dibuix",
+    "tx": "orbicular de les parpelles · masseter · esternoclidomastoidal · deltoide · trapezi · dorsal · pectoral · abdominal · gluti",
+    "line": 18
+   },
+   {
+    "key": "colors",
+    "p": 27,
+    "src": "dib",
+    "where": "colors dels noms",
+    "tx": "Al dibuix, els noms del cap són blaus i els del tronc són taronja. L’esternoclidomastoidal, el deltoide, el trapezi i el gluti també estan pintats de color tronc.",
+    "line": 19
+   }
+  ],
+  "names": [
+   {
+    "key": "orbicular",
+    "ca": "orbicular de les parpelles",
+    "zh": "orbicular de les parpelles：眼睛周围环形的肌肉（眼轮匝肌）。",
+    "re": "/orbicularis oculi/",
+    "aid": "És el múscul en forma d’anell al voltant de l’ull.",
+    "line": 22
+   },
+   {
+    "key": "masseter",
+    "ca": "masseter",
+    "zh": "masseter：脸颊上、下颌骨上方的肌肉，咬紧牙齿能摸到（咬肌）。",
+    "re": "/masseter/",
+    "aid": "És el múscul de la galta, damunt de la mandíbula. El notes si estrenys les dents.",
+    "line": 23
+   },
+   {
+    "key": "ecm",
+    "ca": "esternoclidomastoidal",
+    "zh": "esternoclidomastoidal：脖子侧面、从耳后斜到胸骨的肌肉（胸锁乳突肌）。",
+    "re": "/sternocleidomastoid/",
+    "aid": "És el múscul del costat del coll, de darrere l’orella fins a l’estern.",
+    "line": 24
+   },
+   {
+    "key": "trapezi",
+    "ca": "trapezi",
+    "zh": "trapezi：背上部和后颈的大块扁平肌肉（斜方肌）。",
+    "re": "/trapezius/",
+    "aid": "És el múscul gran i pla de dalt de l’esquena i del clatell.",
+    "line": 25
+   },
+   {
+    "key": "deltoide",
+    "ca": "deltoide",
+    "zh": "deltoide：肩膀上圆圆的肌肉（三角肌）。",
+    "re": "/deltoid/",
+    "aid": "És el múscul arrodonit de l’espatlla.",
+    "line": 26
+   },
+   {
+    "key": "pectoral",
+    "ca": "pectoral",
+    "zh": "pectoral：胸前的大块肌肉（胸大肌）。",
+    "re": "/pectoralis major/",
+    "aid": "És el múscul gran del pit.",
+    "line": 27
+   },
+   {
+    "key": "abdominal",
+    "ca": "abdominal",
+    "zh": "abdominal：肚子前面的肌肉（腹肌）。",
+    "re": "/rectus abdominis|external oblique/",
+    "aid": "És el múscul de la panxa, al davant.",
+    "line": 28
+   },
+   {
+    "key": "dorsal",
+    "ca": "dorsal",
+    "zh": "dorsal：背部两侧、腋下的大块扁平肌肉（背阔肌）。",
+    "re": "/latissimus dorsi/",
+    "aid": "És el múscul gran i pla del costat de l’esquena, a sota de l’aixella.",
+    "line": 29
+   },
+   {
+    "key": "gluti",
+    "ca": "gluti",
+    "zh": "gluti：屁股上的大块肌肉（臀大肌）。",
+    "re": "/gluteus maximus/",
+    "aid": "És el múscul gran de les natges.",
+    "line": 30
+   }
+  ],
+  "units": {
+   "U1": "Cap: músculs plans i anulars; per parlar, mastegar i gesticular",
+   "U2": "Tronc: músculs grans i plans; mantenen dreta la columna i la flexionen, protegeixen l’abdomen i ajuden a respirar"
+  }
+ },
+ "l09": {
+  "title": "Els músculs dels braços i de les cames 🦵",
+  "book": [
+   {
+    "key": "extremitats",
+    "p": 27,
+    "src": "lit",
+    "where": "text",
+    "tx": "Extremitats. Molts dels seus músculs són llargs. Mouen els braços, les cames, les mans i els peus.",
+    "line": 16
+   },
+   {
+    "key": "dibuix",
+    "p": 27,
+    "src": "lit",
+    "where": "noms del dibuix",
+    "tx": "bíceps · tríceps · quàdriceps · bíceps femoral · tibial · bessó",
+    "line": 17
+   },
+   {
+    "key": "act3",
+    "p": 27,
+    "src": "act",
+    "where": "activitat 3",
+    "q": "Explica quines característiques dels músculs els permeten produir moviment.",
+    "tx": "El llibre no dona la resposta; es construeix amb el text de la p. 26: els músculs són elàstics (es poden encongir i estirar sense trencar-se) i molts s’uneixen als ossos mitjançant els tendons.",
+    "line": 18
+   }
+  ],
+  "names": [
+   {
+    "key": "biceps",
+    "ca": "bíceps",
+    "zh": "bíceps：上臂前面的肌肉（肱二头肌）。",
+    "re": "/biceps brachii/",
+    "aid": "És el múscul de davant del braç, entre l’espatlla i el colze.",
+    "line": 21
+   },
+   {
+    "key": "triceps",
+    "ca": "tríceps",
+    "zh": "tríceps：上臂后面的肌肉（肱三头肌）。",
+    "re": "/triceps brachii/",
+    "aid": "És el múscul de darrere del braç.",
+    "line": 22
+   },
+   {
+    "key": "quadriceps",
+    "ca": "quàdriceps",
+    "zh": "quàdriceps：大腿前面的大肌肉（股四头肌）。",
+    "re": "/rectus femoris|vastus (lateralis|medialis|intermedius)/",
+    "aid": "És el múscul gran de davant de la cuixa.",
+    "line": 23
+   },
+   {
+    "key": "bicepsFem",
+    "ca": "bíceps femoral",
+    "zh": "bíceps femoral：大腿后面的肌肉（股二头肌）。",
+    "re": "/biceps femoris/",
+    "aid": "És a la part de darrere de la cuixa.",
+    "line": 24
+   },
+   {
+    "key": "tibial",
+    "ca": "tibial",
+    "zh": "tibial：小腿前面、胫骨旁边的肌肉（胫骨前肌）。",
+    "re": "/tibialis anterior/",
+    "aid": "És a davant de la cama, al costat de l’os tíbia.",
+    "line": 25
+   },
+   {
+    "key": "besso",
+    "ca": "bessó",
+    "zh": "bessó：小腿后面鼓起的肌肉（腓肠肌）。",
+    "re": "/gastrocnemius/",
+    "aid": "És el múscul de darrere de la cama, la panxa de la cama.",
+    "line": 26
+   }
+  ],
+  "units": {
+   "U1": "Extremitats: molts músculs són llargs; mouen els braços, les cames, les mans i els peus",
+   "A3": "Activitat 3: les característiques dels músculs que permeten el moviment"
+  }
+ },
+ "l10": {
+  "title": "Bíceps i tríceps 💪",
+  "book": [
+   {
+    "key": "doblegar",
+    "p": 27,
+    "src": "lit",
+    "where": "text del dibuix",
+    "tx": "Quan dobleguem el braç, el tríceps es relaxa. El bíceps es contreu.",
+    "line": 16
+   },
+   {
+    "key": "estirar",
+    "p": 27,
+    "src": "lit",
+    "where": "text del dibuix",
+    "tx": "Quan estirem el braç, el tríceps es contreu. El bíceps es relaxa.",
+    "line": 17
+   },
+   {
+    "key": "colze",
+    "p": 27,
+    "src": "act",
+    "where": "activitat 4",
+    "q": "Com es diu l’articulació que s’està doblegant?",
+    "tx": "El colze.",
+    "line": 18
+   },
+   {
+    "key": "gruixut",
+    "p": 27,
+    "src": "act",
+    "where": "activitat 4",
+    "q": "Quan és més gruixut el bíceps, quan el braç està doblegat o quan està estès? I el tríceps?",
+    "tx": "Mirant el dibuix: el bíceps és més gruixut amb el braç doblegat, i el tríceps, amb el braç estès. El múscul que es contreu es fa més gruixut.",
+    "line": 19
+   },
+   {
+    "key": "parella",
+    "p": 28,
+    "src": "lit",
+    "where": "text",
+    "tx": "Quan fem un moviment, uns músculs es contreuen mentre que uns altres es relaxen, i així mouen els ossos.",
+    "line": 20
+   }
+  ],
+  "names": [
+   {
+    "key": "biceps",
+    "ca": "bíceps",
+    "re": "/left biceps brachii/",
+    "aid": "És a la part de davant del braç.",
+    "line": 23
+   },
+   {
+    "key": "triceps",
+    "ca": "tríceps",
+    "re": "/left triceps brachii/",
+    "aid": "És a la part de darrere del braç.",
+    "line": 24
+   }
+  ],
+  "units": {
+   "K1": "Doblegar: bíceps es contreu, tríceps es relaxa",
+   "K2": "Estirar: tríceps es contreu, bíceps es relaxa",
+   "K3": "L’articulació que es doblega és el colze",
+   "K4": "El múscul contret és més gruixut",
+   "K5": "Els dos músculs treballen junts (un es contreu, l’altre es relaxa)"
+  }
+ },
+ "l11": {
+  "title": "Com ens movem: el sistema nerviós 🧠",
+  "book": [
+   {
+    "key": "exterior",
+    "p": 28,
+    "src": "lit",
+    "where": "text",
+    "tx": "Les persones captem el que passa a l’exterior: hi sentim, hi veiem... També ens comuniquem, ens movem i reaccionem quan hi ha canvis que ens afecten. Així per exemple, si veiem que cau una roca i ens pot fer mal, el nostre cos respon i es mou per allunyar-se’n.",
+    "line": 25
+   },
+   {
+    "key": "relacio",
+    "p": 28,
+    "src": "lit",
+    "where": "text",
+    "tx": "La funció de relació ens permet percebre el que passa al nostre voltant i reaccionar-hi de manera adequada.",
+    "line": 26
+   },
+   {
+    "key": "elements",
+    "p": 28,
+    "src": "lit",
+    "where": "text i esquema",
+    "tx": "En la funció de relació intervenen diversos elements: Òrgans dels sentits → Sistema nerviós → Aparell locomotor.",
+    "line": 27
+   },
+   {
+    "key": "format",
+    "p": 28,
+    "src": "lit",
+    "where": "text",
+    "tx": "El sistema nerviós està format per: cervell, nervis, medul·la espinal.",
+    "line": 28
+   },
+   {
+    "key": "cervell",
+    "p": 28,
+    "src": "lit",
+    "where": "text",
+    "tx": "Cervell. És al cap i està protegit pel crani. Dirigeix el funcionament del cos i els seus moviments ens permeten pensar i recordar.",
+    "line": 29
+   },
+   {
+    "key": "nervis",
+    "p": 28,
+    "src": "lit",
+    "where": "text",
+    "tx": "Nervis. Porten informació dels òrgans dels sentits al cervell i transmeten les ordres des del cervell fins a l’aparell locomotor, que és l’encarregat del moviment. N’hi ha per tot el cos.",
+    "line": 30
+   },
+   {
+    "key": "medulla",
+    "p": 28,
+    "src": "lit",
+    "where": "text",
+    "tx": "Medul·la espinal. És a l’esquena, protegida per la columna vertebral. Juntament amb el cervell dirigeix alguns moviments del cos i part del seu funcionament.",
+    "line": 31
+   },
+   {
+    "key": "aparell",
+    "p": 28,
+    "src": "lit",
+    "where": "text",
+    "tx": "L’aparell locomotor està format pels ossos i els músculs, que treballen de manera conjunta perquè ens moguem.",
+    "line": 32
+   },
+   {
+    "key": "contreuen",
+    "p": 28,
+    "src": "lit",
+    "where": "text",
+    "tx": "Quan fem un moviment, uns músculs es contreuen mentre que uns altres es relaxen, i així mouen els ossos. Per exemple quan caminem, els músculs de les cames es contreuen i es relaxen i estiren els ossos per aconseguir que caminem.",
+    "line": 33
+   },
+   {
+    "key": "dibuix",
+    "p": 28,
+    "src": "lit",
+    "where": "noms del dibuix",
+    "tx": "cervell · medul·la espinal · nervis",
+    "line": 34
+   },
+   {
+    "key": "a5",
+    "p": 29,
+    "src": "act",
+    "where": "activitat 5",
+    "q": "Copia i ordena com té lloc la funció de relació.",
+    "tx": "1. Els òrgans dels sentits capten la informació de l’entorn. 2. La informació viatja al cervell mitjançant els nervis. 3. El cervell analitza la informació i decideix què cal fer. 4. El cervell envia ordres a través dels nervis. 5. L’aparell locomotor rep les ordres i fa els moviments.",
+    "line": 35
+   }
+  ],
+  "names": [
+   {
+    "key": "cervell",
+    "ca": "cervell",
+    "zh": "cervell：大脑，在头里，被颅骨保护。",
+    "re": "/./",
+    "aid": "És al cap, dins del crani.",
+    "line": 29
+   },
+   {
+    "key": "medulla",
+    "ca": "medul·la espinal",
+    "zh": "medul·la espinal：脊髓，在背部，被脊柱保护。",
+    "re": "/./",
+    "aid": "És a l’esquena, dins de la columna vertebral.",
+    "line": 31
+   },
+   {
+    "key": "nervis",
+    "ca": "nervis",
+    "zh": "nervis：神经，像线一样遍布全身。",
+    "re": "/./",
+    "aid": "Són els fils que arriben a tot el cos: als braços, a les cames…",
+    "line": 30
+   }
+  ],
+  "units": {
+   "R1": "La funció de relació ens permet percebre el que passa al nostre voltant i reaccionar-hi de manera adequada",
+   "R2": "Hi intervenen: òrgans dels sentits → sistema nerviós → aparell locomotor",
+   "N1": "El sistema nerviós està format pel cervell, els nervis i la medul·la espinal",
+   "N2": "Cervell: al cap, protegit pel crani; dirigeix el funcionament del cos i els moviments; pensar i recordar",
+   "N3": "Nervis: porten la informació dels sentits al cervell i les ordres del cervell a l’aparell locomotor; per tot el cos",
+   "N4": "Medul·la espinal: a l’esquena, protegida per la columna; amb el cervell dirigeix alguns moviments i part del funcionament",
+   "L1": "Aparell locomotor: ossos i músculs treballen junts; uns músculs es contreuen i uns altres es relaxen",
+   "A5": "Activitat 5: ordenar com té lloc la funció de relació"
+  }
+ },
+ "l12": {
+  "title": "Moviments voluntaris i reflexos ⚡",
+  "book": [
+   {
+    "key": "vol",
+    "p": 29,
+    "src": "lit",
+    "where": "text",
+    "tx": "Molts dels moviments els fem voluntàriament i de manera conscient. Són moviments voluntaris.",
+    "line": 25
+   },
+   {
+    "key": "v1",
+    "p": 29,
+    "src": "lit",
+    "where": "dibuix 1",
+    "tx": "Un òrgan dels sentits capta un estímul i envia la informació al cervell.",
+    "line": 26
+   },
+   {
+    "key": "v2",
+    "p": 29,
+    "src": "lit",
+    "where": "dibuix 2",
+    "tx": "El cervell identifica l’estímul i decideix què fer.",
+    "line": 26
+   },
+   {
+    "key": "v3",
+    "p": 29,
+    "src": "lit",
+    "where": "dibuix 3",
+    "tx": "El cervell envia ordres a través dels nervis als músculs. Els músculs fan els moviments.",
+    "line": 26
+   },
+   {
+    "key": "vEx",
+    "p": 29,
+    "src": "dib",
+    "where": "dibuixos 1–3",
+    "tx": "Exemple del llibre: la nena veu el semàfor vermell; quan es posa verd, travessa el carrer.",
+    "line": 27
+   },
+   {
+    "key": "ref",
+    "p": 29,
+    "src": "lit",
+    "where": "text",
+    "tx": "Hi ha moviments que fem de manera involuntària i ràpida, són moviments reflexos. En molts d’aquests moviments no intervé el cervell, sinó la medul·la espinal.",
+    "line": 28
+   },
+   {
+    "key": "r1",
+    "p": 29,
+    "src": "lit",
+    "where": "dibuix 1",
+    "tx": "Un òrgan dels sentits capta un estímul i envia la informació a la medul·la espinal.",
+    "line": 29
+   },
+   {
+    "key": "r2",
+    "p": 29,
+    "src": "lit",
+    "where": "dibuix 2",
+    "tx": "La medul·la espinal rep la informació.",
+    "line": 29
+   },
+   {
+    "key": "r3",
+    "p": 29,
+    "src": "lit",
+    "where": "dibuix 3",
+    "tx": "La medul·la envia les ordres pels nervis als músculs, que fan el moviment de manera immediata.",
+    "line": 29
+   },
+   {
+    "key": "rEx",
+    "p": 29,
+    "src": "dib",
+    "where": "dibuixos 1–3",
+    "tx": "Exemple del llibre: el nen toca una tassa calenta i aparta la mà de cop.",
+    "line": 30
+   }
+  ],
+  "names": [],
+  "units": {
+   "V0": "Moviments voluntaris: els fem voluntàriament i de manera conscient",
+   "V1": "Voluntari: sentit capta l’estímul → cervell identifica i decideix → cervell envia ordres pels nervis als músculs, que fan el moviment",
+   "F0": "Moviments reflexos: involuntaris i ràpids; en molts no intervé el cervell, sinó la medul·la espinal",
+   "F1": "Reflex: sentit capta l’estímul → medul·la rep la informació → medul·la envia ordres pels nervis als músculs (moviment immediat)",
+   "C1": "Distingir els dos moviments amb els exemples del llibre"
+  }
+ }
+}

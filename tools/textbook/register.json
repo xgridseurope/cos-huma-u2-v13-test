@@ -1,0 +1,2623 @@
+{
+ "base_commit": "11e30038cd4bdd24859a840866f8de8599492663",
+ "book_entries": [
+  {
+   "lesson": "l01",
+   "key": "aparell",
+   "file": "curs/l01.js",
+   "line": 19,
+   "src": "lit",
+   "page": 24,
+   "where": "text",
+   "tx": "L’aparell locomotor permet el moviment del nostre cos. Està format pel sistema esquelètic i el sistema muscular.",
+   "class": "verbatim",
+   "segments": [
+    "P24-03",
+    "P24-04"
+   ]
+  },
+  {
+   "lesson": "l01",
+   "key": "sistema",
+   "file": "curs/l01.js",
+   "line": 20,
+   "src": "lit",
+   "page": 24,
+   "where": "text",
+   "tx": "El sistema esquelètic el formen els ossos, que componen l’esquelet. Aquest sistema intervé en el moviment del cos, dona forma i suporta el pes del cos, protegeix dels cops els òrgans interns…",
+   "class": "verbatim",
+   "segments": [
+    "P24-01",
+    "P24-05",
+    "P24-06"
+   ]
+  },
+  {
+   "lesson": "l01",
+   "key": "ossos",
+   "file": "curs/l01.js",
+   "line": 21,
+   "src": "lit",
+   "page": 24,
+   "where": "text",
+   "tx": "Els ossos són òrgans rígids i resistents. Tots els ossos del cos formen l’esquelet. Tot i el seu aspecte rígid, els ossos són òrgans vius que creixen i necessiten nutrients.",
+   "class": "verbatim",
+   "segments": [
+    "P24-07",
+    "P24-08",
+    "P24-09",
+    "P24-10"
+   ]
+  },
+  {
+   "lesson": "l01",
+   "key": "vius",
+   "file": "curs/l01.js",
+   "line": 22,
+   "src": "act",
+   "page": 25,
+   "where": "activitat 1",
+   "tx": "Perquè creixen i necessiten nutrients (p. 24).",
+   "class": "activity-answer"
+  },
+  {
+   "lesson": "l01",
+   "key": "dos_cents",
+   "file": "curs/l01.js",
+   "line": 23,
+   "src": "lit",
+   "page": 25,
+   "where": "text",
+   "tx": "El nostre esquelet està format per més de 200 ossos distribuïts pel cos en tres zones.",
+   "class": "verbatim",
+   "segments": [
+    "P25-02"
+   ]
+  },
+  {
+   "lesson": "l01",
+   "key": "tipus",
+   "file": "curs/l01.js",
+   "line": 24,
+   "src": "lit",
+   "page": 24,
+   "where": "text",
+   "tx": "Tenim tres tipus d’ossos.",
+   "class": "verbatim",
+   "segments": [
+    "P24-11"
+   ]
+  },
+  {
+   "lesson": "l01",
+   "key": "llargs",
+   "file": "curs/l01.js",
+   "line": 25,
+   "src": "lit",
+   "page": 24,
+   "where": "text del dibuix",
+   "tx": "Ossos llargs, com els de les extremitats.",
+   "class": "verbatim",
+   "segments": [
+    "P24-12"
+   ]
+  },
+  {
+   "lesson": "l01",
+   "key": "curts",
+   "file": "curs/l01.js",
+   "line": 26,
+   "src": "lit",
+   "page": 24,
+   "where": "text del dibuix",
+   "tx": "Ossos curts, com les vèrtebres que formen la columna vertebral.",
+   "class": "verbatim",
+   "segments": [
+    "P24-13"
+   ]
+  },
+  {
+   "lesson": "l01",
+   "key": "plans",
+   "file": "curs/l01.js",
+   "line": 27,
+   "src": "lit",
+   "page": 24,
+   "where": "text del dibuix",
+   "tx": "Ossos plans, com els que formen el crani.",
+   "class": "verbatim",
+   "segments": [
+    "P24-14"
+   ]
+  },
+  {
+   "lesson": "l01",
+   "key": "tipusAct",
+   "file": "curs/l01.js",
+   "line": 28,
+   "src": "act",
+   "page": 25,
+   "where": "activitat «Observa»",
+   "tx": "Radi i tíbia: llargs (són de les extremitats). Vèrtebra: curt. (Omòplat, maxil·lar i falanges no s’avaluen: el llibre no en dona la resposta.)",
+   "class": "activity-answer"
+  },
+  {
+   "lesson": "l02",
+   "key": "cap",
+   "file": "curs/l02.js",
+   "line": 14,
+   "src": "lit",
+   "page": 25,
+   "where": "text",
+   "tx": "Cap. Hi tenim els ossos del crani i els de la cara. Els ossos del crani són plans i tenen la funció de protegir el cervell.",
+   "class": "verbatim",
+   "segments": [
+    "P25-03",
+    "P25-04",
+    "P25-09"
+   ]
+  },
+  {
+   "lesson": "l02",
+   "key": "tronc",
+   "file": "curs/l02.js",
+   "line": 15,
+   "src": "lit",
+   "page": 25,
+   "where": "text",
+   "tx": "Tronc. Hi tenim la columna vertebral, que està formada per les vèrtebres i protegeix la medul·la espinal. La columna vertebral, les costelles i l’estern protegeixen el cor i els pulmons.",
+   "class": "verbatim",
+   "segments": [
+    "P25-05",
+    "P25-06",
+    "P25-14",
+    "P25-18"
+   ]
+  },
+  {
+   "lesson": "l02",
+   "key": "unio",
+   "file": "curs/l02.js",
+   "line": 16,
+   "src": "act",
+   "page": 25,
+   "where": "activitat «Observa»",
+   "tx": "Mirant el dibuix: a la columna vertebral (a les vèrtebres) i a l’estern.",
+   "class": "activity-answer"
+  },
+  {
+   "lesson": "l02",
+   "key": "dibuix",
+   "file": "curs/l02.js",
+   "line": 16,
+   "src": "lit",
+   "page": 25,
+   "where": "noms del dibuix",
+   "tx": "crani · maxil·lar · costella · estern · vèrtebra · columna vertebral · pelvis · omòplat",
+   "class": "labels-verbatim",
+   "segments": [
+    "P25-09",
+    "P25-10",
+    "P25-12",
+    "P25-14",
+    "P25-16",
+    "P25-18",
+    "P25-20",
+    "P25-11"
+   ]
+  },
+  {
+   "lesson": "l03",
+   "key": "extremitats",
+   "file": "curs/l03.js",
+   "line": 9,
+   "src": "lit",
+   "page": 25,
+   "where": "text",
+   "tx": "Extremitats. Hi tenim ossos llargs, com l’húmer i el fèmur. A les mans i als peus tenim molts ossos petits, les falanges.",
+   "class": "verbatim",
+   "segments": [
+    "P25-07",
+    "P25-08",
+    "P25-13",
+    "P25-23"
+   ]
+  },
+  {
+   "lesson": "l03",
+   "key": "dibuix",
+   "file": "curs/l03.js",
+   "line": 10,
+   "src": "lit",
+   "page": 25,
+   "where": "noms del dibuix",
+   "tx": "húmer · cúbit · radi · carp · metacarp · falanges",
+   "class": "labels-verbatim",
+   "segments": [
+    "P25-13",
+    "P25-15",
+    "P25-17",
+    "P25-19",
+    "P25-21",
+    "P25-29"
+   ]
+  },
+  {
+   "lesson": "l04",
+   "key": "extremitats",
+   "file": "curs/l04.js",
+   "line": 14,
+   "src": "lit",
+   "page": 25,
+   "where": "text",
+   "tx": "Extremitats. Hi tenim ossos llargs, com l’húmer i el fèmur. A les mans i als peus tenim molts ossos petits, les falanges.",
+   "class": "verbatim",
+   "segments": [
+    "P25-07",
+    "P25-08",
+    "P25-13",
+    "P25-23"
+   ]
+  },
+  {
+   "lesson": "l04",
+   "key": "dibuix",
+   "file": "curs/l04.js",
+   "line": 15,
+   "src": "lit",
+   "page": 25,
+   "where": "noms del dibuix",
+   "tx": "fèmur · ròtula · tíbia · peroné · tars · metatars · falanges",
+   "class": "labels-verbatim",
+   "segments": [
+    "P25-23",
+    "P25-24",
+    "P25-27",
+    "P25-25",
+    "P25-26",
+    "P25-28",
+    "P25-29"
+   ]
+  },
+  {
+   "lesson": "l04",
+   "key": "zones",
+   "file": "curs/l04.js",
+   "line": 16,
+   "src": "act",
+   "page": 25,
+   "where": "activitat 2",
+   "tx": "Resposta segons els colors dels noms del dibuix: blau = cap, taronja = tronc, verd = extremitats.",
+   "class": "activity-answer"
+  },
+  {
+   "lesson": "l05",
+   "key": "def",
+   "file": "curs/l05.js",
+   "line": 21,
+   "src": "lit",
+   "page": 24,
+   "where": "text",
+   "tx": "Els ossos de l’esquelet s’uneixen entre si mitjançant les articulacions.",
+   "class": "verbatim",
+   "segments": [
+    "P24-07",
+    "P24-16"
+   ]
+  },
+  {
+   "lesson": "l05",
+   "key": "immobils",
+   "file": "curs/l05.js",
+   "line": 22,
+   "src": "lit",
+   "page": 24,
+   "where": "text",
+   "tx": "Articulacions immòbils: com les del crani, els ossos estan tan units que semblen només un.",
+   "class": "rearranged",
+   "action": "A: replace with the verbatim P24 sentences P24-17 + P24-18",
+   "segments": []
+  },
+  {
+   "lesson": "l05",
+   "key": "mobils",
+   "file": "curs/l05.js",
+   "line": 23,
+   "src": "lit",
+   "page": 24,
+   "where": "text",
+   "tx": "Articulacions mòbils: els ossos es poden moure, com passa al colze, al coll o al genoll.",
+   "class": "rearranged",
+   "action": "A: replace with the verbatim P24 sentences P24-19 + P24-20",
+   "segments": []
+  },
+  {
+   "lesson": "l05",
+   "key": "lligaments",
+   "file": "curs/l05.js",
+   "line": 24,
+   "src": "lit",
+   "page": 24,
+   "where": "text",
+   "tx": "En les articulacions mòbils, els ossos estan units mitjançant els lligaments.",
+   "class": "verbatim",
+   "segments": [
+    "P24-22"
+   ]
+  },
+  {
+   "lesson": "l06",
+   "key": "inclou",
+   "file": "curs/l06.js",
+   "line": 24,
+   "src": "lit",
+   "page": 26,
+   "where": "text",
+   "tx": "El sistema muscular inclou els músculs i els tendons del cos.",
+   "class": "verbatim",
+   "segments": [
+    "P26-01",
+    "P26-03"
+   ]
+  },
+  {
+   "lesson": "l06",
+   "key": "funcions",
+   "file": "curs/l06.js",
+   "line": 25,
+   "src": "lit",
+   "page": 26,
+   "where": "text",
+   "tx": "Aquest sistema produeix els moviments necessaris per fer les funcions vitals, manté la posició i permet la mímica, que és el conjunt de gestos corporals que serveixen per expressar els sentiments.",
+   "class": "verbatim",
+   "segments": [
+    "P26-04"
+   ]
+  },
+  {
+   "lesson": "l06",
+   "key": "elastics",
+   "file": "curs/l06.js",
+   "line": 26,
+   "src": "lit",
+   "page": 26,
+   "where": "text",
+   "tx": "Els músculs són òrgans elàstics que es poden encongir i estirar sense trencar-se.",
+   "class": "verbatim",
+   "segments": [
+    "P26-08",
+    "P26-09"
+   ]
+  },
+  {
+   "lesson": "l06",
+   "key": "figura",
+   "file": "curs/l06.js",
+   "line": 27,
+   "src": "lit",
+   "page": 26,
+   "where": "noms del dibuix",
+   "tx": "múscul relaxat · múscul contret",
+   "class": "labels-verbatim",
+   "segments": [
+    "P26-05",
+    "P26-06"
+   ]
+  },
+  {
+   "lesson": "l06",
+   "key": "esqueletics",
+   "file": "curs/l06.js",
+   "line": 28,
+   "src": "lit",
+   "page": 26,
+   "where": "text",
+   "tx": "Els músculs que formen part de l’aparell locomotor reben el nom de músculs esquelètics.",
+   "class": "verbatim",
+   "segments": [
+    "P26-08",
+    "P26-10"
+   ]
+  },
+  {
+   "lesson": "l06",
+   "key": "tendons",
+   "file": "curs/l06.js",
+   "line": 29,
+   "src": "lit",
+   "page": 26,
+   "where": "text",
+   "tx": "Molts músculs s’uneixen als ossos mitjançant els tendons, cordons de teixit molt resistent.",
+   "class": "verbatim",
+   "segments": [
+    "P26-11"
+   ]
+  },
+  {
+   "lesson": "l06",
+   "key": "sis_cents",
+   "file": "curs/l06.js",
+   "line": 30,
+   "src": "lit",
+   "page": 27,
+   "where": "text",
+   "tx": "La musculatura està formada per més de 600 músculs esquelètics que es distribueixen en tres zones del cos.",
+   "class": "verbatim",
+   "segments": [
+    "P27-01",
+    "P27-02"
+   ]
+  },
+  {
+   "lesson": "l06",
+   "key": "pensa",
+   "file": "curs/l06.js",
+   "line": 31,
+   "src": "act",
+   "page": 26,
+   "where": "CientíficaMENT · Pensa",
+   "tx": "El llibre no dona la resposta: és per pensar i comentar. Una idea per comentar (deducció del text): com una goma, el múscul es pot encongir i estirar sense trencar-se.",
+   "class": "activity-answer"
+  },
+  {
+   "lesson": "l07",
+   "key": "quatre",
+   "file": "curs/l07.js",
+   "line": 28,
+   "src": "lit",
+   "page": 26,
+   "where": "text",
+   "tx": "Hi ha quatre tipus principals de músculs esquelètics.",
+   "class": "verbatim",
+   "segments": [
+    "P26-12"
+   ]
+  },
+  {
+   "lesson": "l07",
+   "key": "llargs",
+   "file": "curs/l07.js",
+   "line": 29,
+   "src": "lit",
+   "page": 26,
+   "where": "text del dibuix",
+   "tx": "Músculs llargs, amb els extrems més fins i la part del mig més ampla.",
+   "class": "verbatim",
+   "segments": [
+    "P26-13"
+   ]
+  },
+  {
+   "lesson": "l07",
+   "key": "curts",
+   "file": "curs/l07.js",
+   "line": 30,
+   "src": "lit",
+   "page": 26,
+   "where": "text del dibuix",
+   "tx": "Músculs curts, com els de les mans o els peus.",
+   "class": "verbatim",
+   "segments": [
+    "P26-15"
+   ]
+  },
+  {
+   "lesson": "l07",
+   "key": "anulars",
+   "file": "curs/l07.js",
+   "line": 31,
+   "src": "lit",
+   "page": 26,
+   "where": "text del dibuix",
+   "tx": "Músculs anulars, és a dir, amb forma d’anell. Envolten obertures com els ulls o la boca.",
+   "class": "verbatim",
+   "segments": [
+    "P26-14"
+   ]
+  },
+  {
+   "lesson": "l07",
+   "key": "plans",
+   "file": "curs/l07.js",
+   "line": 32,
+   "src": "lit",
+   "page": 26,
+   "where": "text del dibuix",
+   "tx": "Músculs plans, amb forma de làmina. Com els que es troben al tronc.",
+   "class": "verbatim",
+   "segments": [
+    "P26-16"
+   ]
+  },
+  {
+   "lesson": "l07",
+   "key": "troncP27",
+   "file": "curs/l07.js",
+   "line": 33,
+   "src": "lit",
+   "page": 27,
+   "where": "text",
+   "tx": "Tronc. Té músculs grans i plans.",
+   "class": "verbatim",
+   "segments": [
+    "P27-04"
+   ]
+  },
+  {
+   "lesson": "l07",
+   "key": "dibLlarg",
+   "file": "curs/l07.js",
+   "line": 34,
+   "src": "dib",
+   "page": 26,
+   "where": "dibuix del nen",
+   "tx": "La línia del múscul llarg acaba al braç.",
+   "class": "drawing-inference"
+  },
+  {
+   "lesson": "l08",
+   "key": "musculatura",
+   "file": "curs/l08.js",
+   "line": 15,
+   "src": "lit",
+   "page": 27,
+   "where": "text",
+   "tx": "La musculatura està formada per més de 600 músculs esquelètics que es distribueixen en tres zones del cos.",
+   "class": "verbatim",
+   "segments": [
+    "P27-01",
+    "P27-02"
+   ]
+  },
+  {
+   "lesson": "l08",
+   "key": "cap",
+   "file": "curs/l08.js",
+   "line": 16,
+   "src": "lit",
+   "page": 27,
+   "where": "text",
+   "tx": "Cap. Hi ha músculs plans i anulars. Els utilitzem per parlar, mastegar i gesticular.",
+   "class": "verbatim",
+   "segments": [
+    "P27-03"
+   ]
+  },
+  {
+   "lesson": "l08",
+   "key": "tronc",
+   "file": "curs/l08.js",
+   "line": 17,
+   "src": "lit",
+   "page": 27,
+   "where": "text",
+   "tx": "Tronc. Té músculs grans i plans. Mantenen dreta la columna vertebral i la flexionen, protegeixen els òrgans de l’abdomen i ens ajuden a respirar.",
+   "class": "verbatim",
+   "segments": [
+    "P27-04"
+   ]
+  },
+  {
+   "lesson": "l08",
+   "key": "dibuix",
+   "file": "curs/l08.js",
+   "line": 18,
+   "src": "lit",
+   "page": 27,
+   "where": "noms del dibuix",
+   "tx": "orbicular de les parpelles · masseter · esternoclidomastoidal · deltoide · trapezi · dorsal · pectoral · abdominal · gluti",
+   "class": "labels-verbatim",
+   "segments": [
+    "P27-06",
+    "P27-07",
+    "P27-08",
+    "P27-09",
+    "P27-10",
+    "P27-11",
+    "P27-14",
+    "P27-15",
+    "P27-18"
+   ]
+  },
+  {
+   "lesson": "l08",
+   "key": "colors",
+   "file": "curs/l08.js",
+   "line": 19,
+   "src": "dib",
+   "page": 27,
+   "where": "colors dels noms",
+   "tx": "Al dibuix, els noms del cap són blaus i els del tronc són taronja. L’esternoclidomastoidal, el deltoide, el trapezi i el gluti també estan pintats de color tronc.",
+   "class": "drawing-inference"
+  },
+  {
+   "lesson": "l09",
+   "key": "extremitats",
+   "file": "curs/l09.js",
+   "line": 16,
+   "src": "lit",
+   "page": 27,
+   "where": "text",
+   "tx": "Extremitats. Molts dels seus músculs són llargs. Mouen els braços, les cames, les mans i els peus.",
+   "class": "verbatim",
+   "segments": [
+    "P27-05"
+   ]
+  },
+  {
+   "lesson": "l09",
+   "key": "dibuix",
+   "file": "curs/l09.js",
+   "line": 17,
+   "src": "lit",
+   "page": 27,
+   "where": "noms del dibuix",
+   "tx": "bíceps · tríceps · quàdriceps · bíceps femoral · tibial · bessó",
+   "class": "labels-verbatim",
+   "segments": [
+    "P27-12",
+    "P27-13",
+    "P27-17",
+    "P27-19",
+    "P27-20",
+    "P27-21"
+   ]
+  },
+  {
+   "lesson": "l09",
+   "key": "act3",
+   "file": "curs/l09.js",
+   "line": 18,
+   "src": "act",
+   "page": 27,
+   "where": "activitat 3",
+   "tx": "El llibre no dona la resposta; es construeix amb el text de la p. 26: els músculs són elàstics (es poden encongir i estirar sense trencar-se) i molts s’uneixen als ossos mitjançant els tendons.",
+   "class": "activity-answer"
+  },
+  {
+   "lesson": "l10",
+   "key": "doblegar",
+   "file": "curs/l10.js",
+   "line": 16,
+   "src": "lit",
+   "page": 27,
+   "where": "text del dibuix",
+   "tx": "Quan dobleguem el braç, el tríceps es relaxa. El bíceps es contreu.",
+   "class": "verbatim",
+   "segments": [
+    "P27-12",
+    "P27-13",
+    "P27-26",
+    "P27-27"
+   ]
+  },
+  {
+   "lesson": "l10",
+   "key": "estirar",
+   "file": "curs/l10.js",
+   "line": 17,
+   "src": "lit",
+   "page": 27,
+   "where": "text del dibuix",
+   "tx": "Quan estirem el braç, el tríceps es contreu. El bíceps es relaxa.",
+   "class": "verbatim",
+   "segments": [
+    "P27-12",
+    "P27-13",
+    "P27-24",
+    "P27-25"
+   ]
+  },
+  {
+   "lesson": "l10",
+   "key": "colze",
+   "file": "curs/l10.js",
+   "line": 18,
+   "src": "act",
+   "page": 27,
+   "where": "activitat 4",
+   "tx": "El colze.",
+   "class": "activity-answer"
+  },
+  {
+   "lesson": "l10",
+   "key": "gruixut",
+   "file": "curs/l10.js",
+   "line": 19,
+   "src": "act",
+   "page": 27,
+   "where": "activitat 4",
+   "tx": "Mirant el dibuix: el bíceps és més gruixut amb el braç doblegat, i el tríceps, amb el braç estès. El múscul que es contreu es fa més gruixut.",
+   "class": "activity-answer"
+  },
+  {
+   "lesson": "l10",
+   "key": "parella",
+   "file": "curs/l10.js",
+   "line": 20,
+   "src": "lit",
+   "page": 28,
+   "where": "text",
+   "tx": "Quan fem un moviment, uns músculs es contreuen mentre que uns altres es relaxen, i així mouen els ossos.",
+   "class": "verbatim",
+   "segments": [
+    "P28-22"
+   ]
+  },
+  {
+   "lesson": "l11",
+   "key": "exterior",
+   "file": "curs/l11.js",
+   "line": 25,
+   "src": "lit",
+   "page": 28,
+   "where": "text",
+   "tx": "Les persones captem el que passa a l’exterior: hi sentim, hi veiem... També ens comuniquem, ens movem i reaccionem quan hi ha canvis que ens afecten. Així per exemple, si veiem que cau una roca i ens pot fer mal, el nostre cos respon i es mou per allunyar-se’n.",
+   "class": "verbatim",
+   "segments": [
+    "P28-03",
+    "P28-04",
+    "P28-05"
+   ]
+  },
+  {
+   "lesson": "l11",
+   "key": "relacio",
+   "file": "curs/l11.js",
+   "line": 26,
+   "src": "lit",
+   "page": 28,
+   "where": "text",
+   "tx": "La funció de relació ens permet percebre el que passa al nostre voltant i reaccionar-hi de manera adequada.",
+   "class": "verbatim",
+   "segments": [
+    "P28-06"
+   ]
+  },
+  {
+   "lesson": "l11",
+   "key": "elements",
+   "file": "curs/l11.js",
+   "line": 27,
+   "src": "lit",
+   "page": 28,
+   "where": "text i esquema",
+   "tx": "En la funció de relació intervenen diversos elements: Òrgans dels sentits → Sistema nerviós → Aparell locomotor.",
+   "class": "mixed",
+   "action": "A: keep the sentence P28-07 as literal; show the diagram P28-08 as «esquema del llibre» (the book prints «Òrgans del sentits» [sic])",
+   "segments": []
+  },
+  {
+   "lesson": "l11",
+   "key": "format",
+   "file": "curs/l11.js",
+   "line": 28,
+   "src": "lit",
+   "page": 28,
+   "where": "text",
+   "tx": "El sistema nerviós està format per: cervell, nervis, medul·la espinal.",
+   "class": "summary",
+   "action": "A: relabel as summary of P28-10 + the three bullet headings (not literal)",
+   "segments": []
+  },
+  {
+   "lesson": "l11",
+   "key": "cervell",
+   "file": "curs/l11.js",
+   "line": 29,
+   "src": "lit",
+   "page": 28,
+   "where": "text",
+   "tx": "Cervell. És al cap i està protegit pel crani. Dirigeix el funcionament del cos i els seus moviments ens permeten pensar i recordar.",
+   "class": "verbatim",
+   "segments": [
+    "P28-11",
+    "P28-12"
+   ]
+  },
+  {
+   "lesson": "l11",
+   "key": "nervis",
+   "file": "curs/l11.js",
+   "line": 30,
+   "src": "lit",
+   "page": 28,
+   "where": "text",
+   "tx": "Nervis. Porten informació dels òrgans dels sentits al cervell i transmeten les ordres des del cervell fins a l’aparell locomotor, que és l’encarregat del moviment. N’hi ha per tot el cos.",
+   "class": "verbatim",
+   "segments": [
+    "P28-13",
+    "P28-14",
+    "P28-17"
+   ]
+  },
+  {
+   "lesson": "l11",
+   "key": "medulla",
+   "file": "curs/l11.js",
+   "line": 31,
+   "src": "lit",
+   "page": 28,
+   "where": "text",
+   "tx": "Medul·la espinal. És a l’esquena, protegida per la columna vertebral. Juntament amb el cervell dirigeix alguns moviments del cos i part del seu funcionament.",
+   "class": "verbatim",
+   "segments": [
+    "P28-15",
+    "P28-16",
+    "P28-17"
+   ]
+  },
+  {
+   "lesson": "l11",
+   "key": "aparell",
+   "file": "curs/l11.js",
+   "line": 32,
+   "src": "lit",
+   "page": 28,
+   "where": "text",
+   "tx": "L’aparell locomotor està format pels ossos i els músculs, que treballen de manera conjunta perquè ens moguem.",
+   "class": "verbatim",
+   "segments": [
+    "P28-20",
+    "P28-21"
+   ]
+  },
+  {
+   "lesson": "l11",
+   "key": "contreuen",
+   "file": "curs/l11.js",
+   "line": 33,
+   "src": "lit",
+   "page": 28,
+   "where": "text",
+   "tx": "Quan fem un moviment, uns músculs es contreuen mentre que uns altres es relaxen, i així mouen els ossos. Per exemple quan caminem, els músculs de les cames es contreuen i es relaxen i estiren els ossos per aconseguir que caminem.",
+   "class": "verbatim",
+   "segments": [
+    "P28-22",
+    "P28-23"
+   ]
+  },
+  {
+   "lesson": "l11",
+   "key": "dibuix",
+   "file": "curs/l11.js",
+   "line": 34,
+   "src": "lit",
+   "page": 28,
+   "where": "noms del dibuix",
+   "tx": "cervell · medul·la espinal · nervis",
+   "class": "labels-verbatim",
+   "segments": [
+    "P28-17",
+    "P28-18",
+    "P28-19"
+   ]
+  },
+  {
+   "lesson": "l11",
+   "key": "a5",
+   "file": "curs/l11.js",
+   "line": 35,
+   "src": "act",
+   "page": 29,
+   "where": "activitat 5",
+   "tx": "1. Els òrgans dels sentits capten la informació de l’entorn. 2. La informació viatja al cervell mitjançant els nervis. 3. El cervell analitza la informació i decideix què cal fer. 4. El cervell envia ordres a través dels nervis. 5. L’aparell locomotor rep les ordres i fa els moviments.",
+   "class": "activity-answer"
+  },
+  {
+   "lesson": "l12",
+   "key": "vol",
+   "file": "curs/l12.js",
+   "line": 25,
+   "src": "lit",
+   "page": 29,
+   "where": "text",
+   "tx": "Molts dels moviments els fem voluntàriament i de manera conscient. Són moviments voluntaris.",
+   "class": "verbatim",
+   "segments": [
+    "P29-02",
+    "P29-03"
+   ]
+  },
+  {
+   "lesson": "l12",
+   "key": "v1",
+   "file": "curs/l12.js",
+   "line": 26,
+   "src": "lit",
+   "page": 29,
+   "where": "dibuix 1",
+   "tx": "Un òrgan dels sentits capta un estímul i envia la informació al cervell.",
+   "class": "verbatim",
+   "segments": [
+    "P29-04"
+   ]
+  },
+  {
+   "lesson": "l12",
+   "key": "v2",
+   "file": "curs/l12.js",
+   "line": 26,
+   "src": "lit",
+   "page": 29,
+   "where": "dibuix 2",
+   "tx": "El cervell identifica l’estímul i decideix què fer.",
+   "class": "verbatim",
+   "segments": [
+    "P29-05"
+   ]
+  },
+  {
+   "lesson": "l12",
+   "key": "v3",
+   "file": "curs/l12.js",
+   "line": 26,
+   "src": "lit",
+   "page": 29,
+   "where": "dibuix 3",
+   "tx": "El cervell envia ordres a través dels nervis als músculs. Els músculs fan els moviments.",
+   "class": "verbatim",
+   "segments": [
+    "P29-06"
+   ]
+  },
+  {
+   "lesson": "l12",
+   "key": "vEx",
+   "file": "curs/l12.js",
+   "line": 27,
+   "src": "dib",
+   "page": 29,
+   "where": "dibuixos 1–3",
+   "tx": "Exemple del llibre: la nena veu el semàfor vermell; quan es posa verd, travessa el carrer.",
+   "class": "drawing-inference"
+  },
+  {
+   "lesson": "l12",
+   "key": "ref",
+   "file": "curs/l12.js",
+   "line": 28,
+   "src": "lit",
+   "page": 29,
+   "where": "text",
+   "tx": "Hi ha moviments que fem de manera involuntària i ràpida, són moviments reflexos. En molts d’aquests moviments no intervé el cervell, sinó la medul·la espinal.",
+   "class": "verbatim",
+   "segments": [
+    "P29-08",
+    "P29-09"
+   ]
+  },
+  {
+   "lesson": "l12",
+   "key": "r1",
+   "file": "curs/l12.js",
+   "line": 29,
+   "src": "lit",
+   "page": 29,
+   "where": "dibuix 1",
+   "tx": "Un òrgan dels sentits capta un estímul i envia la informació a la medul·la espinal.",
+   "class": "verbatim",
+   "segments": [
+    "P29-10"
+   ]
+  },
+  {
+   "lesson": "l12",
+   "key": "r2",
+   "file": "curs/l12.js",
+   "line": 29,
+   "src": "lit",
+   "page": 29,
+   "where": "dibuix 2",
+   "tx": "La medul·la espinal rep la informació.",
+   "class": "verbatim",
+   "segments": [
+    "P29-11"
+   ]
+  },
+  {
+   "lesson": "l12",
+   "key": "r3",
+   "file": "curs/l12.js",
+   "line": 29,
+   "src": "lit",
+   "page": 29,
+   "where": "dibuix 3",
+   "tx": "La medul·la envia les ordres pels nervis als músculs, que fan el moviment de manera immediata.",
+   "class": "verbatim",
+   "segments": [
+    "P29-12"
+   ]
+  },
+  {
+   "lesson": "l12",
+   "key": "rEx",
+   "file": "curs/l12.js",
+   "line": 30,
+   "src": "dib",
+   "page": 29,
+   "where": "dibuixos 1–3",
+   "tx": "Exemple del llibre: el nen toca una tassa calenta i aparta la mà de cop.",
+   "class": "drawing-inference"
+  }
+ ],
+ "names": [
+  {
+   "segment": "P25-09",
+   "name": "crani",
+   "lesson_slots": [
+    "l02.crani"
+   ]
+  },
+  {
+   "segment": "P25-10",
+   "name": "maxil·lar",
+   "lesson_slots": [
+    "l02.maxillar"
+   ]
+  },
+  {
+   "segment": "P25-11",
+   "name": "omòplat",
+   "lesson_slots": [
+    "l02.omoplat"
+   ]
+  },
+  {
+   "segment": "P25-12",
+   "name": "costella",
+   "lesson_slots": [
+    "l02.costella"
+   ]
+  },
+  {
+   "segment": "P25-13",
+   "name": "húmer",
+   "lesson_slots": [
+    "l03.humer"
+   ]
+  },
+  {
+   "segment": "P25-14",
+   "name": "estern",
+   "lesson_slots": [
+    "l02.estern"
+   ]
+  },
+  {
+   "segment": "P25-15",
+   "name": "cúbit",
+   "lesson_slots": [
+    "l03.cubit"
+   ]
+  },
+  {
+   "segment": "P25-16",
+   "name": "vèrtebra",
+   "lesson_slots": [
+    "l02.vertebra"
+   ]
+  },
+  {
+   "segment": "P25-17",
+   "name": "radi",
+   "lesson_slots": [
+    "l03.radi"
+   ]
+  },
+  {
+   "segment": "P25-18",
+   "name": "columna vertebral",
+   "lesson_slots": [
+    "l02.columna"
+   ]
+  },
+  {
+   "segment": "P25-19",
+   "name": "carp",
+   "lesson_slots": [
+    "l03.carp"
+   ]
+  },
+  {
+   "segment": "P25-20",
+   "name": "pelvis",
+   "lesson_slots": [
+    "l02.pelvis"
+   ]
+  },
+  {
+   "segment": "P25-21",
+   "name": "metacarp",
+   "lesson_slots": [
+    "l03.metacarp"
+   ]
+  },
+  {
+   "segment": "P25-22",
+   "name": "falanges (mà)",
+   "lesson_slots": [
+    "l03.falanges"
+   ]
+  },
+  {
+   "segment": "P25-23",
+   "name": "fèmur",
+   "lesson_slots": [
+    "l04.femur"
+   ]
+  },
+  {
+   "segment": "P25-24",
+   "name": "ròtula",
+   "lesson_slots": [
+    "l04.rotula"
+   ]
+  },
+  {
+   "segment": "P25-25",
+   "name": "peroné",
+   "lesson_slots": [
+    "l04.perone"
+   ]
+  },
+  {
+   "segment": "P25-26",
+   "name": "tars",
+   "lesson_slots": [
+    "l04.tars"
+   ]
+  },
+  {
+   "segment": "P25-27",
+   "name": "tíbia",
+   "lesson_slots": [
+    "l04.tibia"
+   ]
+  },
+  {
+   "segment": "P25-28",
+   "name": "metatars",
+   "lesson_slots": [
+    "l04.metatars"
+   ]
+  },
+  {
+   "segment": "P25-29",
+   "name": "falanges (peu)",
+   "lesson_slots": [
+    "l03.falanges",
+    "l04.falangesPeu"
+   ]
+  },
+  {
+   "segment": "P27-06",
+   "name": "orbicular de les parpelles",
+   "lesson_slots": [
+    "l08.orbicular"
+   ]
+  },
+  {
+   "segment": "P27-07",
+   "name": "masseter",
+   "lesson_slots": [
+    "l08.masseter"
+   ]
+  },
+  {
+   "segment": "P27-08",
+   "name": "esternoclidomastoidal",
+   "lesson_slots": [
+    "l08.ecm"
+   ]
+  },
+  {
+   "segment": "P27-09",
+   "name": "deltoide",
+   "lesson_slots": [
+    "l08.deltoide"
+   ]
+  },
+  {
+   "segment": "P27-10",
+   "name": "trapezi",
+   "lesson_slots": [
+    "l08.trapezi"
+   ]
+  },
+  {
+   "segment": "P27-11",
+   "name": "dorsal",
+   "lesson_slots": [
+    "l08.dorsal"
+   ]
+  },
+  {
+   "segment": "P27-12",
+   "name": "bíceps",
+   "lesson_slots": [
+    "l09.biceps",
+    "l10.biceps"
+   ]
+  },
+  {
+   "segment": "P27-13",
+   "name": "tríceps",
+   "lesson_slots": [
+    "l09.triceps",
+    "l10.triceps"
+   ]
+  },
+  {
+   "segment": "P27-14",
+   "name": "pectoral",
+   "lesson_slots": [
+    "l08.pectoral"
+   ]
+  },
+  {
+   "segment": "P27-15",
+   "name": "abdominal",
+   "lesson_slots": [
+    "l08.abdominal"
+   ]
+  },
+  {
+   "segment": "P27-17",
+   "name": "quàdriceps",
+   "lesson_slots": [
+    "l09.quadriceps"
+   ]
+  },
+  {
+   "segment": "P27-18",
+   "name": "gluti",
+   "lesson_slots": [
+    "l08.gluti"
+   ]
+  },
+  {
+   "segment": "P27-19",
+   "name": "bíceps femoral",
+   "lesson_slots": [
+    "l09.bicepsFem"
+   ]
+  },
+  {
+   "segment": "P27-20",
+   "name": "tibial",
+   "lesson_slots": [
+    "l09.tibial"
+   ]
+  },
+  {
+   "segment": "P27-21",
+   "name": "bessó",
+   "lesson_slots": [
+    "l09.besso"
+   ]
+  },
+  {
+   "segment": "P28-17",
+   "name": "cervell",
+   "lesson_slots": [
+    "l11.cervell"
+   ]
+  },
+  {
+   "segment": "P28-18",
+   "name": "medul·la espinal",
+   "lesson_slots": [
+    "l11.medulla"
+   ]
+  },
+  {
+   "segment": "P28-19",
+   "name": "nervis",
+   "lesson_slots": [
+    "l11.nervis"
+   ]
+  }
+ ],
+ "name_slots": [
+  {
+   "lesson": "l02",
+   "key": "crani",
+   "file": "curs/l02.js",
+   "line": 20,
+   "ca": "crani",
+   "page": 25,
+   "label_segment": "P25-09",
+   "match": "/(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/"
+  },
+  {
+   "lesson": "l02",
+   "key": "maxillar",
+   "file": "curs/l02.js",
+   "line": 21,
+   "ca": "maxil·lar",
+   "page": 25,
+   "label_segment": "P25-10",
+   "match": "/^mandible$|maxilla$/"
+  },
+  {
+   "lesson": "l02",
+   "key": "columna",
+   "file": "curs/l02.js",
+   "line": 22,
+   "ca": "columna vertebral",
+   "page": 25,
+   "label_segment": "P25-18",
+   "match": "/vertebra$|^atlas$|^axis$|sacrum|coccyx|intervertebral disk/"
+  },
+  {
+   "lesson": "l02",
+   "key": "vertebra",
+   "file": "curs/l02.js",
+   "line": 23,
+   "ca": "vèrtebra",
+   "page": 25,
+   "label_segment": "P25-16",
+   "match": "/vertebra$|^atlas$|^axis$/"
+  },
+  {
+   "lesson": "l02",
+   "key": "costella",
+   "file": "curs/l02.js",
+   "line": 24,
+   "ca": "costella",
+   "page": 25,
+   "label_segment": "P25-12",
+   "match": "/ rib$/"
+  },
+  {
+   "lesson": "l02",
+   "key": "estern",
+   "file": "curs/l02.js",
+   "line": 25,
+   "ca": "estern",
+   "page": 25,
+   "label_segment": "P25-14",
+   "match": "/body of sternum|manubrium|xiphoid/"
+  },
+  {
+   "lesson": "l02",
+   "key": "omoplat",
+   "file": "curs/l02.js",
+   "line": 26,
+   "ca": "omòplat",
+   "page": 25,
+   "label_segment": "P25-11",
+   "match": "/scapula$/"
+  },
+  {
+   "lesson": "l02",
+   "key": "pelvis",
+   "file": "curs/l02.js",
+   "line": 27,
+   "ca": "pelvis",
+   "page": 25,
+   "label_segment": "P25-20",
+   "match": "/hip bone$/"
+  },
+  {
+   "lesson": "l03",
+   "key": "humer",
+   "file": "curs/l03.js",
+   "line": 13,
+   "ca": "húmer",
+   "page": 25,
+   "label_segment": "P25-13",
+   "match": "/^left humerus$/"
+  },
+  {
+   "lesson": "l03",
+   "key": "cubit",
+   "file": "curs/l03.js",
+   "line": 14,
+   "ca": "cúbit",
+   "page": 25,
+   "label_segment": "P25-15",
+   "match": "/^left ulna$/"
+  },
+  {
+   "lesson": "l03",
+   "key": "radi",
+   "file": "curs/l03.js",
+   "line": 15,
+   "ca": "radi",
+   "page": 25,
+   "label_segment": "P25-17",
+   "match": "/^left radius$/"
+  },
+  {
+   "lesson": "l03",
+   "key": "carp",
+   "file": "curs/l03.js",
+   "line": 16,
+   "ca": "carp",
+   "page": 25,
+   "label_segment": "P25-19",
+   "match": "/^left (scaphoid|lunate|triquetr\\w*|pisiform|trapezium|trapezoid|capitate|hamate)$/"
+  },
+  {
+   "lesson": "l03",
+   "key": "metacarp",
+   "file": "curs/l03.js",
+   "line": 17,
+   "ca": "metacarp",
+   "page": 25,
+   "label_segment": "P25-21",
+   "match": "/^left .*metacarpal/"
+  },
+  {
+   "lesson": "l03",
+   "key": "falanges",
+   "file": "curs/l03.js",
+   "line": 18,
+   "ca": "falanges",
+   "page": 25,
+   "label_segment": "P25-29",
+   "match": "/phalanx of left (thumb|.*finger)/"
+  },
+  {
+   "lesson": "l04",
+   "key": "femur",
+   "file": "curs/l04.js",
+   "line": 19,
+   "ca": "fèmur",
+   "page": 25,
+   "label_segment": "P25-23",
+   "match": "/^left femur$/"
+  },
+  {
+   "lesson": "l04",
+   "key": "rotula",
+   "file": "curs/l04.js",
+   "line": 20,
+   "ca": "ròtula",
+   "page": 25,
+   "label_segment": "P25-24",
+   "match": "/^left patella$/"
+  },
+  {
+   "lesson": "l04",
+   "key": "tibia",
+   "file": "curs/l04.js",
+   "line": 21,
+   "ca": "tíbia",
+   "page": 25,
+   "label_segment": "P25-27",
+   "match": "/^left tibia$/"
+  },
+  {
+   "lesson": "l04",
+   "key": "perone",
+   "file": "curs/l04.js",
+   "line": 22,
+   "ca": "peroné",
+   "page": 25,
+   "label_segment": "P25-25",
+   "match": "/^left fibula$/"
+  },
+  {
+   "lesson": "l04",
+   "key": "tars",
+   "file": "curs/l04.js",
+   "line": 23,
+   "ca": "tars",
+   "page": 25,
+   "label_segment": "P25-26",
+   "match": "/^left (talus|calcaneus|cuboid bone|(medial|intermediate|lateral) cuneiform bone)$|^navicular bone of left foot$/"
+  },
+  {
+   "lesson": "l04",
+   "key": "metatars",
+   "file": "curs/l04.js",
+   "line": 24,
+   "ca": "metatars",
+   "page": 25,
+   "label_segment": "P25-28",
+   "match": "/^left .*metatarsal/"
+  },
+  {
+   "lesson": "l04",
+   "key": "falangesPeu",
+   "file": "curs/l04.js",
+   "line": 25,
+   "ca": "falanges",
+   "page": 25,
+   "label_segment": "P25-29",
+   "match": "/phalanx of left .*toe/"
+  },
+  {
+   "lesson": "l08",
+   "key": "orbicular",
+   "file": "curs/l08.js",
+   "line": 22,
+   "ca": "orbicular de les parpelles",
+   "page": 27,
+   "label_segment": "P27-06",
+   "match": "/orbicularis oculi/"
+  },
+  {
+   "lesson": "l08",
+   "key": "masseter",
+   "file": "curs/l08.js",
+   "line": 23,
+   "ca": "masseter",
+   "page": 27,
+   "label_segment": "P27-07",
+   "match": "/masseter/"
+  },
+  {
+   "lesson": "l08",
+   "key": "ecm",
+   "file": "curs/l08.js",
+   "line": 24,
+   "ca": "esternoclidomastoidal",
+   "page": 27,
+   "label_segment": "P27-08",
+   "match": "/sternocleidomastoid/"
+  },
+  {
+   "lesson": "l08",
+   "key": "trapezi",
+   "file": "curs/l08.js",
+   "line": 25,
+   "ca": "trapezi",
+   "page": 27,
+   "label_segment": "P27-10",
+   "match": "/trapezius/"
+  },
+  {
+   "lesson": "l08",
+   "key": "deltoide",
+   "file": "curs/l08.js",
+   "line": 26,
+   "ca": "deltoide",
+   "page": 27,
+   "label_segment": "P27-09",
+   "match": "/deltoid/"
+  },
+  {
+   "lesson": "l08",
+   "key": "pectoral",
+   "file": "curs/l08.js",
+   "line": 27,
+   "ca": "pectoral",
+   "page": 27,
+   "label_segment": "P27-14",
+   "match": "/pectoralis major/"
+  },
+  {
+   "lesson": "l08",
+   "key": "abdominal",
+   "file": "curs/l08.js",
+   "line": 28,
+   "ca": "abdominal",
+   "page": 27,
+   "label_segment": "P27-15",
+   "match": "/rectus abdominis|external oblique/"
+  },
+  {
+   "lesson": "l08",
+   "key": "dorsal",
+   "file": "curs/l08.js",
+   "line": 29,
+   "ca": "dorsal",
+   "page": 27,
+   "label_segment": "P27-11",
+   "match": "/latissimus dorsi/"
+  },
+  {
+   "lesson": "l08",
+   "key": "gluti",
+   "file": "curs/l08.js",
+   "line": 30,
+   "ca": "gluti",
+   "page": 27,
+   "label_segment": "P27-18",
+   "match": "/gluteus maximus/"
+  },
+  {
+   "lesson": "l09",
+   "key": "biceps",
+   "file": "curs/l09.js",
+   "line": 21,
+   "ca": "bíceps",
+   "page": 27,
+   "label_segment": "P27-12",
+   "match": "/biceps brachii/"
+  },
+  {
+   "lesson": "l09",
+   "key": "triceps",
+   "file": "curs/l09.js",
+   "line": 22,
+   "ca": "tríceps",
+   "page": 27,
+   "label_segment": "P27-13",
+   "match": "/triceps brachii/"
+  },
+  {
+   "lesson": "l09",
+   "key": "quadriceps",
+   "file": "curs/l09.js",
+   "line": 23,
+   "ca": "quàdriceps",
+   "page": 27,
+   "label_segment": "P27-17",
+   "match": "/rectus femoris|vastus (lateralis|medialis|intermedius)/"
+  },
+  {
+   "lesson": "l09",
+   "key": "bicepsFem",
+   "file": "curs/l09.js",
+   "line": 24,
+   "ca": "bíceps femoral",
+   "page": 27,
+   "label_segment": "P27-19",
+   "match": "/biceps femoris/"
+  },
+  {
+   "lesson": "l09",
+   "key": "tibial",
+   "file": "curs/l09.js",
+   "line": 25,
+   "ca": "tibial",
+   "page": 27,
+   "label_segment": "P27-20",
+   "match": "/tibialis anterior/"
+  },
+  {
+   "lesson": "l09",
+   "key": "besso",
+   "file": "curs/l09.js",
+   "line": 26,
+   "ca": "bessó",
+   "page": 27,
+   "label_segment": "P27-21",
+   "match": "/gastrocnemius/"
+  },
+  {
+   "lesson": "l10",
+   "key": "biceps",
+   "file": "curs/l10.js",
+   "line": 23,
+   "ca": "bíceps",
+   "page": 27,
+   "label_segment": "P27-12",
+   "match": "/left biceps brachii/"
+  },
+  {
+   "lesson": "l10",
+   "key": "triceps",
+   "file": "curs/l10.js",
+   "line": 24,
+   "ca": "tríceps",
+   "page": 27,
+   "label_segment": "P27-13",
+   "match": "/left triceps brachii/"
+  },
+  {
+   "lesson": "l11",
+   "key": "cervell",
+   "file": "curs/l11.js",
+   "line": 29,
+   "ca": "cervell",
+   "page": 28,
+   "label_segment": "P28-17",
+   "match": "/./"
+  },
+  {
+   "lesson": "l11",
+   "key": "medulla",
+   "file": "curs/l11.js",
+   "line": 31,
+   "ca": "medul·la espinal",
+   "page": 28,
+   "label_segment": "P28-18",
+   "match": "/./"
+  },
+  {
+   "lesson": "l11",
+   "key": "nervis",
+   "file": "curs/l11.js",
+   "line": 30,
+   "ca": "nervis",
+   "page": 28,
+   "label_segment": "P28-19",
+   "match": "/./"
+  }
+ ],
+ "textbook_sentences": [
+  {
+   "segment": "P24-03",
+   "text": "L’aparell locomotor permet el moviment del nostre cos.",
+   "quoted_literally_by": [
+    "l01.aparell"
+   ]
+  },
+  {
+   "segment": "P24-04",
+   "text": "Està format pel sistema esquelètic i el sistema muscular.",
+   "quoted_literally_by": [
+    "l01.aparell"
+   ]
+  },
+  {
+   "segment": "P24-05",
+   "text": "El sistema esquelètic el formen els ossos, que componen l’esquelet.",
+   "quoted_literally_by": [
+    "l01.sistema"
+   ]
+  },
+  {
+   "segment": "P24-06",
+   "text": "Aquest sistema intervé en el moviment del cos, dona forma i suporta el pes del cos, protegeix dels cops els òrgans interns...",
+   "quoted_literally_by": [
+    "l01.sistema"
+   ]
+  },
+  {
+   "segment": "P24-08",
+   "text": "Els ossos són òrgans rígids i resistents.",
+   "quoted_literally_by": [
+    "l01.ossos"
+   ]
+  },
+  {
+   "segment": "P24-09",
+   "text": "Tots els ossos del cos formen l’esquelet.",
+   "quoted_literally_by": [
+    "l01.ossos"
+   ]
+  },
+  {
+   "segment": "P24-10",
+   "text": "Tot i el seu aspecte rígid, els ossos són òrgans vius que creixen i necessiten nutrients.",
+   "quoted_literally_by": [
+    "l01.ossos"
+   ]
+  },
+  {
+   "segment": "P24-11",
+   "text": "Tenim tres tipus d’ossos.",
+   "quoted_literally_by": [
+    "l01.tipus"
+   ]
+  },
+  {
+   "segment": "P24-16",
+   "text": "Els ossos de l’esquelet s’uneixen entre si mitjançant les articulacions.",
+   "quoted_literally_by": [
+    "l05.def"
+   ]
+  },
+  {
+   "segment": "P24-17",
+   "text": "En algunes articulacions, com les del crani, els ossos estan tan units que semblen només un.",
+   "quoted_literally_by": []
+  },
+  {
+   "segment": "P24-18",
+   "text": "Són articulacions immòbils.",
+   "quoted_literally_by": []
+  },
+  {
+   "segment": "P24-19",
+   "text": "En d’altres, els ossos es poden moure, com passa al colze, al coll o al genoll.",
+   "quoted_literally_by": []
+  },
+  {
+   "segment": "P24-20",
+   "text": "Són articulacions mòbils.",
+   "quoted_literally_by": []
+  },
+  {
+   "segment": "P24-22",
+   "text": "En les articulacions mòbils, els ossos estan units mitjançant els lligaments.",
+   "quoted_literally_by": [
+    "l05.lligaments"
+   ]
+  },
+  {
+   "segment": "P25-02",
+   "text": "El nostre esquelet està format per més de 200 ossos distribuïts pel cos en tres zones.",
+   "quoted_literally_by": [
+    "l01.dos_cents"
+   ]
+  },
+  {
+   "segment": "P25-03",
+   "text": "Cap. Hi tenim els ossos del crani i els de la cara.",
+   "quoted_literally_by": [
+    "l02.cap"
+   ]
+  },
+  {
+   "segment": "P25-04",
+   "text": "Els ossos del crani són plans i tenen la funció de protegir el cervell.",
+   "quoted_literally_by": [
+    "l02.cap"
+   ]
+  },
+  {
+   "segment": "P25-05",
+   "text": "Tronc. Hi tenim la columna vertebral, que està formada per les vèrtebres i protegeix la medul·la espinal.",
+   "quoted_literally_by": [
+    "l02.tronc"
+   ]
+  },
+  {
+   "segment": "P25-06",
+   "text": "La columna vertebral, les costelles i l’estern protegeixen el cor i els pulmons.",
+   "quoted_literally_by": [
+    "l02.tronc"
+   ]
+  },
+  {
+   "segment": "P25-07",
+   "text": "Extremitats. Hi tenim ossos llargs, com l’húmer i el fèmur.",
+   "quoted_literally_by": [
+    "l03.extremitats",
+    "l04.extremitats"
+   ]
+  },
+  {
+   "segment": "P25-08",
+   "text": "A les mans i als peus tenim molts ossos petits, les falanges.",
+   "quoted_literally_by": [
+    "l03.extremitats",
+    "l04.extremitats"
+   ]
+  },
+  {
+   "segment": "P26-03",
+   "text": "El sistema muscular inclou els músculs i els tendons del cos.",
+   "quoted_literally_by": [
+    "l06.inclou"
+   ]
+  },
+  {
+   "segment": "P26-04",
+   "text": "Aquest sistema produeix els moviments necessaris per fer les funcions vitals, manté la posició i permet la mímica, que és el conjunt de gestos corporals que serveixen per expressar els sentiments.",
+   "quoted_literally_by": [
+    "l06.funcions"
+   ]
+  },
+  {
+   "segment": "P26-09",
+   "text": "Els músculs són òrgans elàstics que es poden encongir i estirar sense trencar-se.",
+   "quoted_literally_by": [
+    "l06.elastics"
+   ]
+  },
+  {
+   "segment": "P26-10",
+   "text": "Els músculs que formen part de l’aparell locomotor reben el nom de músculs esquelètics.",
+   "quoted_literally_by": [
+    "l06.esqueletics"
+   ]
+  },
+  {
+   "segment": "P26-11",
+   "text": "Molts músculs s’uneixen als ossos mitjançant els tendons, cordons de teixit molt resistent.",
+   "quoted_literally_by": [
+    "l06.tendons"
+   ]
+  },
+  {
+   "segment": "P26-12",
+   "text": "Hi ha quatre tipus principals de músculs esquelètics.",
+   "quoted_literally_by": [
+    "l07.quatre"
+   ]
+  },
+  {
+   "segment": "P27-02",
+   "text": "La musculatura està formada per més de 600 músculs esquelètics que es distribueixen en tres zones del cos.",
+   "quoted_literally_by": [
+    "l06.sis_cents",
+    "l08.musculatura"
+   ]
+  },
+  {
+   "segment": "P27-03",
+   "text": "Cap. Hi ha músculs plans i anulars. Els utilitzem per parlar, mastegar i gesticular.",
+   "quoted_literally_by": [
+    "l08.cap"
+   ]
+  },
+  {
+   "segment": "P27-04",
+   "text": "Tronc. Té músculs grans i plans. Mantenen dreta la columna vertebral i la flexionen, protegeixen els òrgans de l’abdomen i ens ajuden a respirar.",
+   "quoted_literally_by": [
+    "l07.troncP27",
+    "l08.tronc"
+   ]
+  },
+  {
+   "segment": "P27-05",
+   "text": "Extremitats. Molts dels seus músculs són llargs. Mouen els braços, les cames, les mans i els peus.",
+   "quoted_literally_by": [
+    "l09.extremitats"
+   ]
+  },
+  {
+   "segment": "P28-03",
+   "text": "Les persones captem el que passa a l’exterior: hi sentim, hi veiem...",
+   "quoted_literally_by": [
+    "l11.exterior"
+   ]
+  },
+  {
+   "segment": "P28-04",
+   "text": "També ens comuniquem, ens movem i reaccionem quan hi ha canvis que ens afecten.",
+   "quoted_literally_by": [
+    "l11.exterior"
+   ]
+  },
+  {
+   "segment": "P28-05",
+   "text": "Així per exemple, si veiem que cau una roca i ens pot fer mal, el nostre cos respon i es mou per allunyar-se’n.",
+   "quoted_literally_by": [
+    "l11.exterior"
+   ]
+  },
+  {
+   "segment": "P28-06",
+   "text": "La funció de relació ens permet percebre el que passa al nostre voltant i reaccionar-hi de manera adequada.",
+   "quoted_literally_by": [
+    "l11.relacio"
+   ]
+  },
+  {
+   "segment": "P28-07",
+   "text": "En la funció de relació intervenen diversos elements:",
+   "quoted_literally_by": []
+  },
+  {
+   "segment": "P28-10",
+   "text": "El sistema nerviós està format per:",
+   "quoted_literally_by": []
+  },
+  {
+   "segment": "P28-11",
+   "text": "Cervell. És al cap i està protegit pel crani.",
+   "quoted_literally_by": [
+    "l11.cervell"
+   ]
+  },
+  {
+   "segment": "P28-12",
+   "text": "Dirigeix el funcionament del cos i els seus moviments ens permeten pensar i recordar.",
+   "quoted_literally_by": [
+    "l11.cervell"
+   ]
+  },
+  {
+   "segment": "P28-13",
+   "text": "Nervis. Porten informació dels òrgans dels sentits al cervell i transmeten les ordres des del cervell fins a l’aparell locomotor, que és l’encarregat del moviment.",
+   "quoted_literally_by": [
+    "l11.nervis"
+   ]
+  },
+  {
+   "segment": "P28-14",
+   "text": "N’hi ha per tot el cos.",
+   "quoted_literally_by": [
+    "l11.nervis"
+   ]
+  },
+  {
+   "segment": "P28-15",
+   "text": "Medul·la espinal. És a l’esquena, protegida per la columna vertebral.",
+   "quoted_literally_by": [
+    "l11.medulla"
+   ]
+  },
+  {
+   "segment": "P28-16",
+   "text": "Juntament amb el cervell dirigeix alguns moviments del cos i part del seu funcionament.",
+   "quoted_literally_by": [
+    "l11.medulla"
+   ]
+  },
+  {
+   "segment": "P28-21",
+   "text": "L’aparell locomotor està format pels ossos i els músculs, que treballen de manera conjunta perquè ens moguem.",
+   "quoted_literally_by": [
+    "l11.aparell"
+   ]
+  },
+  {
+   "segment": "P28-22",
+   "text": "Quan fem un moviment, uns músculs es contreuen mentre que uns altres es relaxen, i així mouen els ossos.",
+   "quoted_literally_by": [
+    "l10.parella",
+    "l11.contreuen"
+   ]
+  },
+  {
+   "segment": "P28-23",
+   "text": "Per exemple quan caminem, els músculs de les cames es contreuen i es relaxen i estiren els ossos per aconseguir que caminem.",
+   "quoted_literally_by": [
+    "l11.contreuen"
+   ]
+  },
+  {
+   "segment": "P29-02",
+   "text": "Molts dels moviments els fem voluntàriament i de manera conscient.",
+   "quoted_literally_by": [
+    "l12.vol"
+   ]
+  },
+  {
+   "segment": "P29-03",
+   "text": "Són moviments voluntaris.",
+   "quoted_literally_by": [
+    "l12.vol"
+   ]
+  },
+  {
+   "segment": "P29-04",
+   "text": "① Un òrgan dels sentits capta un estímul i envia la informació al cervell.",
+   "quoted_literally_by": [
+    "l12.v1"
+   ]
+  },
+  {
+   "segment": "P29-05",
+   "text": "② El cervell identifica l’estímul i decideix què fer.",
+   "quoted_literally_by": [
+    "l12.v2"
+   ]
+  },
+  {
+   "segment": "P29-06",
+   "text": "③ El cervell envia ordres a través dels nervis als músculs. Els músculs fan els moviments.",
+   "quoted_literally_by": [
+    "l12.v3"
+   ]
+  },
+  {
+   "segment": "P29-08",
+   "text": "Hi ha moviments que fem de manera involuntària i ràpida, són moviments reflexos.",
+   "quoted_literally_by": [
+    "l12.ref"
+   ]
+  },
+  {
+   "segment": "P29-09",
+   "text": "En molts d’aquests moviments no intervé el cervell, sinó la medul·la espinal.",
+   "quoted_literally_by": [
+    "l12.ref"
+   ]
+  },
+  {
+   "segment": "P29-10",
+   "text": "① Un òrgan dels sentits capta un estímul i envia la informació a la medul·la espinal.",
+   "quoted_literally_by": [
+    "l12.r1"
+   ]
+  },
+  {
+   "segment": "P29-11",
+   "text": "② La medul·la espinal rep la informació.",
+   "quoted_literally_by": [
+    "l12.r2"
+   ]
+  },
+  {
+   "segment": "P29-12",
+   "text": "③ La medul·la envia les ordres pels nervis als músculs, que fan el moviment de manera immediata.",
+   "quoted_literally_by": [
+    "l12.r3"
+   ]
+  }
+ ],
+ "activities": [
+  {
+   "textbook": "P25 activitat 1 (EXPLICA … òrgans vius)",
+   "segments": [
+    "P25-31"
+   ],
+   "course": [
+    "l01.vius"
+   ],
+   "status": "covered"
+  },
+  {
+   "textbook": "P25 activitat 2 (CLASSIFICA … CAP / TRONC / EXTREMITATS)",
+   "segments": [
+    "P25-32"
+   ],
+   "course": [
+    "l04.zones"
+   ],
+   "status": "covered"
+  },
+  {
+   "textbook": "P25 Observa · A quins ossos s’uneixen les costelles?",
+   "segments": [
+    "P25-34"
+   ],
+   "course": [
+    "l02.unio"
+   ],
+   "status": "covered"
+  },
+  {
+   "textbook": "P25 Observa · De quin tipus són: omòplat, radi, maxil·lar, falanges, vèrtebra, tíbia",
+   "segments": [
+    "P25-35",
+    "P25-36"
+   ],
+   "course": [
+    "l01.tipusAct"
+   ],
+   "status": "partial: radi, tíbia, vèrtebra only (F14)"
+  },
+  {
+   "textbook": "P26 CientíficaMENT · Pensa (goma / molla)",
+   "segments": [
+    "P26-17"
+   ],
+   "course": [
+    "l06.pensa"
+   ],
+   "status": "covered (no book answer; labelled)"
+  },
+  {
+   "textbook": "P27 activitat 3 (EXPLICA característiques)",
+   "segments": [
+    "P27-22"
+   ],
+   "course": [
+    "l09.act3"
+   ],
+   "status": "covered (no book answer; labelled)"
+  },
+  {
+   "textbook": "P27 activitat 4 (articulació; quan és més gruixut)",
+   "segments": [
+    "P27-23"
+   ],
+   "course": [
+    "l10.colze",
+    "l10.gruixut"
+   ],
+   "status": "covered"
+  },
+  {
+   "textbook": "P29 activitat 5 (COPIA i ORDENA)",
+   "segments": [
+    "P29-14",
+    "P29-15"
+   ],
+   "course": [
+    "l11.a5"
+   ],
+   "status": "covered"
+  }
+ ],
+ "zh_glosses_labelled_original": [
+  {
+   "file": "curs/l01.js",
+   "line": 60,
+   "text": "课本原句：运动系统由骨骼系统和肌肉系统组成。点按钮看肌肉和骨头。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l01.js",
+   "line": 66,
+   "text": "课本原句：骨骼系统由骨头组成；它参与运动、塑造身形并支撑体重、保护内脏免受撞击。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l01.js",
+   "line": 74,
+   "text": "课本原句：骨头坚硬结实，但它们是活的器官，会生长，需要营养。全身 200 多块骨头分布在三个区域。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l02.js",
+   "line": 55,
+   "text": "课本原句：头部有颅骨和面部骨；颅骨是扁骨，保护大脑。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l02.js",
+   "line": 58,
+   "text": "课本原句：脊柱由椎骨组成，保护脊髓；脊柱、肋骨和胸骨保护心和肺。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l02.js",
+   "line": 62,
+   "text": "课本原句 + 活动答案：肋骨连到脊柱（椎骨）和胸骨上；它们一起保护心和肺（模型里没有心和肺）。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l03.js",
+   "line": 44,
+   "text": "课本原句：手和脚有很多小骨头，叫 falanges。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l04.js",
+   "line": 48,
+   "text": "课本原句：四肢有长骨，比如肱骨和股骨；手和脚有很多小骨头，叫 falanges。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l05.js",
+   "line": 58,
+   "text": "课本原句：骨骼中的骨头通过关节彼此相连。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l05.js",
+   "line": 63,
+   "text": "课本原句：能动的关节：骨头可以活动，比如肘、脖子、膝盖。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l05.js",
+   "line": 72,
+   "text": "课本原句：不能动的关节：比如颅骨的关节，骨头连得非常紧，看起来像一块。转头时动的是脖子，颅骨之间并不动。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l05.js",
+   "line": 77,
+   "text": "课本原句：在能动的关节里，骨头通过韧带相连。注意：本 3D 模型没有韧带，请看课本第 24 页的图。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l06.js",
+   "line": 63,
+   "text": "课本原句：肌肉系统包括全身的肌肉和肌腱。属于运动系统的肌肉叫骨骼肌；全身有 600 多块骨骼肌，分布在三个区域。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l06.js",
+   "line": 69,
+   "text": "课本原句：这个系统产生完成生命活动所需的动作，保持姿势，并让我们能做表情——表情就是用来表达情感的身体动作。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l06.js",
+   "line": 78,
+   "text": "课本原句：肌肉是有弹性的器官，能收缩和拉长而不会断。图：放松的肌肉 · 收缩的肌肉。点按钮弯曲和伸直手臂。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l06.js",
+   "line": 86,
+   "text": "课本原句：很多肌肉通过肌腱连在骨头上，肌腱是非常结实的组织索。黄色的是脚跟上的肌腱（趣闻不考：它叫跟腱）。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l07.js",
+   "line": 85,
+   "text": "课本原句：骨骼肌主要有四种类型。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l08.js",
+   "line": 57,
+   "text": "课本原句：全身 600 多块骨骼肌分布在三个区域。图上头部名称是蓝色，躯干是橙色（胸锁乳突肌、三角肌、斜方肌、臀大肌也画成躯干色）。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l08.js",
+   "line": 59,
+   "text": "课本原句：头部有扁平肌和环形肌，用来说话、咀嚼和做表情。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l08.js",
+   "line": 61,
+   "text": "课本原句：躯干有大而扁平的肌肉：让脊柱保持直立并能弯曲，保护腹部器官，帮助我们呼吸。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l09.js",
+   "line": 51,
+   "text": "课本原句：四肢的很多肌肉是长肌，它们让手臂、腿、手和脚动起来。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l11.js",
+   "line": 70,
+   "text": "课本原句：我们能感知外界，并做出适当反应——这就是「关系功能」。例：看到石头掉下来，身体会躲开。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l11.js",
+   "line": 86,
+   "text": "课本原句：神经系统由大脑、神经和脊髓组成。模型里暂时隐藏了骨头和肌肉。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l11.js",
+   "line": 91,
+   "text": "课本原句：大脑在头里，被颅骨保护；它指挥身体的运作和动作，让我们能思考和记忆。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l11.js",
+   "line": 92,
+   "text": "课本原句：脊髓在背部，被脊柱保护；它和大脑一起指挥身体的一些动作和部分运作。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l11.js",
+   "line": 93,
+   "text": "课本原句：神经把感觉器官的信息送到大脑，再把大脑的命令传到运动系统；全身都有神经。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l12.js",
+   "line": 63,
+   "text": "课本原句：很多动作是我们自愿、有意识地做的，叫自主运动。课本例子：女孩看红绿灯，绿灯时过马路。模型不能走路，用弯曲手臂来示意。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  },
+  {
+   "file": "curs/l12.js",
+   "line": 74,
+   "text": "课本原句：有些动作是不自主而且很快的，叫反射运动。很多反射运动不经过大脑，而是由脊髓负责（注意：课本说的是「很多」，不是全部）。课本例子：男孩碰到热杯子，一下子把手缩回。",
+   "class": "zh-paraphrase",
+   "action": "A: relabel «课本内容 · 中文意译»"
+  }
+ ],
+ "maxillar_classroom_claims": [
+  {
+   "file": "curs/l02.js",
+   "line": 2,
+   "text": "// maxil·lar: resolved 2026-11-13 — the school teacher uses «maxil·lar de dalt» and «maxil·lar de baix»: both jaws are the answer"
+  },
+  {
+   "file": "curs/l02.js",
+   "line": 20,
+   "text": "crani: { ca: 'crani', g: 'bone', re: /(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/, aid: 'És la part de dalt i del darrere del cap.', zh: 'crani：头顶和后脑的骨头（颅骨）。' },"
+  },
+  {
+   "file": "curs/l02.js",
+   "line": 21,
+   "text": "maxillar: { ca: 'maxil·lar', html: 'maxi<b>l·l</b>ar', g: 'bone', re: /^mandible$|maxilla$/, aid: 'És l’os de la boca, on hi ha les dents: hi ha el maxil·lar de dalt i el maxil·lar de baix.', zh: 'max"
+  },
+  {
+   "file": "curs/README.md",
+   "line": 24,
+   "text": "\\* maxil·lar (resolved 2026-11-13): the school teacher says «maxil·lar de dalt / maxil·lar de baix», so both jaws are the answer; a tap on either counts and location is scored again (l02 continuous ru"
+  }
+ ],
+ "crosscheck_audit_baseline": {
+  "source": "round2 evidence/textbook-baseline.json (Codex, independent)",
+  "total": 38,
+  "found": 38,
+  "items": [
+   {
+    "audit_id": "TB24-01",
+    "excerpt": "L’aparell locomotor permet el moviment del nostre cos.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB24-02",
+    "excerpt": "intervé en el moviment del cos, dona forma i suporta el pes del cos",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB24-03",
+    "excerpt": "òrgans rígids i resistents / òrgans vius que creixen i necessiten nutrients",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB24-04",
+    "excerpt": "Ossos llargs / Ossos curts / Ossos plans",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB24-05",
+    "excerpt": "Els ossos de l’esquelet s’uneixen entre si mitjançant les articulacions.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB24-06",
+    "excerpt": "Són articulacions immòbils. / Són articulacions mòbils.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB24-07",
+    "excerpt": "els ossos estan units mitjançant els lligaments",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-01",
+    "excerpt": "més de 200 ossos / en tres zones",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-02",
+    "excerpt": "Els ossos del crani són plans i tenen la funció de protegir el cervell.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-03",
+    "excerpt": "està formada per les vèrtebres i protegeix la medul·la espinal",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-04",
+    "excerpt": "A les mans i als peus tenim molts ossos petits, les falanges.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-05",
+    "excerpt": "crani · maxil·lar · costella · estern · vèrtebra · columna vertebral · pelvis · omòplat",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-06",
+    "excerpt": "húmer · cúbit · radi · carp · metacarp · falanges",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-07",
+    "excerpt": "fèmur · ròtula · tíbia · peroné · tars · metatars · falanges",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-A1",
+    "excerpt": "EXPLICA a la llibreta per què diem que els ossos són òrgans vius.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-A2",
+    "excerpt": "CLASSIFICA els ossos següents.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-O1",
+    "excerpt": "A quins ossos s’uneixen les costelles?",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB25-O2",
+    "excerpt": "De quin tipus són els ossos següents?",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB26-01",
+    "excerpt": "El sistema muscular inclou els músculs i els tendons del cos.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB26-02",
+    "excerpt": "es poden encongir i estirar sense trencar-se",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB26-03",
+    "excerpt": "músculs esquelètics / tendons, cordons de teixit molt resistent",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB26-04",
+    "excerpt": "Músculs llargs / curts / anulars / plans",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB26-P",
+    "excerpt": "goma elàstica o una molla? Per què?",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB27-01",
+    "excerpt": "més de 600 músculs esquelètics / tres zones del cos",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB27-02",
+    "excerpt": "plans i anulars / parlar, mastegar i gesticular",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB27-03",
+    "excerpt": "Mantenen dreta la columna vertebral i la flexionen",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB27-04",
+    "excerpt": "Molts dels seus músculs són llargs.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB27-05",
+    "excerpt": "orbicular de les parpelles · masseter · esternoclidomastoidal ...",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB27-A3",
+    "excerpt": "EXPLICA quines característiques dels músculs els permeten produir moviment.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB27-A4",
+    "excerpt": "Com es diu l’articulació que s’està doblegant?",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB28-01",
+    "excerpt": "La funció de relació ens permet percebre ... i reaccionar-hi",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB28-02",
+    "excerpt": "Dirigeix el funcionament del cos i els seus moviments ens permeten pensar i recordar.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB28-03",
+    "excerpt": "Porten informació ... al cervell i transmeten les ordres ... a l’aparell locomotor",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB28-04",
+    "excerpt": "Juntament amb el cervell dirigeix alguns moviments del cos",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB28-05",
+    "excerpt": "uns músculs es contreuen mentre que uns altres es relaxen",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB29-01",
+    "excerpt": "voluntàriament i de manera conscient",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB29-02",
+    "excerpt": "En molts d’aquests moviments no intervé el cervell, sinó la medul·la espinal.",
+    "found_in_transcript": true
+   },
+   {
+    "audit_id": "TB29-A5",
+    "excerpt": "COPIA i ORDENA com té lloc la funció de relació.",
+    "found_in_transcript": true
+   }
+  ]
+ }
+}

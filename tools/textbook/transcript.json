@@ -1,0 +1,1917 @@
+{
+ "base_commit": "11e30038cd4bdd24859a840866f8de8599492663",
+ "pages": [
+  {
+   "page": 24,
+   "upload_id": "2b34b1b2",
+   "upload_sha256": "4e6fbd785132b719a745bdf0a9dca542675f2616bfe89ef1e6a35d10adf83d6b",
+   "upload_px": [
+    1659,
+    2212
+   ],
+   "audit_file": "evidence/input/original_pages/P24_1000052692(1).jpg",
+   "audit_sha256": "6a9e75693e0ff247336eff63ee6652e27846a5f13248bc8b9bdc28869d0e938f",
+   "audit_px": [
+    1152,
+    1536
+   ]
+  },
+  {
+   "page": 25,
+   "upload_id": "61cedede",
+   "upload_sha256": "6781baaaebe80bd64aee2a1bb234e9ff2a570566f46153b437095dff002c3ce4",
+   "upload_px": [
+    1659,
+    2212
+   ],
+   "audit_file": "evidence/input/original_pages/P25_1000052693(2).jpg",
+   "audit_sha256": "040e1e834ccef75237df4c90dd353bdb8c749117d1ba5451fef54b7bcdfb5bf9",
+   "audit_px": [
+    1152,
+    1536
+   ]
+  },
+  {
+   "page": 26,
+   "upload_id": "0eebbfbf",
+   "upload_sha256": "94d2f4ba560edba9caedb655da2a3bb3295a6826ca53795a6b581d2b2df4c2e5",
+   "upload_px": [
+    1659,
+    2212
+   ],
+   "audit_file": "evidence/input/original_pages/P26_1000052694(3).jpg",
+   "audit_sha256": "b3db5d5bfa3d00e906b5f770b399f4290c68fdf86975492c472a15682ac3732a",
+   "audit_px": [
+    1152,
+    1536
+   ]
+  },
+  {
+   "page": 27,
+   "upload_id": "5f75d844",
+   "upload_sha256": "f6c77b1d9aa937473d04f020ddc761f715a2e76a6a97472da92dab9833f694ed",
+   "upload_px": [
+    1659,
+    2212
+   ],
+   "audit_file": "evidence/input/original_pages/P27_1000052695(1).jpg",
+   "audit_sha256": "59e8caaf0320f99949543d96f0faba0a1680488f7fe167b381a69679a64ba337",
+   "audit_px": [
+    1152,
+    1536
+   ]
+  },
+  {
+   "page": 28,
+   "upload_id": "881325f9",
+   "upload_sha256": "a1b378b4794c00a273bc6e7471b8663092d99f0b2321a762e23bc5957819b567",
+   "upload_px": [
+    1659,
+    2212
+   ],
+   "audit_file": "evidence/input/original_pages/P28_1000052696(1).jpg",
+   "audit_sha256": "130808b09aa09347d44ab4eb843ece42d1a8dcaf8dafb086743f29e5eebd7fef",
+   "audit_px": [
+    1152,
+    1536
+   ]
+  },
+  {
+   "page": 29,
+   "upload_id": "59c4becd",
+   "upload_sha256": "8ab03ab98849ce73567980ecf92b5c26d5d45132222ed8ccd323fe396dd16b7c",
+   "upload_px": [
+    1659,
+    2212
+   ],
+   "audit_file": "evidence/input/original_pages/P29_1000052697.jpg",
+   "audit_sha256": "72b2d4bb1a629ad3222e921d08e363f983faed59acb6c8a45b6cbe6860125e2d",
+   "audit_px": [
+    1152,
+    1536
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "id": "P24-01",
+   "page": 24,
+   "kind": "heading",
+   "bbox_upload_px": [
+    320,
+    172,
+    910,
+    308
+   ],
+   "text": "El sistema esquelètic",
+   "crop_sha256": "e2aa0b785fc1ee0ad8186cdd783f8a23e507a930571d492860c6f743f45ce650"
+  },
+  {
+   "id": "P24-02",
+   "page": 24,
+   "kind": "map",
+   "bbox_upload_px": [
+    350,
+    262,
+    1355,
+    423
+   ],
+   "text": "OSSOS · ARTICULACIONS · ESQUELET",
+   "crop_sha256": "4b158b6dcf7d223fca1db21daa92a6bd5fdc139821d7bb8522854dcb60f64a4d"
+  },
+  {
+   "id": "P24-03",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    260,
+    387,
+    1185,
+    503
+   ],
+   "text": "L’aparell locomotor permet el moviment del nostre cos.",
+   "crop_sha256": "e7a8120bc3b6e74da5fbcd16aa19d388b09734a313d335c1aee4985f0b28c787"
+  },
+  {
+   "id": "P24-04",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    260,
+    387,
+    1185,
+    543
+   ],
+   "text": "Està format pel sistema esquelètic i el sistema muscular.",
+   "crop_sha256": "e375073f0c7e20f911fcb0f0522764b455c9db4dcf4d1e143e322b4ce6a4c301"
+  },
+  {
+   "id": "P24-05",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    255,
+    487,
+    1185,
+    593
+   ],
+   "text": "El sistema esquelètic el formen els ossos, que componen l’esquelet.",
+   "crop_sha256": "7c3ddf42329e148313308cd5f1cfa41992de6faf7a521d19311d1c67112da8b3"
+  },
+  {
+   "id": "P24-06",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    255,
+    527,
+    1185,
+    673
+   ],
+   "text": "Aquest sistema intervé en el moviment del cos, dona forma i suporta el pes del cos, protegeix dels cops els òrgans interns...",
+   "crop_sha256": "8bdcf6aecf6a7b9a6fa1653a2ec4d58ac0af3a22e9c6027f56db55c6893ac005"
+  },
+  {
+   "id": "P24-07",
+   "page": 24,
+   "kind": "heading",
+   "bbox_upload_px": [
+    250,
+    672,
+    460,
+    778
+   ],
+   "text": "Els ossos",
+   "crop_sha256": "354a1c5ceb3465d7c61f5cd035b01bf0b071e09bffbcd33548b2a86652fc354e"
+  },
+  {
+   "id": "P24-08",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    245,
+    737,
+    970,
+    843
+   ],
+   "text": "Els ossos són òrgans rígids i resistents.",
+   "crop_sha256": "474bbf3f3b4307ec3bdb0b3c6b403ff318976e69b3fe43aca85baaba78582ee6"
+  },
+  {
+   "id": "P24-09",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    245,
+    737,
+    970,
+    883
+   ],
+   "text": "Tots els ossos del cos formen l’esquelet.",
+   "crop_sha256": "7e5f0289b895256adb8b446d8d4eda35536340eef02ec0c18567dcf2ff253b3d"
+  },
+  {
+   "id": "P24-10",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    240,
+    777,
+    1065,
+    923
+   ],
+   "text": "Tot i el seu aspecte rígid, els ossos són òrgans vius que creixen i necessiten nutrients.",
+   "crop_sha256": "3c93fee6b2fd56962ff398f0239b36058ef4ae001aa968cad0cd7863ea6642d1"
+  },
+  {
+   "id": "P24-11",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    235,
+    867,
+    595,
+    978
+   ],
+   "text": "Tenim tres tipus d’ossos.",
+   "crop_sha256": "6d71130fec22c0f19b27038b5cf30f612b2b8d1b477162b11d52eb91a30e7578"
+  },
+  {
+   "id": "P24-12",
+   "page": 24,
+   "kind": "label",
+   "bbox_upload_px": [
+    1094,
+    664,
+    1586,
+    971
+   ],
+   "text": "Ossos llargs, com els de les extremitats.",
+   "crop_sha256": "0f59f6767d1eedbe97d36f35d74b9163296f65ddf22caac3fb7dd2166fdc9a09"
+  },
+  {
+   "id": "P24-13",
+   "page": 24,
+   "kind": "label",
+   "bbox_upload_px": [
+    264,
+    979,
+    676,
+    1286
+   ],
+   "text": "Ossos curts, com les vèrtebres que formen la columna vertebral.",
+   "crop_sha256": "18be80d3b3fc5a655e4beeafb38e17d1b166519190d1f326beec739c024054e4"
+  },
+  {
+   "id": "P24-14",
+   "page": 24,
+   "kind": "label",
+   "bbox_upload_px": [
+    714,
+    1034,
+    1576,
+    1366
+   ],
+   "text": "Ossos plans, com els que formen el crani.",
+   "crop_sha256": "d45ff7c9f760da9a7367b700edd7143ffc529dd5e973ba3172385b9e63ead2f2"
+  },
+  {
+   "id": "P24-15",
+   "page": 24,
+   "kind": "heading",
+   "bbox_upload_px": [
+    210,
+    1287,
+    595,
+    1403
+   ],
+   "text": "Les articulacions",
+   "crop_sha256": "6e4357ec03bc752df1b8acf8dbf2edfed109c4fd4dba09d490b60aa2bdd76990"
+  },
+  {
+   "id": "P24-16",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    200,
+    1377,
+    1195,
+    1493
+   ],
+   "text": "Els ossos de l’esquelet s’uneixen entre si mitjançant les articulacions.",
+   "crop_sha256": "90d2761212cd8e2ecdb991c4286c7f9961f5716c09e8472f350bf6805da93972"
+  },
+  {
+   "id": "P24-17",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    200,
+    1397,
+    1165,
+    1543
+   ],
+   "text": "En algunes articulacions, com les del crani, els ossos estan tan units que semblen només un.",
+   "crop_sha256": "3060b91882edbbccef782464a51b53495697fd00fbd15c1276c138b75b22f407"
+  },
+  {
+   "id": "P24-18",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    525,
+    1457,
+    950,
+    1563
+   ],
+   "text": "Són articulacions immòbils.",
+   "crop_sha256": "2815d156f05560d8ecab236089ee5c2cb8d8216cd025f2d380f7d177d9cb0c52"
+  },
+  {
+   "id": "P24-19",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    190,
+    1467,
+    1115,
+    1623
+   ],
+   "text": "En d’altres, els ossos es poden moure, com passa al colze, al coll o al genoll.",
+   "crop_sha256": "87229d9082680c241dd0b597b33f749b5e928589d95d341af849dc3362e5b11d"
+  },
+  {
+   "id": "P24-20",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    185,
+    1557,
+    565,
+    1673
+   ],
+   "text": "Són articulacions mòbils.",
+   "crop_sha256": "5fbadc05f3682f6b287fe40d504f500fc79ab194a31eecfba6224f13c0c5c3fe"
+  },
+  {
+   "id": "P24-21",
+   "page": 24,
+   "kind": "fig",
+   "bbox_upload_px": [
+    344,
+    1564,
+    1536,
+    2046
+   ],
+   "text": "[dibuix] nen estirat: 3 cercles grocs (genolls i colze; color de «mòbils») i 1 cercle blau al crani (color de «immòbils»).",
+   "crop_sha256": "97717b9200d477a65324975c129f26099377138a5ef5abefeb6ee651bb9927d4"
+  },
+  {
+   "id": "P24-22",
+   "page": 24,
+   "kind": "text",
+   "bbox_upload_px": [
+    150,
+    1937,
+    1255,
+    2123
+   ],
+   "text": "En les articulacions mòbils, els ossos estan units mitjançant els lligaments.",
+   "crop_sha256": "aa0b86175212bd5d28aebeba21c3dbfab83a2e238ae6b64e701f8fda537f06c8"
+  },
+  {
+   "id": "P25-01",
+   "page": 25,
+   "kind": "heading",
+   "bbox_upload_px": [
+    145,
+    217,
+    385,
+    323
+   ],
+   "text": "L’esquelet",
+   "crop_sha256": "d28b996768c04533c0d1bf070fadc4395a3e0fbe26e442dce4ab581c0e6c0b18"
+  },
+  {
+   "id": "P25-02",
+   "page": 25,
+   "kind": "text",
+   "bbox_upload_px": [
+    140,
+    287,
+    690,
+    458
+   ],
+   "text": "El nostre esquelet està format per més de 200 ossos distribuïts pel cos en tres zones.",
+   "crop_sha256": "80e29b6b34d2cd2fb8d32749f55533738ba308d81bd8fa4a12be0da6ef4e7887"
+  },
+  {
+   "id": "P25-03",
+   "page": 25,
+   "kind": "box",
+   "bbox_upload_px": [
+    144,
+    464,
+    576,
+    726
+   ],
+   "text": "Cap. Hi tenim els ossos del crani i els de la cara.",
+   "crop_sha256": "8ddb3dfba364441a92c02905fe9cadee60b0b38ab571df5850fbea6fcfabff7a"
+  },
+  {
+   "id": "P25-04",
+   "page": 25,
+   "kind": "box",
+   "bbox_upload_px": [
+    144,
+    464,
+    576,
+    726
+   ],
+   "text": "Els ossos del crani són plans i tenen la funció de protegir el cervell.",
+   "crop_sha256": "8ddb3dfba364441a92c02905fe9cadee60b0b38ab571df5850fbea6fcfabff7a"
+  },
+  {
+   "id": "P25-05",
+   "page": 25,
+   "kind": "box",
+   "bbox_upload_px": [
+    134,
+    764,
+    641,
+    1066
+   ],
+   "text": "Tronc. Hi tenim la columna vertebral, que està formada per les vèrtebres i protegeix la medul·la espinal.",
+   "crop_sha256": "2eebe196cb1947651ed13970df5ce88420baa6cc5e33471a6f672d1dd7823101"
+  },
+  {
+   "id": "P25-06",
+   "page": 25,
+   "kind": "box",
+   "bbox_upload_px": [
+    134,
+    764,
+    641,
+    1066
+   ],
+   "text": "La columna vertebral, les costelles i l’estern protegeixen el cor i els pulmons.",
+   "crop_sha256": "2eebe196cb1947651ed13970df5ce88420baa6cc5e33471a6f672d1dd7823101"
+  },
+  {
+   "id": "P25-07",
+   "page": 25,
+   "kind": "box",
+   "bbox_upload_px": [
+    129,
+    1104,
+    636,
+    1346
+   ],
+   "text": "Extremitats. Hi tenim ossos llargs, com l’húmer i el fèmur.",
+   "crop_sha256": "ed969afa3f0fb54a226985efb5a265166807b55cc7ad7168e1e35b050ef44417"
+  },
+  {
+   "id": "P25-08",
+   "page": 25,
+   "kind": "box",
+   "bbox_upload_px": [
+    129,
+    1104,
+    636,
+    1346
+   ],
+   "text": "A les mans i als peus tenim molts ossos petits, les falanges.",
+   "crop_sha256": "ed969afa3f0fb54a226985efb5a265166807b55cc7ad7168e1e35b050ef44417"
+  },
+  {
+   "id": "P25-09",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    744,
+    104,
+    1116,
+    346
+   ],
+   "text": "crani",
+   "crop_sha256": "06f3913ab827dce055038869c53b91ec8964c9cf53390d7fc6cd143a0f7e52c4"
+  },
+  {
+   "id": "P25-10",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    744,
+    224,
+    1066,
+    346
+   ],
+   "text": "maxil·lar",
+   "crop_sha256": "f91b77404b738804bedf23c319a607368090c524da42e8ee9d673aebc6f45cec"
+  },
+  {
+   "id": "P25-11",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1204,
+    284,
+    1476,
+    446
+   ],
+   "text": "omòplat",
+   "crop_sha256": "3fca0189ef0569084d2fe7ed9699ceae67348f55d6a10e9e094b8ecd51c9af90"
+  },
+  {
+   "id": "P25-12",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    729,
+    344,
+    1071,
+    496
+   ],
+   "text": "costella",
+   "crop_sha256": "365840061fad4e3093df70119165f8bee436d4f27afba97be33aeef12e3848d4"
+  },
+  {
+   "id": "P25-13",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1324,
+    374,
+    1506,
+    506
+   ],
+   "text": "húmer",
+   "crop_sha256": "6093649687a7749445353b528a7d1aa74155313746487cfbb5daf5cda463cc97"
+  },
+  {
+   "id": "P25-14",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    749,
+    444,
+    1071,
+    526
+   ],
+   "text": "estern",
+   "crop_sha256": "d58c88239e5dac94deebfc710d8e4ebd82244a9f3f8f7edbca68c09b9e522ddf"
+  },
+  {
+   "id": "P25-15",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1354,
+    464,
+    1506,
+    556
+   ],
+   "text": "cúbit",
+   "crop_sha256": "3617096780b328eebb22fa571793ad488ad7d4a6f665baa191c19c8c80428bf5"
+  },
+  {
+   "id": "P25-16",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    749,
+    529,
+    1101,
+    606
+   ],
+   "text": "vèrtebra",
+   "crop_sha256": "63097ecd4bd20b002a241e6d1dc0d161df68a31a457cffe44b1381efc7d443f9"
+  },
+  {
+   "id": "P25-17",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1354,
+    554,
+    1486,
+    646
+   ],
+   "text": "radi",
+   "crop_sha256": "9c5810936b25648ac0239980c3333d4578330ca060242a0fb8a9dcf2c24474b9"
+  },
+  {
+   "id": "P25-18",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    584,
+    624,
+    1071,
+    726
+   ],
+   "text": "columna vertebral",
+   "crop_sha256": "a64f3c942eb519de7191622aae8aa6b9efbc21318f6fbb08ba42adfcd40865cc"
+  },
+  {
+   "id": "P25-19",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1354,
+    644,
+    1506,
+    736
+   ],
+   "text": "carp",
+   "crop_sha256": "8444cc661574016175af94eb80e0a0bafb9e8433d7aef50b12729eb34cf0afbf"
+  },
+  {
+   "id": "P25-20",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    694,
+    694,
+    1016,
+    826
+   ],
+   "text": "pelvis",
+   "crop_sha256": "e78adc5acd48fa20c665bd8617d4a6a6f6812af1e1f3b55bd745d381c4d6c25d"
+  },
+  {
+   "id": "P25-21",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1344,
+    734,
+    1556,
+    826
+   ],
+   "text": "metacarp",
+   "crop_sha256": "ba315a8447a9be44e4000dc49a562df54915578d6f1a19a943670f50dc53e506"
+  },
+  {
+   "id": "P25-22",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1294,
+    824,
+    1506,
+    916
+   ],
+   "text": "falanges (mà)",
+   "crop_sha256": "d9e4c0b6530c4690c40617a83f25451141409e8c5c28f9254da79819a894ce83"
+  },
+  {
+   "id": "P25-23",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    754,
+    884,
+    1006,
+    986
+   ],
+   "text": "fèmur",
+   "crop_sha256": "d9492743396876f1b95db02ad0eae09216e694d63690a7adf8421a02b5eedc21"
+  },
+  {
+   "id": "P25-24",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    734,
+    974,
+    1006,
+    1096
+   ],
+   "text": "ròtula",
+   "crop_sha256": "215fd83fc66aa7447a3f224221d1a780d412d7d6ee90a4858c931951f0d7f18a"
+  },
+  {
+   "id": "P25-25",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1244,
+    1004,
+    1466,
+    1096
+   ],
+   "text": "peroné",
+   "crop_sha256": "9cd13ad1f9593fd8632df9f4a91f4a3d3177bb6caa9873941f54539bce35cb1c"
+  },
+  {
+   "id": "P25-26",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1294,
+    1094,
+    1426,
+    1186
+   ],
+   "text": "tars",
+   "crop_sha256": "22e385b0d73a6fa837fa6cc809ab79ee50706c9309ed3a1d1081e91f3d3ff9df"
+  },
+  {
+   "id": "P25-27",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1054,
+    1144,
+    1196,
+    1226
+   ],
+   "text": "tíbia",
+   "crop_sha256": "9cf10dad619af633a07317e87b895088a2476f4c84c5b8aae36b78def0b6993a"
+  },
+  {
+   "id": "P25-28",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1334,
+    1194,
+    1546,
+    1276
+   ],
+   "text": "metatars",
+   "crop_sha256": "86e894177be9c76511c72aba82ce2bae9730924884795951f7e8a4c14f64ee2a"
+  },
+  {
+   "id": "P25-29",
+   "page": 25,
+   "kind": "label",
+   "bbox_upload_px": [
+    1024,
+    1234,
+    1226,
+    1316
+   ],
+   "text": "falanges (peu)",
+   "crop_sha256": "7dfb6d62121b1be62552d5879fa38bd4d4cf5f3639e9dba39bade9299ef1da0a"
+  },
+  {
+   "id": "P25-30",
+   "page": 25,
+   "kind": "fig",
+   "bbox_upload_px": [
+    914,
+    174,
+    1116,
+    366
+   ],
+   "text": "[línia guia] «maxil·lar»: una sola línia; el punt final cau sota la filera de dents, a la mandíbula (vegeu crop).",
+   "crop_sha256": "1349721a283fe044171fa24176e5ffb8085dc9db0865491e6979b35bf58094c2"
+  },
+  {
+   "id": "P25-31",
+   "page": 25,
+   "kind": "activity",
+   "bbox_upload_px": [
+    140,
+    1402,
+    790,
+    1558
+   ],
+   "text": "1 EXPLICA a la llibreta per què diem que els ossos són òrgans vius.",
+   "crop_sha256": "88ec2aa79cbfd883084966f1bafdf38a9dc29482d3eb8dca95bde1ee137695c1"
+  },
+  {
+   "id": "P25-32",
+   "page": 25,
+   "kind": "activity",
+   "bbox_upload_px": [
+    140,
+    1502,
+    790,
+    1988
+   ],
+   "text": "2 CLASSIFICA els ossos següents. falanges – pelvis – crani – omòplat / peroné – maxil·lar – estern – húmer / tars – ròtula – carp. [taula] CAP | TRONC | EXTREMITATS",
+   "crop_sha256": "7ee1108d1df901f100a4787fe0fe3f6173097679948ebcbdfa7ca5731e48c9f7"
+  },
+  {
+   "id": "P25-33",
+   "page": 25,
+   "kind": "activity",
+   "bbox_upload_px": [
+    890,
+    1362,
+    1570,
+    1528
+   ],
+   "text": "CientíficaMENT · OBSERVA",
+   "crop_sha256": "4d22f6f962e188d49d1b2764a3ee505d2470859d3bd8e0ced248d960ebe32ffe"
+  },
+  {
+   "id": "P25-34",
+   "page": 25,
+   "kind": "activity",
+   "bbox_upload_px": [
+    930,
+    1542,
+    1410,
+    1668
+   ],
+   "text": "A quins ossos s’uneixen les costelles?",
+   "crop_sha256": "b18d93ae4721bfde6c1929430304ce772509b9152b94f0ff5a5012fc65252dd5"
+  },
+  {
+   "id": "P25-35",
+   "page": 25,
+   "kind": "activity",
+   "bbox_upload_px": [
+    930,
+    1642,
+    1410,
+    1788
+   ],
+   "text": "De quin tipus són els ossos següents?",
+   "crop_sha256": "094546ef6b4feab10cf3496c9c5dc1c97dcaf0b34fe2ce9184958c4f2811c408"
+  },
+  {
+   "id": "P25-36",
+   "page": 25,
+   "kind": "activity",
+   "bbox_upload_px": [
+    930,
+    1742,
+    1370,
+    2028
+   ],
+   "text": "omòplat · radi · maxil·lar · falanges · vèrtebra · tíbia",
+   "crop_sha256": "a6306aa89363d2f4694dcd99d0e9c334bd8766af4a4e46c422924adb53f00ded"
+  },
+  {
+   "id": "P26-01",
+   "page": 26,
+   "kind": "heading",
+   "bbox_upload_px": [
+    260,
+    132,
+    850,
+    268
+   ],
+   "text": "El sistema muscular",
+   "crop_sha256": "0590a1f8da768f2914d92b57b0b9198fdb8f0fa3be25c49f1c1eeed8693fd4b8"
+  },
+  {
+   "id": "P26-02",
+   "page": 26,
+   "kind": "map",
+   "bbox_upload_px": [
+    255,
+    237,
+    1340,
+    388
+   ],
+   "text": "MÚSCULS · TENDONS · MUSCULATURA",
+   "crop_sha256": "405a37649dc179808d1002d2cd66b5edbfe1859520fc0dd6182c885d361ac736"
+  },
+  {
+   "id": "P26-03",
+   "page": 26,
+   "kind": "text",
+   "bbox_upload_px": [
+    195,
+    372,
+    1075,
+    478
+   ],
+   "text": "El sistema muscular inclou els músculs i els tendons del cos.",
+   "crop_sha256": "6a1cead1bf6e3ff4d7bdce3a6c8a8a93334085e6f05f07d5a708d941504adc71"
+  },
+  {
+   "id": "P26-04",
+   "page": 26,
+   "kind": "text",
+   "bbox_upload_px": [
+    190,
+    412,
+    1035,
+    638
+   ],
+   "text": "Aquest sistema produeix els moviments necessaris per fer les funcions vitals, manté la posició i permet la mímica, que és el conjunt de gestos corporals que serveixen per expressar els sentiments.",
+   "crop_sha256": "725812cd45eb6e56c0a5d1c8381360ae444ece2b26b5f65f7f64dbcc8d461c67"
+  },
+  {
+   "id": "P26-05",
+   "page": 26,
+   "kind": "label",
+   "bbox_upload_px": [
+    1144,
+    424,
+    1406,
+    496
+   ],
+   "text": "múscul relaxat",
+   "crop_sha256": "aeba9d49c63b3e3be6ea861c2cc8e0b3a1f1c04e9235e43d78223c9c45d61d8d"
+  },
+  {
+   "id": "P26-06",
+   "page": 26,
+   "kind": "label",
+   "bbox_upload_px": [
+    1244,
+    864,
+    1526,
+    936
+   ],
+   "text": "múscul contret",
+   "crop_sha256": "6ba5c74ec1782adb6598b355f499b7509733e900e4e8c71bd7930659cc4f5f65"
+  },
+  {
+   "id": "P26-07",
+   "page": 26,
+   "kind": "fig",
+   "bbox_upload_px": [
+    1234,
+    504,
+    1486,
+    796
+   ],
+   "text": "[dibuix] el mateix múscul relaxat (llarg i prim) i contret (més curt i gruixut).",
+   "crop_sha256": "6378534efc4ec7b4e9d5c1d895debbf02317e9e4fab8e50e1d6c6d1faec18432"
+  },
+  {
+   "id": "P26-08",
+   "page": 26,
+   "kind": "heading",
+   "bbox_upload_px": [
+    185,
+    637,
+    465,
+    748
+   ],
+   "text": "Els músculs",
+   "crop_sha256": "3025ca39546ee676925f38ef1ecf28e84400d2f1f52c7634f4ba79f97f83b01c"
+  },
+  {
+   "id": "P26-09",
+   "page": 26,
+   "kind": "text",
+   "bbox_upload_px": [
+    180,
+    712,
+    985,
+    848
+   ],
+   "text": "Els músculs són òrgans elàstics que es poden encongir i estirar sense trencar-se.",
+   "crop_sha256": "7978bccd60339334e64f0802cfaa9fadc2c07c77110abdd73ecb9556188aae55"
+  },
+  {
+   "id": "P26-10",
+   "page": 26,
+   "kind": "text",
+   "bbox_upload_px": [
+    175,
+    817,
+    1125,
+    928
+   ],
+   "text": "Els músculs que formen part de l’aparell locomotor reben el nom de músculs esquelètics.",
+   "crop_sha256": "1eb187d038a83c2ac22253178cf1c6297440865a738711c55cb52b097376f15e"
+  },
+  {
+   "id": "P26-11",
+   "page": 26,
+   "kind": "text",
+   "bbox_upload_px": [
+    175,
+    852,
+    1040,
+    1003
+   ],
+   "text": "Molts músculs s’uneixen als ossos mitjançant els tendons, cordons de teixit molt resistent.",
+   "crop_sha256": "5578794b7c52582e7497dc0f6faf86ec9af0003c1268d0c6240ea5ce0b44189e"
+  },
+  {
+   "id": "P26-12",
+   "page": 26,
+   "kind": "text",
+   "bbox_upload_px": [
+    175,
+    962,
+    945,
+    1068
+   ],
+   "text": "Hi ha quatre tipus principals de músculs esquelètics.",
+   "crop_sha256": "4a5058a7f50e924954e1eb0cce3d964c50f57efe4a848825a98338c180f5c62d"
+  },
+  {
+   "id": "P26-13",
+   "page": 26,
+   "kind": "label",
+   "bbox_upload_px": [
+    229,
+    1070,
+    671,
+    1306
+   ],
+   "text": "Músculs llargs, amb els extrems més fins i la part del mig més ampla.",
+   "crop_sha256": "3bdd8dcf2de7123ff77200c0b45333dd94e0a6ee4d837189e067b76b90732b9e"
+  },
+  {
+   "id": "P26-14",
+   "page": 26,
+   "kind": "label",
+   "bbox_upload_px": [
+    1034,
+    1084,
+    1536,
+    1341
+   ],
+   "text": "Músculs anulars, és a dir, amb forma d’anell. Envolten obertures com els ulls o la boca.",
+   "crop_sha256": "a1b40353a02d86ff2be6e8881eabbda3076cd55d6f6c86be07656b65f4d46422"
+  },
+  {
+   "id": "P26-15",
+   "page": 26,
+   "kind": "label",
+   "bbox_upload_px": [
+    219,
+    1364,
+    696,
+    1596
+   ],
+   "text": "Músculs curts, com els de les mans o els peus.",
+   "crop_sha256": "e54e8089b0c585fbb5ef85b6971b00ae81e2eb1df667aa18d8a023450a4f3275"
+  },
+  {
+   "id": "P26-16",
+   "page": 26,
+   "kind": "label",
+   "bbox_upload_px": [
+    1024,
+    1454,
+    1541,
+    1731
+   ],
+   "text": "Músculs plans, amb forma de làmina. Com els que es troben al tronc.",
+   "crop_sha256": "701580d9019693f4667132f59b61dd67aaf3f91841379792ac2ddbffe3e7cfef"
+  },
+  {
+   "id": "P26-17",
+   "page": 26,
+   "kind": "activity",
+   "bbox_upload_px": [
+    205,
+    1702,
+    1430,
+    2058
+   ],
+   "text": "CientíficaMENT · PENSA (parelles): Creieu que es pot comparar el funcionament d’un múscul amb el d’una goma elàstica o una molla? Per què?",
+   "crop_sha256": "fe821532b8084593142df25abc119e5692284b5772f24f8c3722cf208690b421"
+  },
+  {
+   "id": "P27-01",
+   "page": 27,
+   "kind": "heading",
+   "bbox_upload_px": [
+    190,
+    292,
+    525,
+    398
+   ],
+   "text": "La musculatura",
+   "crop_sha256": "614c2d7d07156800f0c0850093b2acc2fbc9605276526dcb4455aaa18f243873"
+  },
+  {
+   "id": "P27-02",
+   "page": 27,
+   "kind": "text",
+   "bbox_upload_px": [
+    185,
+    357,
+    610,
+    558
+   ],
+   "text": "La musculatura està formada per més de 600 músculs esquelètics que es distribueixen en tres zones del cos.",
+   "crop_sha256": "91610b53e6c8f0eaa0ecd6cc68706a7c074eda63667e6cf73caad589c648b3d8"
+  },
+  {
+   "id": "P27-03",
+   "page": 27,
+   "kind": "box",
+   "bbox_upload_px": [
+    184,
+    614,
+    651,
+    786
+   ],
+   "text": "Cap. Hi ha músculs plans i anulars. Els utilitzem per parlar, mastegar i gesticular.",
+   "crop_sha256": "315965282de246f1ba7ee611785e27f3f776e61c6d48be28709a0c53a5206b50"
+  },
+  {
+   "id": "P27-04",
+   "page": 27,
+   "kind": "box",
+   "bbox_upload_px": [
+    174,
+    819,
+    566,
+    1101
+   ],
+   "text": "Tronc. Té músculs grans i plans. Mantenen dreta la columna vertebral i la flexionen, protegeixen els òrgans de l’abdomen i ens ajuden a respirar.",
+   "crop_sha256": "83e54f9d355a5be0f10991c8a1cc4fbf91a49c5d161d9bd0a0c77ec20ac83331"
+  },
+  {
+   "id": "P27-05",
+   "page": 27,
+   "kind": "box",
+   "bbox_upload_px": [
+    164,
+    1124,
+    631,
+    1361
+   ],
+   "text": "Extremitats. Molts dels seus músculs són llargs. Mouen els braços, les cames, les mans i els peus.",
+   "crop_sha256": "ca890520a555853a03ca2229abd05a718318a0d4a606abdb5cfb8be1e1b15023"
+  },
+  {
+   "id": "P27-06",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    989,
+    274,
+    1351,
+    336
+   ],
+   "text": "orbicular de les parpelles",
+   "crop_sha256": "4ffc35e6b5404fdf54d3fc516afbedf326123d8062db28b922c29448c8e11e26"
+  },
+  {
+   "id": "P27-07",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    644,
+    374,
+    831,
+    446
+   ],
+   "text": "masseter",
+   "crop_sha256": "ce22d1bc8cccc3056671b242a36828a0cea3695fcce332b5f7203b13cc39a5c5"
+  },
+  {
+   "id": "P27-08",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    974,
+    364,
+    1336,
+    436
+   ],
+   "text": "esternoclidomastoidal",
+   "crop_sha256": "92c4c1cab8f962560447d9d5ce6d63c820a13f188151756a99cf069299a9a792"
+  },
+  {
+   "id": "P27-09",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    594,
+    459,
+    786,
+    536
+   ],
+   "text": "deltoide",
+   "crop_sha256": "fcc002e5f111d69e28a29fbdb642177c57b48c6368d1474882c6f7b1f8b2365b"
+  },
+  {
+   "id": "P27-10",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    1359,
+    469,
+    1516,
+    541
+   ],
+   "text": "trapezi",
+   "crop_sha256": "31b4f856e34c925bef657bcb4b1f48980a2691d37726afa3e57c81334fc733a5"
+  },
+  {
+   "id": "P27-11",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    1074,
+    524,
+    1206,
+    596
+   ],
+   "text": "dorsal",
+   "crop_sha256": "6ab5c13a15701c170f2fcf7cef81bc81c8a79e3f1424e4ff01046e7b8854a5be"
+  },
+  {
+   "id": "P27-12",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    564,
+    539,
+    711,
+    616
+   ],
+   "text": "bíceps",
+   "crop_sha256": "bef53b30b8911423cb48c59fb3f30dd9bfbe781bd082a4b654f50cf541976b3c"
+  },
+  {
+   "id": "P27-13",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    1374,
+    549,
+    1526,
+    621
+   ],
+   "text": "tríceps",
+   "crop_sha256": "b5827e4730d0264d6a890451c3ab1d7b3b18165c3cc970e3ebb5cf5e2b0fb243"
+  },
+  {
+   "id": "P27-14",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    1034,
+    614,
+    1191,
+    686
+   ],
+   "text": "pectoral",
+   "crop_sha256": "547c295ec39854df815f91825a044c05bf01cf8352077062a89331a5e77fb201"
+  },
+  {
+   "id": "P27-15",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    979,
+    709,
+    1166,
+    781
+   ],
+   "text": "abdominal",
+   "crop_sha256": "f42b26717612d6bdd6013b565dda21718ad71454879889122c39c9b92686170b"
+  },
+  {
+   "id": "P27-16",
+   "page": 27,
+   "kind": "fig",
+   "bbox_upload_px": [
+    874,
+    694,
+    1006,
+    781
+   ],
+   "text": "[línia guia] «abdominal»: punt final al centre de l’abdomen (zona del recte abdominal).",
+   "crop_sha256": "f0de99ab3d3e7b6f4b5a82314a7166aab7cfc9d2ebdbdd4ab980d29d0599c084"
+  },
+  {
+   "id": "P27-17",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    584,
+    969,
+    786,
+    1046
+   ],
+   "text": "quàdriceps",
+   "crop_sha256": "e0e44fe63bef7dfc71b48288c3d49e0e9307aa3cee894e0a67cb7e652ebcf3d8"
+  },
+  {
+   "id": "P27-18",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    1369,
+    1019,
+    1486,
+    1091
+   ],
+   "text": "gluti",
+   "crop_sha256": "f152c3cd24cb71fffe86f54124e9eb6d58c66e663faa16f0341c8088d357d84a"
+  },
+  {
+   "id": "P27-19",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    1009,
+    1044,
+    1166,
+    1156
+   ],
+   "text": "bíceps femoral",
+   "crop_sha256": "7b28098f88c9a8f84ace99b1d7666ddde019b6b18dac571059de51b69c262f30"
+  },
+  {
+   "id": "P27-20",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    639,
+    1164,
+    776,
+    1226
+   ],
+   "text": "tibial",
+   "crop_sha256": "74b6611d931e312685935920e3092a16f653d622a3cd4abf46204c10f41a490a"
+  },
+  {
+   "id": "P27-21",
+   "page": 27,
+   "kind": "label",
+   "bbox_upload_px": [
+    1354,
+    1134,
+    1496,
+    1206
+   ],
+   "text": "bessó",
+   "crop_sha256": "9f265af97fce004a70007bf1246730042ffc0752d9e90eb51dad9632d6be782b"
+  },
+  {
+   "id": "P27-22",
+   "page": 27,
+   "kind": "activity",
+   "bbox_upload_px": [
+    170,
+    1472,
+    670,
+    1648
+   ],
+   "text": "3 EXPLICA quines característiques dels músculs els permeten produir moviment.",
+   "crop_sha256": "5be7e0df3cb996e4c88a47b7513bc2ee777d4d5495dc303ea2295414ac12c6ca"
+  },
+  {
+   "id": "P27-23",
+   "page": 27,
+   "kind": "activity",
+   "bbox_upload_px": [
+    130,
+    1592,
+    660,
+    1938
+   ],
+   "text": "4 OBSERVEU el dibuix i RESPONEU (parelles). · Com es diu l’articulació que s’està doblegant? · Quan és més gruixut el bíceps, quan el braç està doblegat o quan està estès? I el tríceps?",
+   "crop_sha256": "2789a66f7e01d48c2bc57e6f090c50a7a4fb95882fcc7ad7d96da1510ac78f80"
+  },
+  {
+   "id": "P27-24",
+   "page": 27,
+   "kind": "figtext",
+   "bbox_upload_px": [
+    684,
+    1524,
+    956,
+    1616
+   ],
+   "text": "Quan estirem el braç, el tríceps es contreu.",
+   "crop_sha256": "5a19ea2499a9bbaf111ff0eb9c5b21cf69a5f523bf14b1128802eadd9f65a529"
+  },
+  {
+   "id": "P27-25",
+   "page": 27,
+   "kind": "figtext",
+   "bbox_upload_px": [
+    659,
+    1819,
+    796,
+    1906
+   ],
+   "text": "El bíceps es relaxa.",
+   "crop_sha256": "b85cb5ec5f5a4b66d8bc666b91c50b9997a8652e593db38def6f27a0b99bfb95"
+  },
+  {
+   "id": "P27-26",
+   "page": 27,
+   "kind": "figtext",
+   "bbox_upload_px": [
+    1034,
+    1544,
+    1351,
+    1631
+   ],
+   "text": "Quan dobleguem el braç, el tríceps es relaxa.",
+   "crop_sha256": "82f109fff05849e7c5d76a6df19cfab041d03f280edf36f0dea52194aa92b28f"
+  },
+  {
+   "id": "P27-27",
+   "page": 27,
+   "kind": "figtext",
+   "bbox_upload_px": [
+    1304,
+    1694,
+    1466,
+    1786
+   ],
+   "text": "El bíceps es contreu.",
+   "crop_sha256": "95edc5729afa9816f281ae889657051f5f74b9ff7af1b90253c9fca8f497b9eb"
+  },
+  {
+   "id": "P28-01",
+   "page": 28,
+   "kind": "heading",
+   "bbox_upload_px": [
+    250,
+    187,
+    715,
+    313
+   ],
+   "text": "Com ens movem",
+   "crop_sha256": "ed4b76a9f2b49abc3cfcb0e1763b9c2b7cf6f6f232d4b13b83d148b9c38fa769"
+  },
+  {
+   "id": "P28-02",
+   "page": 28,
+   "kind": "map",
+   "bbox_upload_px": [
+    170,
+    252,
+    1365,
+    438
+   ],
+   "text": "ÒRGANS DELS SENTITS · SISTEMA NERVIÓS · APARELL LOCOMOTOR",
+   "crop_sha256": "1933fe963c1a63d3006ca32ec32d1be263e732dc35aae851ce06df276d21c2f5"
+  },
+  {
+   "id": "P28-03",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    185,
+    412,
+    975,
+    553
+   ],
+   "text": "Les persones captem el que passa a l’exterior: hi sentim, hi veiem...",
+   "crop_sha256": "4d215fdd5e8683b6638216069191849b5c313660b4a83031e3ef9923b6d66cee"
+  },
+  {
+   "id": "P28-04",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    185,
+    457,
+    975,
+    588
+   ],
+   "text": "També ens comuniquem, ens movem i reaccionem quan hi ha canvis que ens afecten.",
+   "crop_sha256": "f4c1a25ff8ace8bb243a45ba4109117dd28301df6e94a5ec89c24439c1bbb133"
+  },
+  {
+   "id": "P28-05",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    185,
+    492,
+    975,
+    673
+   ],
+   "text": "Així per exemple, si veiem que cau una roca i ens pot fer mal, el nostre cos respon i es mou per allunyar-se’n.",
+   "crop_sha256": "edf63f3690762dab651cc9c0d1619b3ceb7387edf4eeb99a2a75f4dd545af478"
+  },
+  {
+   "id": "P28-06",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    185,
+    627,
+    960,
+    768
+   ],
+   "text": "La funció de relació ens permet percebre el que passa al nostre voltant i reaccionar-hi de manera adequada.",
+   "crop_sha256": "45d6cb5c4decc4c9a489d92038953b79d1f90677981d9fbcf2688af0715e8010"
+  },
+  {
+   "id": "P28-07",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    185,
+    727,
+    930,
+    828
+   ],
+   "text": "En la funció de relació intervenen diversos elements:",
+   "crop_sha256": "1fd0d439b4682b8579a62e603f0e4992f2cda24888c6119a56bd212ebdab667e"
+  },
+  {
+   "id": "P28-08",
+   "page": 28,
+   "kind": "fig",
+   "bbox_upload_px": [
+    189,
+    809,
+    1346,
+    941
+   ],
+   "text": "[esquema] Òrgans del sentits → Sistema nerviós → Aparell locomotor",
+   "crop_sha256": "c9be963e598e9666a2a84c2ee0347f6178f08b863fd4d84116f1e8e3534b814f"
+  },
+  {
+   "id": "P28-09",
+   "page": 28,
+   "kind": "heading",
+   "bbox_upload_px": [
+    180,
+    952,
+    590,
+    1058
+   ],
+   "text": "El sistema nerviós",
+   "crop_sha256": "d19b83907039692833acc61a9911c0c044990c5df7055b2c92c1c04ca8ce5aac"
+  },
+  {
+   "id": "P28-10",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    180,
+    1017,
+    690,
+    1123
+   ],
+   "text": "El sistema nerviós està format per:",
+   "crop_sha256": "4f371d180fb7032ef6e7650ecb43eb54868b16011d5869f340ec21306367c316"
+  },
+  {
+   "id": "P28-11",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    180,
+    1077,
+    800,
+    1203
+   ],
+   "text": "Cervell. És al cap i està protegit pel crani.",
+   "crop_sha256": "2cc0255bdbd9fd975f729d0f0aa661f54aa1550f71f333e3625409b7c35e53f9"
+  },
+  {
+   "id": "P28-12",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    195,
+    1132,
+    845,
+    1293
+   ],
+   "text": "Dirigeix el funcionament del cos i els seus moviments ens permeten pensar i recordar.",
+   "crop_sha256": "fa32f5fa0de326e1d688dbb94731d1a74ac5b3b06476669f1b5cce2897c95e05"
+  },
+  {
+   "id": "P28-13",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    180,
+    1218,
+    995,
+    1439
+   ],
+   "text": "Nervis. Porten informació dels òrgans dels sentits al cervell i transmeten les ordres des del cervell fins a l’aparell locomotor, que és l’encarregat del moviment.",
+   "crop_sha256": "0a4a14f41207ea22b70450374142d632ffd6f7bf17db2e5a53817dc5b7d38f2b"
+  },
+  {
+   "id": "P28-14",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    200,
+    1348,
+    530,
+    1439
+   ],
+   "text": "N’hi ha per tot el cos.",
+   "crop_sha256": "b9d32521571794cd6a687a338f45fd53c993ed483bb976573ee68dddfc5b137d"
+  },
+  {
+   "id": "P28-15",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    175,
+    1403,
+    1040,
+    1594
+   ],
+   "text": "Medul·la espinal. És a l’esquena, protegida per la columna vertebral.",
+   "crop_sha256": "b8f9526cc6e9ea42102580325dd6ead61aa6890799966b6cdf9f732783eb4425"
+  },
+  {
+   "id": "P28-16",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    175,
+    1448,
+    920,
+    1594
+   ],
+   "text": "Juntament amb el cervell dirigeix alguns moviments del cos i part del seu funcionament.",
+   "crop_sha256": "7882b1d924a6a62da79c075f21f8f01c291728552f5294c726862035f63a4f52"
+  },
+  {
+   "id": "P28-17",
+   "page": 28,
+   "kind": "label",
+   "bbox_upload_px": [
+    1009,
+    1004,
+    1151,
+    1071
+   ],
+   "text": "cervell",
+   "crop_sha256": "6500c8a2345f2f652d0d12a3c10094300065fc25e9f376d9f8b754282e1106b3"
+  },
+  {
+   "id": "P28-18",
+   "page": 28,
+   "kind": "label",
+   "bbox_upload_px": [
+    1374,
+    1034,
+    1536,
+    1146
+   ],
+   "text": "medul·la espinal",
+   "crop_sha256": "0d35d43280c6efb14eda14b37aec9b449ab84164172d17360b00ec7624d8adaf"
+  },
+  {
+   "id": "P28-19",
+   "page": 28,
+   "kind": "label",
+   "bbox_upload_px": [
+    989,
+    1180,
+    1126,
+    1242
+   ],
+   "text": "nervis",
+   "crop_sha256": "d5ba3b1b041bfd41d2eda80b74db225e5f127317e6bff8bc0dd24a127c2ccf9e"
+  },
+  {
+   "id": "P28-20",
+   "page": 28,
+   "kind": "heading",
+   "bbox_upload_px": [
+    165,
+    1568,
+    610,
+    1674
+   ],
+   "text": "L’aparell locomotor",
+   "crop_sha256": "2cf1bef1c96b9f636d6fb09a97606a6791ef2da499e6f4328eddcb12490e03a4"
+  },
+  {
+   "id": "P28-21",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    155,
+    1633,
+    785,
+    1819
+   ],
+   "text": "L’aparell locomotor està format pels ossos i els músculs, que treballen de manera conjunta perquè ens moguem.",
+   "crop_sha256": "be42fe38ed38730273157ae5d1e7f18e631460e970c2ab94b071e1ce95a99047"
+  },
+  {
+   "id": "P28-22",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    150,
+    1778,
+    835,
+    1959
+   ],
+   "text": "Quan fem un moviment, uns músculs es contreuen mentre que uns altres es relaxen, i així mouen els ossos.",
+   "crop_sha256": "1e512b5185ce46a9a653421ce16b26964b1de145aa72deb54c2703a475e2230f"
+  },
+  {
+   "id": "P28-23",
+   "page": 28,
+   "kind": "text",
+   "bbox_upload_px": [
+    150,
+    1868,
+    750,
+    2099
+   ],
+   "text": "Per exemple quan caminem, els músculs de les cames es contreuen i es relaxen i estiren els ossos per aconseguir que caminem.",
+   "crop_sha256": "43ee8877d5f4b63aee129568b1828503900d8b29de4279ba5a9d08934c9865fe"
+  },
+  {
+   "id": "P29-01",
+   "page": 29,
+   "kind": "heading",
+   "bbox_upload_px": [
+    185,
+    227,
+    465,
+    328
+   ],
+   "text": "El moviments  [sic: el llibre diu «El moviments»]",
+   "crop_sha256": "ec1e44fcf7378a0cd74a37952dbe2b94ce9216fcdb0f160b85ba325fb64d8b83"
+  },
+  {
+   "id": "P29-02",
+   "page": 29,
+   "kind": "text",
+   "bbox_upload_px": [
+    230,
+    282,
+    1010,
+    418
+   ],
+   "text": "Molts dels moviments els fem voluntàriament i de manera conscient.",
+   "crop_sha256": "c0b96c40877c1bae2320d4bba036f0f52a5ab35721161347e51657b2e5564c38"
+  },
+  {
+   "id": "P29-03",
+   "page": 29,
+   "kind": "text",
+   "bbox_upload_px": [
+    230,
+    322,
+    750,
+    423
+   ],
+   "text": "Són moviments voluntaris.",
+   "crop_sha256": "4323e02295058b5f96debb5dba57b44cb079bd57f15514998a0c6f4351a2269d"
+  },
+  {
+   "id": "P29-04",
+   "page": 29,
+   "kind": "box",
+   "bbox_upload_px": [
+    249,
+    454,
+    596,
+    626
+   ],
+   "text": "① Un òrgan dels sentits capta un estímul i envia la informació al cervell.",
+   "crop_sha256": "140a6619a089b9dc3c3c94022deef683f73d31bfc171a92791f114d65cea22f7"
+  },
+  {
+   "id": "P29-05",
+   "page": 29,
+   "kind": "box",
+   "bbox_upload_px": [
+    659,
+    454,
+    981,
+    586
+   ],
+   "text": "② El cervell identifica l’estímul i decideix què fer.",
+   "crop_sha256": "3b759bcc73ddf56989a53d49267c7721776504ee30087d5111ab891792168b06"
+  },
+  {
+   "id": "P29-06",
+   "page": 29,
+   "kind": "box",
+   "bbox_upload_px": [
+    1094,
+    299,
+    1526,
+    476
+   ],
+   "text": "③ El cervell envia ordres a través dels nervis als músculs. Els músculs fan els moviments.",
+   "crop_sha256": "1537faedc53c4b4fa91754cf29ed475ecfc88bb862f68e20efeb161ff56f6846"
+  },
+  {
+   "id": "P29-07",
+   "page": 29,
+   "kind": "fig",
+   "bbox_upload_px": [
+    219,
+    624,
+    1531,
+    896
+   ],
+   "text": "[vinyetes] nena davant d’un semàfor: al primer dibuix el llum vermell és encès; al tercer, el verd, i la nena travessa.",
+   "crop_sha256": "35590541e443726e168674d752b91de798f4077de6216f21a6c1ec29bd0b5f5a"
+  },
+  {
+   "id": "P29-08",
+   "page": 29,
+   "kind": "text",
+   "bbox_upload_px": [
+    205,
+    877,
+    985,
+    988
+   ],
+   "text": "Hi ha moviments que fem de manera involuntària i ràpida, són moviments reflexos.",
+   "crop_sha256": "34bba3bf6a8a1ff5367258af62db47ff2a725fe30dbf8e334c6e36de8f9701ea"
+  },
+  {
+   "id": "P29-09",
+   "page": 29,
+   "kind": "text",
+   "bbox_upload_px": [
+    205,
+    917,
+    960,
+    1068
+   ],
+   "text": "En molts d’aquests moviments no intervé el cervell, sinó la medul·la espinal.",
+   "crop_sha256": "835d0a88dad419bc695c5979dfbb7fdb07aa9498737949fb3c8c9490df5f8db8"
+  },
+  {
+   "id": "P29-10",
+   "page": 29,
+   "kind": "box",
+   "bbox_upload_px": [
+    224,
+    1080,
+    496,
+    1292
+   ],
+   "text": "① Un òrgan dels sentits capta un estímul i envia la informació a la medul·la espinal.",
+   "crop_sha256": "b893e15dc22affe160abf68b6beca469cb970843e1a1327318969c83d5c9a82d"
+  },
+  {
+   "id": "P29-11",
+   "page": 29,
+   "kind": "box",
+   "bbox_upload_px": [
+    634,
+    1100,
+    966,
+    1197
+   ],
+   "text": "② La medul·la espinal rep la informació.",
+   "crop_sha256": "3f7e016108fe83f0a710c4f6b286ff51d60931340be5ec65942951e6c2ac77de"
+  },
+  {
+   "id": "P29-12",
+   "page": 29,
+   "kind": "box",
+   "bbox_upload_px": [
+    1074,
+    954,
+    1446,
+    1176
+   ],
+   "text": "③ La medul·la envia les ordres pels nervis als músculs, que fan el moviment de manera immediata.",
+   "crop_sha256": "26f3a8f6cd43e8b6450a26a078d6ef82a8a2b16a94d41816fe9db795959a0273"
+  },
+  {
+   "id": "P29-13",
+   "page": 29,
+   "kind": "fig",
+   "bbox_upload_px": [
+    194,
+    1190,
+    1506,
+    1612
+   ],
+   "text": "[vinyetes] nen que toca una tassa calenta i retira la mà.",
+   "crop_sha256": "59fc55ccd9d924f0bc64c6d1df543eaa2044dbc2972309a4d33cc84f9c61bd29"
+  },
+  {
+   "id": "P29-14",
+   "page": 29,
+   "kind": "activity",
+   "bbox_upload_px": [
+    210,
+    1593,
+    890,
+    1734
+   ],
+   "text": "5 COPIA i ORDENA com té lloc la funció de relació.",
+   "crop_sha256": "cced22f4a5fa568be1da95d0de3e49ba3e7348c0f1dd717c2e8838304545380f"
+  },
+  {
+   "id": "P29-15",
+   "page": 29,
+   "kind": "activity",
+   "bbox_upload_px": [
+    250,
+    1658,
+    1040,
+    1964
+   ],
+   "text": "· La informació viatja al cervell mitjançant els nervis. · Els òrgans dels sentits capten la informació de l’entorn. · El cervell envia ordres a través dels nervis. · L’aparell locomotor rep les ordres i fa els moviments. · El cervell analitza la informació i decideix què cal fer.",
+   "crop_sha256": "3b44aee4645e4343f97de385d9f03611534b6d2365a6e754b8394f336a645eab"
+  }
+ ]
+}
