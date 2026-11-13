@@ -40,6 +40,8 @@ new ResizeObserver(() => { if (L.style.display !== 'none') viewOffset(true); }).
 const parts = {};
 const NM = { ...(CFG.targets || {}), ...CFG.names };   // targets = extra tap targets that are not names to learn (no record rows)
 for (const [k, n] of Object.entries(NM)) parts[k] = A.find(n.re, n.g);
+// neutral parts (D1, D2): a related structure that is explained but scored neither right nor wrong (e.g. the upper jaw for «maxil·lar»)
+const neutralParts = Object.fromEntries(Object.entries(NM).filter(([, n]) => n.neutral).map(([k, n]) => [k, A.find(n.neutral, n.g)]));
 const PW = CFG.partWord || 'os';   // 'os' | 'múscul'
 // what is highlighted when the name is shown/asked (e.g. ONE rib for «costella»); taps accept the whole set in `parts`
 const showParts = Object.fromEntries(Object.entries(NM).map(([k, n]) => [k, n.show ? A.find(n.show, n.g) : parts[k]]));
@@ -79,6 +81,9 @@ function unitStatus(arr) { if (!arr || !arr.length) return ['Vist (sense comprov
 // ---------------------------------------------------------------- UI helpers
 let showZh = false;
 const book = keys => keys.map(k => { const b = CFG.book[k];
+  if (b.src === 'exp') return `<div class="book x"><span class="pg">💬 explicació (no és text del llibre)</span>${esc(b.tx)}</div>`;
+  if (b.src === 'res') return `<div class="book r"><span class="pg">📘 p. ${b.p} · ${b.where} · resum (no és text literal)</span>${esc(b.tx)}</div>`;
+  if (b.src === 'rel') return `<div class="book x"><span class="pg">🗣️ ${esc(b.where)} · no comprovat</span>${esc(b.tx)}</div>`;
   if (b.src === 'dib') return `<div class="book r"><span class="pg">📘 p. ${b.p} · ${b.where} · deducció del dibuix (no és text literal)</span>${esc(b.tx)}</div>`;
   return b.src === 'lit' ? `<div class="book"><span class="pg">📘 p. ${b.p} · ${b.where}</span>${esc(b.tx)}</div>`
     : `<div class="book r"><span class="pg">📘 p. ${b.p} · ${b.where} · resposta (no és text literal)</span>${b.q ? `<i>${esc(b.q)}</i><br>` : ''}${esc(b.tx)}</div>`; }).join('');
@@ -89,7 +94,7 @@ const curio = t => `<div class="note">💡 <b>Curiositat</b> <span class="nb">no
 const aid = t => `<div class="note">🧭 <b>Pista per trobar-lo</b> <span class="nb">no s’ha d’aprendre</span><br>${esc(t)}</div>`;
 let canNext = false;
 function setNext(on, labelTxt) { canNext = on; $('Lnext').disabled = !on; $('Lnext').classList.toggle('ready', on); if (labelTxt) $('Lnext').textContent = labelTxt; }
-function feedback(el, ok, msg) { const old = el.querySelector(':scope > .fb'); if (old) old.remove(); const f = document.createElement('div'); f.className = 'fb ' + (ok ? 'ok' : 'no'); f.textContent = msg; el.appendChild(f); f.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+function feedback(el, ok, msg) { const old = el.querySelector(':scope > .fb'); if (old) old.remove(); const f = document.createElement('div'); f.className = 'fb ' + (ok === 'info' ? 'info' : ok ? 'ok' : 'no'); f.textContent = msg; el.appendChild(f); f.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
 function hidden() { clearLabels(); A.clearHighlights(); if (CFG.neutral) CFG.neutral(ctx); }
 
 // ---------------------------------------------------------------- picking
@@ -98,6 +103,9 @@ function hitAt(x, y, targets) {
   const r = canvas.getBoundingClientRect(); ndc.set((x - r.left) / r.width * 2 - 1, -(y - r.top) / r.height * 2 + 1); ray.setFromCamera(ndc, camera);
   const hits = ray.intersectObjects(A.pickables.filter(o => o.visible), false); if (!hits.length) return { obj: null, ok: false };
   const first = hits[0], obj = A.resolveHit(first);
+  // a part listed in CFG.partHints (e.g. an intervertebral disc) is a wrong answer in its own right: never let the
+  // depth tolerance or the small-target box turn a tap on it into a hit on the neighbouring target (F03)
+  if ((CFG.partHints || []).some(h => h.re.test(A.norm(obj.name)))) return { obj, ok: false, hard: true };
   for (const h of hits) { if (h.distance > first.distance + .02) break; if (targets.has(A.resolveHit(h))) return { obj: A.resolveHit(h), ok: true }; }
   return { obj, ok: false };
 }
@@ -110,7 +118,7 @@ function nearSmall(x, y, targets) {
     if (w < 40 && h < 40 && x > Math.min(...xs) - 8 && x < Math.max(...xs) + 8 && y > Math.min(...ys) - 8 && y < Math.max(...ys) + 8) return true; }
   return false;
 }
-function nameOf(o) { if (!o) return 'res'; for (const k in parts) if (parts[k].includes(o)) return NM[k].noLoc ? (NM[k].pvName || 'una altra part') : '«' + NM[k].ca + '»'; return o.userData.g === 'bone' ? (PW === 'os' ? 'un altre os' : 'un os') : (o.userData.g === 'muscle' || o.userData.g === 'allMuscle') ? 'un altre múscul' : 'una altra part'; }
+function nameOf(o) { if (!o) return 'res'; for (const h of CFG.partHints || []) if (h.re.test(A.norm(o.name))) return h.ca; for (const k in parts) if (parts[k].includes(o)) return NM[k].noLoc ? (NM[k].pvName || 'una altra part') : '«' + NM[k].ca + '»'; return o.userData.g === 'bone' ? (PW === 'os' ? 'un altre os' : 'un os') : (o.userData.g === 'muscle' || o.userData.g === 'allMuscle') ? 'un altre múscul' : 'una altra part'; }
 
 // tap a named structure without labels. Help ladder: cue → demo (highlight + name) → retry alone.
 function tapTask(el, { q, key, cue, onResult, demo }) {
@@ -123,7 +131,11 @@ function tapTask(el, { q, key, cue, onResult, demo }) {
     let h = hitAt(e.clientX, e.clientY, targets);
     const tol = NM[key].tol;   // thin structures (nerves): a tap within tol px of the target also counts
     if (!h.ok && tol && !h.obj) for (const rr of [tol / 2, tol]) for (let j = 0; j < 8 && !h.ok; j++) { const t = hitAt(e.clientX + rr * Math.cos(j * Math.PI / 4), e.clientY + rr * Math.sin(j * Math.PI / 4), targets); if (t.ok) h = t; }
-    if (h.ok || nearSmall(e.clientX, e.clientY, targets)) {
+    if (!h.ok && h.obj && neutralParts[key] && neutralParts[key].includes(h.obj)) {   // explained, not scored
+      (rec.neutral = rec.neutral || {})[key] = (rec.neutral[key] || 0) + 1; saveRec();
+      A.highlight([h.obj], 0xffd23f); setTimeout(() => A.clearHighlights(), 1400); feedback(el, 'info', 'ℹ️ ' + NM[key].neutralMsg); return;
+    }
+    if (h.ok || (!h.hard && nearSmall(e.clientX, e.clientY, targets))) {
       el.dataset.done = 1; const v = wrongs ? 'ajuda' : 'sol'; onResult && onResult(v); saveRec();
       A.highlight([...targets], 0x35c46a); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); setTimeout(() => A.clearHighlights(), 900); cleanup(); el.dispatchEvent(new Event('done')); return;
     }

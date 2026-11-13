@@ -1,0 +1,541 @@
+{
+ "_about": "Answer key written from the textbook register (tools/textbook), NOT from the lesson configs. required = mesh names that must be scored right; forbidden = must NOT be scored right; neutral = must give an explanation without right/wrong (D1, D2). Exact mesh names of models/ecorche.glb (underscores shown as spaces).",
+ "_source": "tools/textbook/register.json @ 21a3ded; decisions D1/D2 (user 11-13), R18",
+ "l02": {
+  "crani": {
+   "required": [
+    "Left parietal bone",
+    "Right parietal bone",
+    "Frontal bone",
+    "Occipital bone"
+   ],
+   "forbidden": [
+    "Mandible",
+    "Left maxilla",
+    "Right maxilla",
+    "Left zygomatic bone",
+    "Right zygomatic bone"
+   ]
+  },
+  "maxillar": {
+   "arrow": "P25-30: end point below the teeth = mandible",
+   "required": [
+    "Mandible"
+   ],
+   "forbidden": [
+    "Frontal bone",
+    "Left zygomatic bone",
+    "Right zygomatic bone"
+   ],
+   "neutral": [
+    "Left maxilla",
+    "Right maxilla"
+   ]
+  },
+  "columna": {
+   "required": [
+    "Eighth thoracic vertebra",
+    "Eleventh thoracic vertebra",
+    "Fifth cervical vertebra",
+    "Sacrum"
+   ],
+   "forbidden": [
+    "Left eighth rib",
+    "Left eleventh rib"
+   ]
+  },
+  "vertebra": {
+   "required": [
+    "Eighth thoracic vertebra",
+    "Eleventh thoracic vertebra",
+    "Fifth cervical vertebra",
+    "Fifth lumbar vertebra",
+    "Fifth thoracic vertebra",
+    "First lumbar vertebra",
+    "First thoracic vertebra",
+    "Fourth cervical vertebra",
+    "Fourth lumbar vertebra",
+    "Fourth thoracic vertebra",
+    "Ninth thoracic vertebra",
+    "Second lumbar vertebra",
+    "Second thoracic vertebra",
+    "Seventh cervical vertebra",
+    "Seventh thoracic vertebra",
+    "Sixth cervical vertebra",
+    "Sixth thoracic vertebra",
+    "Tenth thoracic vertebra",
+    "Third cervical vertebra",
+    "Third lumbar vertebra",
+    "Third thoracic vertebra",
+    "Twelfth thoracic vertebra",
+    "Atlas",
+    "Axis"
+   ],
+   "forbidden": [
+    "Intervertebral disk of axis",
+    "Intervertebral disk of eighth thoracic vertebra",
+    "Intervertebral disk of eleventh thoracic vertebra",
+    "Intervertebral disk of fifth cervical vertebra",
+    "Intervertebral disk of fifth lumbar vertebra",
+    "Intervertebral disk of fifth thoracic vertebra",
+    "Intervertebral disk of first lumbar vertebra",
+    "Intervertebral disk of first thoracic vertebra",
+    "Intervertebral disk of fourth cervical vertebra",
+    "Intervertebral disk of fourth lumbar vertebra",
+    "Intervertebral disk of fourth thoracic vertebra",
+    "Intervertebral disk of ninth thoracic vertebra",
+    "Intervertebral disk of second lumbar vertebra",
+    "Intervertebral disk of second thoracic vertebra",
+    "Intervertebral disk of seventh cervical vertebra",
+    "Intervertebral disk of seventh thoracic vertebra",
+    "Intervertebral disk of sixth cervical vertebra",
+    "Intervertebral disk of sixth thoracic vertebra",
+    "Intervertebral disk of tenth thoracic vertebra",
+    "Intervertebral disk of third cervical vertebra",
+    "Intervertebral disk of third lumbar vertebra",
+    "Intervertebral disk of third thoracic vertebra"
+   ]
+  },
+  "costella": {
+   "required": [
+    "Left eighth rib",
+    "Left eleventh rib",
+    "Left fifth rib",
+    "Left first rib",
+    "Left fourth rib",
+    "Left ninth rib",
+    "Left second rib",
+    "Left seventh rib",
+    "Left sixth rib",
+    "Left tenth rib",
+    "Left third rib",
+    "Left twelfth rib",
+    "Right eighth rib",
+    "Right eleventh rib",
+    "Right fifth rib",
+    "Right first rib",
+    "Right fourth rib",
+    "Right ninth rib",
+    "Right second rib",
+    "Right seventh rib",
+    "Right sixth rib",
+    "Right tenth rib",
+    "Right third rib",
+    "Right twelfth rib"
+   ],
+   "forbidden": [
+    "Body of sternum",
+    "Eighth thoracic vertebra",
+    "Eleventh thoracic vertebra"
+   ]
+  },
+  "estern": {
+   "required": [
+    "Body of sternum",
+    "Manubrium"
+   ],
+   "forbidden": [
+    "Left eighth rib",
+    "Left eleventh rib"
+   ]
+  },
+  "omoplat": {
+   "required": [
+    "Left scapula",
+    "Right scapula"
+   ],
+   "forbidden": [
+    "Left clavicle",
+    "Right clavicle"
+   ]
+  },
+  "pelvis": {
+   "required": [
+    "Left hip bone",
+    "Right hip bone"
+   ],
+   "forbidden": [
+    "Left femur",
+    "Right femur"
+   ]
+  }
+ },
+ "l03": {
+  "humer": {
+   "required": [
+    "Left humerus"
+   ],
+   "forbidden": [
+    "Left radius",
+    "Left ulna"
+   ]
+  },
+  "cubit": {
+   "required": [
+    "Left ulna"
+   ],
+   "forbidden": [
+    "Left radius"
+   ]
+  },
+  "radi": {
+   "required": [
+    "Left radius"
+   ],
+   "forbidden": [
+    "Left ulna"
+   ]
+  },
+  "carp": {
+   "required": [
+    "Left scaphoid",
+    "Left lunate",
+    "Left capitate",
+    "Left hamate"
+   ],
+   "forbidden": [
+    "Left fifth metacarpal bone",
+    "Left first metacarpal bone"
+   ]
+  },
+  "metacarp": {
+   "required": [
+    "Left fifth metacarpal bone",
+    "Left first metacarpal bone",
+    "Left fourth metacarpal bone",
+    "Left second metacarpal bone",
+    "Left third metacarpal bone"
+   ],
+   "forbidden": [
+    "Left capitate"
+   ]
+  },
+  "falanges": {
+   "required": [
+    "Distal phalanx of left index finger",
+    "Distal phalanx of left little finger",
+    "Distal phalanx of left middle finger",
+    "Distal phalanx of left thumb",
+    "Proximal phalanx of left thumb"
+   ],
+   "forbidden": [
+    "Left fifth metacarpal bone",
+    "Distal phalanx of left big toe"
+   ]
+  }
+ },
+ "l04": {
+  "femur": {
+   "required": [
+    "Left femur"
+   ],
+   "forbidden": [
+    "Left tibia",
+    "Left patella"
+   ]
+  },
+  "rotula": {
+   "required": [
+    "Left patella"
+   ],
+   "forbidden": [
+    "Left femur"
+   ]
+  },
+  "tibia": {
+   "required": [
+    "Left tibia"
+   ],
+   "forbidden": [
+    "Left fibula"
+   ]
+  },
+  "perone": {
+   "required": [
+    "Left fibula"
+   ],
+   "forbidden": [
+    "Left tibia"
+   ]
+  },
+  "tars": {
+   "required": [
+    "Left talus",
+    "Left calcaneus"
+   ],
+   "forbidden": [
+    "Left fifth metatarsal bone"
+   ]
+  },
+  "metatars": {
+   "required": [
+    "Left fifth metatarsal bone",
+    "Left first metatarsal bone",
+    "Left fourth metatarsal bone",
+    "Left second metatarsal bone",
+    "Left third metatarsal bone"
+   ],
+   "forbidden": [
+    "Left talus"
+   ]
+  },
+  "falangesPeu": {
+   "required": [
+    "Distal phalanx of left big toe",
+    "Distal phalanx of left fourth toe",
+    "Distal phalanx of left little toe"
+   ],
+   "forbidden": [
+    "Left fifth metatarsal bone"
+   ]
+  }
+ },
+ "l08": {
+  "orbicular": {
+   "required": [
+    "Left orbital part of orbicularis oculi",
+    "Left palpebral part of orbicularis oculi"
+   ],
+   "forbidden": [
+    "Left orbicularis oris",
+    "Right orbicularis oris"
+   ]
+  },
+  "masseter": {
+   "required": [
+    "Left deep part of masseter",
+    "Left superficial part of masseter",
+    "Right deep part of masseter",
+    "Right superficial part of masseter"
+   ],
+   "forbidden": [
+    "Left temporalis",
+    "Right temporalis"
+   ]
+  },
+  "ecm": {
+   "required": [
+    "Left sternocleidomastoid",
+    "Right sternocleidomastoid"
+   ],
+   "forbidden": [
+    "Ascending part of left trapezius"
+   ]
+  },
+  "trapezi": {
+   "required": [
+    "Ascending part of left trapezius",
+    "Ascending part of right trapezius",
+    "Descending part of left trapezius",
+    "Descending part of right trapezius",
+    "Transverse part of left trapezius",
+    "Transverse part of right trapezius"
+   ],
+   "forbidden": [
+    "Left trapezium",
+    "Right trapezium"
+   ]
+  },
+  "deltoide": {
+   "required": [
+    "Acromial part of left deltoid",
+    "Acromial part of right deltoid",
+    "Clavicular part of left deltoid",
+    "Clavicular part of right deltoid",
+    "Spinal part of left deltoid",
+    "Spinal part of right deltoid"
+   ],
+   "forbidden": [
+    "Abdominal part of left pectoralis major"
+   ]
+  },
+  "pectoral": {
+   "required": [
+    "Abdominal part of left pectoralis major",
+    "Abdominal part of right pectoralis major",
+    "Clavicular part of left pectoralis major",
+    "Clavicular part of right pectoralis major",
+    "Sternocostal part of left pectoralis major",
+    "Sternocostal part of right pectoralis major"
+   ],
+   "forbidden": [
+    "Left pectoralis minor",
+    "Right pectoralis minor"
+   ]
+  },
+  "abdominal": {
+   "arrow": "P27-16: midline = rectus abdominis",
+   "required": [
+    "Left rectus abdominis",
+    "Right rectus abdominis"
+   ],
+   "forbidden": [],
+   "neutral": [
+    "Left external oblique",
+    "Right external oblique"
+   ]
+  },
+  "dorsal": {
+   "required": [
+    "Left latissimus dorsi",
+    "Right latissimus dorsi"
+   ],
+   "forbidden": [
+    "Ascending part of left trapezius"
+   ]
+  },
+  "gluti": {
+   "required": [
+    "Left gluteus maximus",
+    "Right gluteus maximus"
+   ],
+   "forbidden": [
+    "Left gluteus medius",
+    "Right gluteus medius"
+   ]
+  }
+ },
+ "l09": {
+  "biceps": {
+   "required": [
+    "Long head of left biceps brachii",
+    "Long head of right biceps brachii",
+    "Short head of left biceps brachii",
+    "Short head of right biceps brachii"
+   ],
+   "forbidden": [
+    "Long head of left biceps femoris",
+    "Long head of right biceps femoris",
+    "Short head of left biceps femoris",
+    "Short head of right biceps femoris",
+    "Lateral head of left triceps brachii"
+   ]
+  },
+  "triceps": {
+   "required": [
+    "Lateral head of left triceps brachii",
+    "Lateral head of right triceps brachii",
+    "Long head of left triceps brachii",
+    "Long head of right triceps brachii",
+    "Medial head of left triceps brachii",
+    "Medial head of right triceps brachii"
+   ],
+   "forbidden": [
+    "Long head of left biceps brachii"
+   ]
+  },
+  "quadriceps": {
+   "required": [
+    "Left rectus femoris",
+    "Right rectus femoris",
+    "Left vastus lateralis",
+    "Right vastus lateralis"
+   ],
+   "forbidden": [
+    "Long head of left biceps femoris"
+   ]
+  },
+  "bicepsFem": {
+   "required": [
+    "Long head of left biceps femoris",
+    "Long head of right biceps femoris",
+    "Short head of left biceps femoris",
+    "Short head of right biceps femoris"
+   ],
+   "forbidden": [
+    "Long head of left biceps brachii",
+    "Long head of right biceps brachii",
+    "Short head of left biceps brachii",
+    "Short head of right biceps brachii"
+   ]
+  },
+  "tibial": {
+   "required": [
+    "Left tibialis anterior",
+    "Right tibialis anterior"
+   ],
+   "forbidden": [
+    "Left tibialis posterior",
+    "Right tibialis posterior"
+   ]
+  },
+  "besso": {
+   "required": [
+    "Lateral head of left gastrocnemius",
+    "Lateral head of right gastrocnemius",
+    "Medial head of left gastrocnemius",
+    "Medial head of right gastrocnemius"
+   ],
+   "forbidden": [
+    "Left soleus",
+    "Right soleus"
+   ]
+  }
+ },
+ "l10": {
+  "biceps": {
+   "required": [
+    "Long head of left biceps brachii",
+    "Short head of left biceps brachii"
+   ],
+   "forbidden": [
+    "Long head of left biceps femoris",
+    "Short head of left biceps femoris"
+   ]
+  },
+  "triceps": {
+   "required": [
+    "Lateral head of left triceps brachii",
+    "Long head of left triceps brachii",
+    "Medial head of left triceps brachii"
+   ],
+   "forbidden": [
+    "Long head of left biceps brachii",
+    "Short head of left biceps brachii"
+   ]
+  }
+ },
+ "l01_RE": {
+  "curts": {
+   "note": "short-bone colouring (P24-13: com les vertebres)",
+   "required": [
+    "Eighth thoracic vertebra",
+    "Eleventh thoracic vertebra",
+    "Fifth cervical vertebra"
+   ],
+   "forbidden": [
+    "Intervertebral disk of axis",
+    "Intervertebral disk of eighth thoracic vertebra",
+    "Intervertebral disk of eleventh thoracic vertebra",
+    "Intervertebral disk of fifth cervical vertebra",
+    "Intervertebral disk of fifth lumbar vertebra",
+    "Intervertebral disk of fifth thoracic vertebra",
+    "Intervertebral disk of first lumbar vertebra",
+    "Intervertebral disk of first thoracic vertebra",
+    "Intervertebral disk of fourth cervical vertebra",
+    "Intervertebral disk of fourth lumbar vertebra",
+    "Intervertebral disk of fourth thoracic vertebra",
+    "Intervertebral disk of ninth thoracic vertebra",
+    "Intervertebral disk of second lumbar vertebra",
+    "Intervertebral disk of second thoracic vertebra",
+    "Intervertebral disk of seventh cervical vertebra",
+    "Intervertebral disk of seventh thoracic vertebra",
+    "Intervertebral disk of sixth cervical vertebra",
+    "Intervertebral disk of sixth thoracic vertebra",
+    "Intervertebral disk of tenth thoracic vertebra",
+    "Intervertebral disk of third cervical vertebra",
+    "Intervertebral disk of third lumbar vertebra",
+    "Intervertebral disk of third thoracic vertebra"
+   ]
+  },
+  "llargs": {
+   "required": [
+    "Left humerus",
+    "Left femur"
+   ],
+   "forbidden": [
+    "Intervertebral disk of axis"
+   ]
+  }
+ }
+}

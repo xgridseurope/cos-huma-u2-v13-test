@@ -24,8 +24,10 @@ export default {
   book: {
     exterior: { p: 28, src: 'lit', where: 'text', tx: 'Les persones captem el que passa a l’exterior: hi sentim, hi veiem... També ens comuniquem, ens movem i reaccionem quan hi ha canvis que ens afecten. Així per exemple, si veiem que cau una roca i ens pot fer mal, el nostre cos respon i es mou per allunyar-se’n.' },
     relacio: { p: 28, src: 'lit', where: 'text', tx: 'La funció de relació ens permet percebre el que passa al nostre voltant i reaccionar-hi de manera adequada.' },
-    elements: { p: 28, src: 'lit', where: 'text i esquema', tx: 'En la funció de relació intervenen diversos elements: Òrgans dels sentits → Sistema nerviós → Aparell locomotor.' },
-    format: { p: 28, src: 'lit', where: 'text', tx: 'El sistema nerviós està format per: cervell, nervis, medul·la espinal.' },
+    elements: { p: 28, src: 'lit', where: 'text', tx: 'En la funció de relació intervenen diversos elements:' },
+    format: { p: 28, src: 'res', where: 'text i llista', tx: 'El sistema nerviós està format per: cervell, nervis, medul·la espinal.' },
+    esquema: { p: 28, src: 'res', where: 'esquema', tx: 'Òrgans dels sentits → Sistema nerviós → Aparell locomotor' },
+    cervellExp: { src: 'exp', tx: 'Vol dir: el cervell dirigeix com funciona el cos i els seus moviments. I també ens permet pensar i recordar.' },
     cervell: { p: 28, src: 'lit', where: 'text', tx: 'Cervell. És al cap i està protegit pel crani. Dirigeix el funcionament del cos i els seus moviments ens permeten pensar i recordar.' },
     nervis: { p: 28, src: 'lit', where: 'text', tx: 'Nervis. Porten informació dels òrgans dels sentits al cervell i transmeten les ordres des del cervell fins a l’aparell locomotor, que és l’encarregat del moviment. N’hi ha per tot el cos.' },
     medulla: { p: 28, src: 'lit', where: 'text', tx: 'Medul·la espinal. És a l’esquena, protegida per la columna vertebral. Juntament amb el cervell dirigeix alguns moviments del cos i part del seu funcionament.' },
@@ -67,8 +69,8 @@ export default {
       { id: 'pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('cos'); c.predict(el, { id: 'roca', q: 'Imagina que veus caure una roca cap a tu. Què creus que passa primer?', zhq: '想象你看到一块石头朝你掉下来。你觉得最先发生的是什么？', opts: ['Els ulls la veuen', 'Les cames s’aparten', 'No ho sé'] }); } },
       { id: 'relacio', ph: '2–4 · La funció de relació', render(el) {
           c.stepper(el, [
-            { scene: () => c.view('cos'), html: `${c.book(['exterior', 'relacio'])}${c.zh('课本原句：我们能感知外界，并做出适当反应——这就是「关系功能」。例：看到石头掉下来，身体会躲开。')}` },
-            { scene: () => { c.view('senyal'); sig.prop('voluntary'); sig.glow(['eye']); }, html: `${c.book(['elements'])}<div class="spell">① Òrgans dels sentits</div>${c.ossi('Els ulls són òrgans dels sentits: veuen el que passa. Ara mira al teu voltant: què veus?')}${c.zh('① 感觉器官（比如眼睛）发现外面发生的事。')}` },
+            { scene: () => c.view('cos'), html: `${c.book(['exterior', 'relacio'])}${c.zh('课本内容·中文意译：我们能感知外界，并做出适当反应——这就是「关系功能」。例：看到石头掉下来，身体会躲开。')}` },
+            { scene: () => { c.view('senyal'); sig.prop('voluntary'); sig.glow(['eye']); }, html: `${c.book(['elements', 'esquema'])}<div class="spell">① Òrgans dels sentits</div>${c.ossi('Els ulls són òrgans dels sentits: veuen el que passa. Ara mira al teu voltant: què veus?')}${c.zh('① 感觉器官（比如眼睛）发现外面发生的事。')}` },
             { scene: () => { c.view('cos'); sig.glow(['brain', 'spinal', 'nerves']); }, html: `<div class="spell">② Sistema nerviós</div>${c.ossi('El sistema nerviós rep el que han captat els sentits i dona les ordres.')}${c.zh('② 神经系统接收信息并发出命令。')}` },
             { scene: () => { c.view('senyal'); bones(40); A.setLayer('muscle', true); }, html: `<div class="spell">③ Aparell locomotor</div>${c.book(['aparell', 'contreuen'])}${c.ossi('Toca el botó: el múscul es contreu i mou l’os. Després fes-ho tu amb el teu braç!')}<button class="opt go" id="bendL">💪 Mou el braç</button>${c.zh('③ 运动系统（骨骼和肌肉）做出动作：一些肌肉收缩，另一些放松，带动骨头。点按钮看手臂动。')}` },
           ], { title: 'Qui hi intervé', after: () => c.hidden() });
@@ -83,14 +85,14 @@ export default {
         } },
       { id: 'R1', ph: '5 · Explica-ho tu', recall: true, render(el) { c.view('cos'); c.recall(el, { q: 'Què ens permet fer la funció de relació?', keys: ['relacio'], units: ['R1'], zhq: '关系功能让我们能做什么？', zkey: '评分要点：感知周围发生的事，并做出适当反应。' }); } },
       { id: 'g1-pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('cos'); c.predict(el, { id: 'g1', q: 'El sistema nerviós té tres parts. Una és al cap. On creus que són les altres?', zhq: '神经系统有三部分，一部分在头里。你觉得另外两部分在哪？', opts: ['A l’esquena i per tot el cos', 'Només a les mans', 'No ho sé'] }); } },
-      { id: 'g1-llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('cos'); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['format', 'dibuix'])}${c.ossi('Al model hem amagat els ossos i els músculs perquè puguis veure el sistema nerviós.')}${c.zh('课本原句：神经系统由大脑、神经和脊髓组成。模型里暂时隐藏了骨头和肌肉。')}`; c.setNext(true); } },
+      { id: 'g1-llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('cos'); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['format', 'dibuix'])}${c.ossi('Al model hem amagat els ossos i els músculs perquè puguis veure el sistema nerviós.')}${c.zh('课本内容·中文意译：神经系统由大脑、神经和脊髓组成。模型里暂时隐藏了骨头和肌肉。')}`; c.setNext(true); } },
       ...c.nameGroupStages({ id: 'g1', title: 'El sistema nerviós', keys: ['cervell', 'medulla', 'nervis'], view: 'cos', viewAlt: 'cosCostat' }),
       c.reviewStage(['cervell', 'medulla', 'nervis'], 'cos'),
       { id: 'parts', ph: '2–4 · Què fa cada part', render(el) {
           c.stepper(el, [
-            { scene: () => { c.view('cap'); bones(25); hl('cervell'); }, html: `<div class="spell">cervell</div>${c.book(['cervell'])}${c.ossi('Mira: el crani (transparent) envolta el cervell i el protegeix. Toca’t el cap: a dins hi ha el teu cervell!')}${c.zh('课本原句：大脑在头里，被颅骨保护；它指挥身体的运作和动作，让我们能思考和记忆。')}` },
-            { scene: () => { c.view('esquena'); bones(25); hl('medulla'); }, html: `<div class="spell">medul·la espinal</div>${c.book(['medulla'])}${c.ossi('La columna vertebral (transparent) protegeix la medul·la. Toca’t l’esquena: a dins de la columna hi ha la teva medul·la!')}${c.zh('课本原句：脊髓在背部，被脊柱保护；它和大脑一起指挥身体的一些动作和部分运作。')}` },
-            { scene: () => { c.view('cos'); hl('nervis', 0xffd23f); }, html: `<div class="spell">nervis</div>${c.book(['nervis'])}${c.ossi('Mira quants n’hi ha! Arriben fins a les puntes dels dits.')}${c.zh('课本原句：神经把感觉器官的信息送到大脑，再把大脑的命令传到运动系统；全身都有神经。')}` },
+            { scene: () => { c.view('cap'); bones(25); hl('cervell'); }, html: `<div class="spell">cervell</div>${c.book(['cervell', 'cervellExp'])}${c.ossi('Mira: el crani (transparent) envolta el cervell i el protegeix. Toca’t el cap: a dins hi ha el teu cervell!')}${c.zh('课本内容·中文意译：大脑在头里，被颅骨保护；它指挥身体的运作和动作，让我们能思考和记忆。')}` },
+            { scene: () => { c.view('esquena'); bones(25); hl('medulla'); }, html: `<div class="spell">medul·la espinal</div>${c.book(['medulla'])}${c.ossi('La columna vertebral (transparent) protegeix la medul·la. Toca’t l’esquena: a dins de la columna hi ha la teva medul·la!')}${c.zh('课本内容·中文意译：脊髓在背部，被脊柱保护；它和大脑一起指挥身体的一些动作和部分运作。')}` },
+            { scene: () => { c.view('cos'); hl('nervis', 0xffd23f); }, html: `<div class="spell">nervis</div>${c.book(['nervis'])}${c.ossi('Mira quants n’hi ha! Arriben fins a les puntes dels dits.')}${c.zh('课本内容·中文意译：神经把感觉器官的信息送到大脑，再把大脑的命令传到运动系统；全身都有神经。')}` },
           ], { title: 'Què fa cada part', after: () => c.hidden() });
         } },
       { id: 'R2', ph: '5 · Explica-ho tu', recall: true, render(el) { c.view('cos'); c.recall(el, { q: 'On és el cervell i què el protegeix? I la medul·la espinal?', keys: ['cervell', 'medulla'], units: ['N2', 'N4'], zhq: '大脑在哪里、被什么保护？脊髓呢？', zkey: '评分要点：大脑在头里、颅骨保护；脊髓在背部、脊柱保护。' }); } },

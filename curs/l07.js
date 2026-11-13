@@ -82,7 +82,7 @@ export default {
     return [
       { id: 'intro', ph: 'Benvinguda', render(el) { c.hidden(); c.view('cos'); el.innerHTML = `<h2>La forma dels músculs</h2>${c.ossi('Hola! Els músculs no són tots iguals: n’hi ha de llargs, de curts, en forma d’anell i plans. Avui els descobrirem en dos grups. Tu manes el ritme.')}${c.zh('今天学：肌肉的四种形状，分两组学。')}`; c.setNext(true); } },
       { id: 'pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('cos'); c.predict(el, { id: 'forma', q: 'Mira’t la mà, el braç i la cara. Creus que tots els músculs tenen la mateixa forma?', zhq: '看看手、手臂和脸。你觉得所有肌肉形状都一样吗？', opts: ['Sí, tots iguals', 'No, tenen formes diferents', 'No ho sé'] }); } },
-      { id: 'quatre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('cos'); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['quatre'])}${c.ossi('Primer en veurem dos: els llargs i els curts.')}${c.zh('课本原句：骨骼肌主要有四种类型。')}`; c.setNext(true); } },
+      { id: 'quatre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('cos'); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['quatre'])}${c.ossi('Primer en veurem dos: els llargs i els curts.')}${c.zh('课本内容·中文意译：骨骼肌主要有四种类型。')}`; c.setNext(true); } },
       { id: 'gA-coneix', ph: '2–4 · Llargs i curts', render(el) {
           c.stepper(el, [
             card('llargs', 'llarg', ['llargs', 'dibLlarg'], 'Mira el múscul blau del braç: és prim als extrems i ample al mig. Fes força amb el braç i toca’l!', '长肌：两端细、中间宽（课本图上在手臂）。', c.memo('Un múscul llarg és com un fus: prim, gruixut, prim.')),

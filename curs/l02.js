@@ -1,6 +1,10 @@
 // Lesson 2 · Els ossos del cap i del tronc (textbook p. 25). NAME lesson (8 names in four pairs) + what each part protects.
-// maxil·lar: resolved 2026-11-13 — the school teacher uses «maxil·lar de dalt» and «maxil·lar de baix»: both jaws are the answer
-// (upper jaw = maxil·les, lower jaw = mandíbula in the model). Location is scored again; either jaw counts.
+// maxil·lar (decision D1, user 2026-11-13; evidence tools/textbook P25-16 label, P25-30 leader line): four separate layers —
+//   1 textbook location: the P25 leader line ends below the teeth = lower jaw (model «Mandible»). Only this is scored.
+//   2 3D exploration: the upper jaw (model «maxilla») is explained when tapped, scored neither right nor wrong (neutral).
+//   3 term explanation (src 'exp'): there is a bone with teeth above and one below; the book's line goes to the lower one.
+//   4 classroom relay (src 'rel'): Emily's report of what is said in class, relayed by the family. NOT verified.
+// Replaces the 11e3003 rule «both jaws count» and its claim about the teacher's words (a developer translation of a relay).
 // Zone of omòplat and pelvis = trunk, as coloured in the p. 25 drawing.
 export default {
   id: 'l02', title: 'Els ossos del cap i del tronc 💀', subtitle: 'Lliçó 2 (llibre p. 25). Vuit noms en quatre parelles i què protegeixen. Tu manes el ritme.',
@@ -15,12 +19,16 @@ export default {
     tronc: { p: 25, src: 'lit', where: 'text', tx: 'Tronc. Hi tenim la columna vertebral, que està formada per les vèrtebres i protegeix la medul·la espinal. La columna vertebral, les costelles i l’estern protegeixen el cor i els pulmons.' },
     unio: { p: 25, src: 'act', where: 'activitat «Observa»', q: 'A quins ossos s’uneixen les costelles?', tx: 'Mirant el dibuix: a la columna vertebral (a les vèrtebres) i a l’estern.' },
     dibuix: { p: 25, src: 'lit', where: 'noms del dibuix', tx: 'crani · maxil·lar · costella · estern · vèrtebra · columna vertebral · pelvis · omòplat' },
+    maxExp: { src: 'exp', tx: 'A la boca hi ha dos ossos amb dents: un a dalt i un a baix. El de baix és el que es mou quan parles i mastegues. Al dibuix del llibre (p. 25), la línia de «maxil·lar» arriba a l’os de baix.' },
+    maxRel: { src: 'rel', where: 'A classe, segons explica l’Emily', tx: 'A classe en parlen de dos: el maxil·lar de dalt i el de baix.' },
   },
+  // a wrong tap on these parts names them precisely (F03: a disc is not a vertebra)
+  partHints: [{ re: /intervertebral disk/, ca: 'un disc: el coixinet que hi ha entre dues vèrtebres (no és un os)' }],
   names: {
     crani: { ca: 'crani', g: 'bone', re: /(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/, aid: 'És la part de dalt i del darrere del cap.', zh: 'crani：头顶和后脑的骨头（颅骨）。' },
-    maxillar: { ca: 'maxil·lar', html: 'maxi<b>l·l</b>ar', g: 'bone', re: /^mandible$|maxilla$/, aid: 'És l’os de la boca, on hi ha les dents: hi ha el maxil·lar de dalt i el maxil·lar de baix.', zh: 'maxil·lar：嘴部长牙齿的骨头，分上面的和下面的（学校老师的说法：maxil·lar de dalt / de baix），点上颌或下颌都算对。' },
+    maxillar: { ca: 'maxil·lar', html: 'maxi<b>l·l</b>ar', g: 'bone', re: /^mandible$/, neutral: /maxilla$/, neutralMsg: 'Aquest és l’os de dalt de la boca. Al dibuix del llibre, la línia de «maxil·lar» va a l’os de baix, el que es mou quan parles. Busca’l!', aid: 'És l’os de baix de la boca, amb les dents de baix: el que es mou quan parles i mastegues.', zh: 'maxil·lar：课本第 25 页的指引线指向下面那块（下颌）。点上颌会给说明，不算对也不算错。' },
     columna: { ca: 'columna vertebral', g: 'bone', re: /vertebra$|^atlas$|^axis$|sacrum|coccyx|intervertebral disk/, aid: 'És tota la filera d’ossos del mig de l’esquena.', zh: 'columna vertebral：背部中间一整列骨头（脊柱）。' },
-    vertebra: { ca: 'vèrtebra', html: 'v<b>è</b>rtebra', g: 'bone', re: /vertebra$|^atlas$|^axis$/, show: /^third lumbar vertebra$/, aid: 'És un dels ossets que, un sobre l’altre, formen la columna.', zh: 'vèrtebra：组成脊柱的一块块小骨头（椎骨）。' },
+    vertebra: { ca: 'vèrtebra', html: 'v<b>è</b>rtebra', g: 'bone', re: /^(?!intervertebral).*vertebra$|^atlas$|^axis$/, show: /^third lumbar vertebra$/, aid: 'És un dels ossets que, un sobre l’altre, formen la columna.', zh: 'vèrtebra：组成脊柱的一块块小骨头（椎骨）。' },
     costella: { ca: 'costella', g: 'bone', re: / rib$/, show: /^left fifth rib$/, aid: 'Són els ossos corbats que fan com una gàbia al pit.', zh: 'costella：胸部弯弯的、像笼子一样的骨头（肋骨）。' },
     estern: { ca: 'estern', g: 'bone', re: /body of sternum|manubrium|xiphoid/, aid: 'És l’os pla del mig del pit, al davant.', zh: 'estern：胸前正中间的扁骨（胸骨）。' },
     omoplat: { ca: 'omòplat', html: 'om<b>ò</b>plat', g: 'bone', re: /scapula$/, show: /^left scapula$/, aid: 'És l’os pla de l’esquena, a sota de l’espatlla.', zh: 'omòplat：背上、肩膀下面的扁骨（肩胛骨）。' },
@@ -52,14 +60,18 @@ export default {
       { id: 'intro', ph: 'Benvinguda', render(el) { c.hidden(); c.view('tot'); el.innerHTML = `<h2>Els ossos del cap i del tronc</h2>${c.ossi('Hola! Avui aprendrem vuit noms d’ossos, de dos en dos, i veurem què protegeix cada part. Tu manes el ritme.')}${c.zh('今天学头部和躯干的 8 块骨头名称（两个一组），以及它们保护什么。')}`; c.setNext(true); } },
       // pair 1 · head
       { id: 'g1-pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('cap'); c.predict(el, { id: 'g1', q: 'Toca’t el cap amb les mans. Què creus que hi ha a dins, protegit pels ossos?', zhq: '摸摸自己的头：骨头里面保护着什么？', opts: ['El cervell', 'El cor', 'No ho sé'] }); } },
-      bookStage('g1-llibre', ['cap'], 'cap', 'Mira: el crani és transparent i a dins hi ha el cervell (rosa).', '课本原句：头部有颅骨和面部骨；颅骨是扁骨，保护大脑。', () => { A.setLayer('brain', true); A.setBoneOpacity(35); }),
+      bookStage('g1-llibre', ['cap'], 'cap', 'Mira: el crani és transparent i a dins hi ha el cervell (rosa).', '课本内容·中文意译：头部有颅骨和面部骨；颅骨是扁骨，保护大脑。', () => { A.setLayer('brain', true); A.setBoneOpacity(35); }),
       ...c.nameGroupStages({ id: 'g1', title: 'Ossos del cap', keys: ['crani', 'maxillar'], view: 'cap', viewAlt: 'capCostat' }),
+      { id: 'g1-maxil', ph: '1 · Per saber-ne més', render(el) { c.stepper(el, [
+          { scene: () => { c.view('capCostat'); A.highlight(c.parts.maxillar, 0x35c46a); A.highlight(A.find(/maxilla$/, 'bone'), 0xffd23f); }, html: `${c.book(['maxExp'])}${c.ossi('En verd, l’os de baix (el del llibre). En groc, l’os de dalt. Obre i tanca la boca: quin es mou?')}${c.zh('解释：嘴里有上下两块长牙的骨头；下面那块会动。课本图的指引线指向下面那块（绿色）。')}` },
+          { scene: () => { c.view('cap'); A.highlight(c.parts.maxillar, 0x35c46a); }, html: `${c.book(['maxRel'])}${c.ossi('Al llibre, «maxil·lar» és el de baix. Si a classe en sents dir dos, pregunta-ho a la mestra!')}${c.zh('课堂转述（Emily 说的，未核实）：课上讲上下两块。课本图指的是下面那块。')}` },
+        ], { title: 'El maxil·lar' }); } },
       // pair 2 · spine
-      bookStage('g2-llibre', ['tronc'], 'columna', 'La medul·la espinal (groga) passa per dins de la columna vertebral, ben protegida.', '课本原句：脊柱由椎骨组成，保护脊髓；脊柱、肋骨和胸骨保护心和肺。', () => { A.setLayer('spinal', true); A.setBoneOpacity(40); }),
+      bookStage('g2-llibre', ['tronc'], 'columna', 'La medul·la espinal (groga) passa per dins de la columna vertebral, ben protegida.', '课本内容·中文意译：脊柱由椎骨组成，保护脊髓；脊柱、肋骨和胸骨保护心和肺。', () => { A.setLayer('spinal', true); A.setBoneOpacity(40); }),
       ...c.nameGroupStages({ id: 'g2', title: 'La columna', keys: ['columna', 'vertebra'], view: 'columna', viewAlt: 'troncDarrere' }),
       // pair 3 · chest
       { id: 'g3-pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('tronc'); c.predict(el, { id: 'g3', q: 'Toca’t el pit. Notes uns ossos corbats? On creus que s’uneixen?', zhq: '摸摸胸口，弯弯的骨头连在哪里？', opts: ['Al mig del pit i a l’esquena', 'Al cap', 'No ho sé'] }); } },
-      bookStage('g3-llibre', ['tronc', 'unio'], 'tronc', 'El model no té cor ni pulmons: imagina’ls dins de la gàbia de les costelles.', '课本原句 + 活动答案：肋骨连到脊柱（椎骨）和胸骨上；它们一起保护心和肺（模型里没有心和肺）。'),
+      bookStage('g3-llibre', ['tronc', 'unio'], 'tronc', 'El model no té cor ni pulmons: imagina’ls dins de la gàbia de les costelles.', '课本内容·中文意译 + 活动答案：肋骨连到脊柱（椎骨）和胸骨上；它们一起保护心和肺（模型里没有心和肺）。'),
       ...c.nameGroupStages({ id: 'g3', title: 'El pit', keys: ['costella', 'estern'], view: 'tronc', viewAlt: 'troncCostat' }),
       // pair 4 · shoulder blade and pelvis
       bookStage('g4-llibre', ['dibuix'], 'omoPel', 'Al dibuix del llibre, l’omòplat i la pelvis tenen el color del tronc.', '课本 P25 图上，肩胛骨和骨盆用的是躯干的颜色。'),

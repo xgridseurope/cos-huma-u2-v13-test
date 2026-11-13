@@ -124,7 +124,7 @@ with sync_playwright() as p:
         if pg.locator('#Lbody #tgmus').count():
             chk(f'{s}: toggle required first', not can()); pg.click('#tgmus'); time.sleep(1.2); pg.click('#tgmus'); time.sleep(.6); chk(f'{s}: toggle done', can()); nxt(); continue
         if pg.locator('#Lbody #tgm').count():
-            chk(f'{s}: toggle required first', not can()); pg.click('#tgm'); time.sleep(1.2); chk(f'{s}: muscles shown', pg.evaluate("__app.find(/./,'muscle').some(m=>m.visible)") or True); pg.click('#tgm'); time.sleep(.6); nxt(); continue
+            chk(f'{s}: toggle required first', not can()); pg.click('#tgm'); time.sleep(1.2); chk(f'{s}: muscles shown', pg.evaluate("__app.find(/./,'muscle').concat(__app.find(/./,'allMuscle')).some(m=>m.visible)")); pg.click('#tgm'); time.sleep(.6); nxt(); continue
         if L!='l10' and pg.locator('#Lbody #said').count() and pg.locator('#Lbody .book').count()==0 and not s.endswith('digues'):
             chk(f'{s}: recall hidden before answer (zh on)', labels()==0 and '评分要点' not in bodytext()); chk(f'{s}: back locked', pg.evaluate("document.getElementById('Lback').disabled"))
             pg.click('#said'); time.sleep(.2); chk(f'{s}: book answer after speaking', pg.locator('#Lbody .book').count()>0)
@@ -156,7 +156,7 @@ with sync_playwright() as p:
                 pg.locator('#Lbody button.opt',has_text={'P1':'S’estira','P2':'El colze','P3':'Més gruixut'}[s]).first.click(); time.sleep(.3); nxt(); continue
         # plain stages
         if can(): nxt(); continue
-        print(f'?? stuck at {s}', flush=True); break
+        chk(f'stuck at {s}', False); break
     pg.screenshot(path=f'{OUT}fi.png', full_page=True)
     rec=pg.evaluate("__curs.rec")
     D2=bool(os.environ.get('D2ONLY'))
@@ -197,7 +197,7 @@ with sync_playwright() as p:
         else:
             k=current_target(); time.sleep(1.5); chk(f'day2 {ch}: locate {k} without labels', labels()==0 and tap(k,'#tb[data-done]'))
         time.sleep(.6)
-        if not pg.locator('#nx').count(): print('?? day2 no next at '+ch+' :: '+pg.locator('#Lbody').inner_text()[:200].replace('\n',' | ')); pg.screenshot(path=f'{OUT}day2-stuck.png'); break
+        if not pg.locator('#nx').count(): chk('day2 stuck at '+ch, False, pg.locator('#Lbody').inner_text()[:200].replace('\n',' | ')); pg.screenshot(path=f'{OUT}day2-stuck.png'); break
         pg.evaluate("document.getElementById('nx').click()"); time.sleep(.9); n+=1
         print('d2 step',n,'tickers',pg.evaluate('__app.tickers.length'),flush=True)
     chk('day2 finished, one item at a time', 'Revisió acabada' in pg.locator('#Lbody').inner_text(), n)
@@ -205,4 +205,8 @@ with sync_playwright() as p:
     rec2=pg.evaluate("__curs.rec"); chk('day2 stored separately (day-1 records unchanged)', rec2['loc']==rec['loc'] and len([k for k in rec2['day2'] if k not in ('started','finished')])==n, n)
     chk('no JS errors', not errs, errs)
     b.close()
+fails=[l for l in log if l.startswith('FAIL')]
+open(OUT+'summary.txt','w').write('\n'.join(log)+f'\n\n{len(log)-len(fails)} PASS · {len(fails)} FAIL\n')
+print(f'{len(log)-len(fails)} PASS · {len(fails)} FAIL', flush=True)
+sys.exit(1 if fails else 0)
 

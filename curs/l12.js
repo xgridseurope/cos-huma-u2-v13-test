@@ -60,7 +60,7 @@ export default {
     return [
       { id: 'intro', ph: 'Benvinguda', render(el) { c.hidden(); c.view('cos'); el.innerHTML = `<h2>Moviments voluntaris i reflexos</h2>${c.ossi('Hola! Hi ha moviments que decidim i moviments que passen tot sols, molt de pressa. Avui veurem com funciona cadascun. Tu manes el ritme.')}${c.zh('今天学：自主运动和反射运动的完整过程。')}`; c.setNext(true); } },
       { id: 'v-pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('cos'); c.predict(el, { id: 'vol', q: 'Quan el semàfor es posa verd i travesses el carrer, qui creus que decideix moure les cames?', zhq: '红绿灯变绿、你过马路时，你觉得是谁决定让腿动起来？', opts: ['El cervell', 'Les cames soles', 'No ho sé'] }); } },
-      { id: 'v-llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('cos'); el.innerHTML = `<h2>Moviments voluntaris</h2>${c.book(['vol', 'vEx'])}<div class="note">⚠️ El model no pot caminar: per mostrar les ordres als músculs, doblegarà el braç.</div>${c.zh('课本原句：很多动作是我们自愿、有意识地做的，叫自主运动。课本例子：女孩看红绿灯，绿灯时过马路。模型不能走路，用弯曲手臂来示意。')}`; c.setNext(true); } },
+      { id: 'v-llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('cos'); el.innerHTML = `<h2>Moviments voluntaris</h2>${c.book(['vol', 'vEx'])}<div class="note">⚠️ El model no pot caminar: per mostrar les ordres als músculs, doblegarà el braç.</div>${c.zh('课本内容·中文意译：很多动作是我们自愿、有意识地做的，叫自主运动。课本例子：女孩看红绿灯，绿灯时过马路。模型不能走路，用弯曲手臂来示意。')}`; c.setNext(true); } },
       { id: 'v-passos', ph: '3–4 · Pas a pas', render(el) {
           c.stepper(el, [
             card('voluntary', 0, `${c.book(['v1'])}${c.ossi('Els ulls veuen la llum verda del semàfor. Mira tu també alguna cosa verda!')}${c.zh('① 感觉器官发现刺激，把信息送到大脑。')}`),
@@ -71,7 +71,7 @@ export default {
       order('v-ordre', '5 · Ordena-ho tu', 'voluntary'),
       { id: 'v-explica', ph: '5 · Explica-ho tu', recall: true, render(el) { c.view('cos'); c.recall(el, { q: 'Explica com fem un moviment voluntari, pas a pas. Pots fer servir l’exemple del semàfor.', keys: ['v1', 'v2', 'v3'], units: ['V0', 'V1'], zhq: '一步一步说说自主运动是怎样发生的（可以用红绿灯的例子）。', zkey: '评分要点：①感觉器官发现刺激并送信息到大脑 ②大脑识别、决定 ③大脑通过神经把命令送到肌肉，肌肉做动作。' }); } },
       { id: 'r-pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('reflex'); c.predict(el, { id: 'ref', q: 'Si toques una tassa que crema, què creus que passa?', zhq: '如果你碰到一个很烫的杯子，你觉得会怎样？', opts: ['La mà s’aparta de cop, sense pensar-hi', 'Primer penso i després aparto la mà', 'No ho sé'] }); } },
-      { id: 'r-llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('reflex'); el.innerHTML = `<h2>Moviments reflexos</h2>${c.book(['ref', 'rEx'])}${c.ossi('Fixa’t: el llibre diu «en molts», no en tots.')}${c.zh('课本原句：有些动作是不自主而且很快的，叫反射运动。很多反射运动不经过大脑，而是由脊髓负责（注意：课本说的是「很多」，不是全部）。课本例子：男孩碰到热杯子，一下子把手缩回。')}`; c.setNext(true); } },
+      { id: 'r-llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('reflex'); el.innerHTML = `<h2>Moviments reflexos</h2>${c.book(['ref', 'rEx'])}${c.ossi('Fixa’t: el llibre diu «en molts», no en tots.')}${c.zh('课本内容·中文意译：有些动作是不自主而且很快的，叫反射运动。很多反射运动不经过大脑，而是由脊髓负责（注意：课本说的是「很多」，不是全部）。课本例子：男孩碰到热杯子，一下子把手缩回。')}`; c.setNext(true); } },
       { id: 'r-passos', ph: '3–4 · Pas a pas', render(el) {
           c.stepper(el, [
             card('reflex', 0, `${c.book(['r1'])}${c.ossi('La mà toca la tassa calenta. La informació va cap a la medul·la espinal.')}${c.zh('① 感觉器官发现刺激，把信息送到脊髓。')}`),

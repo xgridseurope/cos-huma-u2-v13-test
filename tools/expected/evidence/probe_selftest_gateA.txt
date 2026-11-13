@@ -1,0 +1,7 @@
+PASS selftest «F03 vertebra accepts disks» → checker reports 1 FAIL
+PASS selftest «F16 abdominal scores external oblique» → checker reports 1 FAIL
+PASS selftest «D1 maxil·lar scores the upper jaw» → checker reports 1 FAIL
+PASS selftest «F15 rearranged sentence labelled lit» → checker reports 1 FAIL
+PASS selftest «F08 «No es trenca mai» back» → checker reports 1 FAIL
+
+selftest: every mutation caught

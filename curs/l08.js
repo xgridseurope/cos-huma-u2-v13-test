@@ -25,7 +25,7 @@ export default {
     trapezi: { ca: 'trapezi', g: M, re: /trapezius/, show: /part of left trapezius/, aid: 'És el múscul gran i pla de dalt de l’esquena i del clatell.', zh: 'trapezi：背上部和后颈的大块扁平肌肉（斜方肌）。' },
     deltoide: { ca: 'deltoide', g: M, re: /deltoid/, show: /part of left deltoid/, aid: 'És el múscul arrodonit de l’espatlla.', zh: 'deltoide：肩膀上圆圆的肌肉（三角肌）。' },
     pectoral: { ca: 'pectoral', g: M, re: /pectoralis major/, show: /part of left pectoralis major/, aid: 'És el múscul gran del pit.', zh: 'pectoral：胸前的大块肌肉（胸大肌）。' },
-    abdominal: { ca: 'abdominal', g: M, re: /rectus abdominis|external oblique/, show: /^left rectus abdominis$/, aid: 'És el múscul de la panxa, al davant.', zh: 'abdominal：肚子前面的肌肉（腹肌）。' },
+    abdominal: { ca: 'abdominal', g: M, re: /rectus abdominis/, neutral: /external oblique/, neutralMsg: 'Aquest també és un múscul de la panxa, el del costat. Al dibuix del llibre (p. 27), la línia d’«abdominal» va al del mig, el que va de dalt a baix. Busca’l!', show: /^left rectus abdominis$/, aid: 'És el múscul de la panxa, al davant.', zh: 'abdominal：肚子前面的肌肉（腹肌）。' },
     dorsal: { ca: 'dorsal', g: M, re: /latissimus dorsi/, show: /^left latissimus dorsi$/, aid: 'És el múscul gran i pla del costat de l’esquena, a sota de l’aixella.', zh: 'dorsal：背部两侧、腋下的大块扁平肌肉（背阔肌）。' },
     gluti: { ca: 'gluti', g: M, re: /gluteus maximus/, show: /^left gluteus maximus$/, aid: 'És el múscul gran de les natges.', zh: 'gluti：屁股上的大块肌肉（臀大肌）。' },
   },
@@ -54,11 +54,11 @@ export default {
     const bookStage = (id, keys, viewName, say, zhTxt) => ({ id, ph: '2 · El llibre', render(el) { c.hidden(); c.view(viewName); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(keys)}${say ? c.ossi(say) : ''}${c.zh(zhTxt)}`; c.setNext(true); } });
     return [
       { id: 'intro', ph: 'Benvinguda', render(el) { c.hidden(); c.view('cos'); el.innerHTML = `<h2>Els músculs del cap i del tronc</h2>${c.ossi('Hola! Avui aprendrem nou noms de músculs del cap i del tronc, en quatre grups petits. Després de cada grup els buscarem i els direm.')}${c.zh('今天学头部和躯干的 9 块肌肉名称，分四组。')}`; c.setNext(true); } },
-      bookStage('llibre', ['musculatura', 'dibuix', 'colors'], 'cos', 'Al dibuix del llibre cada zona té el seu color.', '课本原句：全身 600 多块骨骼肌分布在三个区域。图上头部名称是蓝色，躯干是橙色（胸锁乳突肌、三角肌、斜方肌、臀大肌也画成躯干色）。'),
+      bookStage('llibre', ['musculatura', 'dibuix', 'colors'], 'cos', 'Al dibuix del llibre cada zona té el seu color.', '课本内容·中文意译：全身 600 多块骨骼肌分布在三个区域。图上头部名称是蓝色，躯干是橙色（胸锁乳突肌、三角肌、斜方肌、臀大肌也画成躯干色）。'),
       { id: 'g1-pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('cap'); c.predict(el, { id: 'g1', q: 'Tanca els ulls ben fort i després estreny les dents. Creus que fas servir músculs de la cara?', zhq: '用力闭眼，再咬紧牙齿。你觉得用到了脸上的肌肉吗？', opts: ['Sí', 'No', 'No ho sé'] }); } },
-      bookStage('g1-llibre', ['cap'], 'cap', 'L’orbicular de les parpelles és un múscul anular, com a la lliçó 7.', '课本原句：头部有扁平肌和环形肌，用来说话、咀嚼和做表情。'),
+      bookStage('g1-llibre', ['cap'], 'cap', 'L’orbicular de les parpelles és un múscul anular, com a la lliçó 7.', '课本内容·中文意译：头部有扁平肌和环形肌，用来说话、咀嚼和做表情。'),
       ...c.nameGroupStages({ id: 'g1', title: 'Músculs del cap', keys: ['orbicular', 'masseter'], view: 'cap', viewAlt: 'capCostat' }),
-      bookStage('g2-llibre', ['tronc'], 'collDarrere', 'Ara, el coll i l’espatlla. El llibre els pinta de color tronc.', '课本原句：躯干有大而扁平的肌肉：让脊柱保持直立并能弯曲，保护腹部器官，帮助我们呼吸。'),
+      bookStage('g2-llibre', ['tronc'], 'collDarrere', 'Ara, el coll i l’espatlla. El llibre els pinta de color tronc.', '课本内容·中文意译：躯干有大而扁平的肌肉：让脊柱保持直立并能弯曲，保护腹部器官，帮助我们呼吸。'),
       ...c.nameGroupStages({ id: 'g2', title: 'Coll i espatlla', keys: ['ecm', 'trapezi', 'deltoide'], view: 'collDarrere', viewAlt: 'coll' }),
       { id: 'g3-pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('davant'); c.predict(el, { id: 'g3', q: 'Posa la mà a la panxa i respira fort. Creus que els músculs del tronc t’ajuden a respirar?', zhq: '把手放在肚子上用力呼吸。你觉得躯干的肌肉帮你呼吸吗？', opts: ['Sí', 'No', 'No ho sé'] }); } },
       ...c.nameGroupStages({ id: 'g3', title: 'Pit i panxa', keys: ['pectoral', 'abdominal'], view: 'davant', viewAlt: 'davantCostat' }),

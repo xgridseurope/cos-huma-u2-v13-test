@@ -41,7 +41,7 @@ export default {
       { id: 'g1-llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('braç'); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['extremitats', 'dibuix'])}${c.ossi('Primer grup: els tres ossos llargs del braç.')}${c.zh('读课本 P25 原句和图上的名称。')}`; c.setNext(true); } },
       ...c.nameGroupStages({ id: 'g1', title: 'Ossos del braç', keys: ['humer', 'cubit', 'radi'], view: 'braç', viewAlt: 'braçDarrere' }),
       { id: 'g2-pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('ma'); c.predict(el, { id: 'g2', q: 'Mira la teva mà i mou els dits. Quants ossos creus que té: pocs o molts?', zhq: '看看自己的手，手里的骨头多还是少？', opts: ['Pocs', 'Molts', 'No ho sé'] }); } },
-      { id: 'g2-llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('ma'); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['extremitats'])}${c.ossi('Segon grup: els ossos del canell, del palmell i dels dits.')}${c.zh('读课本原句：手和脚有很多小骨头，叫 falanges。')}`; c.setNext(true); } },
+      { id: 'g2-llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('ma'); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['extremitats'])}${c.ossi('Segon grup: els ossos del canell, del palmell i dels dits.')}${c.zh('课本内容·中文意译：手和脚有很多小骨头，叫 falanges。')}`; c.setNext(true); } },
       ...c.nameGroupStages({ id: 'g2', title: 'Ossos de la mà', keys: ['carp', 'metacarp', 'falanges'], view: 'ma', viewAlt: 'maDarrere' }),
       c.reviewStage(['humer', 'cubit', 'radi', 'carp', 'metacarp', 'falanges'], 'tot'),
       c.spellStage(['humer', 'cubit', 'radi', 'carp', 'metacarp', 'falanges']),

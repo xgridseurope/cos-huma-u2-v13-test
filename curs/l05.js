@@ -19,8 +19,8 @@ export default {
   },
   book: {
     def: { p: 24, src: 'lit', where: 'text', tx: 'Els ossos de l’esquelet s’uneixen entre si mitjançant les articulacions.' },
-    immobils: { p: 24, src: 'lit', where: 'text', tx: 'Articulacions immòbils: com les del crani, els ossos estan tan units que semblen només un.' },
-    mobils: { p: 24, src: 'lit', where: 'text', tx: 'Articulacions mòbils: els ossos es poden moure, com passa al colze, al coll o al genoll.' },
+    immobils: { p: 24, src: 'lit', where: 'text', tx: 'En algunes articulacions, com les del crani, els ossos estan tan units que semblen només un. Són articulacions immòbils.' },
+    mobils: { p: 24, src: 'lit', where: 'text', tx: 'En d’altres, els ossos es poden moure, com passa al colze, al coll o al genoll. Són articulacions mòbils.' },
     lligaments: { p: 24, src: 'lit', where: 'text', tx: 'En les articulacions mòbils, els ossos estan units mitjançant els lligaments.' },
   },
   names: {},
@@ -55,12 +55,12 @@ export default {
       { id: 'pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('cos'); c.predict(el, { id: 'mou', q: 'Prova-ho: doblega el colze, el genoll i gira el coll. Creus que TOTS els ossos del cos es poden moure entre ells?', zhq: '试试弯肘、弯膝、转脖子。你觉得全身所有骨头之间都能动吗？', opts: ['Sí, tots', 'No, alguns no es mouen', 'No ho sé'] }); } },
       { id: 'def', ph: '2 · El llibre', render(el) {
           stopSwing(); c.hidden(); c.view('colze'); hl(/^left humerus$/, 0x3d8bfd); hl(/^left (ulna|radius)$/, 0x35c46a);
-          el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['def'])}${c.ossi('Mira el colze: l’os blau i els ossos verds es troben aquí. On es troben dos ossos hi ha una articulació.')}${c.zh('课本原句：骨骼中的骨头通过关节彼此相连。')}`;
+          el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['def'])}${c.ossi('Mira el colze: l’os blau i els ossos verds es troben aquí. On es troben dos ossos hi ha una articulació.')}${c.zh('课本内容·中文意译：骨骼中的骨头通过关节彼此相连。')}`;
           c.setNext(true);
         } },
       { id: 'mobils', ph: '3–4 · Articulacions mòbils', render(el) {
           c.stepper(el, [
-            { scene: () => { stopSwing(); c.view('cos'); }, html: `${c.book(['mobils'])}${c.ossi('Mirarem els tres exemples del llibre, un per un.')}${c.zh('课本原句：能动的关节：骨头可以活动，比如肘、脖子、膝盖。')}` },
+            { scene: () => { stopSwing(); c.view('cos'); }, html: `${c.book(['mobils'])}${c.ossi('Mirarem els tres exemples del llibre, un per un.')}${c.zh('课本内容·中文意译：能动的关节：骨头可以活动，比如肘、脖子、膝盖。')}` },
             { scene: () => { c.view('colze'); hl(RE.colze, 0x35c46a); startSwing(); }, html: `<div class="spell">el colze</div>${c.ossi('Mira com es mou el colze del model. Ara doblega i estira el teu braç!')}${c.zh('肘：看模型的手臂弯曲，再动动你自己的手臂。')}` },
             { scene: () => { stopSwing(); c.view('genoll'); hl(RE.genoll, 0x35c46a); }, html: `<div class="spell">el genoll</div>${c.ossi('Aquí hi ha el genoll. Asseu-te i doblega el teu genoll: sents com es mou?')}${c.zh('膝盖：坐下来弯弯你的膝盖。')}` },
             { scene: () => { stopSwing(); c.view('coll'); hl(RE.coll, 0x35c46a); }, html: `<div class="spell">el coll</div>${c.ossi('Aquests ossets són del coll. Gira el cap a un costat i a l’altre: és el coll el que es mou!')}${c.zh('脖子：左右转头——动的是脖子。')}` },
@@ -69,12 +69,12 @@ export default {
       { id: 'immobils', ph: '3–4 · Articulacions immòbils', render(el) {
           stopSwing(); c.hidden(); c.view('capDalt'); skullColors();
           el.innerHTML = `<h2>Articulacions immòbils</h2>${c.book(['immobils'])}${c.ossi('He pintat cada os del crani d’un color. Mira les línies on es toquen: estan tan units que semblen un sol os, i no es poden moure entre ells.')}
-            <div class="note">🧠 Quan gires el cap, els ossos del crani no es mouen entre ells: qui es mou és el <b>coll</b>, que és una articulació mòbil.</div>${c.zh('课本原句：不能动的关节：比如颅骨的关节，骨头连得非常紧，看起来像一块。转头时动的是脖子，颅骨之间并不动。')}`;
+            <div class="note">🧠 Quan gires el cap, els ossos del crani no es mouen entre ells: qui es mou és el <b>coll</b>, que és una articulació mòbil.</div>${c.zh('课本内容·中文意译：不能动的关节：比如颅骨的关节，骨头连得非常紧，看起来像一块。转头时动的是脖子，颅骨之间并不动。')}`;
           c.setNext(true);
         } },
       { id: 'lligaments', ph: '2–3 · Els lligaments', render(el) {
           stopSwing(); c.hidden(); c.view('genoll');
-          el.innerHTML = `<h2>Els lligaments</h2>${c.book(['lligaments'])}<div class="note">⚠️ El nostre model <b>no té lligaments</b>. Mira’ls al dibuix del llibre, a la pàgina 24.</div>${c.ossi('Els lligaments són com cintes que lliguen un os amb l’altre a les articulacions que es mouen.')}${c.zh('课本原句：在能动的关节里，骨头通过韧带相连。注意：本 3D 模型没有韧带，请看课本第 24 页的图。')}`;
+          el.innerHTML = `<h2>Els lligaments</h2>${c.book(['lligaments'])}<div class="note">⚠️ El nostre model <b>no té lligaments</b>. Mira’ls al dibuix del llibre, a la pàgina 24.</div>${c.ossi('Els lligaments són com cintes que lliguen un os amb l’altre a les articulacions que es mouen.')}${c.zh('课本内容·中文意译：在能动的关节里，骨头通过韧带相连。注意：本 3D 模型没有韧带，请看课本第 24 页的图。')}`;
           c.setNext(true);
         } },
       { id: 'R1', ph: '5 · Explica-ho tu', recall: true, render(el) { c.view('cos'); c.recall(el, { q: 'Explica en veu alta: què és una articulació mòbil i una d’immòbil? Digues un exemple de cada.', keys: ['mobils', 'immobils'], units: ['U2', 'U3'], zhq: '说说能动和不能动的关节各是什么，各举一个例子。', zkey: '评分要点：能动——骨头可以动（肘/脖子/膝盖）；不能动——骨头连得很紧像一块（颅骨）。' }); } },

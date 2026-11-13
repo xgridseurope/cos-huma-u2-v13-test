@@ -1,10 +1,10 @@
 // Lesson 1 · El sistema esquelètic (textbook pp. 24–25). PRINCIPLE lesson: what the skeleton is, its jobs,
 // what bones are like (rigid AND alive) and the three types of bones. All sentences checked against the p. 24/25 photos.
 const show = (c, re, col = 0x2fd3ff) => c.A.highlight(c.A.find(re, 'bone'), col);
-const RE = {
-  llargs: /^left (humerus|ulna|radius|femur|tibia|fibula)$/, curts: /vertebra$|^atlas$|^axis$/, plans: /(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/,
+export const RE = {   // exported only so tools/probe_test.mjs can check it against tools/expected/answer_key.json
+  llargs: /^left (humerus|ulna|radius|femur|tibia|fibula)$/, curts: /^(?!intervertebral).*vertebra$|^atlas$|^axis$/, plans: /(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/,
   braç: /^left (humerus|ulna|radius)$/, columnaCames: /vertebra$|sacrum|hip bone|femur|tibia|fibula/, crani: /(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/, costelles: / rib$|body of sternum|manubrium|xiphoid/,
-  radi: /^left radius$/, tibia: /^left tibia$/, vertebra: /^third lumbar vertebra$/, crani1: /(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/,
+  radi: /^left radius$/, omoplat: /^left scapula$/, maxillar: /^mandible$/, falanges: /phalanx of left (thumb|.*finger)/, tibia: /^left tibia$/, vertebra: /^third lumbar vertebra$/, crani1: /(frontal|parietal|occipital|temporal|sphenoid) bone$|^ethmoid$/,
 };
 export default {
   id: 'l01', title: 'El sistema esquelètic 🦴', subtitle: 'Lliçó 1 (llibre p. 24–25): per a què serveix l’esquelet, com són els ossos i quins tipus n’hi ha. Uns 15 minuts.',
@@ -25,7 +25,7 @@ export default {
     llargs: { p: 24, src: 'lit', where: 'text del dibuix', tx: 'Ossos llargs, com els de les extremitats.' },
     curts: { p: 24, src: 'lit', where: 'text del dibuix', tx: 'Ossos curts, com les vèrtebres que formen la columna vertebral.' },
     plans: { p: 24, src: 'lit', where: 'text del dibuix', tx: 'Ossos plans, com els que formen el crani.' },
-    tipusAct: { p: 25, src: 'act', where: 'activitat «Observa»', q: 'De quin tipus són els ossos següents? (radi, tíbia, vèrtebra…)', tx: 'Radi i tíbia: llargs (són de les extremitats). Vèrtebra: curt. (Omòplat, maxil·lar i falanges no s’avaluen: el llibre no en dona la resposta.)' },
+    tipusAct: { p: 25, src: 'act', where: 'activitat «Observa»', q: 'De quin tipus són els ossos següents? omòplat · radi · maxil·lar · falanges · vèrtebra · tíbia', tx: 'Radi i tíbia: llargs (són de les extremitats). Vèrtebra: curt (p. 24). Omòplat, maxil·lar i falanges: el llibre no en dona la resposta; els observem i en parlem, sense nota.' },
   },
   names: {},
   views: {
@@ -57,13 +57,13 @@ export default {
       { id: 'aparell', ph: '2–3 · L’aparell locomotor', render(el) {
           c.hidden(); c.view('cos'); let on = false;
           el.innerHTML = `<h2>L’aparell locomotor</h2>${c.book(['aparell'])}${c.ossi('Toca el botó per vestir i desvestir l’esquelet: ossos i músculs treballen junts.')}
-            <button class="opt go" id="tgm">💪 Mostra els músculs</button>${c.zh('课本原句：运动系统由骨骼系统和肌肉系统组成。点按钮看肌肉和骨头。')}`;
+            <button class="opt go" id="tgm">💪 Mostra els músculs</button>${c.zh('课本内容·中文意译：运动系统由骨骼系统和肌肉系统组成。点按钮看肌肉和骨头。')}`;
           $('tgm').onclick = () => { on = !on; A.setLayer('allMuscle', on); $('tgm').textContent = on ? '🦴 Mostra només els ossos' : '💪 Mostra els músculs'; c.setNext(true); };
           c.setNext(false);
         } },
       { id: 'funcions', ph: '2–4 · Per a què serveix', render(el) {
           c.stepper(el, [
-            { scene: () => { stopSwing(); c.view('cos'); }, html: `${c.book(['sistema'])}${c.ossi('L’esquelet té tres feines. Les mirarem una per una.')}${c.zh('课本原句：骨骼系统由骨头组成；它参与运动、塑造身形并支撑体重、保护内脏免受撞击。')}` },
+            { scene: () => { stopSwing(); c.view('cos'); }, html: `${c.book(['sistema'])}${c.ossi('L’esquelet té tres feines. Les mirarem una per una.')}${c.zh('课本内容·中文意译：骨骼系统由骨头组成；它参与运动、塑造身形并支撑体重、保护内脏免受撞击。')}` },
             { scene: () => { c.view('cos'); show(c, RE.braç, 0x35c46a); startSwing(); }, html: `<div class="spell">① moviment</div>${c.ossi('Mira el braç: els ossos es mouen quan ens movem. Ara mou tu el teu braç!')}${c.zh('① 参与运动。')}` },
             { scene: () => { stopSwing(); c.view('cos'); show(c, RE.columnaCames, 0xff9f1c); }, html: `<div class="spell">② forma i pes</div>${c.ossi('La columna i les cames ens aguanten drets. Sense esquelet seríem com un flam! 🍮')}${c.zh('② 塑造身形、支撑体重。')}` },
             { scene: () => { stopSwing(); c.view('cap'); A.setLayer('brain', true); A.setBoneOpacity(35); }, html: `<div class="spell">③ protegeix</div>${c.ossi('Mira a dins del crani: hi ha el cervell (rosa). El crani el protegeix, com un casc. Les costelles també fan de protecció.')}${c.zh('③ 保护内脏免受撞击（例：颅骨保护大脑）。')}` },
@@ -71,7 +71,7 @@ export default {
         } },
       { id: 'ossos', ph: '2–3 · Com són els ossos', render(el) {
           c.hidden(); c.view('cos'); show(c, /^left femur$/, 0x35c46a);
-          el.innerHTML = `<h2>Com són els ossos</h2>${c.book(['ossos', 'dos_cents'])}${c.ossi('Els ossos són durs, però no són pedres: són vius, creixen amb tu i necessiten aliment. Per això cada any ets més alt o alta!')}${c.zh('课本原句：骨头坚硬结实，但它们是活的器官，会生长，需要营养。全身 200 多块骨头分布在三个区域。')}`;
+          el.innerHTML = `<h2>Com són els ossos</h2>${c.book(['ossos', 'dos_cents'])}${c.ossi('Els ossos són durs, però no són pedres: són vius, creixen amb tu i necessiten aliment. Per això cada any ets més alt o alta!')}${c.zh('课本内容·中文意译：骨头坚硬结实，但它们是活的器官，会生长，需要营养。全身 200 多块骨头分布在三个区域。')}`;
           c.setNext(true);
         } },
       { id: 'tipus', ph: '2–4 · Tres tipus d’ossos', render(el) {
@@ -95,6 +95,25 @@ export default {
         { q: 'De quin tipus és l’os blau?', opts: ['llarg', 'curt', 'pla'], a: 1, subject: () => { c.view('cos'); show(c, RE.vertebra); }, cue: 'és una de les vèrtebres de la columna.', demo: async () => { typeColors(); await c.wait(2200); }, units: ['U9'] },
         { q: 'De quin tipus són els ossos blaus?', opts: ['llargs', 'curts', 'plans'], a: 2, subject: () => { c.view('cap'); show(c, RE.crani1); }, cue: 'són els ossos del crani.', demo: async () => { typeColors(); await c.wait(2200); }, units: ['U9'] },
       ], { view: 'cos' }),
+      // F14 / D4: the other three bones of the p. 25 «Observa» — observe, compare, explain; never scored (no answer in the book)
+      { id: 'P2obs', ph: '6 · Observa', render(el) {
+        const items = [
+          { k: 'omoplat', re: RE.omoplat, dir: [0, .1, -1], ca: 'l’omòplat', look: 'És ample i prim, i té una vora com una cresta.' },
+          { k: 'maxillar', re: RE.maxillar, dir: [1, .05, .3], ca: 'el maxil·lar (el de baix)', look: 'Té forma de ferradura i hi ha les dents de baix.' },
+          { k: 'falanges', re: RE.falanges, dir: [0, .1, 1], ca: 'les falanges (de la mà)', look: 'Són ossets petits, però cada un és una mica allargat.' },
+        ];
+        const focus = (re, dir) => { const b = c.A.boxOf(c.A.find(re, 'bone')), ctr = b.getCenter(new c.T.Vector3()), sz = b.getSize(new c.T.Vector3());
+          c.A.flyTo(ctr, new c.T.Vector3(...dir).normalize().multiplyScalar(c.fitDist(Math.max(sz.y, .12) * .8, Math.max(sz.x, sz.z, .12) * .8))); };
+        let i = 0; c.setNext(false);
+        const draw = () => { const it = items[i]; c.hidden(); focus(it.re, it.dir); show(c, it.re);
+          el.innerHTML = `<h2>Observa · llibre p. 25 · ${i + 1}/3</h2>${i === 0 ? `${c.book(['tipusAct'])}${c.ossi('Tres ja els has classificat. Mirem els altres tres. No hi ha nota: digues què et sembla i per què.')}` : ''}
+            <div class="q">Mira ${it.ca} (en blau). Com et sembla: llarg, curt o pla? Per què?</div><div class="opts" id="ob"></div>${c.zh('观察（不计分）：这块骨头看起来是长骨、短骨还是扁骨？为什么？课本没有给答案。')}`;
+          for (const o of ['llarg', 'curt', 'pla', 'No ho sé']) { const b = document.createElement('button'); b.className = 'opt'; b.textContent = o;
+            b.onclick = () => { const r = c.rec; (r.obs = r.obs || {})[it.k] = o; c.saveRec(); el.querySelectorAll('#ob button').forEach(x => x.disabled = true); b.classList.add('hint');
+              el.insertAdjacentHTML('beforeend', `<div class="note">👀 ${it.look} El llibre no en dona la resposta: en pots parlar a classe.</div><button class="opt go" id="nb">${i < 2 ? 'Següent ▶' : 'Fet ✔'}</button>`);
+              c.$('nb').onclick = () => { i++; if (i < 3) draw(); else { c.$('nb').remove(); c.hidden(); c.setNext(true); } }; };
+            c.$('ob').appendChild(b); } };
+        draw(); } },
       c.resultsStage(),
     ];
   },

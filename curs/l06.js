@@ -60,13 +60,13 @@ export default {
       { id: 'inclou', ph: '2 · El llibre', render(el) {
           c.hidden(); c.view('cos'); let on = true;
           el.innerHTML = `<h2>Què és el sistema muscular</h2>${c.book(['inclou', 'esqueletics', 'sis_cents'])}${c.ossi('Toca el botó per treure i posar els músculs. Els ossos queden a sota!')}
-            <button class="opt go" id="tgmus">🦴 Treu els músculs</button>${c.zh('课本原句：肌肉系统包括全身的肌肉和肌腱。属于运动系统的肌肉叫骨骼肌；全身有 600 多块骨骼肌，分布在三个区域。')}`;
+            <button class="opt go" id="tgmus">🦴 Treu els músculs</button>${c.zh('课本内容·中文意译：肌肉系统包括全身的肌肉和肌腱。属于运动系统的肌肉叫骨骼肌；全身有 600 多块骨骼肌，分布在三个区域。')}`;
           $('tgmus').onclick = () => { on = !on; A.setLayer('allMuscle', on); $('tgmus').textContent = on ? '🦴 Treu els músculs' : '💪 Posa els músculs'; c.setNext(true); };
           c.setNext(false);
         } },
       { id: 'funcions', ph: '2–4 · Per a què serveix', render(el) {
           c.stepper(el, [
-            { scene: () => c.view('cos'), html: `${c.book(['funcions'])}${c.ossi('El llibre diu tres feines. Les mirarem una per una.')}${c.zh('课本原句：这个系统产生完成生命活动所需的动作，保持姿势，并让我们能做表情——表情就是用来表达情感的身体动作。')}` },
+            { scene: () => c.view('cos'), html: `${c.book(['funcions'])}${c.ossi('El llibre diu tres feines. Les mirarem una per una.')}${c.zh('课本内容·中文意译：这个系统产生完成生命活动所需的动作，保持姿势，并让我们能做表情——表情就是用来表达情感的身体动作。')}` },
             { scene: () => { c.view('cos'); hl(RE.respira, 0x35c46a); }, html: `<div class="spell">① funcions vitals</div>${c.ossi('Respirar i mastegar també són moviments! Posa la mà a la panxa i respira fort: notes com es mou?')}<div class="note">📘 A la p. 27 el llibre diu que els músculs del tronc ens ajuden a respirar i que els del cap serveixen per mastegar.</div>${c.zh('① 生命活动所需的动作（例：呼吸、咀嚼——见课本 P27）。')}` },
             { scene: () => { c.view('darrere'); hl(RE.posicio, 0xff9f1c); }, html: `<div class="spell">② la posició</div>${c.ossi('Aquests músculs de l’esquena ens aguanten drets. Posa’t ben dret o dreta: ara treballen!')}${c.zh('② 保持姿势（背部肌肉让我们站直）。')}` },
             { scene: () => { c.view('cara'); hl(RE.cara, 0xff5c8a); }, html: `<div class="spell">③ la mímica</div>${c.ossi('Amb els músculs de la cara fem cares. Fes cara de content, d’enfadat i de sorpresa davant d’un mirall!')}${c.zh('③ 做表情：用面部肌肉表达高兴、生气、惊讶等情感。')}` },
@@ -74,8 +74,8 @@ export default {
         } },
       { id: 'elastics', ph: '3–4 · Músculs elàstics', render(el) {
           c.hidden(); armOnly(); c.view('braç'); bent = false;
-          el.innerHTML = `<h2>Els músculs són elàstics</h2>${c.book(['elastics', 'figura'])}${c.ossi('Toca el botó: el braç es doblega i el múscul de davant s’encongeix. Torna-hi i s’estira. No es trenca mai!')}
-            <button class="opt go" id="bend">💪 Doblega el braç</button><div class="note">⚠️ Al model només es mouen els músculs del braç. Com treballen junts el bíceps i el tríceps ho veuràs a la lliçó 10.</div>${c.zh('课本原句：肌肉是有弹性的器官，能收缩和拉长而不会断。图：放松的肌肉 · 收缩的肌肉。点按钮弯曲和伸直手臂。')}`;
+          el.innerHTML = `<h2>Els músculs són elàstics</h2>${c.book(['elastics', 'figura'])}${c.ossi('Toca el botó: el braç es doblega i el múscul de davant s’encongeix. Torna-hi i s’estira. Es pot encongir i estirar sense trencar-se.')}
+            <button class="opt go" id="bend">💪 Doblega el braç</button><div class="note">⚠️ Al model només es mouen els músculs del braç. Com treballen junts el bíceps i el tríceps ho veuràs a la lliçó 10.</div>${c.zh('课本内容·中文意译：肌肉是有弹性的器官，能收缩和拉长而不会断。图：放松的肌肉 · 收缩的肌肉。点按钮弯曲和伸直手臂。')}`;
           let n = 0;
           $('bend').onclick = () => { bent = !bent; n++; A.setElbow('Left', bent ? 95 : A.elbows.Left.restFlex); $('bend').textContent = bent ? '👋 Estira el braç' : '💪 Doblega el braç'; if (n >= 2) c.setNext(true); };
           c.setNext(false);
@@ -83,7 +83,7 @@ export default {
       { id: 'tendons', ph: '3–4 · Els tendons', render(el) {
           armBack(); c.hidden(); c.view('taló'); hl(RE.tendo, 0xffd23f); hl(RE.besso, 0xff5c8a); c.label('tendó', at(RE.tendo)); c.label('múscul', at(RE.besso));
           el.innerHTML = `<h2>Els tendons</h2>${c.book(['tendons'])}${c.ossi('El cordó groc és un tendó: uneix el múscul de la cama (rosa) amb l’os del taló. Toca’t el taló per darrere: aquest cordó dur és el teu tendó!')}
-            ${c.curio('Aquest tendó del taló es diu tendó d’Aquil·les.')}${c.zh('课本原句：很多肌肉通过肌腱连在骨头上，肌腱是非常结实的组织索。黄色的是脚跟上的肌腱（趣闻不考：它叫跟腱）。')}`;
+            ${c.curio('Aquest tendó del taló es diu tendó d’Aquil·les.')}${c.zh('课本内容·中文意译：很多肌肉通过肌腱连在骨头上，肌腱是非常结实的组织索。黄色的是脚跟上的肌腱（趣闻不考：它叫跟腱）。')}`;
           c.setNext(true);
         } },
       { id: 'pensa', ph: '4 · Pensa (no s’avalua)', recall: true, render(el) {

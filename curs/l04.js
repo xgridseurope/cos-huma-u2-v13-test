@@ -45,7 +45,7 @@ export default {
     const hand = re => A.find(re, 'bone');
     return [
       { id: 'intro', ph: 'Benvinguda', render(el) { c.hidden(); c.view('tot'); el.innerHTML = `<h2>Els ossos de la cama i del peu</h2>${c.ossi('Hola! Avui aprendrem set noms d’ossos de la cama i del peu, en tres grups petits. Tu manes el ritme.')}${c.zh('今天学腿和脚的 7 块骨头名称，分三组。')}`; c.setNext(true); } },
-      { id: 'llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('cama'); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['extremitats', 'dibuix'])}${c.zh('课本原句：四肢有长骨，比如肱骨和股骨；手和脚有很多小骨头，叫 falanges。')}`; c.setNext(true); } },
+      { id: 'llibre', ph: '2 · El llibre', render(el) { c.hidden(); c.view('cama'); el.innerHTML = `<h2>Què diu el llibre</h2>${c.book(['extremitats', 'dibuix'])}${c.zh('课本内容·中文意译：四肢有长骨，比如肱骨和股骨；手和脚有很多小骨头，叫 falanges。')}`; c.setNext(true); } },
       { id: 'g1-pregunta', ph: '1 · Pregunta', render(el) { c.hidden(); c.view('cama'); c.predict(el, { id: 'g1', q: 'Toca’t la cuixa i el genoll. Quin os creus que és el més llarg de la cama?', zhq: '摸摸大腿和膝盖，哪块骨头最长？', opts: ['El de la cuixa', 'El del genoll', 'No ho sé'] }); } },
       ...c.nameGroupStages({ id: 'g1', title: 'Cuixa i genoll', keys: ['femur', 'rotula'], view: 'cama', viewAlt: 'camaCostat' }),
       ...c.nameGroupStages({ id: 'g2', title: 'La cama', keys: ['tibia', 'perone'], view: 'cama', viewAlt: 'camaDarrere' }),
