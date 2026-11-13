@@ -39,13 +39,13 @@ export default {
     const A = c.A, $ = c.$;
     const showLabels = () => { c.clearLabels(); c.nameLabels(['biceps', 'triceps']); c.label('colze', () => E.center.clone()); };
     const stopAnim = () => { if (anim) { const i = A.tickers.indexOf(anim); if (i >= 0) A.tickers.splice(i, 1); anim = null; } };
-    const animateTo = (target, ms = 2400) => { stopAnim(); const from = E.angle, t0 = performance.now();
-      return new Promise(res => { anim = now => { const u = Math.min(1, (now - t0) / ms), k = u * u * (3 - 2 * u); A.setElbow('Left', from + (target - from) * k); if (u >= 1) { stopAnim(); res(); } }; A.tickers.push(anim); }); };
+    const animateTo = (target, ms = 2400, ok = () => true) => { stopAnim(); const from = E.angle, t0 = performance.now();
+      return new Promise(res => { anim = now => { if (!ok()) { stopAnim(); return; } const u = Math.min(1, (now - t0) / ms), k = u * u * (3 - 2 * u); A.setElbow('Left', from + (target - from) * k); if (u >= 1) { stopAnim(); res(); } }; A.tickers.push(anim); }); };
     const neutral = () => A.setMuscleColors('neutral', 'neutral'), bending = () => A.setMuscleColors('on', 'off'), straightening = () => A.setMuscleColors('off', 'on');
-    const demo = async (kind, withLabels = true) => {
-      if (withLabels) showLabels();
-      if (kind === 'bend') { A.setElbow('Left', REST); neutral(); await c.wait(250); bending(); await animateTo(105, 2600); neutral(); }
-      else { A.setElbow('Left', 105); neutral(); await c.wait(250); straightening(); await animateTo(REST, 2600); neutral(); }
+    const demo = async (kind, withLabels = true) => {   // F17: if the child leaves during the demo, it stops and leaves the model alone
+      const ok = c.alive(); if (withLabels) showLabels();
+      if (kind === 'bend') { A.setElbow('Left', REST); neutral(); await c.wait(250); bending(); await animateTo(105, 2600, ok); if (ok()) neutral(); }
+      else { A.setElbow('Left', 105); neutral(); await c.wait(250); straightening(); await animateTo(REST, 2600, ok); if (ok()) neutral(); }
     };
     // slider: text + colour follow the DIRECTION of movement; after ~1 s still → past tense, neutral colour
     const sliderUI = (el, { start = REST, showState = true, onMove } = {}) => {

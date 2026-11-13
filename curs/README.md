@@ -22,7 +22,7 @@ are history: where they conflict with this section, this section wins. Each rule
    week later): suggestions, never locks; at most 8 items by default, weak items first, the rest optional; each item skippable.
    Replaces: 16–23 obligatory day-2 items.
 6. **Time** (2026-11-13 · R13). No countdown. Soft hints at about 12 and 15 minutes, dismissible. Replaces: fixed 15–20 min per lesson.
-7. **maxil·lar** (2026-11-13 · D1, R18, evidence P25-16/P25-30). Scored location = the P25 leader line target, the lower jaw
+7. **maxil·lar** (2026-11-13 · D1, R18, evidence P25-10 label / P25-30 leader line; F18 fix: was «P25-16», which is the vèrtebra label). Scored location = the P25 leader line target, the lower jaw
    (model «Mandible»). The upper jaw is neutral: explained, scored neither right nor wrong. Term explanation (`exp`) and Emily's
    classroom relay (`rel`, «no comprovat») are separate. The teacher's words are NOT verified. Replaces every earlier maxil·lar
    rule below (both jaws / pending verification / teacher quote).

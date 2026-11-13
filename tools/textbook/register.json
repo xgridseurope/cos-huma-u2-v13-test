@@ -1186,7 +1186,6 @@
    "segment": "P25-29",
    "name": "falanges (peu)",
    "lesson_slots": [
-    "l03.falanges",
     "l04.falangesPeu"
    ]
   },
@@ -1457,7 +1456,7 @@
    "line": 18,
    "ca": "falanges",
    "page": 25,
-   "label_segment": "P25-29",
+   "label_segment": "P25-22",
    "match": "/phalanx of left (thumb|.*finger)/"
   },
   {

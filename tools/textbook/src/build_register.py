@@ -68,11 +68,14 @@ for l, v in D.items():
     for n in v['names']:
         pg = 25 if l in ('l02','l03','l04') else 27 if l in ('l08','l09','l10') else 28
         sid = labels.get(pg,{}).get(norm(n['ca']))
+        if n['ca'] == 'falanges':   # P25 prints «falanges» twice: hand (l03) and foot (l04) — F18 fix, one slot each
+            want = '(mà)' if l == 'l03' else '(peu)'
+            sid = next(s['id'] for s in segs if s['kind'] == 'label' and s['page'] == 25 and s['text'].startswith('falanges') and want in s['text'])
         names.append({'lesson':l,'key':n['key'],'file':f'curs/{l}.js','line':n['line'],'ca':n['ca'],'page':pg,'label_segment':sid,'match':n['re']})
 label_ids = {sid for d in labels.values() for sid in d.values()} | {s['id'] for s in segs if s['kind']=='label' and '(peu)' in s['text'] or '(mà)' in s['text']}
 textbook_names = [s for s in segs if s['kind']=='label' and s['page'] in (25,27,28)]
 covered = {n['label_segment'] for n in names}
-name_cov = [{'segment':s['id'],'name':s['text'],'lesson_slots':[f"{n['lesson']}.{n['key']}" for n in names if n['label_segment']==s['id'] or (n['ca']=='falanges' and s['text'].startswith('falanges') and ((n['key']=='falanges')==('(mà)' in s['text'])))]} for s in textbook_names]
+name_cov = [{'segment':s['id'],'name':s['text'],'lesson_slots':[f"{n['lesson']}.{n['key']}" for n in names if n['label_segment']==s['id']]} for s in textbook_names]
 # literal coverage of each textbook sentence
 seg_use = []
 for s in segs:

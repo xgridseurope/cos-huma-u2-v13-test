@@ -1,5 +1,5 @@
 // Lesson 2 · Els ossos del cap i del tronc (textbook p. 25). NAME lesson (8 names in four pairs) + what each part protects.
-// maxil·lar (decision D1, user 2026-11-13; evidence tools/textbook P25-16 label, P25-30 leader line): four separate layers —
+// maxil·lar (decision D1, user 2026-11-13; evidence tools/textbook P25-10 label, P25-30 leader line): four separate layers —
 //   1 textbook location: the P25 leader line ends below the teeth = lower jaw (model «Mandible»). Only this is scored.
 //   2 3D exploration: the upper jaw (model «maxilla») is explained when tapped, scored neither right nor wrong (neutral).
 //   3 term explanation (src 'exp'): there is a bone with teeth above and one below; the book's line goes to the lower one.

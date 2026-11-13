@@ -1,0 +1,34 @@
+# f17_race.py on UNFIXED e981b8a (curs/ identical to e981b8a). Expected: FAIL.
+PASS S1: reached g1-troba
+PASS S1: first item target visible
+PASS S1: first item answered right by the tap
+PASS S1 tap sequence: new step «g1-maxil» keeps its «Continua» state
+PASS S1 tap sequence: new step keeps its model highlights
+PASS S1 tap sequence: no record changed without an action
+FAIL S1: a later tap on the new step is not scored for the old item «maxillar» · salt → sol
+PASS S1: no JS errors
+PASS S2: reached P1 (count items)
+PASS S2: choiceSeries has items
+PASS S2: reached P1
+FAIL S2 choiceSeries end, leave with #Lskip: new step «P2» keeps its «Continua» state · False → True
+FAIL S2 choiceSeries end, leave with #Lskip: new step keeps its model highlights · 1 → 0
+PASS S2 choiceSeries end, leave with #Lskip: no record changed without an action
+FAIL S2: P2 still waits for an answer (Continua does not move on) · P2obs
+PASS S2: no JS errors
+PASS S2b: reached P1
+PASS S2b choiceSeries end, leave with #Llook: new step «tipus» keeps its «Continua» state
+FAIL S2b choiceSeries end, leave with #Llook: new step keeps its model highlights · 38 → 0
+PASS S2b choiceSeries end, leave with #Llook: no record changed without an action
+PASS S2b: no JS errors
+PASS S3: reached P2
+PASS S3 model demo after two wrong answers: new step «P2obs» keeps its «Continua» state
+PASS S3 model demo after two wrong answers: new step keeps its model highlights
+PASS S3 model demo after two wrong answers: no record changed without an action
+PASS S3: no JS errors
+PASS S4: reached g1-troba
+PASS S4: an upper-jaw point is visible
+PASS S4 neutral tap: new step «g1-maxil» keeps its «Continua» state
+FAIL S4 neutral tap: new step keeps its model highlights · 3 → 0
+PASS S4 neutral tap: no record changed without an action
+PASS S4: no JS errors
+26 PASS · 6 FAIL

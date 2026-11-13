@@ -22,6 +22,59 @@ window.
 | `0f1108d` | B + F13 | Autonomous learning and records (F01 F02 F05 F09 F10 F11 F12 N1).<br>README current rules. `tools/b_scenarios.py`. |
 | (this file's commit) | C2 | **Scoring fix found by the regression:** a tap whose visible surface is another named part of the lesson is wrong (before: a brain tap with a nerve < 2 cm behind scored as «nervis»; 2 of 78 brain points in the l11 body view). Touch-probe case + counter-example.<br>Probe: each of the 39 names keeps a writing exercise (+ mutation).<br>`curs_test.py`: screenshot on a failed tap.<br>Regression evidence (`tools/expected/evidence/*_C2*`) and this handoff. |
 
+## Codex acceptance of `e981b8a` and the F17/F18 fix (2026-11-13)
+
+Codex independent acceptance of `e981b8a`: **FAIL**, with 1 Major (F17) and 1 Minor (F18). Everything else in
+F01–F16 and N1 was accepted, within the evidence levels stated in Codex's report. This round fixes **only** F17 and F18.
+
+**F17: asynchronous navigation race (Major).** A step's delayed callbacks kept running after the child left the
+step, and they changed the new step. Examples:
+- `sequence()` waits 700 ms after an answer; it then removed the new step's tap listener and installed one for the
+  old step's next item, so later taps were scored for the old item;
+- `choiceSeries` then ran `hidden()` + `setNext(true)` on the new step (Codex: l01 P1 → P2, «Continua» unlocked,
+  P2 passed unanswered and unrecorded);
+- the tap highlight clears (900 / 1400 ms), the 2.2 s / 2.5 s help demos and the l10 arm demo could land on the new
+  step.
+
+Fix (`curs/player.js`, `curs/l10.js`):
+- every step (`render()`) and every review item gets a new life number;
+- `wait()` and `later()` only go on while the step that started them is still on screen; an old wait never
+  resolves;
+- `sequence()` removes only its own tap listener;
+- `choiceSeries`, `ladderChoice` and `tapTask` stop after a demo if the step has changed;
+- lessons get `c.alive()`; the l10 demo uses it.
+
+No delay was lengthened and no input is blocked. The rules for answering, skipping, looking again, resuming,
+self-check and review are unchanged.
+
+Test: `python3 tools/f17_race.py OUT/`. The child's action and «Més tard» / «Torna a mirar» run in the same browser
+task (0 ms apart), so the old callbacks are always pending, whatever the machine speed. The test then observes for
+3.5 s and checks the new step's «Continua» state, its model highlights and the records. It covers:
+- S1: «Troba» tap, then a later tap on the old item;
+- S2 and S2b: last choiceSeries answer, leaving with «Més tard» (Codex's case) and with «Torna a mirar»;
+- S3: leaving during the model demo after a second wrong answer;
+- S4: neutral tap.
+
+Results:
+- before the fix (`e981b8a`): 27/5 and 26/6 FAIL;
+- after the fix: 32/0, twice.
+
+Logs: `tools/expected/evidence/f17_race_*`.
+
+**F18: evidence index (Minor).** Three corrections:
+- README rule 7 (and the matching `l02.js` comment) cited P25-16 for maxil·lar. P25-16 is the vèrtebra label; the
+  maxil·lar label is P25-10, and the leader line is still P25-30.
+- In `register.json`, the foot «falanges» (P25-29) also listed `l03.falanges` (hand). It now lists only
+  `l04.falangesPeu`, and `l03.falanges` now points to P25-22. The generator `build_register.py` was fixed the same
+  way.
+- The known-limits note on l11 taps now names the `geo_probe` @cervell case.
+
+Neither the textbook content nor the 39/39 writing coverage changed.
+
+**Not in this round.** F19 (desktop- and tablet-first UI/UX: teaching panel, lesson cameras, device fit) is
+registered in the master doc as a separate work package. A design proposal comes first, for the user to approve. No
+interface was changed.
+
 ## How to re-verify (independent reviewer)
 
 Start the local server:
@@ -38,6 +91,7 @@ Then run each check. Every test exits 1 on any FAIL.
 | 2 | `node tools/probe_test.mjs --selftest` | Re-introduces six defects (F03, F16, D1, F15, F08, a name losing its writing exercise). Each must be caught. |
 | 3 | `python3 tools/geo_probe.py OUT/` | Real touch taps:<br>• disc → wrong, named<br>• vertebra → right<br>• mandible → right<br>• maxilla → neutral<br>• rectus abdominis → right<br>• external oblique → neutral<br>• brain surface with a nerve < 2 cm behind, while looking for the nerves → wrong (fails if the C2 picking fix is removed) |
 | 4 | `python3 tools/b_scenarios.py OUT/` | • Resume after reload<br>• New round archives<br>• Skip («Més tard»)<br>• Look again («Torna a mirar») → «amb ajuda»<br>• Old-version record kept apart<br>• Week review: dated, ≤ 8, skippable<br>• View buttons<br>• Soft time hints<br>• No parent wording |
+| 4b | `python3 tools/f17_race.py OUT/` | F17: fast exits (0 ms after an answer, tap, wrong answer or neutral tap) do not change the new step's «Continua», model highlights or records; a later tap is not scored for the old step. |
 | 5 | `python3 tools/curs_test.py lXX OUT/` | Each lesson, full flow plus review rounds. About 8–20 min per lesson with software rendering. |
 
 **Checking the textbook evidence itself.**
@@ -68,7 +122,9 @@ Then run each check. Every test exits 1 on any FAIL.
 ## Known limits
 
 - **l11 names** (cervell, medul·la espinal, nervis) are scored by nervous-system layer, not by mesh name, so they
-  are not in `answer_key.json`. Their taps are covered by `curs_test.py l11` only.
+  are not in `answer_key.json`. Their taps are covered by `curs_test.py l11` (full lesson flow) and by one
+  `tools/geo_probe.py` case, `l11.nervis / @cervell` (brain surface with a nerve < 2 cm behind → wrong). There is no
+  per-name answer-key check for l11. (F18 fix, 2026-11-13: this line used to say «only» curs_test.)
 
 - **Records** stay in this browser's `localStorage`: there is no sync across devices, and clearing site data
   loses them.

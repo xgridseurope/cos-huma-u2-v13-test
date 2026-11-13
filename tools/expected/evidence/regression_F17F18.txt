@@ -1,0 +1,7 @@
+# F17/F18 regression on the fixed code (player.js + l10.js). Lessons chosen by the diff: l01 (choiceSeries + model demo, Codex case), l02 (tap sequences, day-2 review), l07 (tap with demo), l10 (changed demo), l11 (ordering task with demo). 2026-11-13.
+l01 exit=0 secs=318 pass=56 fail=0
+l10 exit=0 secs=377 pass=47 fail=0
+l11 exit=0 secs=680 pass=92 fail=0
+l07 exit=0 secs=804 pass=57 fail=0
+l02 exit=0 secs=850 pass=144 fail=0
+# Other lessons not re-run: they use the same player paths covered above (sequence, choiceSeries, tapTask, ladderChoice, day-2) and their configs did not change.

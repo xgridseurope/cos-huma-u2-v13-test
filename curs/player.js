@@ -17,7 +17,14 @@ await whenReady;
 const A = window.__app, T = A.THREE, camera = A.camera, canvas = A.renderer.domElement;
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
-const wait = ms => new Promise(r => setTimeout(r, ms));
+// F17: every step on screen (and every day-2 review item) has its own life number. A delayed callback of a step that is
+// no longer on screen must not touch the new one: wait()/later() only go on while the step that started them is current.
+// (A pending wait of an old step simply never resolves; nothing is slowed down and no input is blocked.)
+let life = 0;
+const newLife = () => ++life;
+const alive = () => { const g = life; return () => g === life; };
+const wait = ms => { const ok = alive(); return new Promise(r => setTimeout(() => { if (ok()) r(); }, ms)); };
+const later = (fn, ms) => { const ok = alive(); setTimeout(() => { if (ok()) fn(); }, ms); };
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 const QS = new URLSearchParams(location.search);
@@ -150,15 +157,15 @@ function tapTask(el, { q, key, cue, onResult, demo }) {
     if (!h.ok && tol && !h.obj) for (const rr of [tol / 2, tol]) for (let j = 0; j < 8 && !h.ok; j++) { const t = hitAt(e.clientX + rr * Math.cos(j * Math.PI / 4), e.clientY + rr * Math.sin(j * Math.PI / 4), targets); if (t.ok) h = t; }
     if (!h.ok && h.obj && neutralParts[key] && neutralParts[key].includes(h.obj)) {   // explained, not scored
       (rec.neutral = rec.neutral || {})[key] = (rec.neutral[key] || 0) + 1; saveRec();
-      A.highlight([h.obj], 0xffd23f); setTimeout(() => A.clearHighlights(), 1400); feedback(el, 'info', 'ℹ️ ' + NM[key].neutralMsg); return;
+      A.highlight([h.obj], 0xffd23f); later(() => A.clearHighlights(), 1400); feedback(el, 'info', 'ℹ️ ' + NM[key].neutralMsg); return;
     }
     if (h.ok || (!h.hard && nearSmall(e.clientX, e.clientY, targets))) {
       el.dataset.done = 1; const v = wrongs || helpedNow() ? 'ajuda' : 'sol'; onResult && onResult(v); saveRec();
-      A.highlight([...targets], 0x35c46a); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); setTimeout(() => A.clearHighlights(), 900); cleanup(); el.dispatchEvent(new Event('done')); return;
+      A.highlight([...targets], 0x35c46a); feedback(el, true, wrongs ? 'Ara sí! 👍' : 'Molt bé! ⭐'); later(() => A.clearHighlights(), 900); cleanup(); el.dispatchEvent(new Event('done')); return;
     }
     wrongs++; rec.wrong++;
     if (wrongs === 1) feedback(el, false, `Això és ${nameOf(h.obj)}. 💡 ${cue}`);
-    else { feedback(el, false, '👀 Mira on és…'); if (demo) await demo(); else { A.highlight(showParts[key], 0x2fd3ff); label(NM[key].ca, centerOf(key)); await wait(2200); A.clearHighlights(); clearLabels(); } feedback(el, false, 'Ara toca’l tu sol/a.'); }
+    else { feedback(el, false, '👀 Mira on és…'); const ok = alive(); if (demo) { await demo(); if (!ok()) return; } else { A.highlight(showParts[key], 0x2fd3ff); label(NM[key].ca, centerOf(key)); await wait(2200); A.clearHighlights(); clearLabels(); } feedback(el, false, 'Ara toca’l tu sol/a.'); }
   };
   canvas.addEventListener('pointerdown', down); canvas.addEventListener('pointerup', up);
   const cleanup = () => { canvas.removeEventListener('pointerdown', down); canvas.removeEventListener('pointerup', up); };
@@ -175,15 +182,16 @@ function ladderChoice(el, { q, opts, a, cue, demo, helpText, units = [], subject
     wrongs++; rec.wrong++; b.classList.add('wrong'); b.disabled = true;
     if (wrongs === 1) feedback(el, false, '💡 Pista: ' + cue);
     else if (helpText) { feedback(el, false, '👀 ' + helpText + ' Després torna-ho a provar.'); o.querySelectorAll('button').forEach(x => x.disabled = true); await wait(2500); draw(); }
-    else { feedback(el, false, '👀 Mira-ho una altra vegada…'); o.querySelectorAll('button').forEach(x => x.disabled = true); await demo(); hidden(); feedback(el, false, 'Ara torna-ho a provar tu sol/a.'); draw(); }
+    else { feedback(el, false, '👀 Mira-ho una altra vegada…'); o.querySelectorAll('button').forEach(x => x.disabled = true); const ok = alive(); await demo(); if (!ok()) return; hidden(); feedback(el, false, 'Ara torna-ho a provar tu sol/a.'); draw(); }
   };
   draw();
 }
 // several classification / choice questions in a row (each with its own subject highlight and help ladder)
 function choiceSeries(id, ph, items, { view: v, intro } = {}) {
   return { id, ph, recall: true, render: async el => {
-    hidden(); if (v) view(v); setNext(false);
+    hidden(); if (v) view(v); setNext(false); const ok = alive();
     await sequence(el, items, (box, it) => { ladderChoice(box, { ...it, series: true, q: (intro ? intro + ' ' : '') + it.q }); });
+    if (!ok()) return;   // F17: the child already left this step
     hidden(); feedback(el, true, 'Fet! ⭐'); setNext(true);
   } };
 }
@@ -232,10 +240,15 @@ function spell(el, key, { onResult } = {}) {
     el.querySelectorAll('.self button').forEach(b => b.onclick = () => { onResult(b.dataset.v); saveRec(); el.querySelectorAll('.self button').forEach(x => x.disabled = true); el.dispatchEvent(new Event('done')); }); };
 }
 // run a list of sub-tasks one after another inside one stage
+// F17: the sequence belongs to the step that started it. If the child leaves, it stops (wait() of an old step never
+// resolves) and it only ever removes its OWN tap listener, never the one of the step now on screen.
 async function sequence(el, items, run) {
-  for (const it of items) { const box = document.createElement('div'); el.innerHTML = ''; el.appendChild(box);
-    await new Promise(res => { box.addEventListener('done', res, { once: true }); cleanupTap = run(box, it) || null; });
-    await wait(700); if (cleanupTap) { cleanupTap(); cleanupTap = null; } }
+  const ok = alive();
+  for (const it of items) { if (!ok()) return; const box = document.createElement('div'); el.innerHTML = ''; el.appendChild(box);
+    let mine = null;
+    await new Promise(res => { box.addEventListener('done', res, { once: true }); mine = run(box, it) || null; cleanupTap = mine; });
+    await wait(700);
+    if (mine) { mine(); if (cleanupTap === mine) cleanupTap = null; } }
 }
 
 // ---------------------------------------------------------------- generic stages for NAME lessons (groups of 2–3)
@@ -335,6 +348,7 @@ function day2(kind) {
   const all = CFG.day2(ctx).map((it, i) => ({ it, i, w: weakScore(it) })).sort((a, b) => a.w - b.w || a.i - b.i).map(x => x.it);
   let items = all.slice(0, DEFAULT_ITEMS); const rest = all.slice(DEFAULT_ITEMS); let k = 0;
   const go = () => {
+    newLife();   // F17: each review item is its own step
     if (cleanupTap) { cleanupTap(); cleanupTap = null; } A.clearHighlights(); clearLabels();
     $('Lbar').style.width = `${k / items.length * 100}%`; $('Lch').textContent = `Revisió ${round.kind === 'setmana' ? 'de la setmana' : 'de l’endemà'} · ${Math.min(k + 1, items.length)}/${items.length}`;
     if (k >= items.length) { document.body.classList.remove('nomodel'); return finish(); }
@@ -373,6 +387,7 @@ function day2(kind) {
 // ---------------------------------------------------------------- navigation
 let idx = 0, cleanupTap = null, S = [];
 function render() {
+  newLife();   // F17: callbacks of the previous step stop here
   A.clearHighlights(); if (cleanupTap) { cleanupTap(); cleanupTap = null; }
   const s = S[idx]; rec.idx = idx; rec.stageTimes[s.id] = rec.stageTimes[s.id] || new Date().toISOString(); saveRec();
   $('Lbar').style.width = `${(idx + 1) / S.length * 100}%`; $('Lch').textContent = s.ph; $('Ldots').innerHTML = ''; $('Lstars').textContent = '';
@@ -423,7 +438,7 @@ $('Lspeak').style.display = 'none';
 function showApp() { document.body.classList.add('lessonMode'); L.style.display = ''; viewOffset(true); CFG.setup(ctx); viewBtns(); timeHints(); }
 
 // ---------------------------------------------------------------- context handed to lesson configs
-const ctx = { A, T, $, esc, wait, shuffle, parts, memo, curio, frame, view, fitDist, label, clearLabels, nameLabels, centerOf, book, ossi, zh, aid, setNext, feedback, hidden,
+const ctx = { A, T, $, esc, wait, later, alive, shuffle, parts, memo, curio, frame, view, fitDist, label, clearLabels, nameLabels, centerOf, book, ossi, zh, aid, setNext, feedback, hidden,
   showParts, CONTENT, choiceSeries, stepper, tapTask, ladderChoice, predict, recall, sayName, spell, sequence, evid, get rec() { return rec; }, saveRec, nameGroupStages, reviewStage, spellStage, resultsStage };
 S = CFG.stages(ctx);
 
