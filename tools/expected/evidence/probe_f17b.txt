@@ -1,0 +1,219 @@
+PASS l02.crani: required meshes scored right
+PASS l02.crani: counter-examples not scored right
+PASS l02.maxillar: required meshes scored right
+PASS l02.maxillar: counter-examples not scored right
+PASS l02.maxillar: neutral meshes explained, not scored (D1/D2)
+PASS l02.columna: required meshes scored right
+PASS l02.columna: counter-examples not scored right
+PASS l02.vertebra: required meshes scored right
+PASS l02.vertebra: counter-examples not scored right
+PASS l02.costella: required meshes scored right
+PASS l02.costella: counter-examples not scored right
+PASS l02.estern: required meshes scored right
+PASS l02.estern: counter-examples not scored right
+PASS l02.omoplat: required meshes scored right
+PASS l02.omoplat: counter-examples not scored right
+PASS l02.pelvis: required meshes scored right
+PASS l02.pelvis: counter-examples not scored right
+PASS l03.humer: required meshes scored right
+PASS l03.humer: counter-examples not scored right
+PASS l03.cubit: required meshes scored right
+PASS l03.cubit: counter-examples not scored right
+PASS l03.radi: required meshes scored right
+PASS l03.radi: counter-examples not scored right
+PASS l03.carp: required meshes scored right
+PASS l03.carp: counter-examples not scored right
+PASS l03.metacarp: required meshes scored right
+PASS l03.metacarp: counter-examples not scored right
+PASS l03.falanges: required meshes scored right
+PASS l03.falanges: counter-examples not scored right
+PASS l04.femur: required meshes scored right
+PASS l04.femur: counter-examples not scored right
+PASS l04.rotula: required meshes scored right
+PASS l04.rotula: counter-examples not scored right
+PASS l04.tibia: required meshes scored right
+PASS l04.tibia: counter-examples not scored right
+PASS l04.perone: required meshes scored right
+PASS l04.perone: counter-examples not scored right
+PASS l04.tars: required meshes scored right
+PASS l04.tars: counter-examples not scored right
+PASS l04.metatars: required meshes scored right
+PASS l04.metatars: counter-examples not scored right
+PASS l04.falangesPeu: required meshes scored right
+PASS l04.falangesPeu: counter-examples not scored right
+PASS l08.orbicular: required meshes scored right
+PASS l08.orbicular: counter-examples not scored right
+PASS l08.masseter: required meshes scored right
+PASS l08.masseter: counter-examples not scored right
+PASS l08.ecm: required meshes scored right
+PASS l08.ecm: counter-examples not scored right
+PASS l08.trapezi: required meshes scored right
+PASS l08.trapezi: counter-examples not scored right
+PASS l08.deltoide: required meshes scored right
+PASS l08.deltoide: counter-examples not scored right
+PASS l08.pectoral: required meshes scored right
+PASS l08.pectoral: counter-examples not scored right
+PASS l08.abdominal: required meshes scored right
+PASS l08.abdominal: counter-examples not scored right
+PASS l08.abdominal: neutral meshes explained, not scored (D1/D2)
+PASS l08.dorsal: required meshes scored right
+PASS l08.dorsal: counter-examples not scored right
+PASS l08.gluti: required meshes scored right
+PASS l08.gluti: counter-examples not scored right
+PASS l09.biceps: required meshes scored right
+PASS l09.biceps: counter-examples not scored right
+PASS l09.triceps: required meshes scored right
+PASS l09.triceps: counter-examples not scored right
+PASS l09.quadriceps: required meshes scored right
+PASS l09.quadriceps: counter-examples not scored right
+PASS l09.bicepsFem: required meshes scored right
+PASS l09.bicepsFem: counter-examples not scored right
+PASS l09.tibial: required meshes scored right
+PASS l09.tibial: counter-examples not scored right
+PASS l09.besso: required meshes scored right
+PASS l09.besso: counter-examples not scored right
+PASS l10.biceps: required meshes scored right
+PASS l10.biceps: counter-examples not scored right
+PASS l10.triceps: required meshes scored right
+PASS l10.triceps: counter-examples not scored right
+PASS l01 exports RE for probing
+PASS l01 RE.curts: required shown
+PASS l01 RE.curts: counter-examples not shown
+PASS l01 RE.llargs: required shown
+PASS l01 RE.llargs: counter-examples not shown
+PASS l01.book.aparell: «lit» found verbatim on p.24
+PASS l01.book.sistema: «lit» found verbatim on p.24
+PASS l01.book.ossos: «lit» found verbatim on p.24
+PASS l01.book.dos_cents: «lit» found verbatim on p.25
+PASS l01.book.tipus: «lit» found verbatim on p.24
+PASS l01.book.llargs: «lit» found verbatim on p.24
+PASS l01.book.curts: «lit» found verbatim on p.24
+PASS l01.book.plans: «lit» found verbatim on p.24
+PASS l02.book.cap: «lit» found verbatim on p.25
+PASS l02.book.tronc: «lit» found verbatim on p.25
+PASS l02.book.dibuix: «lit» found verbatim on p.25
+PASS l03.book.extremitats: «lit» found verbatim on p.25
+PASS l03.book.dibuix: «lit» found verbatim on p.25
+PASS l04.book.extremitats: «lit» found verbatim on p.25
+PASS l04.book.dibuix: «lit» found verbatim on p.25
+PASS l05.book.def: «lit» found verbatim on p.24
+PASS l05.book.immobils: «lit» found verbatim on p.24
+PASS l05.book.mobils: «lit» found verbatim on p.24
+PASS l05.book.lligaments: «lit» found verbatim on p.24
+PASS l06.book.inclou: «lit» found verbatim on p.26
+PASS l06.book.funcions: «lit» found verbatim on p.26
+PASS l06.book.elastics: «lit» found verbatim on p.26
+PASS l06.book.figura: «lit» found verbatim on p.26
+PASS l06.book.esqueletics: «lit» found verbatim on p.26
+PASS l06.book.tendons: «lit» found verbatim on p.26
+PASS l06.book.sis_cents: «lit» found verbatim on p.27
+PASS l07.book.quatre: «lit» found verbatim on p.26
+PASS l07.book.llargs: «lit» found verbatim on p.26
+PASS l07.book.curts: «lit» found verbatim on p.26
+PASS l07.book.anulars: «lit» found verbatim on p.26
+PASS l07.book.plans: «lit» found verbatim on p.26
+PASS l07.book.troncP27: «lit» found verbatim on p.27
+PASS l08.book.musculatura: «lit» found verbatim on p.27
+PASS l08.book.cap: «lit» found verbatim on p.27
+PASS l08.book.tronc: «lit» found verbatim on p.27
+PASS l08.book.dibuix: «lit» found verbatim on p.27
+PASS l09.book.extremitats: «lit» found verbatim on p.27
+PASS l09.book.dibuix: «lit» found verbatim on p.27
+PASS l10.book.doblegar: «lit» found verbatim on p.27
+PASS l10.book.estirar: «lit» found verbatim on p.27
+PASS l10.book.parella: «lit» found verbatim on p.28
+PASS l11.book.exterior: «lit» found verbatim on p.28
+PASS l11.book.relacio: «lit» found verbatim on p.28
+PASS l11.book.elements: «lit» found verbatim on p.28
+PASS l11.book.cervell: «lit» found verbatim on p.28
+PASS l11.book.nervis: «lit» found verbatim on p.28
+PASS l11.book.medulla: «lit» found verbatim on p.28
+PASS l11.book.aparell: «lit» found verbatim on p.28
+PASS l11.book.contreuen: «lit» found verbatim on p.28
+PASS l11.book.dibuix: «lit» found verbatim on p.28
+PASS l12.book.vol: «lit» found verbatim on p.29
+PASS l12.book.v1: «lit» found verbatim on p.29
+PASS l12.book.v2: «lit» found verbatim on p.29
+PASS l12.book.v3: «lit» found verbatim on p.29
+PASS l12.book.ref: «lit» found verbatim on p.29
+PASS l12.book.r1: «lit» found verbatim on p.29
+PASS l12.book.r2: «lit» found verbatim on p.29
+PASS l12.book.r3: «lit» found verbatim on p.29
+PASS all literal entries checked (58)
+PASS l05.book.immobils is about «immòbils»
+PASS l05.book.mobils is about «articulacions mòbils»
+PASS l11.book.cervell is about «Cervell.»
+PASS l11.book.medulla is about «Medul·la espinal.»
+PASS l11.book.nervis is about «Nervis.»
+PASS l10.book.doblegar is about «dobleguem»
+PASS l10.book.estirar is about «estirem»
+PASS l01.book.curts is about «curts»
+PASS l01.book.llargs is about «llargs»
+PASS l01.book.plans is about «plans»
+PASS l01: no Chinese paraphrase labelled 课本原句
+PASS l01: no unverified «teacher says» claim
+PASS l02: no Chinese paraphrase labelled 课本原句
+PASS l02: no unverified «teacher says» claim
+PASS l03: no Chinese paraphrase labelled 课本原句
+PASS l03: no unverified «teacher says» claim
+PASS l04: no Chinese paraphrase labelled 课本原句
+PASS l04: no unverified «teacher says» claim
+PASS l05: no Chinese paraphrase labelled 课本原句
+PASS l05: no unverified «teacher says» claim
+PASS l06: no Chinese paraphrase labelled 课本原句
+PASS l06: no unverified «teacher says» claim
+PASS l07: no Chinese paraphrase labelled 课本原句
+PASS l07: no unverified «teacher says» claim
+PASS l08: no Chinese paraphrase labelled 课本原句
+PASS l08: no unverified «teacher says» claim
+PASS l09: no Chinese paraphrase labelled 课本原句
+PASS l09: no unverified «teacher says» claim
+PASS l10: no Chinese paraphrase labelled 课本原句
+PASS l10: no unverified «teacher says» claim
+PASS l11: no Chinese paraphrase labelled 课本原句
+PASS l11: no unverified «teacher says» claim
+PASS l12: no Chinese paraphrase labelled 课本原句
+PASS l12: no unverified «teacher says» claim
+PASS register: 39 textbook names
+PASS writing exercise for «crani» (P25-09)
+PASS writing exercise for «maxil·lar» (P25-10)
+PASS writing exercise for «omòplat» (P25-11)
+PASS writing exercise for «costella» (P25-12)
+PASS writing exercise for «húmer» (P25-13)
+PASS writing exercise for «estern» (P25-14)
+PASS writing exercise for «cúbit» (P25-15)
+PASS writing exercise for «vèrtebra» (P25-16)
+PASS writing exercise for «radi» (P25-17)
+PASS writing exercise for «columna vertebral» (P25-18)
+PASS writing exercise for «carp» (P25-19)
+PASS writing exercise for «pelvis» (P25-20)
+PASS writing exercise for «metacarp» (P25-21)
+PASS writing exercise for «falanges (mà)» (P25-22)
+PASS writing exercise for «fèmur» (P25-23)
+PASS writing exercise for «ròtula» (P25-24)
+PASS writing exercise for «peroné» (P25-25)
+PASS writing exercise for «tars» (P25-26)
+PASS writing exercise for «tíbia» (P25-27)
+PASS writing exercise for «metatars» (P25-28)
+PASS writing exercise for «falanges (peu)» (P25-29)
+PASS writing exercise for «orbicular de les parpelles» (P27-06)
+PASS writing exercise for «masseter» (P27-07)
+PASS writing exercise for «esternoclidomastoidal» (P27-08)
+PASS writing exercise for «deltoide» (P27-09)
+PASS writing exercise for «trapezi» (P27-10)
+PASS writing exercise for «dorsal» (P27-11)
+PASS writing exercise for «bíceps» (P27-12)
+PASS writing exercise for «tríceps» (P27-13)
+PASS writing exercise for «pectoral» (P27-14)
+PASS writing exercise for «abdominal» (P27-15)
+PASS writing exercise for «quàdriceps» (P27-17)
+PASS writing exercise for «gluti» (P27-18)
+PASS writing exercise for «bíceps femoral» (P27-19)
+PASS writing exercise for «tibial» (P27-20)
+PASS writing exercise for «bessó» (P27-21)
+PASS writing exercise for «cervell» (P28-17)
+PASS writing exercise for «medul·la espinal» (P28-18)
+PASS writing exercise for «nervis» (P28-19)
+PASS l06: no «No es trenca mai»
+
+217 PASS · 0 FAIL

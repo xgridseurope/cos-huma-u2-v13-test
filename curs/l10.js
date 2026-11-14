@@ -1,6 +1,6 @@
 // Lesson 10 · Bíceps i tríceps (textbook pp. 27–28). PRINCIPLE lesson, ported from the 1A sample (sample.js) to the
 // shared player. Units K1–K5 + names bíceps, tríceps. Model: movement + colour by direction; thickening off (setBulge 0).
-let E, REST, anim = null;
+let E, REST, anim = null, idleT = null, demoOn = false;   // F17: idleT = the slider's «still for 1 s → neutral colours» timer; demoOn = a demo is playing
 const TXT = {
   bend: 'Ara el braç es doblega: el bíceps es contreu 💪 i el tríceps es relaxa.',
   str: 'Ara el braç s’estira: el tríceps es contreu 💪 i el bíceps es relaxa.',
@@ -43,18 +43,20 @@ export default {
       return new Promise(res => { anim = now => { if (!ok()) { stopAnim(); return; } const u = Math.min(1, (now - t0) / ms), k = u * u * (3 - 2 * u); A.setElbow('Left', from + (target - from) * k); if (u >= 1) { stopAnim(); res(); } }; A.tickers.push(anim); }); };
     const neutral = () => A.setMuscleColors('neutral', 'neutral'), bending = () => A.setMuscleColors('on', 'off'), straightening = () => A.setMuscleColors('off', 'on');
     const demo = async (kind, withLabels = true) => {   // F17: if the child leaves during the demo, it stops and leaves the model alone
-      const ok = c.alive(); if (withLabels) showLabels();
-      if (kind === 'bend') { A.setElbow('Left', REST); neutral(); await c.wait(250); bending(); await animateTo(105, 2600, ok); if (ok()) neutral(); }
-      else { A.setElbow('Left', 105); neutral(); await c.wait(250); straightening(); await animateTo(REST, 2600, ok); if (ok()) neutral(); }
+      const ok = c.alive(); clearTimeout(idleT); idleT = null; demoOn = true;   // F17: no slider timer may reset the demo's colours
+      if (withLabels) showLabels();
+      if (kind === 'bend') { A.setElbow('Left', REST); neutral(); await c.wait(250); bending(); await animateTo(105, 2600, ok); if (ok()) { neutral(); demoOn = false; } }
+      else { A.setElbow('Left', 105); neutral(); await c.wait(250); straightening(); await animateTo(REST, 2600, ok); if (ok()) { neutral(); demoOn = false; } }
     };
     // slider: text + colour follow the DIRECTION of movement; after ~1 s still → past tense, neutral colour
     const sliderUI = (el, { start = REST, showState = true, onMove } = {}) => {
-      A.setElbow('Left', start); neutral();
+      A.setElbow('Left', start); neutral(); clearTimeout(idleT); idleT = null; demoOn = false;   // a new slider = a new step
       el.insertAdjacentHTML('beforeend', `<input type="range" class="arm" min="${REST}" max="130" value="${start}" step="1"><div class="live">${showState ? TXT.idle : 'Mou la barra.'}</div>`);
-      const r = el.querySelector('input.arm'), live = el.querySelector('.live'); let last = start, dir = 0, idleT = null;
+      const r = el.querySelector('input.arm'), live = el.querySelector('.live'); let last = start, dir = 0;
       r.oninput = () => { const v = +r.value, d = v - last; A.setElbow('Left', v);
         if (Math.abs(d) >= 2) { dir = d > 0 ? 1 : -1; last = v; if (showState) { (dir > 0 ? bending : straightening)(); live.textContent = dir > 0 ? TXT.bend : TXT.str; live.className = 'live ' + (dir > 0 ? 'bend' : 'str'); } onMove && onMove(dir, v); }
-        clearTimeout(idleT); idleT = setTimeout(() => { neutral(); if (showState && dir) { live.textContent = dir > 0 ? TXT.bentDone : TXT.strDone; live.className = 'live'; } }, 1000); };
+        const ok = c.alive();   // F17: the timer belongs to this step; a new step or a demo cancels it
+        clearTimeout(idleT); idleT = setTimeout(() => { idleT = null; if (!ok() || demoOn) return; neutral(); if (showState && dir) { live.textContent = dir > 0 ? TXT.bentDone : TXT.strDone; live.className = 'live'; } }, 1000); };
       return r;
     };
     const predictStage = (id, pose, q, zhq, opts, say) => ({ id, ph: '1 · Pregunta', render(el) { c.hidden(); A.setElbow('Left', pose); c.predict(el, { id, q, zhq, opts, say }); } });

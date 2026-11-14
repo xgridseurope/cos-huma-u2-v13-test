@@ -71,6 +71,43 @@ Logs: `tools/expected/evidence/f17_race_*`.
 
 Neither the textbook content nor the 39/39 writing coverage changed.
 
+**Codex second review of `6a1dfdd` (2026-11-14): F17 FAIL, F18 PASS.** The l01 race was confirmed fixed, but a new
+l10 case was found: drag the slider, go straight back to «Mira» and play the demo; the slider's old 1 s timer then
+resets the demo's contraction colours.
+
+Root cause: in `sliderUI` (l10), the «still for 1 s → neutral colours» timer was a plain `setTimeout`. The F17
+lifecycle only stops `wait()` / `later()`, so this timer was never covered. A second case had the same cause inside
+one step: in P4, the second move in the wrong direction starts the straighten demo from within the slider's input
+handler, and the handler then arms a new 1 s timer. The step's life number does not change there, so the lifecycle
+alone cannot stop it.
+
+Fix, `curs/l10.js` only:
+- one shared slider timer (`idleT`) for the lesson;
+- the timer belongs to the step that armed it (`c.alive()`);
+- a new slider or a starting demo cancels it;
+- while a demo plays (`demoOn`), no slider timer may reset the colours; the demo resets them itself when it ends.
+
+No delay changed and no input blocked. Without a demo, the slider still turns neutral after about 1 s (test S9).
+
+Other l10 timers checked:
+- the demo's 250 ms wait and its animation were already covered;
+- `c.hidden()` after the P4 demo never runs once the child has left;
+- P4's 400 ms timer only resets the question's own counters.
+
+Test: `tools/f17_race.py` S5–S9, which watch `__app.setMuscleColors` calls:
+- S5: Codex's case;
+- S6: rapid repeated drags;
+- S7: re-entering the demo after leaving it mid-way;
+- S8: P4, same step;
+- S9: the normal slider behaviour is unchanged.
+
+Results:
+- before (`6a1dfdd`): 42/4 FAIL, twice; S1–S4 passed, and S5–S8 failed with a neutral reset 0.6–0.9 s after the
+  demo colours;
+- after: 46/0, twice, and then 51/0 with S9 added.
+
+Logs: `tools/expected/evidence/f17b_*`.
+
 **Not in this round.** F19 (desktop- and tablet-first UI/UX: teaching panel, lesson cameras, device fit) is
 registered in the master doc as a separate work package. A design proposal comes first, for the user to approve. No
 interface was changed.
@@ -91,7 +128,7 @@ Then run each check. Every test exits 1 on any FAIL.
 | 2 | `node tools/probe_test.mjs --selftest` | Re-introduces six defects (F03, F16, D1, F15, F08, a name losing its writing exercise). Each must be caught. |
 | 3 | `python3 tools/geo_probe.py OUT/` | Real touch taps:<br>• disc → wrong, named<br>• vertebra → right<br>• mandible → right<br>• maxilla → neutral<br>• rectus abdominis → right<br>• external oblique → neutral<br>• brain surface with a nerve < 2 cm behind, while looking for the nerves → wrong (fails if the C2 picking fix is removed) |
 | 4 | `python3 tools/b_scenarios.py OUT/` | • Resume after reload<br>• New round archives<br>• Skip («Més tard»)<br>• Look again («Torna a mirar») → «amb ajuda»<br>• Old-version record kept apart<br>• Week review: dated, ≤ 8, skippable<br>• View buttons<br>• Soft time hints<br>• No parent wording |
-| 4b | `python3 tools/f17_race.py OUT/` | F17: fast exits (0 ms after an answer, tap, wrong answer or neutral tap) do not change the new step's «Continua», model highlights or records; a later tap is not scored for the old step. |
+| 4b | `python3 tools/f17_race.py OUT/` | F17: fast exits (0 ms after an answer, tap, wrong answer or neutral tap) do not change the new step's «Continua», model highlights or records; a later tap is not scored for the old step (S1–S4). l10: no old slider timer resets a demo's contraction colours (S5–S8); the normal slider behaviour is unchanged (S9). |
 | 5 | `python3 tools/curs_test.py lXX OUT/` | Each lesson, full flow plus review rounds. About 8–20 min per lesson with software rendering. |
 
 **Checking the textbook evidence itself.**

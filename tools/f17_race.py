@@ -127,6 +127,59 @@ with sync_playwright() as p:
             leave_and_watch(pg, 'S4 neutral tap')
     else: chk('S4: maxil·lar item reached', False, 'order')
     pg.screenshot(path=f'{OUT}S4.png'); chk('S4: no JS errors', not errs, errs); pg.context.close()
+    # ---- l10 (Codex round 2): slider idle timer (1 s → neutral colours) vs. the bend / straighten demo ----------------
+    SPY = """()=>{window.__mc=[];const f=__app.setMuscleColors;__app.setMuscleColors=(b,t)=>{window.__mc.push([performance.now(),b,t]);return f(b,t)}}"""
+    DRAG = "const r=document.querySelector('#Lbody input.arm');for(const v of a.vals){r.value=v;r.dispatchEvent(new Event('input',{bubbles:true}))}"
+    def demo_colours_kept(pg, name, want, observe=1.9):
+        """after the demo set its contraction colours (want = [b,t]), nothing may reset them before the demo ends."""
+        time.sleep(observe); t0 = pg.evaluate("window.__t0"); mc = [m for m in pg.evaluate("window.__mc") if m[0] >= t0]
+        i = next((k for k in range(len(mc)) if mc[k][1:] == want), None)
+        if i is None: chk(f'{name}: demo set its contraction colours {want}', False, mc[-6:]); return
+        later_calls = [m for m in mc[i + 1:] if m[0] - mc[i][0] < 2500]   # demo animation lasts 2.6 s
+        chk(f'{name}: demo contraction colours {want} not reset by an old timer', not later_calls, [(round(m[0] - mc[i][0]), m[1], m[2]) for m in later_calls])
+    def l10_at(stage):
+        pg, errs = open_lesson(br, 'l10'); ok = goto(pg, stage); pg.evaluate(SPY); return pg, errs, ok
+    BACK_PLAY = "document.getElementById('Lback').click();window.__t0=performance.now();document.getElementById('pl').click();"
+
+    # S5 · Codex: drag in «Fes-ho tu», go straight back to «Mira» and play the bend demo
+    pg, errs, ok = l10_at('A-fes'); chk('S5: reached l10 A-fes', ok)
+    pg.evaluate("(a)=>{" + DRAG + BACK_PLAY + "}", {'vals': [40, 60, 80]})
+    chk('S5: back on A-demo, demo playing', pg.evaluate("__curs.S[__curs.idx].id") == 'A-demo')
+    demo_colours_kept(pg, 'S5 drag → back → bend demo', ['on', 'off'])
+    chk('S5: no JS errors', not errs, errs); pg.context.close()
+
+    # S6 · fast repeated drags (both directions, 12 moves over ~0.6 s), then back + demo
+    pg, errs, ok = l10_at('A-fes'); chk('S6: reached l10 A-fes', ok)
+    for vals in ([30, 50], [70, 90], [60, 40], [80, 100], [90, 110], [70, 50]):
+        pg.evaluate("(a)=>{" + DRAG + "}", {'vals': vals}); time.sleep(.1)
+    pg.evaluate("(a)=>{" + BACK_PLAY + "}", {})
+    demo_colours_kept(pg, 'S6 rapid drags → back → bend demo', ['on', 'off'])
+    chk('S6: no JS errors', not errs, errs); pg.context.close()
+
+    # S7 · re-enter the demo: play, leave mid-demo to «Fes-ho tu», drag, come back, play again
+    pg, errs, ok = l10_at('A-demo'); chk('S7: reached l10 A-demo', ok)
+    pg.evaluate("document.getElementById('pl').click()"); time.sleep(.6)
+    pg.evaluate("(a)=>{document.getElementById('Lskip').click();" + DRAG + BACK_PLAY + "}", {'vals': [50, 90]})
+    chk('S7: back on A-demo for the second demo', pg.evaluate("__curs.S[__curs.idx].id") == 'A-demo')
+    demo_colours_kept(pg, 'S7 second demo after leaving the first', ['on', 'off'])
+    chk('S7: no JS errors', not errs, errs); pg.context.close()
+
+    # S8 · same step (P4): the second move in the wrong direction starts the straighten demo while the slider's 1 s
+    # timer from that move is still pending
+    pg, errs, ok = l10_at('P4'); chk('S8: reached l10 P4', ok)
+    pg.evaluate("(a)=>{" + DRAG + "}", {'vals': [110, 125]}); time.sleep(.6)
+    pg.evaluate("(a)=>{window.__t0=performance.now();" + DRAG + "}", {'vals': [110, 126]})
+    demo_colours_kept(pg, 'S8 P4 straighten demo after wrong moves', ['off', 'on'])
+    chk('S8: no JS errors', not errs, errs); pg.context.close()
+    # S9 · unchanged rule: without a demo, the slider still turns the colours neutral and the text to the past tense after
+    # the child has been still for ~1 s (the fix must not remove the normal behaviour)
+    pg, errs, ok = l10_at('A-fes'); chk('S9: reached l10 A-fes', ok)
+    pg.evaluate("(a)=>{window.__t0=performance.now();" + DRAG + "}", {'vals': [40, 60, 80]}); time.sleep(1.6)
+    mc = [m for m in pg.evaluate("window.__mc") if m[0] >= pg.evaluate("window.__t0")]
+    chk('S9: while dragging up, biceps contracting colours', any(m[1:] == ['on', 'off'] for m in mc), mc)
+    chk('S9: still for ~1 s → neutral colours', bool(mc) and mc[-1][1:] == ['neutral', 'neutral'] and 800 <= mc[-1][0] - mc[0][0] <= 1500, [(round(m[0] - mc[0][0]), m[1], m[2]) for m in mc])
+    chk('S9: live text in the past tense', pg.evaluate("document.querySelector('#Lbody .live').textContent") != '' and pg.evaluate("document.querySelector('#Lbody .live').className") == 'live', pg.evaluate("document.querySelector('#Lbody .live').textContent"))
+    chk('S9: no JS errors', not errs, errs); pg.context.close()
     br.close()
 fails = [l for l in log if l.startswith('FAIL')]
 open(OUT + 'summary.txt', 'w').write('\n'.join(log) + f'\n\n{len(log) - len(fails)} PASS · {len(fails)} FAIL\n'); print(f'{len(log) - len(fails)} PASS · {len(fails)} FAIL')

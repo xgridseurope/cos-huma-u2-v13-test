@@ -1,0 +1,58 @@
+PASS every name has model parts · {'biceps': 2, 'triceps': 3}
+PASS A-pregunta: no labels/book before answering
+PASS A-pregunta: no answer text (zh on) · []
+PASS A-pregunta: prediction not marked wrong
+PASS A-fes: done
+PASS B-pregunta: no labels/book before answering
+PASS B-pregunta: no answer text (zh on) · []
+PASS B-pregunta: prediction not marked wrong
+PASS B-fes: done
+PASS R1: hidden before answer (zh on) · []
+PASS R1: back locked
+PASS R2: hidden before answer (zh on) · []
+PASS R2: back locked
+PASS P1: no answer text (zh on) · []
+PASS P2: no answer text (zh on) · []
+PASS P3: no answer text (zh on) · []
+PASS P4: done
+PASS P5#0: no labels, no highlight
+PASS P5#0: tap biceps
+PASS P5#1: no labels, no highlight
+PASS P5#1: tap triceps
+PASS P5: done
+PASS escriu#0: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#1: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS reached results
+PASS units recorded (question or self-check) · {'K1': [], 'K2': ['sol', 'sol'], 'K3': ['sol'], 'K4': ['sol'], 'K5': ['sol']}
+PASS locations · {'biceps': 'sol', 'triceps': 'sol'}
+INFO units with no in-app question (self-check only): ['K1']
+PASS self-check never recorded as an independent right answer
+PASS record carries content version · P24-29·fase1·2026-11-13b
+PASS spelling separate: accent-only ≠ failure · {'biceps': 'auto-accent', 'triceps': 'auto-ok'}
+PASS results do not claim mastery
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/8: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: explica què passa ')
+PASS day2 Revisió de l’endemà · 1/8: child checks herself (no parent step)
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/8: answer hidden before child answers · ('hidden', 'Explica-hoExplica què passa quan estirem el braç. ')
+PASS day2 Revisió de l’endemà · 2/8: child checks herself (no parent step)
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/8: answer hidden before child answers · ('hidden', 'Explica-hoQuina articulació es doblega? Com és el ')
+PASS day2 Revisió de l’endemà · 3/8: child checks herself (no parent step)
+d2 step 3 tickers 2
+PASS day2 Revisió de l’endemà · 4/8: locate biceps without labels
+d2 step 4 tickers 2
+PASS day2 Revisió de l’endemà · 5/8: locate triceps without labels
+d2 step 5 tickers 1
+PASS day2 Revisió de l’endemà · 6/8: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 27. Tapa el te')
+PASS day2 Revisió de l’endemà · 6/8: child checks herself (no parent step)
+d2 step 6 tickers 2
+PASS day2 Revisió de l’endemà · 7/8: word hidden before Comprova
+d2 step 7 tickers 2
+PASS day2 Revisió de l’endemà · 8/8: word hidden before Comprova
+d2 step 8 tickers 1
+PASS day2: default round has at most 8 items (8 of 8) · 8
+PASS day2 finished, one item at a time (default + optional extra) · (8, 8)
+PASS review round stored with date and kind; day-1 records unchanged · (8, {'kind': 'dia', 'n': 1, 'date': '2026-11-14T00:08:32.344Z', 'items': {'oral1': 'auto-ok', 'oral2': 'auto-ok', 'oral3': 'auto-ok', 'loc_biceps': 'sol', 'loc_
+PASS no JS errors · []
+47 PASS · 0 FAIL
