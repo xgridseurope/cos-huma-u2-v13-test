@@ -1,0 +1,43 @@
+diff --git a/curs/player.js b/curs/player.js
+index 4d448c2..ab96ca8 100644
+--- a/curs/player.js
++++ b/curs/player.js
+@@ -243,10 +243,11 @@ function spell(el, key, { onResult } = {}) {
+ // F17: the sequence belongs to the step that started it. If the child leaves, it stops (wait() of an old step never
+ // resolves) and it only ever removes its OWN tap listener, never the one of the step now on screen.
+ async function sequence(el, items, run) {
+-  const ok = alive();
+-  for (const it of items) { if (!ok()) return; const box = document.createElement('div'); el.innerHTML = ''; el.appendChild(box);
++  const ok = alive(), stale = () => new Promise(() => {});   // F17 S1: a sequence of an old step never reports «finished»
++  for (const it of items) { if (!ok()) return stale(); const box = document.createElement('div'); el.innerHTML = ''; el.appendChild(box);
+     let mine = null;
+     await new Promise(res => { box.addEventListener('done', res, { once: true }); mine = run(box, it) || null; cleanupTap = mine; });
++    if (!ok()) return stale();   // the child left before this continuation ran (it may run after the leave in the same task)
+     await wait(700);
+     if (mine) { mine(); if (cleanupTap === mine) cleanupTap = null; } }
+ }
+diff --git a/curs/relacio.js b/curs/relacio.js
+index 044907d..753f633 100644
+--- a/curs/relacio.js
++++ b/curs/relacio.js
+@@ -35,8 +35,10 @@ export function signal(c) {
+     tube.renderOrder = 40; grp.add(tube); grp.add(dot);
+     glow(P.hl); if (P.hl.includes('muscle')) A.setLayer('muscle', true);
+     const dur = type === 'reflex' ? [900, 600, 1100][i] || 900 : [1600, 900, 2200][i] || 1500, rf = A.elbows[S].restFlex, t0 = performance.now();
++    const ok = c.alive();   // F17: if the step changes before the dot arrives, stop and undo the old signal (as hidden() would); never resolve
+     return new Promise(res => {
+       tick = now => {
++        if (!ok()) { clear(); return; }
+         const u = Math.min(1, Math.max(0, (now - t0) / dur)); dot.position.copy(curve.getPoint(u));
+         if (move && type === 'reflex' && i === 2) A.setElbow(S, rf + (80 - rf) * Math.min(1, u * 2.2));
+         if (move && type === 'voluntary' && i === 2 && u > .55) A.setElbow(S, rf + (90 - rf) * Math.min(1, (u - .55) / .45));
+@@ -49,7 +51,8 @@ export function signal(c) {
+   function upto(type, n) { for (let i = 0; i < n; i++) { const P = A.paths(S)[type][i]; const pts = P.pts.length > 1 ? P.pts : [P.pts[0], P.pts[0].clone().add(new T.Vector3(0, .0001, 0))];
+     const tube = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts, false, 'centripetal'), Math.max(8, pts.length * 6), .0035, 6, false), new T.MeshBasicMaterial({ color: type === 'reflex' ? 0xffa040 : 0x4de2fa, transparent: true, opacity: .45, depthTest: false }));
+     tube.renderOrder = 39; grp.add(tube); } }
+-  function bend(deg = 85, ms = 900) { const rf = A.elbows[S].restFlex, t0 = performance.now(); return new Promise(res => { const f = now => { const u = Math.min(1, Math.max(0, (now - t0) / ms)); A.setElbow(S, rf + (deg - rf) * u); if (u >= 1) { A.tickers.splice(A.tickers.indexOf(f), 1); res(); } }; A.tickers.push(f); }); }
++  function bend(deg = 85, ms = 900) { const rf = A.elbows[S].restFlex, t0 = performance.now(); const ok = c.alive(); return new Promise(res => { const f = now => { if (!ok()) { A.tickers.splice(A.tickers.indexOf(f), 1); return; }   // F17: the step changed → stop, never resolve
++      const u = Math.min(1, Math.max(0, (now - t0) / ms)); A.setElbow(S, rf + (deg - rf) * u); if (u >= 1) { A.tickers.splice(A.tickers.indexOf(f), 1); res(); } }; A.tickers.push(f); }); }
+   async function all(type) { clear(); prop(type); for (let i = 0; i < 3; i++) { await leg(type, i); await c.wait(500); } }
+   return { clear, prop, leg, all, upto, bend, glow };
+ }

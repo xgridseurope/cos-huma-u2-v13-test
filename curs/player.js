@@ -243,10 +243,11 @@ function spell(el, key, { onResult } = {}) {
 // F17: the sequence belongs to the step that started it. If the child leaves, it stops (wait() of an old step never
 // resolves) and it only ever removes its OWN tap listener, never the one of the step now on screen.
 async function sequence(el, items, run) {
-  const ok = alive();
-  for (const it of items) { if (!ok()) return; const box = document.createElement('div'); el.innerHTML = ''; el.appendChild(box);
+  const ok = alive(), stale = () => new Promise(() => {});   // F17 S1: a sequence of an old step never reports «finished»
+  for (const it of items) { if (!ok()) return stale(); const box = document.createElement('div'); el.innerHTML = ''; el.appendChild(box);
     let mine = null;
     await new Promise(res => { box.addEventListener('done', res, { once: true }); mine = run(box, it) || null; cleanupTap = mine; });
+    if (!ok()) return stale();   // the child left before this continuation ran (it may run after the leave in the same task)
     await wait(700);
     if (mine) { mine(); if (cleanupTap === mine) cleanupTap = null; } }
 }

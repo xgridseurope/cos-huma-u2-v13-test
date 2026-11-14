@@ -1,0 +1,65 @@
+PASS every name has model parts · {}
+PASS p1-pregunta: no labels/book before answering
+PASS p1-pregunta: prediction not marked wrong
+PASS aparell: toggle required first
+PASS aparell: muscles shown
+PASS funcions: stepper 4 cards, child-paced
+PASS R1: recall hidden before answer (zh on)
+PASS R1: back locked
+PASS R1: book answer after speaking
+PASS R1: self-check, no parent step
+PASS R1: done
+PASS R2: recall hidden before answer (zh on)
+PASS R2: back locked
+PASS R2: book answer after speaking
+PASS R2: self-check, no parent step
+PASS R2: done
+PASS P1#0: no answer shown before choosing (zh on) · De què està format l’aparell locomotor?
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: pensa en el que hem vist amb el botó: ossos i…
+PASS P1#1: no answer shown before choosing (zh on) · Què forma el sistema esquelètic?
+PASS P1#2: no answer shown before choosing (zh on) · Com són els ossos?
+PASS P1#3: no answer shown before choosing (zh on) · Quants ossos té el nostre esquelet?
+PASS P1#4: no answer shown before choosing (zh on) · En quantes zones es distribueixen els ossos?
+PASS P1#5: no answer shown before choosing (zh on) · Quan corres o saltes, qui hi participa?
+PASS P1#6: no answer shown before choosing (zh on) · Què fa l’esquelet amb el pes del cos?
+PASS P1#7: no answer shown before choosing (zh on) · De què protegeix l’esquelet els òrgans interns?
+PASS P1#8: no answer shown before choosing (zh on) · Per què diem que els ossos són òrgans vius?
+PASS P1: 9 choice items done
+PASS P2#0: no answer shown before choosing (zh on) · De quin tipus és l’os blau?
+PASS P2#1: no answer shown before choosing (zh on) · De quin tipus és l’os blau?
+PASS P2#2: no answer shown before choosing (zh on) · De quin tipus és l’os blau?
+PASS P2#3: no answer shown before choosing (zh on) · De quin tipus són els ossos blaus?
+PASS P2: 4 choice items done
+PASS P2obs#0: observation not marked right/wrong
+PASS P2obs#1: observation not marked right/wrong
+PASS P2obs#2: observation not marked right/wrong
+PASS P2obs: three Observa items, child-paced · 3
+PASS reached results
+PASS units recorded (question or self-check) · {'U1': ['ajuda'], 'U2': ['sol'], 'U3': ['sol'], 'U4': ['sol'], 'U5': ['sol'], 'U6': ['sol'], 'U7': ['sol'], 'U8': ['sol', 'sol'], 'U9': ['sol', 'sol', 'sol', 's
+PASS choice help recorded as amb ajuda · {'U1': ['ajuda'], 'U2': ['sol'], 'U3': ['sol'], 'U4': ['sol'], 'U5': ['sol'], 'U6': ['sol'], 'U7': ['sol'], 'U8': ['sol', 'sol'], 'U9': ['sol', 'sol', 'sol', 's
+INFO units with no in-app question (self-check only): []
+PASS self-check never recorded as an independent right answer
+PASS record carries content version · P24-29·fase1·2026-11-13b
+PASS results do not claim mastery
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/6: answer hidden before child answers · ('hidden', 'Explica-hoSense mirar el model: digues les tres fe')
+PASS day2 Revisió de l’endemà · 1/6: child checks herself (no parent step)
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/6: answer hidden before child answers · ('hidden', 'Explica-hoPer què diem que els ossos són òrgans vi')
+PASS day2 Revisió de l’endemà · 2/6: child checks herself (no parent step)
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/6: answer hidden before child answers · ('hidden', 'Explica-hoDigues els tres tipus d’ossos i un exemp')
+PASS day2 Revisió de l’endemà · 3/6: child checks herself (no parent step)
+d2 step 3 tickers 1
+PASS day2 Revisió de l’endemà · 4/6: answer hidden before child answers · ('hidden', 'El llibreObre el llibre a la pàgina 24. Tapa el te')
+PASS day2 Revisió de l’endemà · 4/6: child checks herself (no parent step)
+d2 step 4 tickers 2
+PASS day2 Revisió de l’endemà · 5/6: choice, no answer shown
+d2 step 5 tickers 2
+PASS day2 Revisió de l’endemà · 6/6: choice, no answer shown
+d2 step 6 tickers 1
+PASS day2: default round has at most 8 items (6 of 6) · 6
+PASS day2 finished, one item at a time (default + optional extra) · (6, 6)
+PASS review round stored with date and kind; day-1 records unchanged · (6, {'kind': 'dia', 'n': 1, 'date': '2026-11-14T10:01:22.804Z', 'items': {'oral1': 'auto-ok', 'oral2': 'auto-ok', 'oral3': 'auto-ok', 'book': 'auto-ok', 'tipus_
+PASS no JS errors · []
+56 PASS · 0 FAIL

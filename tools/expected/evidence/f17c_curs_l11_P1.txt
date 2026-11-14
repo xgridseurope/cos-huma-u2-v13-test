@@ -1,0 +1,104 @@
+PASS every name has model parts · {'cervell': 157, 'medulla': 2, 'nervis': 64}
+PASS pregunta: no labels/book before answering
+PASS pregunta: prediction not marked wrong
+PASS relacio: stepper 4 cards, child-paced
+PASS ordre3: steps shown shuffled, no order revealed
+PASS order: wrong first pick → specific cue, order not revealed · 💡 Pista: què ha de passar primer: notar el que passa o moure’s?
+PASS ordre3: order completed
+PASS R1: recall hidden before answer (zh on)
+PASS R1: back locked
+PASS R1: book answer after speaking
+PASS R1: self-check, no parent step
+PASS R1: done
+PASS g1-pregunta: no labels/book before answering
+PASS g1-pregunta: prediction not marked wrong
+PASS g1-coneix: introduced one by one, child-paced
+PASS g1-fes: labels visible in guided practice
+PASS g1-fes: guided taps done
+PASS g1-digues#0: name hidden before answer
+PASS g1-digues#0: name shown after answer
+PASS g1-digues#0: no parent step (self-check)
+PASS g1-digues#1: name hidden before answer
+PASS g1-digues#1: name shown after answer
+PASS g1-digues#1: no parent step (self-check)
+PASS g1-digues#2: name hidden before answer
+PASS g1-digues#2: name shown after answer
+PASS g1-digues#2: no parent step (self-check)
+PASS g1-digues: done
+PASS g1-troba#0: no labels, no highlight
+PASS g1-troba: wrong tap → names what was tapped + location hint, no answer highlight · Això és «cervell». 💡 És a l’esquena, dins de la columna vertebral.
+PASS g1-troba#0: tap medulla
+PASS g1-troba#1: no labels, no highlight
+PASS g1-troba#1: tap cervell
+PASS g1-troba#2: no labels, no highlight
+PASS g1-troba#2: tap nervis
+PASS g1-troba: done
+PASS repas#0: no labels, no highlight
+PASS repas#0: tap nervis
+PASS repas#1: no labels, no highlight
+PASS repas#1: tap medulla
+PASS repas#2: no labels, no highlight
+PASS repas#2: tap cervell
+PASS repas: done
+PASS parts: stepper 3 cards, child-paced
+PASS R2: recall hidden before answer (zh on)
+PASS R2: back locked
+PASS R2: book answer after speaking
+PASS R2: self-check, no parent step
+PASS R2: done
+PASS R3: recall hidden before answer (zh on)
+PASS R3: back locked
+PASS R3: book answer after speaking
+PASS R3: self-check, no parent step
+PASS R3: done
+PASS cami: stepper 5 cards, child-paced
+PASS A5: steps shown shuffled, no order revealed
+PASS A5: order completed
+PASS P1#0: no answer shown before choosing (zh on) · Quines parts formen el sistema nerviós?
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: són les tres parts que has trobat al model.
+PASS P1#1: no answer shown before choosing (zh on) · Què protegeix el cervell?
+PASS P1#2: no answer shown before choosing (zh on) · Què protegeix la medul·la espinal?
+PASS P1#3: no answer shown before choosing (zh on) · Què porten els nervis des del cervell fins a l’aparell locom
+PASS P1#4: no answer shown before choosing (zh on) · Qui és l’encarregat del moviment?
+PASS P1#5: no answer shown before choosing (zh on) · Com mouen els ossos els músculs?
+PASS P1: 6 choice items done
+PASS escriu#0: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#1: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS escriu#2: word hidden before Comprova · Escriu en un paper el nom de la part blava. Quan acabis, toc
+PASS reached results
+PASS every name located (groups) — except noLoc [] · {'medulla': 'ajuda', 'cervell': 'sol', 'nervis': 'sol'}
+PASS every name in mixed review · {'nervis': 'sol', 'medulla': 'sol', 'cervell': 'sol'}
+PASS every name said (self-checked, recorded as auto-*) · {'cervell': 'auto-ok', 'medulla': 'auto-ok', 'nervis': 'auto-ok'}
+PASS units recorded (question or self-check) · {'R1': [], 'R2': ['ajuda'], 'N1': ['ajuda'], 'N2': ['sol'], 'N3': ['sol'], 'N4': ['sol'], 'L1': ['sol', 'sol'], 'A5': ['sol']}
+PASS wrong first tap recorded as "amb ajuda" · {'medulla': 'ajuda', 'cervell': 'sol', 'nervis': 'sol'}
+INFO units with no in-app question (self-check only): ['R1']
+PASS self-check never recorded as an independent right answer
+PASS record carries content version · P24-29·fase1·2026-11-13b
+PASS spelling separate: accent-only ≠ failure · {'cervell': 'auto-accent', 'medulla': 'auto-ok', 'nervis': 'auto-ok'}
+PASS results do not claim mastery
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/8: answer hidden before child answers · ('hidden', 'Explica-ho (sense model)Amb les teves paraules: qu')
+PASS day2 Revisió de l’endemà · 1/8: child checks herself (no parent step)
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/8: answer hidden before child answers · ('hidden', 'Explica-ho (sense model)Digues les tres parts del ')
+PASS day2 Revisió de l’endemà · 2/8: child checks herself (no parent step)
+d2 step 2 tickers 2
+PASS day2 Revisió de l’endemà · 3/8: locate cervell without labels
+d2 step 3 tickers 2
+PASS day2 Revisió de l’endemà · 4/8: locate medulla without labels
+d2 step 4 tickers 2
+PASS day2 Revisió de l’endemà · 5/8: word hidden before Comprova
+d2 step 5 tickers 2
+PASS day2 Revisió de l’endemà · 6/8: word hidden before Comprova
+d2 step 6 tickers 2
+PASS day2 Revisió de l’endemà · 7/8: locate nervis without labels
+d2 step 7 tickers 1
+PASS day2 Revisió de l’endemà · 8/8: order task, nothing pre-ordered
+d2 step 8 tickers 1
+PASS day2: default round has at most 8 items (8 of 9) · 8
+PASS day2 Revisió de l’endemà · 9/9: word hidden before Comprova
+d2 step 9 tickers 1
+PASS day2 finished, one item at a time (default + optional extra) · (9, 9)
+PASS review round stored with date and kind; day-1 records unchanged · (9, {'kind': 'dia', 'n': 1, 'date': '2026-11-14T10:56:19.950Z', 'items': {'oral1': 'auto-ok', 'oral2': 'auto-ok', 'loc_cervell': 'sol', 'loc_medulla': 'sol', 's
+PASS no JS errors · []
+92 PASS · 0 FAIL

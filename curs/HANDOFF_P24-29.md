@@ -108,6 +108,74 @@ Results:
 
 Logs: `tools/expected/evidence/f17b_*`.
 
+**Codex third review of `b75f88a` (2026-11-14): F17 FAIL, S1 only.** l10 (S5–S9) and F18 passed. In Codex's S1
+(l02 g1-troba → g1-maxil, tap and «Més tard» in the same JavaScript task, 3/3), the new step's disabled «Continua»
+was unlocked about 1.2 s later. The native touch control passed.
+
+Root cause (Claude's review confirms Codex's analysis, with source evidence). The answer fires `done`
+synchronously, but `sequence()` resumes after `await new Promise(done)` only once the current script has finished.
+In a single JS task, that script has already left the step and run `render()` → `newLife()`. So `await wait(700)` is
+created after the leave, with the NEW life number, and resolves.
+
+Measured order:
+- same task: leave at 48 ms, wait created at 49 ms;
+- native boundary: wait created at 55 ms, leave at 468 ms;
+- real touch: wait created at 1729 ms, leave at 2738 ms.
+
+Then the loop-top `if (!ok()) return` *resolved* the sequence ("finished"), and the caller (g1-troba, line 282) ran
+`feedback()` + `setNext(true)` on the new step.
+
+Verdict: both. Two user inputs never share one task, so real touch could not trigger S1 with this code (native
+boundary 3/3 PASS, real touch PASS). But `sequence()` relied on that ordering instead of checking its own lifecycle,
+and a stale sequence reported "finished".
+
+Fix (approved P1, 4 logic lines):
+- `curs/player.js` `sequence()`: re-check the step token right after `done`. A stale sequence returns a promise that
+  never settles, so none of its 8 callers (player.js stages, l07.js:77, l10.js:118) runs its completion code. No
+  caller and no lesson file changed.
+- `curs/relacio.js` `bend()` (l11 «doblega el braç»): stop the arm animation when the step changes, and never
+  resolve. This was a confirmed real-touch case: leaving mid-bend set the new step's arm to 85° and reset it ~0.5–1.4 s
+  later.
+
+Codex's caller-side alternative (prototype P2, token checks after each `await sequence()` in player.js) fixes
+player.js but not the lesson-file callers. l07 still failed (T5), and l10.js:118 is frozen.
+
+Why Claude's earlier S1 passed falsely: the new step's "initial" state was read over CDP several round trips after
+the leave, after the stale unlock (0.9–1.7 s) had already happened. Both snapshots were "unlocked", so they compared
+equal. Fix: record it in the page, in the same task as the leave (`window.__init_can`).
+
+Other test corrections, test-only:
+- S8 waits for P4's 400 ms reset before the second drag (a late timer under load meant the precondition was not met);
+- the S9 upper bound went from 1.5 s to 4 s (a correct reset at 1.65 s failed once); the lower bound stays ≥ 0.8 s;
+- `f17_s1_review.py` T6 now leaves from the first animation frame and counts all calls after the leave (it had missed
+  a stale frame 18 ms after the leave);
+- T7 observes for 12 s;
+- T5 reads «answered» from the page feedback.
+
+Tests (the committed curs/ and tools files are byte-identical to the tested prototype):
+- `tools/f17_s1_review.py`, 3 repeats per case:
+  - base `b75f88a`: 36/7 FAIL (S1 ×3 and both variants, l07, l11 bend);
+  - fixed: **43/0**;
+  - P2: 41/2.
+- `tools/f17_race.py` (final version): base 50/1 (S1 only); fixed **51/0**.
+- probe 217/0; selftest: every mutation caught; b_scenarios 24/0; geo_probe 12/0.
+- curs_test: l01 56/0, l02 144/0, l07 57/0, l10 47/0, l11 92/0, l12 48/0.
+
+Logs: `tools/expected/evidence/f17c_*`. Review report and probes: `tools/f17_review/`.
+
+Checked and safe:
+- l12 signal demo left mid-way: the next step's `recall()` calls `hidden()` → `sig.clear()`;
+- the waits that `ladderChoice` / `tapTask` / the lesson demos create synchronously in the input handler.
+
+Remaining risks, not changed in this round:
+- `relacio.js` `leg()` relies on the next step calling `hidden()`. An optional hardening is in
+  `f17c_P1_plus_leg_hardening_NOT_MERGED.diff`.
+- `wait()` takes the life number when it is called. **Development rule:** after awaiting an external promise (an
+  event, an animation), check the step token before any `wait()` or any state change.
+- All tests run in a software-rendered phone emulation. Real devices and a trial with Emily are still not verified.
+
+F17 is NOT declared closed: it is waiting for Codex's fourth independent review.
+
 **Not in this round.** F19 (desktop- and tablet-first UI/UX: teaching panel, lesson cameras, device fit) is
 registered in the master doc as a separate work package. A design proposal comes first, for the user to approve. No
 interface was changed.
@@ -128,6 +196,7 @@ Then run each check. Every test exits 1 on any FAIL.
 | 2 | `node tools/probe_test.mjs --selftest` | Re-introduces six defects (F03, F16, D1, F15, F08, a name losing its writing exercise). Each must be caught. |
 | 3 | `python3 tools/geo_probe.py OUT/` | Real touch taps:<br>• disc → wrong, named<br>• vertebra → right<br>• mandible → right<br>• maxilla → neutral<br>• rectus abdominis → right<br>• external oblique → neutral<br>• brain surface with a nerve < 2 cm behind, while looking for the nerves → wrong (fails if the C2 picking fix is removed) |
 | 4 | `python3 tools/b_scenarios.py OUT/` | • Resume after reload<br>• New round archives<br>• Skip («Més tard»)<br>• Look again («Torna a mirar») → «amb ajuda»<br>• Old-version record kept apart<br>• Week review: dated, ≤ 8, skippable<br>• View buttons<br>• Soft time hints<br>• No parent wording |
+| 4c | `python3 tools/f17_s1_review.py OUT/ [N]` | F17 S1 review (N repeats): the Codex S1 path and its variants in one JS task; native boundary and real touch as controls; normal completion still unlocks; l07 lesson-file `c.sequence`; l11 bend left mid-animation; l12 signal demo. |
 | 4b | `python3 tools/f17_race.py OUT/` | F17: fast exits (0 ms after an answer, tap, wrong answer or neutral tap) do not change the new step's «Continua», model highlights or records; a later tap is not scored for the old step (S1–S4). l10: no old slider timer resets a demo's contraction colours (S5–S8); the normal slider behaviour is unchanged (S9). |
 | 5 | `python3 tools/curs_test.py lXX OUT/` | Each lesson, full flow plus review rounds. About 8–20 min per lesson with software rendering. |
 

@@ -1,0 +1,52 @@
+PASS S1: reached g1-troba
+PASS S1: first item target visible
+PASS S1: first item answered right by the tap
+PASS S1 tap sequence: new step «g1-maxil» keeps its «Continua» state
+PASS S1 tap sequence: new step keeps its model highlights
+PASS S1 tap sequence: no record changed without an action
+PASS S1: a later tap on the new step is not scored for the old item «maxillar»
+PASS S1: no JS errors
+PASS S2: reached P1 (count items)
+PASS S2: choiceSeries has items
+PASS S2: reached P1
+PASS S2 choiceSeries end, leave with #Lskip: new step «P2» keeps its «Continua» state
+PASS S2 choiceSeries end, leave with #Lskip: new step keeps its model highlights
+PASS S2 choiceSeries end, leave with #Lskip: no record changed without an action
+PASS S2: P2 still waits for an answer (Continua does not move on)
+PASS S2: no JS errors
+PASS S2b: reached P1
+PASS S2b choiceSeries end, leave with #Llook: new step «tipus» keeps its «Continua» state
+PASS S2b choiceSeries end, leave with #Llook: new step keeps its model highlights
+PASS S2b choiceSeries end, leave with #Llook: no record changed without an action
+PASS S2b: no JS errors
+PASS S3: reached P2
+PASS S3 model demo after two wrong answers: new step «P2obs» keeps its «Continua» state
+PASS S3 model demo after two wrong answers: new step keeps its model highlights
+PASS S3 model demo after two wrong answers: no record changed without an action
+PASS S3: no JS errors
+PASS S4: reached g1-troba
+PASS S4: an upper-jaw point is visible
+PASS S4 neutral tap: new step «g1-maxil» keeps its «Continua» state
+PASS S4 neutral tap: new step keeps its model highlights
+PASS S4 neutral tap: no record changed without an action
+PASS S4: no JS errors
+PASS S5: reached l10 A-fes
+PASS S5: back on A-demo, demo playing
+PASS S5 drag → back → bend demo: demo contraction colours ['on', 'off'] not reset by an old timer
+PASS S5: no JS errors
+PASS S6: reached l10 A-fes
+PASS S6 rapid drags → back → bend demo: demo contraction colours ['on', 'off'] not reset by an old timer
+PASS S6: no JS errors
+PASS S7: reached l10 A-demo
+PASS S7: back on A-demo for the second demo
+PASS S7 second demo after leaving the first: demo contraction colours ['on', 'off'] not reset by an old timer
+PASS S7: no JS errors
+PASS S8: reached l10 P4
+PASS S8 P4 straighten demo after wrong moves: demo contraction colours ['off', 'on'] not reset by an old timer
+PASS S8: no JS errors
+PASS S9: reached l10 A-fes
+PASS S9: while dragging up, biceps contracting colours
+FAIL S9: still for ~1 s → neutral colours · [(0, 'on', 'off'), (5, 'on', 'off'), (8, 'on', 'off'), (1648, 'neutral', 'neutral')]
+PASS S9: live text in the past tense
+PASS S9: no JS errors
+50 PASS · 1 FAIL

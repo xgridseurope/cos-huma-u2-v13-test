@@ -1,0 +1,44 @@
+PASS T1#1 Codex S1 l02 g1-troba→g1-maxil, same task: item «crani» answered right (feedback right after the tap)
+PASS T1#1 Codex S1 l02 g1-troba→g1-maxil, same task: new step «g1-maxil» keeps «Continua» False (old sequence must not unlock it)
+PASS T1#1 Codex S1 l02 g1-troba→g1-maxil, same task: no JS errors
+PASS T1#2 Codex S1 l02 g1-troba→g1-maxil, same task: item «maxillar» answered right (feedback right after the tap)
+PASS T1#2 Codex S1 l02 g1-troba→g1-maxil, same task: new step «g1-maxil» keeps «Continua» False (old sequence must not unlock it)
+PASS T1#2 Codex S1 l02 g1-troba→g1-maxil, same task: no JS errors
+PASS T1#3 Codex S1 l02 g1-troba→g1-maxil, same task: item «maxillar» answered right (feedback right after the tap)
+PASS T1#3 Codex S1 l02 g1-troba→g1-maxil, same task: new step «g1-maxil» keeps «Continua» False (old sequence must not unlock it)
+PASS T1#3 Codex S1 l02 g1-troba→g1-maxil, same task: no JS errors
+PASS T1b l02 g1-troba, same task, «Torna a mirar»: item «maxillar» answered right (feedback right after the tap)
+PASS T1b l02 g1-troba, same task, «Torna a mirar»: new step «g1-fes» keeps «Continua» False (old sequence must not unlock it)
+PASS T1b l02 g1-troba, same task, «Torna a mirar»: no JS errors
+PASS T1c l02 g1-troba LAST item, same task: first item answered normally, now on the last
+PASS T1c l02 g1-troba LAST item, same task: item «maxillar» answered right (feedback right after the tap)
+PASS T1c l02 g1-troba LAST item, same task: new step «g1-maxil» keeps «Continua» False (old sequence must not unlock it)
+PASS T1c l02 g1-troba LAST item, same task: no JS errors
+PASS T2#1 native event boundary (separate task, 0 ms): item «maxillar» answered right (feedback right after the tap)
+PASS T2#1 native event boundary (separate task, 0 ms): new step «g1-maxil» keeps «Continua» False (old sequence must not unlock it)
+PASS T2#1 native event boundary (separate task, 0 ms): no JS errors
+PASS T2#2 native event boundary (separate task, 0 ms): item «maxillar» answered right (feedback right after the tap)
+PASS T2#2 native event boundary (separate task, 0 ms): new step «g1-maxil» keeps «Continua» False (old sequence must not unlock it)
+PASS T2#2 native event boundary (separate task, 0 ms): no JS errors
+PASS T2#3 native event boundary (separate task, 0 ms): item «crani» answered right (feedback right after the tap)
+PASS T2#3 native event boundary (separate task, 0 ms): new step «g1-maxil» keeps «Continua» False (old sequence must not unlock it)
+PASS T2#3 native event boundary (separate task, 0 ms): no JS errors
+PASS T3 real touch tap, then leave: item «crani» answered right (feedback right after the tap)
+PASS T3 real touch tap, then leave: new step «g1-maxil» keeps «Continua» False (old sequence must not unlock it)
+PASS T3 real touch tap, then leave: no JS errors
+PASS T5 l07 gA-troba (c.sequence in a lesson file), same task: item «curt» answered right (feedback right after the tap)
+PASS T5 l07 gA-troba (c.sequence in a lesson file), same task: new step «gA-explica» keeps «Continua» False (old sequence must not unlock it)
+PASS T5 l07 gA-troba (c.sequence in a lesson file), same task: no JS errors
+PASS T4: reached g1-troba
+PASS T4: answering every item normally unlocks «Continua»
+PASS T4: no JS errors
+PASS T6: reached l11 relacio
+PASS T6: the leave happened while the arm was still bending
+PASS T6: after leaving, the old bend animation does not move the arm on the new step
+PASS T6: no JS errors
+PASS T7: reached l12 v-ordre
+PASS T7: the signal demo was playing when the child left
+PASS T7: the old demo does not light up parts on the new step
+PASS T7: no arm moves from the old demo after leaving
+PASS T7: no JS errors
+43 PASS · 0 FAIL

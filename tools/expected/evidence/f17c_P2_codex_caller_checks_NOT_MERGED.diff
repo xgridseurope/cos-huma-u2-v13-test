@@ -1,0 +1,48 @@
+diff --git a/curs/player.js b/curs/player.js
+index 4d448c2..8459d99 100644
+--- a/curs/player.js
++++ b/curs/player.js
+@@ -267,18 +267,21 @@ function nameGroupStages(g) {   // g = { id, keys, view, viewAlt, title, predict
+     show(); setNext(false);
+   } });
+   S.push({ id: g.id + '-fes', ph: '4 · Fes-ho tu (amb noms)', render: async el => {
+-    clearLabels(); A.clearHighlights(); view(g.view); const LK = g.keys.filter(k => !CFG.names[k].noLoc); nameLabels(LK); setNext(false);
++    clearLabels(); A.clearHighlights(); view(g.view); const LK = g.keys.filter(k => !CFG.names[k].noLoc); nameLabels(LK); setNext(false); const ok = alive();
+     await sequence(el, shuffle(LK), (box, k) => tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca} (pots mirar els noms)`, key: k, cue: CFG.names[k].aid }));   // with labels: practice only, not recorded
++    if (!ok()) return;
+     feedback(el, true, 'Molt bé! Ara, sense noms…'); setNext(true);
+   } });
+   S.push({ id: g.id + '-digues', ph: '5 · Digues el nom', recall: true, keys: g.keys, recKey: 'say', render: async el => {
+-    hidden(); view(g.view); setNext(false);
++    hidden(); view(g.view); setNext(false); const ok = alive();
+     await sequence(el, shuffle(g.keys), (box, k) => { sayName(box, k, { onResult: v => { rec.say[k] = v; } }); });
++    if (!ok()) return;
+     hidden(); feedback(el, true, 'Fet! Ara els buscarem des d’un altre costat.'); setNext(true);
+   } });
+   S.push({ id: g.id + '-troba', ph: '6 · Troba’ls (sense noms)', recall: true, keys: g.keys.filter(k => !CFG.names[k].noLoc), recKey: 'loc', render: async el => {
+-    hidden(); view(g.viewAlt); setNext(false);
++    hidden(); view(g.viewAlt); setNext(false); const ok = alive();
+     await sequence(el, shuffle(g.keys.filter(k => !CFG.names[k].noLoc)), (box, k) => tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca}`, key: k, cue: CFG.names[k].aid, onResult: v => { rec.loc[k] = v; } }));
++    if (!ok()) return;
+     feedback(el, true, 'Molt bé! ⭐'); setNext(true);
+   } });
+   return S;
+@@ -290,14 +293,17 @@ function reviewStage(keys, viewName, viewFor) {   // viewFor(k): optional view p
+     keys = keys.filter(k => !CFG.names[k].noLoc);
+     const missing = keys.filter(k => !rec.loc[k]);   // 'salt' (skipped) is allowed: the review is a second chance
+     if (missing.length) { el.innerHTML = `<div class="note">Encara falten: ${missing.map(k => CFG.names[k].ca).join(', ')}</div>`; return; }
++    const ok = alive();
+     await sequence(el, shuffle(keys), (box, k) => { if (viewFor) view(viewFor(k)); return tapTask(box, { q: `👆 Toca: ${CFG.names[k].ca}`, key: k, cue: CFG.names[k].aid, onResult: v => { rec.review[k] = v; } }); });
++    if (!ok()) return;
+     feedback(el, true, 'Repàs fet! 🎉'); setNext(true);
+   } };
+ }
+ function spellStage(keys) {
+   return { id: 'escriu', ph: 'Escriu', recall: true, keys, recKey: 'spell', render: async el => {
+-    hidden(); setNext(false);
++    hidden(); setNext(false); const ok = alive();
+     await sequence(el, keys, (box, k) => { spell(box, k, { onResult: v => { rec.spell[k] = v; } }); });
++    if (!ok()) return;
+     hidden(); feedback(el, true, 'Fet! ✏️'); setNext(true);
+   } };
+ }

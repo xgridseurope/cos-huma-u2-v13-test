@@ -1,0 +1,9 @@
+{"variant": "A", "item": "maxillar", "answered": {"maxillar": "sol"}, "after_0.3s": ["g1-fes", false], "after_3.5s": ["g1-fes", true], "Lnext_changes": [[47, "g1-fes", false], [843, "g1-fes", true]], "stale_unlock": true}
+{"variant": "A", "item": "crani", "answered": {"crani": "sol"}, "after_0.3s": ["g1-fes", false], "after_3.5s": ["g1-fes", true], "Lnext_changes": [[43, "g1-fes", false], [1408, "g1-fes", true]], "stale_unlock": true}
+{"variant": "A", "item": "crani", "answered": {"crani": "sol"}, "after_0.3s": ["g1-fes", false], "after_3.5s": ["g1-fes", true], "Lnext_changes": [[56, "g1-fes", false], [1245, "g1-fes", true]], "stale_unlock": true}
+{"variant": "B", "item": "maxillar", "answered": {"maxillar": "sol"}, "after_0.3s": ["g1-fes", false], "after_3.5s": ["g1-fes", false], "Lnext_changes": [[423, "g1-fes", false]], "stale_unlock": false}
+{"variant": "B", "item": "crani", "answered": {"crani": "sol"}, "after_0.3s": ["g1-fes", false], "after_3.5s": ["g1-fes", false], "Lnext_changes": [[519, "g1-fes", false]], "stale_unlock": false}
+{"variant": "B", "item": "maxillar", "answered": {"maxillar": "sol"}, "after_0.3s": ["g1-fes", false], "after_3.5s": ["g1-fes", false], "Lnext_changes": [[473, "g1-fes", false]], "stale_unlock": false}
+{"variant": "C", "item": "crani", "answered": {"crani": "sol"}, "after_0.3s": ["g1-fes", false], "after_3.5s": ["g1-fes", false], "Lnext_changes": [[2613, "g1-fes", false]], "stale_unlock": false}
+{"variant": "C", "item": "crani", "answered": {"crani": "sol"}, "after_0.3s": ["g1-fes", false], "after_3.5s": ["g1-fes", false], "Lnext_changes": [[2448, "g1-fes", false]], "stale_unlock": false}
+{"variant": "C", "item": "crani", "answered": {"crani": "sol"}, "after_0.3s": ["g1-fes", false], "after_3.5s": ["g1-fes", false], "Lnext_changes": [[2245, "g1-fes", false]], "stale_unlock": false}

@@ -1,0 +1,11 @@
+# F17 S1 review, 2026-11-14 — order of «leave click» vs «sequence 700 ms wait created», l02 g1-troba, b75f88a.
+# Read-only probe s1_probe_order.py (setTimeout wrapped in the page; code under test unchanged). Console output, verbatim:
+A stale_unlock= True [['leave click', 48], ['wait700 created', 49]]      # tap + leave in ONE JS task (Codex S1)
+B stale_unlock= False [['wait700 created', 55], ['leave click', 468]]    # separate tasks, 0 ms (native event boundary)
+C stale_unlock= False [['wait700 created', 1729], ['leave click', 2738]] # Playwright real touch, then leave
+# Same with «Més tard» to g1-maxil (Codex path), variant A, 3 runs:
+A maxillar new step ['g1-maxil', False] -> ['g1-maxil', True] Lnext [[54,'g1-maxil',False],[1512,'g1-maxil',True]] [['leave click',50],['wait700 created',54]]
+A crani    new step ['g1-maxil', False] -> ['g1-maxil', True] Lnext [[45,'g1-maxil',False],[913,'g1-maxil',True]]  [['leave click',43],['wait700 created',45]]
+A crani    new step ['g1-maxil', False] -> ['g1-maxil', True] Lnext [[68,'g1-maxil',False],[1385,'g1-maxil',True]] [['leave click',65],['wait700 created',67]]
+# l11 bend (diag_t6.py, b75f88a): leave at 1975 ms mid-bend → stale frame sets 85° on the NEW step 18 ms later:
+T6 leave 1975 rest 13 calls [[962,'relacio',13],[1989,'ordre3',13],[1993,'ordre3',85],[3345,'ordre3',13]]

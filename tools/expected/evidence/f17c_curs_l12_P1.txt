@@ -1,0 +1,57 @@
+PASS every name has model parts · {}
+PASS v-pregunta: no labels/book before answering
+PASS v-pregunta: prediction not marked wrong
+PASS v-passos: stepper 3 cards, child-paced
+PASS v-ordre: steps shown shuffled, no order revealed
+PASS order: wrong first pick → specific cue, order not revealed · 💡 Pista: tot comença quan els ulls veuen alguna cosa.
+PASS v-ordre: order completed
+PASS v-explica: recall hidden before answer (zh on)
+PASS v-explica: back locked
+PASS v-explica: book answer after speaking
+PASS v-explica: self-check, no parent step
+PASS v-explica: done
+PASS r-pregunta: no labels/book before answering
+PASS r-pregunta: prediction not marked wrong
+PASS r-passos: stepper 3 cards, child-paced
+PASS r-ordre: steps shown shuffled, no order revealed
+PASS r-ordre: order completed
+PASS r-explica: recall hidden before answer (zh on)
+PASS r-explica: back locked
+PASS r-explica: book answer after speaking
+PASS r-explica: self-check, no parent step
+PASS r-explica: done
+PASS P1#0: no answer shown before choosing (zh on) · La nena veu que el semàfor es posa verd i travessa el carrer
+PASS P1#0: wrong → specific cue, no answer · 💡 Pista: ella mira, pensa i decideix quan passa.
+PASS P1#1: no answer shown before choosing (zh on) · El nen toca una tassa calenta i aparta la mà de cop. Quin mo
+PASS P1#2: no answer shown before choosing (zh on) · En un moviment voluntari, qui identifica l’estímul i decidei
+PASS P1#3: no answer shown before choosing (zh on) · En el moviment reflex de la tassa, on arriba la informació?
+PASS P1#4: no answer shown before choosing (zh on) · Com són els moviments reflexos?
+PASS P1#5: no answer shown before choosing (zh on) · En tots dos moviments, qui fa el moviment?
+PASS P1: 6 choice items done
+PASS reached results
+PASS units recorded (question or self-check) · {'V0': [], 'V1': ['ajuda', 'sol', 'sol'], 'F0': ['sol'], 'F1': ['sol', 'sol', 'sol'], 'C1': ['ajuda', 'sol']}
+PASS choice help recorded as amb ajuda · {'V0': [], 'V1': ['ajuda', 'sol', 'sol'], 'F0': ['sol'], 'F1': ['sol', 'sol', 'sol'], 'C1': ['ajuda', 'sol']}
+INFO units with no in-app question (self-check only): ['V0']
+PASS self-check never recorded as an independent right answer
+PASS record carries content version · P24-29·fase1·2026-11-13b
+PASS results do not claim mastery
+before d2 tickers 1 labels 0
+PASS day2 Revisió de l’endemà · 1/6: answer hidden before child answers · ('hidden', 'Explica-ho (sense model)Amb les teves paraules: co')
+PASS day2 Revisió de l’endemà · 1/6: child checks herself (no parent step)
+d2 step 1 tickers 1
+PASS day2 Revisió de l’endemà · 2/6: answer hidden before child answers · ('hidden', 'Explica-ho (sense model)Ara un moviment reflex: co')
+PASS day2 Revisió de l’endemà · 2/6: child checks herself (no parent step)
+d2 step 2 tickers 1
+PASS day2 Revisió de l’endemà · 3/6: order task, nothing pre-ordered
+d2 step 3 tickers 1
+PASS day2 Revisió de l’endemà · 4/6: order task, nothing pre-ordered
+d2 step 4 tickers 1
+PASS day2 Revisió de l’endemà · 5/6: choice, no answer shown
+d2 step 5 tickers 1
+PASS day2 Revisió de l’endemà · 6/6: choice, no answer shown
+d2 step 6 tickers 1
+PASS day2: default round has at most 8 items (6 of 6) · 6
+PASS day2 finished, one item at a time (default + optional extra) · (6, 6)
+PASS review round stored with date and kind; day-1 records unchanged · (6, {'kind': 'dia', 'n': 1, 'date': '2026-11-14T11:09:07.997Z', 'items': {'oral1': 'auto-ok', 'oral2': 'auto-ok', 'ord_v': 'sol', 'ord_r': 'sol', 'c_tassa': 'so
+PASS no JS errors · []
+48 PASS · 0 FAIL

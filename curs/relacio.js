@@ -49,7 +49,8 @@ export function signal(c) {
   function upto(type, n) { for (let i = 0; i < n; i++) { const P = A.paths(S)[type][i]; const pts = P.pts.length > 1 ? P.pts : [P.pts[0], P.pts[0].clone().add(new T.Vector3(0, .0001, 0))];
     const tube = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts, false, 'centripetal'), Math.max(8, pts.length * 6), .0035, 6, false), new T.MeshBasicMaterial({ color: type === 'reflex' ? 0xffa040 : 0x4de2fa, transparent: true, opacity: .45, depthTest: false }));
     tube.renderOrder = 39; grp.add(tube); } }
-  function bend(deg = 85, ms = 900) { const rf = A.elbows[S].restFlex, t0 = performance.now(); return new Promise(res => { const f = now => { const u = Math.min(1, Math.max(0, (now - t0) / ms)); A.setElbow(S, rf + (deg - rf) * u); if (u >= 1) { A.tickers.splice(A.tickers.indexOf(f), 1); res(); } }; A.tickers.push(f); }); }
+  function bend(deg = 85, ms = 900) { const rf = A.elbows[S].restFlex, t0 = performance.now(); const ok = c.alive(); return new Promise(res => { const f = now => { if (!ok()) { A.tickers.splice(A.tickers.indexOf(f), 1); return; }   // F17: the step changed → stop, never resolve
+      const u = Math.min(1, Math.max(0, (now - t0) / ms)); A.setElbow(S, rf + (deg - rf) * u); if (u >= 1) { A.tickers.splice(A.tickers.indexOf(f), 1); res(); } }; A.tickers.push(f); }); }
   async function all(type) { clear(); prop(type); for (let i = 0; i < 3; i++) { await leg(type, i); await c.wait(500); } }
   return { clear, prop, leg, all, upto, bend, glow };
 }
